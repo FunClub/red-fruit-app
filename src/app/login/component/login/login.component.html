@@ -1,0 +1,57 @@
+<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1"
+             [speed]="'200'" [showSpinner]="'false'" [direction]="'leftToRightIncreased'"
+             [color]="'red'" [trickleSpeed]="250" [thick]="false" [ease]="'linear'"
+></ng-progress>
+<!--头部开始-->
+<div id="allHeader">
+  <div id="header">
+    <img id="logo" src="../../../../assets/img/loginLogo.png"/>
+    <span id="welcome">欢迎登录</span>
+    <span id="callMe"><img src="../../../../assets/img/loginMessage.png"/>意见反馈</span>
+  </div>
+</div>
+<!--头部结束-->
+
+<!--中部开始-->
+<div id="allCenter">
+  <div id="center">
+    <div id="loginBGs">
+      <img id="loginBGImg" src="../../../../assets/img/loginBg.png">
+      <img id="loginBGC" src="../../../../assets/img/loginBGC.png"/>
+    </div>
+
+    <div id="login">
+      <span class="loginTitleLine"></span>
+      <p id="loginTitle">会员登录</p>
+      <img id="profile" src="../../../../assets/img/profile.jpg"/>
+
+      <div id="loginInfo">
+        <form (ngSubmit)="doLogin()" [formGroup]="loginForm">
+          <!--账号-->
+          <md-input-container >
+            <span mdPrefix>账号:</span>
+            <input id="account" mdInput formControlName="account">
+          </md-input-container>
+
+          <!--密码-->
+          <md-input-container>
+            <span mdPrefix>密码:</span>
+            <input id="password" type="password" mdInput formControlName="passwords">
+          </md-input-container>
+          <div id="loginOpreation">
+            <md-checkbox color="primary">记住账号</md-checkbox>
+            <a id="lostPassword">忘记密码？</a>
+          </div>
+
+          <button type="submit" id="loginBtn"color="primary" loginBtn md-raised-button>登录</button>
+        </form>
+      </div>
+    </div>
+      <img (click)="openRegisterModal()" id="justRegisterImg" src="../../../../assets/img/justRegister.png"/>
+  </div>
+</div>
+<!--中部结束-->
+
+<!--底部开始-->
+<app-footer></app-footer>
+<!--底部结束-->

@@ -1,0 +1,91 @@
+main{
+  width: 600px;
+  position: relative;
+}
+#close{
+  background-color: white;
+  float: right;
+  position: absolute;
+  cursor: pointer;
+  left: 585px;
+  top: -10px;
+  border: none;
+  outline: none;
+  width: 20px;height: 20px;
+  background-image: url("../../../../assets/img/close.png");
+}
+
+#registerTitle{
+  text-align: center;
+  display: inline-block;
+  width: 600px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(202,202,202);
+}
+#registerForm{
+  width: 560px;
+  margin: auto;
+  margin-top: 10px;
+
+}
+md-error{
+  margin-left: 42px;
+  font-size: 15px;
+}
+#sexText{
+  color: rgb(100,100,100);
+  font-size: 14px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+#womanRadio{
+  margin-left: 185px;
+}
+md-input-container span{
+  color: rgb(100,100,100);
+  font-size: 14px;
+  margin-right: 10px;
+}
+#registerForm input:not(#born){
+  width: 200px;
+
+}
+md-input-container{
+  font-size: 16px;
+  margin-top: 15px;
+}
+md-input-container:not(#accountContainer){
+  margin-left: 30px;
+}
+#accountContainer{
+  font-size: 16px;
+  margin-left: 5px;
+}
+#bornContainer{
+  margin-left: 5px!important;
+}
+#born{
+  width: 150px;
+}
+#city{
+  width: 242px!important;
+  margin-left: 27px;
+}
+#verificationCode{
+  width: 190px !important;
+}
+#verificationCodeImg{
+  border: solid 1px rgb(213,213,213);
+  box-shadow: 0 0 2px rgb(190,190,190);
+  float: right;
+  margin-right: 127px;
+  cursor: pointer;
+}
+#verificationCodeContainer{
+  margin-left: 5px!important;
+}
+#registerBtn{
+  margin-top: 40px;
+  width: 100%;
+}
+

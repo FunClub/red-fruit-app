@@ -1,0 +1,72 @@
+<main>
+  <button md-dialog-close id="close" #close></button>
+  <h3 id="registerTitle" md-dialog-title>会员注册</h3>
+
+  <form id="registerForm" (ngSubmit)="register(close,codeImG)" [formGroup]="registerForm">
+    <!--性别-->
+    <md-radio-group  id="sexRadioGroup" name="sex" formControlName="sex">
+      <span id="sexText" mdPrefix>性别:</span>
+      <md-radio-button color="primary" value="1" >男</md-radio-button>
+      <md-radio-button  id="womanRadio" value="0">女</md-radio-button>
+    </md-radio-group><br>
+
+    <!--账号-->
+    <md-input-container id="accountContainer">
+      <span mdPrefix>账号:</span>
+      <input  mdInput    placeholder="邮箱格式" formControlName="account"  >
+      <md-error *ngIf="account.hasError('required')">
+        邮箱不能为空
+      </md-error>
+      <md-error *ngIf="account.hasError('pattern')">
+        不是正确的邮箱格式
+      </md-error>
+      <md-error *ngIf="account.hasError('canRegisterAble')">
+        账号已被注册
+      </md-error>
+    </md-input-container>
+
+    <!--密码-->
+    <md-input-container >
+      <span mdPrefix>密码:</span>
+      <input  formControlName="passwords" type="password" mdInput placeholder="6-12位">
+      <md-error *ngIf="passwords.hasError('required')">
+        密码不能为空
+      </md-error>
+      <md-error *ngIf="passwords.hasError('minlength')||passwords.hasError('maxlength')">
+        密码长度应为6-12位
+      </md-error>
+    </md-input-container>
+    <!--出生日期-->
+    <md-input-container id="bornContainer">
+      <span mdPrefix>出生日期:</span>
+      <input id="born"  readonly mdInput [mdDatepicker]="picker"  formControlName="born"  >
+      <button  mdSuffix  [mdDatepickerToggle]="picker" ></button>
+    </md-input-container>
+    <md-datepicker #picker startView="year" ></md-datepicker>
+    <md-datepicker touchUi="true" #picker></md-datepicker>
+
+    <!--居住地-->
+    <md-select id="city" placeholder="居住地"  formControlName="city">
+      <md-option *ngFor="let city of cities" [value]="city">
+        {{ city}}
+      </md-option>
+    </md-select>
+
+    <!--验证码-->
+    <md-input-container id="verificationCodeContainer">
+      <span mdPrefix>验证码:</span>
+      <input id="verificationCode"   mdInput formControlName="verificationCode">
+      <md-error *ngIf="verificationCode.hasError('required')">
+        验证码不能为空
+      </md-error>
+      <md-error *ngIf="verificationCode.hasError('verificationCodeActually')||verificationCode.hasError('minlength')||verificationCode.hasError('maxlength')">
+        验证码错误
+      </md-error>
+    </md-input-container>
+    <img #codeImG title="点击换一张" (click)="changeVerificationCodeImg(codeImG)" id="verificationCodeImg" [src]="api.VERIFICATION_CODE_IMG">
+    <button [disabled]="!registerForm.valid" id="registerBtn" type="submit" md-raised-button color="primary">立即注册</button>
+  </form>
+
+</main>
+
+
