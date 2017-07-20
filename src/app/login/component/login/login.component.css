@@ -41,27 +41,27 @@
 
 /*中部开始*/
 #allCenter {
-  /* background: #ff878e;*/
-  background: #dad8d5;
-  /*background: rgb(238,238,238);*/
+   /*background: #ff878e;*/
+ /* background: #dad8d5;*/
+  background: rgb(239,239,239);
   height: 450px;
   padding-top: 1px;
 }
 #loginBGs{/*包裹中部两个图片的div*/
   position: relative;
-  width: 650px;
+  width: 471px;
+
 }
 #loginBGImg{
-  margin-top: 40px;
   float: left;
-  width: 650px;
+  width: 471px;
 
 }
 #loginBGC{
   display:block;
   position: absolute;
-  top: 147px;
-  left: 138px;
+  top: 140px;
+  left: 180px;
   animation: shake 3s;
   animation-timing-function:ease;
   animation-iteration-count:infinite;
@@ -69,16 +69,16 @@
 @keyframes shake
 {
   0%{
-    transform:scale(0.8,0.8)
+    transform:scale(1.0,1.0)
   }
   50%{
-    transform:scale(1.2,1.2)
+    transform:scale(1.4,1.4)
   }
-  100% {transform:scale(0.8,0.8)}
+  100% {transform:scale(1.0,1.0)}
 }
 
 #center{
-  width: 980px;
+  width: 900px;
   margin: auto;
   margin-top: 40px;
   position: relative;
@@ -121,6 +121,7 @@
   width: 250px;
   margin-top: 5px;
 }
+
 md-input-container{
   margin-top: 0!important;
   height: 60px;
@@ -155,6 +156,7 @@ md-checkbox{
 #loginBtn{
   margin-top: 15px;
   width: 100%;
+  background: rgb(253,86,106);
 }
 #justRegister{
   display: block;
@@ -167,7 +169,7 @@ md-checkbox{
 #justRegisterImg{
   position: absolute;
   float: right;
-  left: 1000px;
+  left: 920px;
   top: -45px;
   cursor: pointer;
   animation: action 10s  infinite;

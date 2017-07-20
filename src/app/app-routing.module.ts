@@ -5,7 +5,7 @@ import {HomeComponent} from "./home/component/home/home.component";
 import {APP_BASE_HREF} from "_@angular_common@4.3.0@@angular/common/common";
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path:'home',loadChildren:'app/home/home.module#HomeModule'},
+  {path:'home', loadChildren:'app/home/home.module#HomeModule'},
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
 ];
 @NgModule({

@@ -10,6 +10,7 @@ import {BaseToastsOptions} from "./share/model/toasts-options.model";
 import {RedFruitApi} from "./share/model/api.model";
 import {Regex} from "./share/model/regex.model";
 import {HomeModule} from "./home/home.module";
+import {PersonCenterModule} from "./person-center/person-center.module";
 /**
  * 应用根模块
  *

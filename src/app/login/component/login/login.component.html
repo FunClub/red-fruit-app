@@ -28,22 +28,22 @@
       <div id="loginInfo">
         <form (ngSubmit)="doLogin()" [formGroup]="loginForm">
           <!--账号-->
-          <md-input-container >
+          <md-input-container color="accent">
             <span mdPrefix>账号:</span>
             <input id="account" mdInput formControlName="account">
           </md-input-container>
 
           <!--密码-->
-          <md-input-container>
+          <md-input-container color="accent">
             <span mdPrefix>密码:</span>
             <input id="password" type="password" mdInput formControlName="passwords">
           </md-input-container>
           <div id="loginOpreation">
-            <md-checkbox color="primary">记住账号</md-checkbox>
+            <md-checkbox color="accent">记住账号</md-checkbox>
             <a id="lostPassword">忘记密码？</a>
           </div>
 
-          <button type="submit" id="loginBtn"color="primary" loginBtn md-raised-button>登录</button>
+          <button type="submit" id="loginBtn" color="accent" loginBtn md-raised-button>登录</button>
         </form>
       </div>
     </div>

@@ -5,6 +5,7 @@ import {HomeRoutingModule} from "./home-routing.module";
 import {MdButtonModule, MdIconModule, MdInputModule, MdSidenavModule, MdTabsModule} from "@angular/material";
 import {ShareModule} from "../share/share.module";
 import {BaseToastsOptions} from "../share/model/toasts-options.model";
+import {PersonCenterModule} from "../person-center/person-center.module";
 @NgModule({
   imports: [
     CommonModule,
@@ -13,7 +14,7 @@ import {BaseToastsOptions} from "../share/model/toasts-options.model";
     MdIconModule,
     MdButtonModule,
     MdInputModule,
-    MdTabsModule
+    PersonCenterModule
   ],
   declarations: [HomeComponent]
 })

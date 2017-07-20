@@ -6,14 +6,14 @@
     <!--性别-->
     <md-radio-group  id="sexRadioGroup" name="sex" formControlName="sex">
       <span id="sexText" mdPrefix>性别:</span>
-      <md-radio-button color="primary" value="1" >男</md-radio-button>
-      <md-radio-button  id="womanRadio" value="0">女</md-radio-button>
+      <md-radio-button color="primary"  value="1" >男</md-radio-button>
+      <md-radio-button color="accent" id="womanRadio" value="0">女</md-radio-button>
     </md-radio-group><br>
 
     <!--账号-->
-    <md-input-container id="accountContainer">
+    <md-input-container id="accountContainer" color="accent">
       <span mdPrefix>账号:</span>
-      <input  mdInput    placeholder="邮箱格式" formControlName="account"  >
+      <input  mdInput    placeholder="邮箱格式"  formControlName="account"  >
       <md-error *ngIf="account.hasError('required')">
         邮箱不能为空
       </md-error>
@@ -26,9 +26,9 @@
     </md-input-container>
 
     <!--密码-->
-    <md-input-container >
+    <md-input-container color="accent">
       <span mdPrefix>密码:</span>
-      <input  formControlName="passwords" type="password" mdInput placeholder="6-12位">
+      <input  formControlName="passwords"  type="password" mdInput placeholder="6-12位">
       <md-error *ngIf="passwords.hasError('required')">
         密码不能为空
       </md-error>

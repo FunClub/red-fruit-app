@@ -3,15 +3,17 @@
 
   <!--头部左边-->
   <div id="leftHeader">
+
+    <img src="../../../../assets/img/homeLogo.png" height="35"/>
     <button id="toggleNavBtn" md-mini-fab (click)="sidenav.toggle()" (mousedown)="killnNavToggleBug()">
       <i class="material-icons">more_vert</i>
     </button>
-    <span id="contentTitle">我的主页</span>
+    <span id="contentTitle"></span>
   </div>
 
   <!--头部右边-->
   <div id="rightHeader">
-    <md-input-container>
+    <md-input-container color="accent">
       <input  mdInput placeholder="搜索有趣的事..." formControlName="account">
     </md-input-container>
     <button md-icon-button  id="searchBtn"><i class="material-icons" style="font-size:18px;">search</i></button>
@@ -24,11 +26,12 @@
     <button md-icon-button><i class="material-icons icon-btn">person</i></button>
   </div>
 </div>
-<div id="sq"></div>
+<!--头部结束-->
+
 <md-sidenav-container id="navContainer">
 
   <!--导航面板开始-->
-  <md-sidenav mode="side" opened="true" #sidenav  id="sideNavPanel">
+  <md-sidenav mode="side" opened="true" #sidenav   id="sideNavPanel">
     <div id="navContent">
       <div id="userProfile">
         <img id="profileImg" src="../../../../assets/img/profile.jpg"/>
@@ -41,9 +44,6 @@
             <i class="material-icons ">dashboard</i>我的主页
             <i class="material-icons arrow_drop">arrow_drop_up</i>
           </button>
-        </div>
-        <div class="nav">
-          <button md-button><i class="material-icons icon-btn">person</i>个人中心</button>
         </div>
         <div class="nav">
           <button md-button><i class="material-icons icon-btn">grade</i>点滴足迹</button>
@@ -84,8 +84,7 @@
 
   <!--主体内容开始-->
   <div id="allContent">
-   123
-
+    <router-outlet></router-outlet>
   </div>
   <!--主体内容结束-->
 

@@ -4,7 +4,11 @@
 */
 
 /*material2*/
+/*@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/purple-green.css";*/
+/*@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";*/
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 /*!*ng-primeng*!
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~primeng/resources/themes/omega/theme.css";
@@ -12,6 +16,15 @@
 
 /*ng2toastr*/
 @import "~ng2-toastr/bundles/ng2-toastr.min.css";
+
+/*修改material2默认样式*/
+.mat-ink-bar{ /*tabs下划线*/
+  background: red;
+}
+.mat-tab-links{/*tabs的标签页*/
+  background: white;
+}
+
 *{
   margin: 0;
   padding: 0;

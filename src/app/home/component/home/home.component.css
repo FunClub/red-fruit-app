@@ -1,23 +1,32 @@
 /*头部开始*/
 #allHeader{
-  height: 70px;
+  height: 50px;
   border-bottom: solid 1px rgb(213,213,213);
-  box-shadow: 0 0 3px gray;
-  background: white;
+  box-shadow: 0 0 3px rgb(228,228,228);
+  background: rgb(238,238,238);
   position: absolute;
   width: 100%;
   z-index: 1;
-
 }
 
-/*打开关闭导航面板按钮*/
+/*左边头部*/
 #leftHeader{
   float: left;
-  width: 250px;
-
-  height: 70px;
+  width: 228px;
+  height: 50px;
 }
+/*logo*/
+#leftHeader img{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+/*打开关闭导航面板按钮*/
 #toggleNavBtn{
+  float: right;
+  position: relative;
+  left: 20px;
+  width: 30px;
+  height: 30px;
   background: white;
 }
 #toggleNavBtn i{
@@ -46,16 +55,19 @@
 
 #rightHeader{
   float: right;
-  padding-right: 50px;
-  height: 70px;
+  padding-right: 80px;
+  height: 50px;
 }
 #rightHeader md-input-container{
   font-size: 15px;
-  height: 30px;
-  padding: 5px !important;
+  height: 50px;
+  color: white;
+}
+#rightHeader button{
+  margin-right: 20px;
 }
 #rightHeader i{
-  color: white;
+  color: gray;
 }
 
 /*头部结束*/
@@ -65,10 +77,10 @@
   width: 100%;
   position:absolute;
   z-index: 0;
-  background: rgb(238,238,238);
+  background: rgb(241,241,241);
 }
 #navContent{
-  padding-top: 72px;
+  padding-top: 52px;
 }
 /*滑动导航面板*/
 #sideNavPanel{
@@ -78,16 +90,15 @@
 
 /*主体内容*/
 #allContent{
-  padding-top: 72px;
+  padding-top: 52px;
 }
 
 /*导航开始*/
 
 #userProfile{
   text-align: center;
-  width: 210px;
   height: 100px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 0 5px rgb(150,150,150);
   background-image: url("../../../../assets/img/profileBG.png");
   background-position: bottom;
@@ -97,6 +108,7 @@
   width: 54px;
   border-radius: 27px;
   opacity: 1 !important;
+  margin-top: 10px;
 }
 #nickName{
   font-weight: bold;
@@ -105,6 +117,7 @@
 }
 #allNav{
   margin-top: 20px;
+
 }
 /*导航选项*/
 .nav button{
@@ -118,11 +131,19 @@
 .nav i:not(.arrow_drop){
   font-size: 26px;
   margin-right: 18px;
-  color: rgb(100,100,100);
+  color: firebrick;
 }
 /*导航箭头*/
 .arrow_drop{
-  margin-left: 80px;
+  margin-left: 60px;
 }
 /*导航结束*/
 
+md-tab-group{
+  background: white;
+
+}
+md-tab{
+  margin: auto !important;
+  border: solid;
+}
