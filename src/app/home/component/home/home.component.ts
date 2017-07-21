@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
               private vcr: ViewContainerRef, private toastOptions:ToastOptions) {
     this.toastsManager.setRootViewContainerRef(vcr);
   }
-
+  top(){window.scrollTo(0,0);alert(1);}
   ngOnInit() {
 
     this.title.setTitle("红果-主页")

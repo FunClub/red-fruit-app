@@ -18,13 +18,17 @@
 @import "~ng2-toastr/bundles/ng2-toastr.min.css";
 
 /*修改material2默认样式*/
+
+.mat-tab-links{/*tabs的标签页*/
+  background: white;
+  width: 100%;
+}
+nav{
+  position: fixed;
+}
 .mat-ink-bar{ /*tabs下划线*/
   background: red;
 }
-.mat-tab-links{/*tabs的标签页*/
-  background: white;
-}
-
 *{
   margin: 0;
   padding: 0;
