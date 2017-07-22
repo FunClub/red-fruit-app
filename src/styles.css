@@ -21,11 +21,12 @@
 
 .mat-tab-links{/*tabs的标签页*/
   background: white;
-  width: 100%;
 }
-nav{
-  position: fixed;
+.mat-tab-link{/*tabs的标签页*/
+ width: 120px;
+  min-width: 100px!important;
 }
+
 .mat-ink-bar{ /*tabs下划线*/
   background: red;
 }

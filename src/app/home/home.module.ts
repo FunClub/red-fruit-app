@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './component/home/home.component';
 import {HomeRoutingModule} from "./home-routing.module";
-import {MdButtonModule, MdIconModule, MdInputModule, MdSidenavModule, MdTabsModule} from "@angular/material";
-import {ShareModule} from "../share/share.module";
-import {BaseToastsOptions} from "../share/model/toasts-options.model";
+import {MdButtonModule, MdIconModule, MdInputModule, MdSidenavModule} from "@angular/material";
+
 import {PersonCenterModule} from "../person-center/person-center.module";
+import {PersonInfoModule} from "../person-info/person-info.module";
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +14,8 @@ import {PersonCenterModule} from "../person-center/person-center.module";
     MdIconModule,
     MdButtonModule,
     MdInputModule,
-    PersonCenterModule
+    PersonCenterModule,
+    PersonInfoModule
   ],
   declarations: [HomeComponent]
 })

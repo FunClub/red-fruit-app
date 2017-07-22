@@ -5,6 +5,11 @@ import {HomeComponent} from "./component/home/home.component";
 import {PersonCenterComponent} from "../person-center/component/person-center/person-center.component";
 import {NoteComponent} from "../person-center/component/note/note.component";
 import {HomePageComponent} from "../person-center/component/home-page/home-page.component";
+import {MemoryDayComponent} from "../person-center/component/memory-day/memory-day.component";
+import {MoodComponent} from "../person-center/component/mood/mood.component";
+import {AlbumComponent} from "../person-center/component/album/album.component";
+import {LeaveMessageComponent} from "../person-center/component/leave-message/leave-message.component";
+import {PersonInfoComponent} from "../person-info/component/person-info/person-info.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -17,9 +22,19 @@ const  homeRoutes:Routes=[
         children:
         [
           {path:'home-page',component:HomePageComponent},
+          {path:'mood',component:MoodComponent},
+          {path:'memory-day',component:MemoryDayComponent},
           {path:'note',component:NoteComponent},
+          {path:'album',component:AlbumComponent},
+          {path:'leave-message',component:LeaveMessageComponent},
           {path:'',redirectTo:'home-page',pathMatch:'full'}
         ]
+      },
+
+      /*个人资料*/
+      {
+        path:'person-info',
+        component:PersonInfoComponent
       },
       {path:'',redirectTo:"person-center",pathMatch:'full'}
 

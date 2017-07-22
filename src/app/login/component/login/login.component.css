@@ -156,7 +156,7 @@ md-checkbox{
 #loginBtn{
   margin-top: 15px;
   width: 100%;
-  background: rgb(253,86,106);
+ /* background: rgb(253,86,106);*/
 }
 #justRegister{
   display: block;

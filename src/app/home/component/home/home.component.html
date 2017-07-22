@@ -1,21 +1,20 @@
+<div id="all">
 <!--头部-->
 <div id="allHeader">
 
   <!--头部左边-->
   <div id="leftHeader">
 
-    <img src="../../../../assets/img/homeLogo.png" height="35"/>
-    <button id="toggleNavBtn" md-mini-fab (click)="sidenav.toggle()" (mousedown)="killnNavToggleBug()">
-      <i class="material-icons">arrow_back</i>
+    <img src="../../../../assets/img/homeLogo.png"/>
+    <button id="toggleNavBtn" md-mini-fab  (click)="openNav(sidenav)" (mousedown)="killnNavToggleBug()">
+      <i class="material-icons" [ngClass]="{'arrow_back_open':isNavOpen,'arrow_back_close':!isNavOpen}">arrow_back</i>
     </button>
     <span id="contentTitle"></span>
   </div>
 
   <!--头部右边-->
   <div id="rightHeader">
-    <md-input-container color="accent">
-      <input  mdInput placeholder="搜索有趣的事..." formControlName="account">
-    </md-input-container>
+    <input class="simpleInput" placeholder="搜索你关心的事">
     <button md-icon-button  id="searchBtn"><i class="material-icons" style="font-size:18px;">search</i></button>
     <button md-icon-button>
       <i class="material-icons ">dashboard</i>
@@ -35,37 +34,34 @@
   <md-sidenav mode="side" opened="true" #sidenav   id="sideNavPanel">
     <div id="navContent">
       <div id="userProfile">
-        <img id="profileImg" src="../../../../assets/img/profile.jpg"/>
-        <p id="nickName" (click)="top()" >笨笨的小熊</p>
+        <img id="profileImg" src="../../../../assets/img/defaultMeImg.png"/>
+        <p id="nickName">笨笨的小熊</p>
       </div>
       <!--导航ul-->
       <div id="allNav">
-        <div class="nav">
-          <button md-button>
-            <i class="material-icons ">dashboard</i>我的主页
-            <i class="material-icons arrow_drop">arrow_drop_up</i>
-          </button>
+        <div class="nav" disabled="true" routerLink="person-center/home-page" (click)="changeActiveLink(0)" [ngClass]="{'navActive':activeLinkFlag[0]}">
+          <button md-button><i class="material-icons ">dashboard</i>我的主页<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
         <div class="nav">
-          <button md-button><i class="material-icons icon-btn">grade</i>点滴足迹</button>
+          <button md-button><i class="material-icons icon-btn">grade</i>点滴足迹<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
         <div class="nav">
-          <button md-button><i class="material-icons icon-btn">forum</i>浪漫密聊</button>
+          <button md-button><i class="material-icons icon-btn">forum</i>浪漫密聊<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
         <div class="nav">
-          <button md-button><i class="material-icons icon-btn">email</i>飞鸽传书</button>
+          <button md-button><i class="material-icons icon-btn">email</i>飞鸽传书<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
         <div class="nav">
-          <button md-button><i class="material-icons icon-btn">group_work</i>红果密圈</button>
+          <button md-button><i class="material-icons icon-btn">group_work</i>红果密圈<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
         <div class="nav">
-          <button md-button><i class="material-icons icon-btn">shop_two</i>分享圈子</button>
+          <button md-button><i class="material-icons icon-btn">shop_two</i>分享圈子<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
         <div class="nav">
-          <button md-button><i class="material-icons icon-btn">favorite</i>幸福之墙</button>
+          <button md-button><i class="material-icons icon-btn">favorite</i>幸福之墙<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
-        <div class="nav">
-          <button md-button><i class="material-icons icon-btn">settings</i>资料设置</button>
+        <div class="nav" routerLink="person-info" (click)="changeActiveLink(7)" [ngClass]="{'navActive':activeLinkFlag[7]}">
+          <button md-button><i class="material-icons icon-btn">settings</i>资料设置<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
         <!--<ul>
           <li>我的主页</li>
@@ -84,7 +80,7 @@
   <!--导航面板开始-->
 
   <!--主体内容开始-->
-  <div id="allContent" style="overflow: hidden" (scroll)="top()">
+  <div id="allContent">
 
     <router-outlet></router-outlet>
 
@@ -92,3 +88,5 @@
   <!--主体内容结束-->
 
 </md-sidenav-container>
+</div>
+<div id="message" (click)="top()">123</div>

@@ -1,4 +1,10 @@
-p{
-  height: 1200px;
+#all{
+  width: 800px;
+  margin: auto;
+  margin-top: 20px;
+
+}
+/*整体海报部分*/
+#all-poster{
 
 }
