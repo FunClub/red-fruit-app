@@ -8,7 +8,7 @@
       <div class="info">
         <span id="nickName">  <span class="inputLabel" >昵称:</span><span style="font-size: 15px">{{inviteUser.nickname}}</span></span>
       </div>
-      <form [formGroup]="inviteForm">
+      <form [formGroup]="inviteForm" (ngSubmit)="doInvite()">
         <md-input-container color="accent" id="half-id-container">
           <span class="inputLabel" mdPrefix>Ta的红果号:</span>
           <input mdInput formControlName="invitedId">

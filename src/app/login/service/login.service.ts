@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {RedFruitApi} from "../../share/model/api.model";
 import {BaseService} from "../../share/service/base.service";
 import {ValidationErrors} from "@angular/forms";
+import {InviteUser} from "../model/invite-user.model";
 
 /**
  * 登录服务
@@ -39,8 +40,8 @@ export class LoginService extends BaseService{
    * 获取邀请另一半时的用户信息
    * @returns {Observable<R|T>}
    */
-  getInviteUserInfo():Observable<any>{
-    return this.http.get(this.api.INVITE_USER).map(res=>res.json().data).catch(this.handleError);
+  getInviteUserInfo():Observable<InviteUser>{
+    return this.http.get(this.api.INVITE_USER).map(res=>res.json().data as InviteUser).catch(this.handleError);
   }
   login(user:any):Observable<any>{
     return this.http.post(this.api.LOGIN,user).map(res=>{
