@@ -10,8 +10,9 @@
 
   </div>
   <div id="invite-Message-opreation">
-    <button md-raised-button color="accent">同意</button>
-    <button md-raised-button >拒绝</button>
+    <button md-dialog-close  #close></button>
+    <button md-raised-button color="accent" (click)="agreeInvite(close)">同意</button>
+    <button md-raised-button (click)="disagreeInvite(close)">拒绝</button>
   </div>
 </main>
 

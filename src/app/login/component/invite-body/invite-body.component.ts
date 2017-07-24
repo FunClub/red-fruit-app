@@ -11,6 +11,7 @@ import {ToastsManager} from "_ng2-toastr@4.1.2@ng2-toastr/ng2-toastr";
 import {ToastOptions} from "ng2-toastr";
 import {MdDialog} from "@angular/material";
 import {InviteMessageComponent} from "../invite-message/invite-message.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-invite-body',
@@ -33,7 +34,7 @@ export class InviteBodyComponent implements OnInit {
   private inviteSocketService:InviteSocketService,  public inviteUser:InviteUser,
               private toastsManager: ToastsManager, private vcr: ViewContainerRef,
               private toastOptions: ToastOptions,
-              private inviteMessage:InviteMessage,private  dialog: MdDialog,
+              private inviteMessage:InviteMessage,private  dialog: MdDialog,private router:Router
   ) {
     this.toastsManager.setRootViewContainerRef(vcr);
     loginService.headerTitle="邀请另一半";
@@ -41,22 +42,42 @@ export class InviteBodyComponent implements OnInit {
     this.initData();
   }
   receiveMessage(message:InviteMessage){
+    console.log(message);
     if(message.type==InviteMessageType.INVITE){//收到了邀请
-
+      if(message.status){
+        this.loginService.inviteMessage=[message];
+        this.openMessageDialog();
+      }
     }else if (message.type==InviteMessageType.AGREE){//接受了你的邀请
-
-    }else{//邀请的回复
+      if(message.status){
+        this.router.navigateByUrl("home");
+      }
+    }else if (message.type==InviteMessageType.INVITE_REBACK){//邀请回复
       if(message.status){
         this.inviteIdControl.markAsPending();
         this.toastsManager.success("邀请发送成功","邀请结果",this.toastOptions);
       }else{
         this.toastsManager.error("邀请发送失败,请重试","邀请结果",this.toastOptions);
       }
-
+    }else {//同意回复
+      if(message.status){
+        this.router.navigateByUrl("home");
+      }else{
+        this.toastsManager.error("称为情侣失败,请重试","同意结果",this.toastOptions);
+      }
     }
   }
   initData(){
     this.inviteUser.userId="";this.inviteUser.nickname="";
+  }
+
+  openMessageDialog(){
+    this.dialog.open(InviteMessageComponent,{
+      position: {
+        top: "65px",
+      },
+      disableClose: true
+    })
   }
   /**
    * 初始化数据
@@ -70,12 +91,7 @@ export class InviteBodyComponent implements OnInit {
       this.loginService.inviteMessage=this.inviteUser.invitations;
       //如果用户有邀请信息，就弹出信息框
       if(this.inviteUser.invitations.length>0){
-        this.dialog.open(InviteMessageComponent,{
-          position: {
-            top: "65px",
-          },
-          disableClose: true
-        })
+       this.openMessageDialog()
       }
       this.inviteSocketService.connection(res.userId).subscribe(
         data=>this.receiveMessage(data)
