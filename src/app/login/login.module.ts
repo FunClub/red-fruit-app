@@ -11,8 +11,10 @@ import {ToastModule} from "ng2-toastr";
 import {ShareModule} from "../share/share.module";
 import {LoginService} from "./service/login.service";
 import {RouterModule} from "@angular/router";
-import {BaseToastsOptions} from "../share/model/toasts-options.model";
-import {ToastOptions} from "_ng2-toastr@4.1.2@ng2-toastr/src/toast-options";
+
+import { LoginBodyComponent } from './component/login-body/login-body.component';
+import { InviteBodyComponent } from './component/invite-body/invite-body.component';
+import {InviteGuard} from "./guard/invite.guard";
 @NgModule({
   imports: [
     RegisterModule,
@@ -31,8 +33,14 @@ import {ToastOptions} from "_ng2-toastr@4.1.2@ng2-toastr/src/toast-options";
   exports:[
 
   ],
-  providers:[ LoginService,/*注入全局的ng2ToastOptions*/
+  providers:[
+
+    LoginService,
+    /**
+     * 保护邀请另一半组件
+     */
+    InviteGuard
     ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent, LoginBodyComponent, InviteBodyComponent]
 })
 export class LoginModule { }

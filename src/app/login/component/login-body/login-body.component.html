@@ -1,0 +1,43 @@
+<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1"
+             [speed]="'200'" [showSpinner]="'false'" [direction]="'rightToRightIncreased'"
+             [color]="'red'" [trickleSpeed]="250" [thick]="false" [ease]="'linear'"
+></ng-progress>
+<!--中部开始-->
+<div id="allCenter">
+  <div id="center">
+    <div id="loginBGs">
+      <img id="loginBGImg" src="../../../../assets/img/loginBg.png">
+      <img id="loginBGC" src="../../../../assets/img/loginBGC.png"/>
+    </div>
+
+    <div id="login">
+      <span class="loginTitleLine"></span>
+      <p id="loginTitle">会员登录</p>
+      <img id="profile" src="../../../../assets/img/defaultMeImg.png"/>
+
+      <div id="loginInfo">
+        <form (ngSubmit)="doLogin()" [formGroup]="loginForm">
+          <!--账号-->
+          <md-input-container color="accent">
+            <span mdPrefix>账号:</span>
+            <input id="account" mdInput formControlName="account">
+          </md-input-container>
+
+          <!--密码-->
+          <md-input-container color="accent">
+            <span mdPrefix>密码:</span>
+            <input id="password" type="password" mdInput formControlName="passwords">
+          </md-input-container>
+          <div id="loginOpreation">
+            <md-checkbox color="accent">记住账号</md-checkbox>
+            <a id="lostPassword">忘记密码？</a>
+          </div>
+
+          <button type="submit" id="loginBtn" color="accent"  md-raised-button>登录</button>
+        </form>
+      </div>
+    </div>
+    <img (click)="openRegisterModal()" id="justRegisterImg" src="../../../../assets/img/justRegister.png"/>
+  </div>
+</div>
+<!--中部结束-->

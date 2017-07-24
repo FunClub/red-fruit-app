@@ -1,0 +1,51 @@
+#allCenter{
+  background: rgb(238,238,238);
+  height: 400px;
+  padding-top: 1px;
+}
+/*邀请另一半的div*/
+#invite-body{
+  width: 500px;
+  padding-bottom: 30px;
+  border: solid 1px rgb(213,213,213);
+  border-top:solid red;
+  margin: auto;
+  background: white;
+  margin-top: 60px;
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgb(213,213,213);
+}
+/*邀请另一半的text*/
+#invite-label{
+  text-align: center;
+  color: gray;
+  height:35px;
+  line-height: 35px;
+  border-bottom: solid 1px rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(212,212,212);
+}
+/*邀请另一半的信息div*/
+#invite-info{
+  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.info{
+  margin-top: 13px;
+}
+/*Input的label*/
+.inputLabel{
+  color: rgb(100,100,100);
+  margin-right: 10px;
+  font-size: 14px;
+}
+#half-id-container{
+  margin-right: 40px;
+
+}
+/*错误提示*/
+md-error{
+  font-size: 15px;
+}
+

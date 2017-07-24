@@ -9,6 +9,8 @@ import { MemoryDayComponent } from './component/memory-day/memory-day.component'
 import { MoodComponent } from './component/mood/mood.component';
 import { AlbumComponent } from './component/album/album.component';
 import { LeaveMessageComponent } from './component/leave-message/leave-message.component';
+import {PersonCenterService} from "./service/person-center.service";
+
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { LeaveMessageComponent } from './component/leave-message/leave-message.c
     RouterModule,
     MdTabsModule
   ],
-  declarations: [NoteComponent, PersonCenterComponent, HomePageComponent, MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent]
+  declarations: [NoteComponent, PersonCenterComponent, HomePageComponent, MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent],
+  providers:[PersonCenterService]
 })
 export class PersonCenterModule { }

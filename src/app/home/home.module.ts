@@ -6,6 +6,7 @@ import {MdButtonModule, MdIconModule, MdInputModule, MdSidenavModule} from "@ang
 
 import {PersonCenterModule} from "../person-center/person-center.module";
 import {PersonInfoModule} from "../person-info/person-info.module";
+import {HomeService} from "./service/home.service";
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,9 @@ import {PersonInfoModule} from "../person-info/person-info.module";
     PersonCenterModule,
     PersonInfoModule
   ],
-  declarations: [HomeComponent]
+  declarations: [HomeComponent],
+  providers:[
+    HomeService
+  ]
 })
 export class HomeModule { }

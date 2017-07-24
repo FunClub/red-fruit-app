@@ -1,0 +1,31 @@
+<div id="allCenter">
+  <div id="invite-body">
+    <p id="invite-label">填写Ta的红果号，享受甜蜜体验</p>
+    <div id="invite-info" >
+      <div class="info">
+        <span class="inputLabel" >我的红果号:</span><span>{{inviteUser.userId}}</span>
+      </div>
+      <div class="info">
+        <span id="nickName">  <span class="inputLabel" >昵称:</span><span style="font-size: 15px">{{inviteUser.nickname}}</span></span>
+      </div>
+      <form [formGroup]="inviteForm">
+        <md-input-container color="accent" id="half-id-container">
+          <span class="inputLabel" mdPrefix>Ta的红果号:</span>
+          <input mdInput formControlName="invitedId">
+          <md-error *ngIf="inviteIdControl.hasError('required')">
+            红果号不能为空
+          </md-error>
+          <md-error *ngIf="inviteIdControl.hasError('minlength')">
+            红果号长度至少为6位
+          </md-error>
+          <md-error *ngIf="inviteIdControl.hasError('canInviteAble')">
+            红果号错误、已有另一半、同性
+          </md-error>
+        </md-input-container>
+        <button type="submit" [disabled]="!inviteForm.valid" style="display: inline" md-raised-button color="accent">邀请</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>

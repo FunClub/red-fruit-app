@@ -2,6 +2,27 @@
  * 应用api
  */
 export  class RedFruitApi {
+
+  /**
+   * 判断用户能否邀请对方
+   * @param userId 邀请人Id
+   * @returns {string}
+   * @constructor
+   */
+   CAN_INVITE_ABLE(userId){
+    return  `login/user/${userId}/can-invited`;
+  }
+  /**
+   * 判断用户是否能进入邀请另一半界面
+   * @type {string}
+   */
+
+  TO_INVITE_ABLE:string="login/user/to-invite";
+  /**
+   * 邀请另一半时获取用户信息
+   * @type {string}
+   */
+  INVITE_USER:string="login/user/invite";
   /**
    *
    * @type {string}获取验证码图片
@@ -19,4 +40,5 @@ export  class RedFruitApi {
    * @type {string}
    */
   REGISTER:string="register/user";
+
 }

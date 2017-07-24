@@ -6,13 +6,14 @@ import {ToastOptions} from "ng2-toastr";
 import {BaseToastsOptions} from "./model/toasts-options.model";
 import { FooterComponent } from './component/footer/footer.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
-  exports:[FooterComponent,ReactiveFormsModule],
+  exports:[FooterComponent,ReactiveFormsModule,HeaderComponent],
   providers:[
     /*注入全局的api*/
     RedFruitApi,
@@ -21,6 +22,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     /*注入正则表达式模型*/
     Regex
   ],
-  declarations: [FooterComponent]
+  declarations: [FooterComponent, HeaderComponent]
 })
 export class ShareModule { }
