@@ -6,4 +6,9 @@ export class InviteMessage {
   invitedId:string;
   profileImg:string;
   nickname:string;
+  type:number;
+  /**
+   * 消息的状态，true成功，false失败
+   */
+  status:boolean;
 }

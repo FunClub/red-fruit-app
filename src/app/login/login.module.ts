@@ -18,13 +18,14 @@ import {InviteGuard} from "./guard/invite.guard";
 import {InviteSocketService} from "../websocket/socket/invite-socket.service";
 import {InviteMessage} from "../websocket/model/invite-message.model";
 import {InviteUser} from "./model/invite-user.model";
+
+import { InviteMessageComponent } from './component/invite-message/invite-message.component';
 @NgModule({
   imports: [
     RegisterModule,
     RouterModule,
     ShareModule,
     CommonModule,
-    NgProgressModule,
     BrowserAnimationsModule,
     MdInputModule,
     MdButtonModule,
@@ -58,6 +59,7 @@ import {InviteUser} from "./model/invite-user.model";
      */
     InviteUser
   ],
-  declarations: [LoginComponent, LoginBodyComponent, InviteBodyComponent]
+  entryComponents:[InviteMessageComponent],
+  declarations: [LoginComponent, LoginBodyComponent, InviteBodyComponent, InviteMessageComponent]
 })
 export class LoginModule { }

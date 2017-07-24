@@ -11,6 +11,7 @@ import {RedFruitApi} from "./share/model/api.model";
 import {Regex} from "./share/model/regex.model";
 import {HomeModule} from "./home/home.module";
 import {PersonCenterModule} from "./person-center/person-center.module";
+import {NgProgressModule} from "ngx-progressbar";
 /**
  * 应用根模块
  *
@@ -20,7 +21,7 @@ import {PersonCenterModule} from "./person-center/person-center.module";
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,   NgProgressModule,
     AppRoutingModule,
     LoginModule,
     HomeModule

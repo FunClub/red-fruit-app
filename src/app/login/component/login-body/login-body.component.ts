@@ -89,6 +89,7 @@ export class LoginBodyComponent implements OnInit {
   doLogin() {
     if (this.checkLoginInfo()) {
       this.progressService.start();
+
       this.loginService.login(this.loginForm.value).subscribe(res => {
         this.progressService.done();
         if (res.code==200) {

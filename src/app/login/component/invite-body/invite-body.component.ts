@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {LoginService} from "../../service/login.service";
 import {Title} from "@angular/platform-browser";
-import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
 import {InviteSocketService} from "../../../websocket/socket/invite-socket.service";
 import {InviteMessage} from "../../../websocket/model/invite-message.model";
 import {InviteUser} from "../../model/invite-user.model";
+import {InviteMessageType} from "../../../websocket/message-type/invite-message-type.enum";
+import {ToastsManager} from "_ng2-toastr@4.1.2@ng2-toastr/ng2-toastr";
+import {ToastOptions} from "ng2-toastr";
+import {MdDialog} from "@angular/material";
+import {InviteMessageComponent} from "../invite-message/invite-message.component";
 
 @Component({
   selector: 'app-invite-body',
@@ -23,14 +28,36 @@ export class InviteBodyComponent implements OnInit {
    * 被邀请人
    */
   inviteIdControl:FormControl;
-
+  inviteCount=0;
   constructor(private loginService:LoginService,private title:Title,private formBuilder:FormBuilder,
-  private inviteSocketService:InviteSocketService,private inviteMessage:InviteMessage,public inviteUser:InviteUser
+  private inviteSocketService:InviteSocketService,  public inviteUser:InviteUser,
+              private toastsManager: ToastsManager, private vcr: ViewContainerRef,
+              private toastOptions: ToastOptions,
+              private inviteMessage:InviteMessage,private  dialog: MdDialog,
   ) {
+    this.toastsManager.setRootViewContainerRef(vcr);
     loginService.headerTitle="邀请另一半";
     title.setTitle("红果情侣-邀请另一半");
+    this.initData();
   }
+  receiveMessage(message:InviteMessage){
+    if(message.type==InviteMessageType.INVITE){//收到了邀请
 
+    }else if (message.type==InviteMessageType.AGREE){//接受了你的邀请
+
+    }else{//邀请的回复
+      if(message.status){
+        this.inviteIdControl.markAsPending();
+        this.toastsManager.success("邀请发送成功","邀请结果",this.toastOptions);
+      }else{
+        this.toastsManager.error("邀请发送失败,请重试","邀请结果",this.toastOptions);
+      }
+
+    }
+  }
+  initData(){
+    this.inviteUser.userId="";this.inviteUser.nickname="";
+  }
   /**
    * 初始化数据
    * 1.获取用户的id和昵称等
@@ -40,8 +67,18 @@ export class InviteBodyComponent implements OnInit {
     this.createForm();
     this.loginService.getInviteUserInfo().subscribe(res=>{
       this.inviteUser=res;
+      this.loginService.inviteMessage=this.inviteUser.invitations;
+      //如果用户有邀请信息，就弹出信息框
+      if(this.inviteUser.invitations.length>0){
+        this.dialog.open(InviteMessageComponent,{
+          position: {
+            top: "65px",
+          },
+          disableClose: true
+        })
+      }
       this.inviteSocketService.connection(res.userId).subscribe(
-        data=>console.log(data)
+        data=>this.receiveMessage(data)
       );
     });
   }
@@ -51,8 +88,9 @@ export class InviteBodyComponent implements OnInit {
     this.inviteMessage.invitedId=this.inviteIdControl.value;
     this.inviteMessage.nickname=this.inviteUser.nickname;
     this.inviteMessage.profileImg=this.inviteUser.profileImg;
-    alert(1);
+    this.inviteMessage.type=InviteMessageType.INVITE;
     this.inviteSocketService.sendMessage(this.inviteMessage);
+
   }
 
   /**

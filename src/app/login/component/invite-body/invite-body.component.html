@@ -19,12 +19,14 @@
             红果号长度至少为6位
           </md-error>
           <md-error *ngIf="inviteIdControl.hasError('canInviteAble')">
-            红果号错误、已有另一半、同性
+            红果号错误、已有另一半,被邀请、同性
           </md-error>
         </md-input-container>
         <button type="submit" [disabled]="!inviteForm.valid" style="display: inline" md-raised-button color="accent">邀请</button>
       </form>
+      <div id="inviteUserInfo">
 
+      </div>
     </div>
 
   </div>

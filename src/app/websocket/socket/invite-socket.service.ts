@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
+import {InviteMessage} from "../model/invite-message.model";
 
 @Injectable()
 export class InviteSocketService {
@@ -11,7 +12,7 @@ export class InviteSocketService {
     this.url="ws://localhost:8080/invite/"+userId;
     this.ws=this.createSocket();
     return new Observable(observer=>{
-      this.ws.onmessage=(ev: MessageEvent)=>observer.next(ev.data);
+      this.ws.onmessage=(ev: MessageEvent)=>observer.next(JSON.parse(ev.data));
       this.ws.onerror=(ev: MessageEvent)=>observer.error(event);
       this.ws.onclose=(ev: CloseEvent)=>observer.complete();
     });

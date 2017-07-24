@@ -5,6 +5,7 @@ import {RedFruitApi} from "../../share/model/api.model";
 import {BaseService} from "../../share/service/base.service";
 import {ValidationErrors} from "@angular/forms";
 import {InviteUser} from "../model/invite-user.model";
+import {InviteMessage} from "../../websocket/model/invite-message.model";
 
 /**
  * 登录服务
@@ -16,6 +17,10 @@ export class LoginService extends BaseService{
    */
   headerTitle:string;
 
+  /**
+   * 保存在提示框上显示的邀请信息
+   */
+  inviteMessage:InviteMessage[];
   constructor(private http: Http,private api:RedFruitApi) {
     super();
   }
