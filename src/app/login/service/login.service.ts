@@ -17,6 +17,7 @@ export class LoginService extends BaseService{
    */
   headerTitle:string;
 
+
   /**
    * 保存在提示框上显示的邀请信息
    */
@@ -25,6 +26,19 @@ export class LoginService extends BaseService{
     super();
   }
 
+  /**
+   * 删除邀请信息
+   * @param id
+   * @returns {Observable<R|T>}
+   */
+  deleteInvitation(id:string){
+    return this.http.get(this.api.DELETE_INVITATION_REST(id)).map(res=>res.json()).catch(this.handleError);
+  }
+  /**
+   * 判断待邀请的用户是否能被邀请
+   * @param userId 用户id
+   * @returns {Observable<R>}
+   */
   canInviteAble(userId:string):Observable<ValidationErrors | null>{
       return this.http.get(this.api.CAN_INVITE_ABLE(userId)).map(res=>{
         let body = res.json();

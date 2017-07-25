@@ -3,6 +3,7 @@ import {LoginService} from "../../service/login.service";
 import {InviteMessage} from "../../../websocket/model/invite-message.model";
 import {InviteMessageType} from "../../../websocket/message-type/invite-message-type.enum";
 import {InviteSocketService} from "../../../websocket/socket/invite-socket.service";
+import {NgProgressService} from "ngx-progressbar";
 
 @Component({
   selector: 'app-invite-message',
@@ -10,14 +11,24 @@ import {InviteSocketService} from "../../../websocket/socket/invite-socket.servi
   styleUrls: ['./invite-message.component.css']
 })
 export class InviteMessageComponent implements OnInit {
+
+
+
+  /**
+   * 邀请信息，从loginService中获取
+   */
   inviteMessage:InviteMessage;
-  constructor(private loginService:LoginService,private inviteSocketService:InviteSocketService) {
+  constructor(private loginService:LoginService,private inviteSocketService:InviteSocketService,
+  private progressService:NgProgressService
+  ) {
+    //取出邀请组件放入loginService的邀请信息
     this.inviteMessage= loginService.inviteMessage[0];
   }
-
-  ngOnInit() {
-
-  }
+  ngOnInit(){}
+  /**
+   * 同意对方的邀请
+   * @param close 关闭按钮
+   */
   agreeInvite(close:HTMLButtonElement){
     close.click();
     this.inviteMessage.type=InviteMessageType.AGREE;
@@ -26,7 +37,20 @@ export class InviteMessageComponent implements OnInit {
     this.inviteMessage.profileImg="";
     this.inviteSocketService.sendMessage(this.inviteMessage);
   }
+
+  /**
+   * 拒绝对方的邀请
+   * @param close 关闭按钮
+   */
   disagreeInvite(close:HTMLButtonElement){
-    close.click();
+    this.progressService.start();
+    this.loginService.deleteInvitation(this.inviteMessage.invitationId).subscribe(res=>{
+      this.progressService.done();
+      if(res>0){
+        close.click();
+      }
+    })
+
+
   }
 }

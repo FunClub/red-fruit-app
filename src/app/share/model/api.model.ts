@@ -2,7 +2,15 @@
  * 应用api
  */
 export  class RedFruitApi {
-
+  /**
+   * 删除邀请信息
+   * @param id 邀请id
+   * @returns {string} rest api
+   * @constructor
+   */
+   DELETE_INVITATION_REST(id){
+    return "api/invitations/search/deleteByInvitationId?id="+id;
+  }
   /**
    * 判断用户能否邀请对方
    * @param userId 邀请人Id

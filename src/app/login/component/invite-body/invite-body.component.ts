@@ -42,7 +42,6 @@ export class InviteBodyComponent implements OnInit {
     this.initData();
   }
   receiveMessage(message:InviteMessage){
-    console.log(message);
     if(message.type==InviteMessageType.INVITE){//收到了邀请
       if(message.status){
         this.loginService.inviteMessage=[message];
@@ -52,25 +51,32 @@ export class InviteBodyComponent implements OnInit {
       if(message.status){
         this.router.navigateByUrl("home");
       }
-    }else if (message.type==InviteMessageType.INVITE_REBACK){//邀请回复
+    }else if (message.type==InviteMessageType.INVITE_REBACK){//邀请的成功与否的系统回复
       if(message.status){
         this.inviteIdControl.markAsPending();
         this.toastsManager.success("邀请发送成功","邀请结果",this.toastOptions);
       }else{
         this.toastsManager.error("邀请发送失败,请重试","邀请结果",this.toastOptions);
       }
-    }else {//同意回复
+    }else {//同意你的邀请回复
       if(message.status){
         this.router.navigateByUrl("home");
       }else{
-        this.toastsManager.error("称为情侣失败,请重试","同意结果",this.toastOptions);
+        this.toastsManager.error("成为情侣失败,请重试","同意结果",this.toastOptions);
       }
     }
   }
+
+  /**
+   * 初始化数据
+   */
   initData(){
     this.inviteUser.userId="";this.inviteUser.nickname="";
   }
 
+  /**
+   * 打开邀请信息的弹出框
+   */
   openMessageDialog(){
     this.dialog.open(InviteMessageComponent,{
       position: {
@@ -94,11 +100,18 @@ export class InviteBodyComponent implements OnInit {
        this.openMessageDialog()
       }
       this.inviteSocketService.connection(res.userId).subscribe(
-        data=>this.receiveMessage(data)
+        data=>this.receiveMessage(data),
+        error=>{
+          this.inviteSocketService.close();
+          console.log(error)
+        }
       );
     });
   }
 
+  /**
+   * 邀请另一半
+   */
   doInvite(){
     this.inviteMessage.inviteId=this.inviteUser.userId;
     this.inviteMessage.invitedId=this.inviteIdControl.value;
@@ -110,7 +123,7 @@ export class InviteBodyComponent implements OnInit {
   }
 
   /**
-   * 创建form表单
+   * 创建form表单为其增加异步表单验证
    */
   createForm(){
       this.inviteForm=this.formBuilder.group({

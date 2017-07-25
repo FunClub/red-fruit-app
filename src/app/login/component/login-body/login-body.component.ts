@@ -18,12 +18,7 @@ import {BaseToastsOptions} from "../../../share/model/toasts-options.model";
   styleUrls: ['./login-body.component.css']
 })
 export class LoginBodyComponent implements OnInit {
-  @Output()
-  headerTitleEmit: EventEmitter<string> = new EventEmitter();
 
-  ngOnDestroy(): void {
-
-  }
 
   loginForm: FormGroup;
   account: FormControl;
@@ -86,6 +81,9 @@ export class LoginBodyComponent implements OnInit {
     });
   }
 
+  /**
+   * 登录操作，没有另一半就进入邀请界面否则进入主界面
+   */
   doLogin() {
     if (this.checkLoginInfo()) {
       this.progressService.start();
@@ -108,7 +106,7 @@ export class LoginBodyComponent implements OnInit {
   }
 
   /**
-   * 登陆
+   * 登陆数据效验
    * @returns {boolean} true则校验通过
    */
   checkLoginInfo(): boolean {

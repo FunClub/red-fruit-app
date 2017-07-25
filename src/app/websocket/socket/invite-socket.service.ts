@@ -11,10 +11,10 @@ export class InviteSocketService {
   connection(userId:string):Observable<any>{
     this.url="ws://localhost:8080/invite/"+userId;
     this.ws=this.createSocket();
+    this.ws.onclose=()=>{this.close()};
+    this.ws.onerror=()=>{this.close()};
     return new Observable(observer=>{
       this.ws.onmessage=(ev: MessageEvent)=>observer.next(JSON.parse(ev.data));
-      this.ws.onerror=(ev: MessageEvent)=>observer.error(event);
-      this.ws.onclose=(ev: CloseEvent)=>observer.complete();
     });
   }
   createSocket(){
@@ -27,5 +27,8 @@ export class InviteSocketService {
   }
   sendMessage(message:any){
     this.ws.send(JSON.stringify(message));
+  }
+  close(){
+    this.ws.close();
   }
 }
