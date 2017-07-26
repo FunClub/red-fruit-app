@@ -1,0 +1,32 @@
+/*基本资料div*/
+main{
+  width: 800px;
+  margin: auto;
+  margin-top: 20px;
+
+}
+/*
+
+*/
+.all-info{
+  height: 500px;
+  margin-top: 20px;
+  box-shadow: 0 0 3px rgb(203,203,203);
+  background: white;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  padding: 20px;
+
+}
+/*我的资料*/
+#my-info{
+  border-top: solid rgb(163,163,163);
+
+}
+.info{
+  display: inline-block;
+  height: 300px;
+  border: solid;
+  width: 360px;
+  margin-left: 10px;
+}

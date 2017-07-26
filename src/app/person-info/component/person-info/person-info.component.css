@@ -1,0 +1,10 @@
+#warpNav{
+  background: white;
+  border-bottom: solid 1px rgb(224,224,224);
+  box-shadow: 0 0 5px rgb(213,213,213);
+}
+nav{
+  width: 300px;
+  margin: auto;
+  border: none;
+}

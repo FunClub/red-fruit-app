@@ -1,3 +1,15 @@
-<p>
-  person-info works!
-</p>
+<div id="warpNav" >
+  <nav md-tab-nav-bar>
+    <a md-tab-link
+       *ngFor="let link of navLinks"
+       [routerLink]="link.path"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      {{link.label}}
+    </a>
+  </nav>
+</div>
+<div>
+
+</div>
+<router-outlet></router-outlet>

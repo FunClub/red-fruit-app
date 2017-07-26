@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {HomeService} from "../../../home/service/home.service";
+import {NavLink} from "../../../share/model/nav-link.model";
 
 @Component({
   selector: 'app-person-center',
@@ -9,8 +10,7 @@ import {HomeService} from "../../../home/service/home.service";
 })
 export class PersonCenterComponent implements OnInit {
 
-  navLinks:Array<any>;
-
+  navLinks:Array<NavLink>;
   constructor(private ref :ElementRef,private homeService:HomeService) {
     this.navLinks=[
       {path:'home-page',label:'个人主页'},

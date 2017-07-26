@@ -10,6 +10,7 @@ import { MoodComponent } from './component/mood/mood.component';
 import { AlbumComponent } from './component/album/album.component';
 import { LeaveMessageComponent } from './component/leave-message/leave-message.component';
 import {PersonCenterService} from "./service/person-center.service";
+import {ShareModule} from "../share/share.module";
 
 
 

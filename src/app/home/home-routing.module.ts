@@ -10,6 +10,8 @@ import {MoodComponent} from "../person-center/component/mood/mood.component";
 import {AlbumComponent} from "../person-center/component/album/album.component";
 import {LeaveMessageComponent} from "../person-center/component/leave-message/leave-message.component";
 import {PersonInfoComponent} from "../person-info/component/person-info/person-info.component";
+import {BaseInfoComponent} from "../person-info/component/base-info/base-info.component";
+import {PrivacySettingsComponent} from "../person-info/component/privacy-settings/privacy-settings.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -34,7 +36,12 @@ const  homeRoutes:Routes=[
       /*个人资料*/
       {
         path:'person-info',
-        component:PersonInfoComponent
+        component:PersonInfoComponent,
+        children:[
+          {path:'base-info',component:BaseInfoComponent},
+          {path:'privacy-settings',component:PrivacySettingsComponent},
+          {path:'',redirectTo:"base-info",pathMatch:'full'}
+        ]
       },
       {path:'',redirectTo:"person-center",pathMatch:'full'}
 

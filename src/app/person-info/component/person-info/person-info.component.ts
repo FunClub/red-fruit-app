@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavLink} from "../../../share/model/nav-link.model";
 
 @Component({
   selector: 'app-person-info',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./person-info.component.css']
 })
 export class PersonInfoComponent implements OnInit {
-
-  constructor() { }
+  navLinks:Array<NavLink>;
+  constructor() {
+    this.navLinks=[
+      {path:'base-info',label:'基本资料'},
+      {path:'privacy-settings',label:'隐私设置'}
+    ];
+  }
 
   ngOnInit() {
   }

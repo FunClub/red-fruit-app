@@ -9,7 +9,7 @@ export class InviteSocketService {
   constructor() {
   }
   connection(userId:string):Observable<any>{
-    this.url="ws://localhost:8080/invite/"+userId;
+    this.url="ws://172.22.249.1:8080/invite/"+userId;
     this.ws=this.createSocket();
     this.ws.onclose=()=>{this.close()};
     this.ws.onerror=()=>{this.close()};
