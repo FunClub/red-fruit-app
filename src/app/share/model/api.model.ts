@@ -2,6 +2,12 @@
  * 应用api
  */
 export  class RedFruitApi {
+
+  /**
+   * 操作用户的基本信息
+   * @type {string}
+   */
+  USER_BASE_INFO:string="person-info/base-info";
   /**
    * 删除邀请信息
    * @param id 邀请id

@@ -6,8 +6,9 @@
   <div id="leftHeader">
 
     <img src="../../../../assets/img/homeLogo.png"/>
+   <!-- <span id="red-fruit-span">红果情侣</span>-->
     <button id="toggleNavBtn" md-mini-fab  (click)="openNav(sidenav)" (mousedown)="killnNavToggleBug()">
-      <i class="material-icons" [ngClass]="{'arrow_back_open':isNavOpen,'arrow_back_close':!isNavOpen}">arrow_back</i>
+      <i class="material-icons" [ngClass]="{'arrow_back_open':isNavOpen,'arrow_back_close':!isNavOpen}">chevron_left</i>
     </button>
     <span id="contentTitle"></span>
   </div>
@@ -57,5 +58,5 @@
   <!--主体内容结束-->
 
 </md-sidenav-container>
-</div>
+
 <div id="message" (click)="top()">123</div>

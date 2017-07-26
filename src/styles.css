@@ -1,7 +1,4 @@
-/*
-!*bootstrap*!
-@import "~bootstrap/dist/css/bootstrap.min.css";
-*/
+
 
 /*material2*/
 /*@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
@@ -19,9 +16,7 @@
 
 /*修改material2默认样式*/
 
-.mat-tab-links{/*tabs的标签页*/
-  background: white;
-}
+
 .mat-tab-link{/*tabs的标签页*/
  width: 120px;
   min-width: 100px!important;
@@ -29,6 +24,12 @@
 
 .mat-ink-bar{ /*tabs下划线*/
   background: red;
+}
+/*输入框前缀*/
+.input-prefix{
+  color: rgb(100,100,100);
+  margin-right: 10px;
+  font-size: 14px;
 }
 *{
   margin: 0;

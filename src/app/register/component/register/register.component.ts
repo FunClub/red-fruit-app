@@ -9,6 +9,7 @@ import {RegisterService} from "../../service/register.service";
 import {Observable} from "rxjs";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {NgProgressService} from "ngx-progressbar";
+import {cities} from "../../../share/model/static-data.model"
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -69,7 +70,7 @@ export class RegisterComponent implements OnInit {
               private toastsManager: ToastsManager, private toastOptions:ToastOptions,
               private progressService:NgProgressService
   ) {
-    this.cities = ["北京","上海","广州","重庆","湖南","湖北","四川","江苏","山西","福建"];
+    this.cities = cities;
   }
 
   ngOnInit() {
