@@ -1,5 +1,7 @@
-
-
+/*Angular Froala WYSIWYG Editor*/
+@import "~froala-editor/css/froala_editor.pkgd.min.css";
+@import "~froala-editor/css/froala_style.min.css";
+@import "~font-awesome/css/font-awesome.css";
 /*material2*/
 /*@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "~@angular/material/prebuilt-themes/purple-green.css";*/
@@ -32,7 +34,7 @@
   font-size: 14px;
 }
 
-/*修改头像上传组件的默认样式*/
+
 *{
   margin: 0;
   padding: 0;

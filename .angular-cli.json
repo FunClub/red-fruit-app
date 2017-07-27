@@ -22,7 +22,9 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js"
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+        "../node_modules/angular-froala-wysiwyg/node_modules/froala-editor/js/languages/zh_cn.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
