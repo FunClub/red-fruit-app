@@ -14,8 +14,8 @@ export class PersonCenterComponent implements OnInit {
   constructor(private ref :ElementRef,private homeService:HomeService) {
     this.navLinks=[
       {path:'home-page',label:'个人主页'},
-      {path:'mood',label:'心情'},
       {path:'memory-day',label:'纪念日'},
+      {path:'mood',label:'心情'},
       {path:'note',label:'日志'},
       {path:'album',label:'相册'},
       {path:'leave-message',label:'留言板'}

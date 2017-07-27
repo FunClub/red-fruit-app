@@ -6,5 +6,7 @@ export class BaseInfo {
   profession:string;
   hobby:string;
   character:string;
-  born:string
+  born:string;
+  profileImg:string;
+  originalProfileImg:string;
 }

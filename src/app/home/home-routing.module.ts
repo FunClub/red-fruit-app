@@ -12,10 +12,12 @@ import {LeaveMessageComponent} from "../person-center/component/leave-message/le
 import {PersonInfoComponent} from "../person-info/component/person-info/person-info.component";
 import {BaseInfoComponent} from "../person-info/component/base-info/base-info.component";
 import {PrivacySettingsComponent} from "../person-info/component/privacy-settings/privacy-settings.component";
+import {HomeGuard} from "./guard/home.guard";
 const  homeRoutes:Routes=[
   {
     path:'',
     component:HomeComponent,
+    canActivate:[HomeGuard],
     children:[
       /*个人中心*/
       {

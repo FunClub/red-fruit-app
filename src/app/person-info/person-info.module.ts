@@ -12,6 +12,7 @@ import {
 import {PersonInfoService} from "./person-info.service";
 import {BaseInfo} from "./model/base-info";
 import {UploadImgComponent} from "./component/upload-img/upload-img.component";
+import {ImageCropperComponent} from "ng2-img-cropper";
 
 
 
@@ -28,7 +29,7 @@ import {UploadImgComponent} from "./component/upload-img/upload-img.component";
     MdTooltipModule,
     MdDialogModule
   ],
-  declarations: [PersonInfoComponent, BaseInfoComponent, PrivacySettingsComponent,UploadImgComponent],
+  declarations: [PersonInfoComponent, BaseInfoComponent, PrivacySettingsComponent,UploadImgComponent, ImageCropperComponent],
   entryComponents:[
     //上传头像的组件
     UploadImgComponent

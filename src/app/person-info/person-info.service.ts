@@ -6,13 +6,25 @@ import {BaseService} from "../share/service/base.service";
 import {Observable} from "rxjs/Observable";
 
 /**
- * 用户基本资料
+ * 用户基本资料服务
  */
 @Injectable()
 export class PersonInfoService extends BaseService{
+  /**
+   * 用户基本资料共享
+   */
+  personBaseInfo:BaseInfo;
 
   constructor(private http:Http,private api:RedFruitApi) {super() }
 
+  /**
+   * 更新用户头像信息
+   * @param profileInfo
+   * @returns {Observable<R|T>}
+   */
+  updateProfileImg(profileInfo:any):Observable<boolean>{
+    return this.http.put(this.api.UPDATE_PROFILE,profileInfo).map(res=>res.json().data).catch(this.handleError);
+  }
   /**
    * 修改用户基本资料
    * @param userInfo 待修改的用户数据

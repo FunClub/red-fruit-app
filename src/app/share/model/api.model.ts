@@ -4,6 +4,18 @@
 export  class RedFruitApi {
 
   /**
+   * 判断能否进入HOME组件
+   * @type {string}
+   */
+  CAN_TO_HOME:string="home/can-to";
+
+  /**
+   * 修改用户头像
+   * @type {string}
+   */
+  UPDATE_PROFILE:string="person-info/profile-img";
+
+  /**
    * 操作用户的基本信息
    * @type {string}
    */

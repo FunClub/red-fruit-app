@@ -31,6 +31,8 @@
   margin-right: 10px;
   font-size: 14px;
 }
+
+/*修改头像上传组件的默认样式*/
 *{
   margin: 0;
   padding: 0;

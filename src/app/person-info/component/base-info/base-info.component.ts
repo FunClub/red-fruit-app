@@ -74,7 +74,7 @@ export class BaseInfoComponent implements OnInit {
   characters:string[];
   constructor(private formBuilder:FormBuilder,private baseInfo:BaseInfo,private personInfoService:PersonInfoService,
               private toastsManager: ToastsManager,private ngProgressService:NgProgressService,
-              private toastOptions: ToastOptions,private dialog:MdDialog
+              private toastOptions: ToastOptions,private dialog:MdDialog,
   ) {
 
     this.cities=cities;
@@ -91,6 +91,7 @@ export class BaseInfoComponent implements OnInit {
     this.createForm();
     this.personInfoService.selectUserBaseInfo().subscribe(res=>{
       this.baseInfo=res;
+      this.personInfoService.personBaseInfo=res;
       this.resetControl();
       this.ngProgressService.done();
     });
@@ -100,8 +101,7 @@ export class BaseInfoComponent implements OnInit {
     this.dialog.open(UploadImgComponent,{
      position:{
        top:"50px"
-     },
-      hasBackdrop:false
+     }
     });
   }
   /**

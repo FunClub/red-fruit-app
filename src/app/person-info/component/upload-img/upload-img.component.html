@@ -1,3 +1,30 @@
-<p>
-  upload-img works!
-</p>
+<main><button md-dialog-close  #close style="display: none"></button>
+  <i id="close" class="material-icons" (click)="closeDialog(close)">cancel</i>
+
+  <h3>上传头像</h3>
+
+  <div id="upload-top">
+    <div id="upload-div">
+      <img-cropper mdTooltip="拖动剪切框，选取图片" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+    </div>
+    <div id="show-div">
+      <p>小头像预览</p>
+      <img id="circle-img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+      <img id="square-img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+      <img id="big-img" [src]="data.image" width="90" height="90">
+    </div>
+  </div>
+
+  <span class="a-upload ">
+    <button md-raised-button color="primary" ><i class="material-icons">file_upload</i>重新上传</button>
+    <input  id="custom-input" type="file" (change)="fileChangeListener($event)">
+  </span>
+
+  <div id="opreation-div">
+    <button md-raised-button color="primary" (click)="doUpdate(close)"><i class="material-icons"></i>保存</button>
+    <button md-raised-button  (click)="closeDialog(close)"><i class="material-icons"></i>取消</button>
+  </div>
+</main>
+
+
+
