@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {cities,professions,hobbies,characters} from "../../../share/model/static-data.model"
 import {PersonInfoService} from "../../person-info.service";
@@ -6,6 +6,8 @@ import {BaseInfo} from "../../model/base-info";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {parseDatepickerDate} from "../../../share/utils/time-util";
 import {NgProgressService} from "_ngx-progressbar@2.0.3@ngx-progressbar";
+import {MdDialog} from "@angular/material";
+import {UploadImgComponent} from "../upload-img/upload-img.component";
 @Component({
   selector: 'app-base-info',
   templateUrl: './base-info.component.html',
@@ -72,7 +74,7 @@ export class BaseInfoComponent implements OnInit {
   characters:string[];
   constructor(private formBuilder:FormBuilder,private baseInfo:BaseInfo,private personInfoService:PersonInfoService,
               private toastsManager: ToastsManager,private ngProgressService:NgProgressService,
-              private toastOptions: ToastOptions
+              private toastOptions: ToastOptions,private dialog:MdDialog
   ) {
 
     this.cities=cities;
@@ -94,7 +96,14 @@ export class BaseInfoComponent implements OnInit {
     });
 
   }
-
+  openUploadDialog(){
+    this.dialog.open(UploadImgComponent,{
+     position:{
+       top:"50px"
+     },
+      hasBackdrop:false
+    });
+  }
   /**
    * 保存用户修改的数据
    */

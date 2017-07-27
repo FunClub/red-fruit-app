@@ -10,12 +10,12 @@ import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
 import {MdTabsModule} from "@angular/material";
 
+
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
-    MdTabsModule
+    RouterModule
   ],
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,
