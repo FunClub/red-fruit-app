@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+
 import {HomeService} from "../../../home/service/home.service";
 import {NavLink} from "../../../share/model/nav-link.model";
-
+declare var $:any;
 @Component({
   selector: 'app-person-center',
   templateUrl: './person-center.component.html',
@@ -23,6 +23,8 @@ export class PersonCenterComponent implements OnInit {
   }
 
   ngOnInit() {
+
+      $(".mat-sidenav-content").css("position","relative");
 
   }
 

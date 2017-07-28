@@ -10,8 +10,6 @@ import { LeaveMessageComponent } from './component/leave-message/leave-message.c
 import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
 
-
-
 @NgModule({
   imports: [
     CommonModule,

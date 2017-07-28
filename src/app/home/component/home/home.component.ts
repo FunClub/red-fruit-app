@@ -3,7 +3,7 @@ import {Title} from "@angular/platform-browser";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {RedFruitApi} from "../../../share/model/api.model";
 import {HomeService} from "../../service/home.service";
-declare var $:any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   /**
    * 路由信息数据
    */
+
   routerLinks:Array<any>;
   constructor(private title:Title, private toastsManager: ToastsManager,
               private vcr: ViewContainerRef, private toastOptions:ToastOptions,
@@ -32,16 +33,18 @@ export class HomeComponent implements OnInit {
       {path:'person-center/home-page','label':'飞鸽传书','isActive':false,'ico':'email'},
       {path:'person-center/home-page','label':'红果密圈','isActive':false,'ico':'group_work'},
       {path:'person-center/home-page','label':'分享圈子','isActive':false,'ico':'shop_two'},
-      {path:'person-center/home-page','label':'幸福之墙','isActive':false,'ico':'favorite'},
-      {path:'person-info','label':'资料设置','isActive':false,'ico':'settings'}
+      {path:'person-center/home-page','label':'幸福之墙','isActive':false,'ico':'loyalty'},
+      {path:'person-info','label':'资料设置','isActive':false,'ico':'settings_applications'}
     ];
   }
 
   ngOnInit() {
 
+
     this.title.setTitle("红果-主页")
   }
   top(){
+
 
   }
 

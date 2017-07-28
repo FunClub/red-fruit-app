@@ -9,9 +9,10 @@ import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
 import {MdTabsModule} from "@angular/material";
-import { RedFruitEditorComponent } from './component/red-fruit-editor/red-fruit-editor.component';
+
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {RfEditorOptions} from "./model/rf-editor-options.model";
+import { SigleMoodComponent } from './component/sigle-mood/sigle-mood.component';
 
 
 @NgModule({
@@ -25,8 +26,9 @@ import {RfEditorOptions} from "./model/rf-editor-options.model";
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,
     MdTabsModule,
-    RedFruitEditorComponent,
-    FroalaViewModule,FroalaEditorModule
+    FroalaViewModule,
+    FroalaEditorModule,
+    SigleMoodComponent
   ],
   providers:[
     /*注入全局的api*/
@@ -39,6 +41,6 @@ import {RfEditorOptions} from "./model/rf-editor-options.model";
     NavLink,
     RfEditorOptions
   ],
-  declarations: [FooterComponent, HeaderComponent, RedFruitEditorComponent]
+  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent]
 })
 export class ShareModule { }

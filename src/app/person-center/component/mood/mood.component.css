@@ -1,8 +1,77 @@
 main{
-  width: 800px;
-  height: 300px;
+  width: 650px;
+
   /*background: white;*/
  /* box-shadow: 0 0 3px rgb(183,183,183); ;*/
   margin: auto;
   margin-top: 20px;
+  padding-bottom: 30px;
+
+}
+/*编辑器*/
+#froala-editor{
+  font-size: 14px;
+}
+#all-mood{
+  border-left: solid 2px rgb(203,203,203);
+  width: 700px;
+  margin: auto;
+  padding-top: 30px;
+}
+.mood{
+  position: relative;
+  right: 9px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+}
+/*心情总的时间*/
+.mood-times{
+  position: relative;
+  right: 20px;
+  line-height: 50px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.mood-times i{
+  font-size: 35px;
+  color: rgb(56,183,234);
+}
+.mood-times span{
+  display: inline-block;
+  font-size: 17px;
+  position: relative;
+  top: -7px;
+  color: rgb(50,50,50);
+  margin-left: 10px;
+}
+
+/*每一个心情*/
+
+/*心情左边的圆形和三角形*/
+.mood-left{
+  width: 40px;
+  height: 50px;
+  display: inline-block;
+  float: left;
+}
+.b-mood-circle{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  background: rgb(56,183,234);
+  margin-top: 15px;
+}
+.leftTriangle {
+  float: right;
+ /* width: 0;
+  margin-top: 14px;
+  height: 0;
+  border: 9px solid transparent;
+  border-right-color: white;*/
+  position: relative;
+  left: 1px;
+  margin-top: 14px;
+
 }

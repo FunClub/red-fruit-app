@@ -1,3 +1,6 @@
+#all{
+
+}
 /*头部开始*/
 #allHeader{
   height: 50px;
@@ -9,7 +12,7 @@
   background: rgb(220, 132, 163);*/
 /*  background: rgb(63,81,181);*/
   background: rgb(242,242,242);
-
+  border-bottom: 1px solid rgb(233,233,233);
   width: 100%;
   z-index: 1;
   position: fixed;
@@ -132,6 +135,7 @@ input::-webkit-input-placeholder {
   z-index: 0;
   /*background: rgb(233,237,240);*/
    background: rgb(242,242,242);
+
 }
 #navContent{
   padding-top: 52px;
