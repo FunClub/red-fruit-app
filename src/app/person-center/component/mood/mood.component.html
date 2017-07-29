@@ -1,8 +1,51 @@
 <main>
-  <div id="froala-editor" [froalaEditor]="rfOptions"></div>
-  <div id="mood-editor">
+  <div id="froala-editor" [froalaEditor]="rfOptions" [(froalaModel)]="editorContent"></div>
 
+  <!--编辑心情操作开始-->
+  <div id="editor-operation">
+    <!--添加表情-->
+    <div class="each-operation" >
+      <button md-icon-button md-tooltip="添加表情">
+        <i id="operation-face-ico" class="material-icons" (click)="toggleFace()">sentiment_very_satisfied</i>
+      </button>
+      <span class="operation-text" id="insert-face-text">表情</span>
+      <div id="all-face" *ngIf="faceOpened">
+        <app-face (faceSelected)="appendFace($event)" (faceOpened)="closeFace($event)"></app-face>
+      </div>
+    </div>
+
+    <!--插入图片-->
+    <div class="each-operation">
+      <button md-icon-button  md-tooltip="插入图片">
+        <i id="operation-img-ico" class="material-icons" (click)="toggleUploadImg()">wallpaper</i>
+      </button>
+      <span class="operation-text" id="insert-img-text">图片</span>
+      <div id="all-insert-img" *ngIf="uploadImgOpened">
+        <app-upload-img></app-upload-img>
+      </div>
+    </div>
+
+    <!--设置权限-->
+    <div class="each-operation"  md-tooltip="设置权限">
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+        <i class="material-icons" id="operation-jurisdiction-ico">remove_red_eye</i><span class="operation-text" id="jurisdiction-text">公开到分享圈</span>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item >
+          <i class="material-icons" id="public-view-ico">public</i>
+          <span>公开到分享圈</span>
+        </button>
+        <button md-menu-item>
+          <i class="material-icons" id="lock-view-ico">lock_outline</i>
+          <span>仅情侣可见</span>
+        </button>
+      </md-menu>
+    </div>
+    <div class="each-operation" id="send-mood-div">
+      <button md-raised-button color="primary">发表</button>
+    </div>
   </div>
+  <!--编辑心情操作结束-->
   <div id="all-mood">
     <div class="mood-times">
       <span>今天</span>

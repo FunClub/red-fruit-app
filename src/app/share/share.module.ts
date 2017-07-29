@@ -8,18 +8,22 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
-import {MdTabsModule, MdTooltipModule} from "@angular/material";
+import {MdButtonModule, MdTabsModule, MdTooltipModule} from "@angular/material";
 
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {RfEditorOptions} from "./model/rf-editor-options.model";
 import { SigleMoodComponent } from './component/sigle-mood/sigle-mood.component';
 import { ArtOperationComponent } from './component/art-operation/art-operation.component';
+import { FaceComponent } from './component/face/face.component';
+import {Face} from "./model/face.model";
+import { UploadImgComponent } from './component/upload-img/upload-img.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    MdButtonModule,
     MdTooltipModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
@@ -31,7 +35,10 @@ import { ArtOperationComponent } from './component/art-operation/art-operation.c
     FroalaEditorModule,
     SigleMoodComponent,
     ArtOperationComponent,
-    MdTooltipModule
+    MdTooltipModule,
+    MdButtonModule,
+    FaceComponent,
+    UploadImgComponent
   ],
   providers:[
     /*注入全局的api*/
@@ -42,8 +49,9 @@ import { ArtOperationComponent } from './component/art-operation/art-operation.c
     Regex,
     /*注入导航模型*/
     NavLink,
-    RfEditorOptions
+    RfEditorOptions,
+    Face
   ],
-  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent]
+  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent]
 })
 export class ShareModule { }

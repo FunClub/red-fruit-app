@@ -9,11 +9,13 @@ import { AlbumComponent } from './component/album/album.component';
 import { LeaveMessageComponent } from './component/leave-message/leave-message.component';
 import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
+import {MdMenuModule} from "@angular/material";
 
 @NgModule({
   imports: [
     CommonModule,
-    ShareModule
+    ShareModule,
+    MdMenuModule
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent, MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent],
   providers:[PersonCenterService]

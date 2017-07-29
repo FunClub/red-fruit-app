@@ -7,10 +7,97 @@ main{
   padding-bottom: 30px;
 
 }
-/*编辑器*/
+/*froala编辑器*/
 #froala-editor{
   font-size: 14px;
   width: 680px;
+}
+
+#editor-operation{
+  height: 50px;
+  border: solid 1px rgb(204,204,204) ;
+  width: 680px;
+  background: white;
+  border-top: none;
+  position: relative;
+  z-index: 2;
+  left: -1px;
+  box-shadow:  0 0 2px rgb(210,210,210);
+  top: -3px;
+}
+.each-operation{
+  position: relative;
+  float: left;
+  margin-left: 20px;
+  padding-top: 3px;
+}
+#operation-face-ico{
+  color: orange;
+}
+#insert-face-text{
+  position: relative;
+  right: 8px;
+}
+#insert-img-text{
+  position: relative;
+  right: 8px;
+}
+.each-operation i{
+  font-size: 25px;
+}
+.operation-text{
+  font-size: 13px;
+  color: gray;
+}
+#operation-img-ico{
+  color: rgb(132,192,2);
+}
+#operation-jurisdiction-ico{
+  color:rgb(115,126,149);
+}
+#jurisdiction-text{
+  margin-left: 5px;
+}
+#public-view-ico{
+  color:rgb(119,161,213);
+  float: left;
+  vertical-align: middle;
+  margin-top: 12px;
+  margin-right: 5px;
+
+}
+#lock-view-ico{
+  color:rgb(119,161,213);
+  float: left;
+  vertical-align: middle;
+  margin-top: 12px;
+  margin-right: 5px;
+}
+#all-face{
+  background: white;
+  position: absolute;
+  border: solid 1px rgb(223,223,223);
+  box-shadow: 0 3px 5px rgb(203,203,203);
+  padding-left: 10px;
+  top: 45px;
+  left: 5px;
+}
+#all-insert-img{
+  background: white;
+  position: absolute;
+  border: solid 1px rgb(223,223,223);
+  box-shadow: 0 3px 5px rgb(203,203,203);
+  padding-left: 10px;
+  top: 45px;
+  left: 5px;
+}
+#send-mood-div{
+  float: right;
+  margin-right: 20px;
+}
+#send-mood-div button{
+  background: rgb(255,129,64);
+  margin-top: 5px;
 }
 #all-mood{
   border-left: solid 2px rgb(203,203,203);

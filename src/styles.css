@@ -33,7 +33,39 @@
   margin-right: 10px;
   font-size: 14px;
 }
-
+/*上三角形边框*/
+.top-border-triangle:before{
+  box-sizing: content-box;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -16px;;
+  left: 5px;
+  padding:0;
+  border-bottom:8px solid #FFFFFF;
+  border-top:8px solid transparent;
+  border-left:8px solid transparent;
+  border-right:8px solid transparent;
+  display: block;
+  content:'';
+  z-index: 12;
+}
+.top-border-triangle:after{
+  box-sizing: content-box;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -18px;;
+  left: 4px;
+  padding:0;
+  border-bottom:9px solid #cccccc;
+  border-top:9px solid transparent;
+  border-left:9px solid transparent;
+  border-right:9px solid transparent;
+  display: block;
+  content:'';
+  z-index:10;
+}
 
 *{
   margin: 0;

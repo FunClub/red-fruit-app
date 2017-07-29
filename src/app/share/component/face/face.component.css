@@ -1,0 +1,28 @@
+
+#face-table{
+  border: solid 1px rgb(242,242,242);
+  width: 300px;
+}
+#face-table td{
+  border: solid 1px rgb(242,242,242);
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 3px;
+}
+#face-table td:hover{
+  cursor: pointer;
+  border-color: orange;
+
+}
+#face-title{
+  height: 30px;
+  line-height: 40px;
+}
+#close{
+float: right;
+}
+#close i {
+  font-size: 20px;
+}
