@@ -1,0 +1,22 @@
+<div class="all-operation" [ngClass]="{'discussOpened':isDiscussOpen}">
+  <div class="operation">
+    <span class="operation-time">7-28 18:09</span>
+  </div>
+  <div class="operation" mdTooltip="快收藏我">
+    <i class="material-icons">favorite</i>
+
+  </div>
+  <div class="operation" mdTooltip="评论一下吧" (click)="openDiscussion()">
+    <i class="material-icons" >sms</i>
+    <span class="count">123</span>
+  </div>
+  <div class="operation" mdTooltip="赞一个">
+    <i class="material-icons">thumb_up</i>
+    <span class="count">123</span>
+  </div>
+</div>
+<div class="all-discussion" *ngIf="isDiscussOpen">
+  <div class="send-discussion">
+    <img class="my-profile-img" src="../../../../assets/img/profile.jpg"/>
+  </div>
+</div>

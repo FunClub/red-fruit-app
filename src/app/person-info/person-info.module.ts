@@ -6,7 +6,7 @@ import {PrivacySettingsComponent} from "./component/privacy-settings/privacy-set
 import {ShareModule} from "../share/share.module";
 import {RouterModule} from "@angular/router";
 import {
-  MdButtonModule, MdDatepickerModule, MdDialogModule, MdInputModule, MdRadioModule, MdSelectModule,
+  MdButtonModule, MdChipsModule, MdDatepickerModule, MdDialogModule, MdInputModule, MdRadioModule, MdSelectModule,
   MdTabsModule, MdTooltipModule
 } from "@angular/material";
 import {PersonInfoService} from "./person-info.service";
@@ -26,7 +26,6 @@ import {ImageCropperComponent} from "ng2-img-cropper";
     MdSelectModule,
     MdButtonModule,
     MdRadioModule,
-    MdTooltipModule,
     MdDialogModule
   ],
   declarations: [PersonInfoComponent, BaseInfoComponent, PrivacySettingsComponent,UploadImgComponent, ImageCropperComponent],

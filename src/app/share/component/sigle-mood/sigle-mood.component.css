@@ -1,14 +1,4 @@
 
-/*心情总体部分*/
-.mood-all{
-  display: inline-block;
-  background: white;
-  overflow: hidden;
-  width: 615px;
-  border-radius: 3px;
-  box-shadow: 1px 1px 1px rgb(220,220,220);
-  border: solid 1px rgb(220,220,220) ;
-}
 /*心情的标题：头像等*/
 .mood-title{
   height: 35px;
@@ -36,29 +26,5 @@
 .mood-content{
   padding-left: 57px;
   margin-right: 30px;
-}
-/*心情底部*/
-.mood-bottom{
-  margin-top: 20px;
-  border-top: 1px rgb(230,230,230) solid;
-  height: 30px;
-  line-height: 40px;
-}
-.mood-opreation{
-  display: inline-block;
-  width: 148px;
-  text-align: center;
-  height: 20px;
-  line-height: 20px;
-  border-left: solid 1px rgb(233,233,233);
-}
-.mood-time{
-  position: relative;
-  bottom: 7px;
-  font-size: 13px;
-}
-.mood-bottom i{
-  font-size: 20px;
-  color: rgb(170,170,170);
-  cursor: pointer;
+
 }

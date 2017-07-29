@@ -1,6 +1,6 @@
 export class RfEditorOptions {
   language="zh_cn";
-  toolbarButtons= ['emoticons','insertImage','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
+  toolbarButtons= [];
   heightMax=300;
   height;
   tabSpaces=4;

@@ -8,18 +8,19 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
-import {MdTabsModule} from "@angular/material";
+import {MdTabsModule, MdTooltipModule} from "@angular/material";
 
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {RfEditorOptions} from "./model/rf-editor-options.model";
 import { SigleMoodComponent } from './component/sigle-mood/sigle-mood.component';
-
+import { ArtOperationComponent } from './component/art-operation/art-operation.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    MdTooltipModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
@@ -28,7 +29,9 @@ import { SigleMoodComponent } from './component/sigle-mood/sigle-mood.component'
     MdTabsModule,
     FroalaViewModule,
     FroalaEditorModule,
-    SigleMoodComponent
+    SigleMoodComponent,
+    ArtOperationComponent,
+    MdTooltipModule
   ],
   providers:[
     /*注入全局的api*/
@@ -41,6 +44,6 @@ import { SigleMoodComponent } from './component/sigle-mood/sigle-mood.component'
     NavLink,
     RfEditorOptions
   ],
-  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent]
+  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent]
 })
 export class ShareModule { }

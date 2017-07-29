@@ -1,0 +1,50 @@
+/*整体操作*/
+.all-operation{
+  border-top: 1px rgb(240,240,240) solid;
+  height: 37px;
+  line-height: 47px;
+  background: white;
+}
+/*每一个具体的操作*/
+.operation{
+  display: inline-block;
+  width: 148px;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  border-left: solid 1px rgb(233,233,233);
+}
+/*时间*/
+.operation-time{
+  position: relative;
+  bottom: 7px;
+  font-size: 13px;
+}
+/*操作图片*/
+.all-operation i{
+  font-size: 20px;
+  color: rgb(170,170,170);
+  cursor: pointer;
+}
+.all-operation i:hover{
+  color: orange;
+}
+/*次数*/
+.count{
+  font-size: 13px;
+  display: inline-block;
+
+  color: rgb(150,150,150);
+}
+/*评论打开打样式*/
+.discussOpened{
+  border-bottom: solid 1px rgb(220,220,220) ;
+}
+/*所有评论*/
+.all-discussion{
+  padding: 20px;
+}
+.my-profile-img{
+  width: 25px;
+  height: 25px;
+}
