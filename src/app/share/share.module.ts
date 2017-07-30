@@ -17,7 +17,7 @@ import { ArtOperationComponent } from './component/art-operation/art-operation.c
 import { FaceComponent } from './component/face/face.component';
 import {Face} from "./model/face.model";
 import { UploadImgComponent } from './component/upload-img/upload-img.component';
-
+import {LightboxModule} from 'primeng/primeng';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +26,8 @@ import { UploadImgComponent } from './component/upload-img/upload-img.component'
     MdButtonModule,
     MdTooltipModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),LightboxModule
+
   ],
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,

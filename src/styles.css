@@ -8,10 +8,10 @@
 /*@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";*/
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-/*!*ng-primeng*!
+/*ng-primeng*/
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~primeng/resources/themes/omega/theme.css";
-@import "~primeng/resources/primeng.min.css";*/
+@import "~primeng/resources/primeng.min.css";
 
 /*ng2toastr*/
 @import "~ng2-toastr/bundles/ng2-toastr.min.css";
@@ -66,6 +66,7 @@
   content:'';
   z-index:10;
 }
+
 
 *{
   margin: 0;

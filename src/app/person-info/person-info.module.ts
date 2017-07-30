@@ -4,10 +4,9 @@ import { PersonInfoComponent } from './component/person-info/person-info.compone
 import { BaseInfoComponent } from './component/base-info/base-info.component';
 import {PrivacySettingsComponent} from "./component/privacy-settings/privacy-settings.component";
 import {ShareModule} from "../share/share.module";
-import {RouterModule} from "@angular/router";
 import {
-  MdButtonModule, MdChipsModule, MdDatepickerModule, MdDialogModule, MdInputModule, MdRadioModule, MdSelectModule,
-  MdTabsModule, MdTooltipModule
+  MdButtonModule, MdDatepickerModule, MdDialogModule, MdInputModule, MdRadioModule, MdSelectModule,
+  MdTabsModule,
 } from "@angular/material";
 import {PersonInfoService} from "./person-info.service";
 import {BaseInfo} from "./model/base-info";
