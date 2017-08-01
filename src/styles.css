@@ -9,15 +9,17 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /*ng-primeng*/
-@import "~font-awesome/css/font-awesome.min.css";
+/*@import "~font-awesome/css/font-awesome.min.css";
 @import "~primeng/resources/themes/omega/theme.css";
-@import "~primeng/resources/primeng.min.css";
+@import "~primeng/resources/primeng.min.css";*/
 
 /*ng2toastr*/
 @import "~ng2-toastr/bundles/ng2-toastr.min.css";
 
 /*修改material2默认样式*/
-
+.fr-toolbar {
+  border-top: rgb(255,129,64) 4px solid !important;
+}
 
 .mat-tab-link{/*tabs的标签页*/
   width: 120px;

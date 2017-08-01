@@ -21,7 +21,7 @@
       </button>
       <span class="operation-text" id="insert-img-text">图片</span>
       <div id="all-insert-img" *ngIf="uploadImgOpened">
-        <app-upload-img></app-upload-img>
+        <app-upload-mood-img  (closeUploadImg)="closeUploadImg()"></app-upload-mood-img>
       </div>
     </div>
 

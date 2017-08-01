@@ -2,9 +2,23 @@
 <main>
   <div id="upload-title">
     本地上传
-    <button md-icon-button id="close">
+    <button md-icon-button id="close" (click)="closeSelf()">
       <i class="material-icons">close</i>
     </button>
   </div>
-  <p id="upload-tip">最多选择8张图片上传</p>
+  <p id="upload-tip">最多选择8张图片上传
+    <button *ngIf="preUploadImgs.length>0" color="primary" md-raised-button id="upload-mood-img" (click)="closeSelf()">
+      确认上传
+    </button>
+  </p>
+
+  <div id="upload-img-div" dnd-sortable-container [sortableData]="preUploadImgs">
+   <img class="pre-send-img list-group-item"  *ngFor="let imgSrc of preUploadImgs;let i = index"
+        dnd-sortable [sortableIndex]="i" [src]="this.api.IMAGE_PREFIX+imgSrc+this.api.IMAGE_MOOD_NARROW_STYLE">
+    <a class="upload" *ngIf="preUploadImgs.length<8">
+      <i class="material-icons">add</i>
+      <input title=" " md-tooltip="上传图片" accept="image/gif,image/jpeg,image/jpg,image/png" multiple class="" value="wenjian" type="file" (change)="upload($event)" >
+    </a>
+  </div>
 </main>
+

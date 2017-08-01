@@ -7,6 +7,7 @@ main{
   padding-bottom: 30px;
 
 }
+
 /*froala编辑器*/
 #froala-editor{
   font-size: 14px;
@@ -87,9 +88,8 @@ main{
   position: absolute;
   border: solid 1px rgb(223,223,223);
   box-shadow: 0 3px 5px rgb(203,203,203);
-  padding-left: 10px;
-  top: 45px;
   left: 5px;
+  padding: 0 10px 10px 10px;
 }
 #send-mood-div{
   float: right;

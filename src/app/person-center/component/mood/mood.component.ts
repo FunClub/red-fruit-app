@@ -18,6 +18,13 @@ export class MoodComponent implements OnInit {
   }
 
   /**
+   * 关闭表情面板
+   * @param uploadImgOpened
+   */
+  closeUploadImg(uploadImgOpened:boolean){
+    this.uploadImgOpened=uploadImgOpened;
+  }
+  /**
    * 切换图片上传面板
    */
   toggleUploadImg(){

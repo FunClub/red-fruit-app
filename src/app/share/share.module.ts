@@ -17,7 +17,9 @@ import { ArtOperationComponent } from './component/art-operation/art-operation.c
 import { FaceComponent } from './component/face/face.component';
 import {Face} from "./model/face.model";
 import { UploadImgComponent } from './component/upload-img/upload-img.component';
-import {LightboxModule} from 'primeng/primeng';
+import {ImageUploadService} from "./service/image-upload.service";
+import {DndModule} from "ng2-dnd";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,8 +28,8 @@ import {LightboxModule} from 'primeng/primeng';
     MdButtonModule,
     MdTooltipModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),LightboxModule
-
+    FroalaViewModule.forRoot(),
+    DndModule.forRoot()
   ],
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,
@@ -40,6 +42,7 @@ import {LightboxModule} from 'primeng/primeng';
     MdButtonModule,
     FaceComponent,
     UploadImgComponent
+
   ],
   providers:[
     /*注入全局的api*/
@@ -51,7 +54,8 @@ import {LightboxModule} from 'primeng/primeng';
     /*注入导航模型*/
     NavLink,
     RfEditorOptions,
-    Face
+    Face,
+    ImageUploadService
   ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent]
 })

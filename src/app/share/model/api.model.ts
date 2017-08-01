@@ -2,7 +2,16 @@
  * 应用api
  */
 export  class RedFruitApi {
-
+  /**
+   * 心情图片缩小参数80X80
+   * @type {string}
+   */
+  IMAGE_MOOD_NARROW_STYLE:string="?x-oss-process=style/mood-narrow";
+  /**
+   * 图片前缀
+   * @type {string}
+   */
+  IMAGE_PREFIX:string="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/";
   /**
    * 判断能否进入HOME组件
    * @type {string}

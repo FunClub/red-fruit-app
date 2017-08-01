@@ -9,6 +9,7 @@ export class RfEditorOptions {
   imageDefaultDisplay= 'inline';
   imageDefaultWidth=90;
   imageResize=true;
+  editorClass='editor-class';
   htmlDoNotWrapTags=['script', 'style', 'img'];
   imageEditButtons=['imageReplace', 'imageAlign', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', '-', 'imageDisplay', 'imageStyle']
 /*  imageUploadURL="share/upload";*/
