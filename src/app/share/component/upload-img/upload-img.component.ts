@@ -12,6 +12,8 @@ export class UploadImgComponent implements OnInit {
   closeUploadImg=new EventEmitter<boolean>();
   constructor(private uploadServie:ImageUploadService,public api:RedFruitApi) { }
   preUploadImgs:string[]=[];
+  uploadSubscribe;
+  deleteSubscribe;
   ngOnInit() {
 
   }
@@ -27,8 +29,18 @@ export class UploadImgComponent implements OnInit {
       formData.append("moodImgs",file);
       count++;
     }
-    this.uploadServie.uploadMoodImg(formData).subscribe(res=>{
+    this.uploadSubscribe=this.uploadServie.uploadMoodImg(formData).subscribe(res=>{
       this.preUploadImgs= this.preUploadImgs.concat(res);
+
     });
+  }
+  deleteMoodImg(index:number){
+    let paths=[this.preUploadImgs[index]];
+    this.deleteSubscribe=this.uploadServie.deleteMoodImg(paths).subscribe(res=>{
+      if(res){this.preUploadImgs.splice(index,1);}
+    });
+  }
+  save(){
+    console.log(this.preUploadImgs);
   }
 }

@@ -1,6 +1,5 @@
 main{
-width: 345px;
-
+width: 350px;
 }
 #upload-title{
   height: 30px;
@@ -30,14 +29,42 @@ width: 345px;
 #upload-img-div{
   margin: auto;
   margin-top: 10px;
+
 }
-/*准备发表的图片*/
-.pre-send-img{
+/*准备发表的图片包装div*/
+.mood-img-wrapper{
   display: inline-block;
+  height: 80px;
+  width: 80px;
+  position: relative;
   margin-left: 5px;
+}
+/*图片选项包装div*/
+.img-operation-wrapper{
+  background: rgba(0,0,0,0.3);
+  display: none;
+  height: 80px;
+  width: 80px;
+  z-index: 2;
+  position: absolute;
   cursor: move;
 }
-
+/*删除图片字体图标*/
+.delete-img-i{
+  color: white;
+  float: right;
+  cursor: pointer;
+}
+.mood-img-wrapper:hover > .img-operation-wrapper{
+  display: inline-block;
+}
+/*待上传图片*/
+.pre-send-img{
+  display: inline-block;
+  z-index: 1;
+  position: absolute;
+}
+/*添加图片按钮的系列样式*/
 .upload {
   height: 76px;
   width:76px;

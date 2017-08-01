@@ -2,6 +2,12 @@
  * 应用api
  */
 export  class RedFruitApi {
+
+  /**
+   * 心情图片
+   * @type {string}
+   */
+  MOOD_IMG:string="share/mood-img";
   /**
    * 心情图片缩小参数80X80
    * @type {string}

@@ -19,6 +19,7 @@ import {Face} from "./model/face.model";
 import { UploadImgComponent } from './component/upload-img/upload-img.component';
 import {ImageUploadService} from "./service/image-upload.service";
 import {DndModule} from "ng2-dnd";
+import {BusyConfig, BusyModule} from "angular2-busy";
 
 @NgModule({
   imports: [
@@ -29,7 +30,10 @@ import {DndModule} from "ng2-dnd";
     MdTooltipModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    DndModule.forRoot()
+    DndModule.forRoot(),
+    BusyModule.forRoot(new BusyConfig({
+      message: '处理中，请稍后...',
+    }))
   ],
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,
