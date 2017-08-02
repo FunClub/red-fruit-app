@@ -10,6 +10,7 @@ export class RfEditorOptions {
   imageDefaultWidth=90;
   imageResize=true;
   editorClass='editor-class';
+  quickInsertButtons=['image', 'table', 'ul', 'ol', 'hr'];
   htmlDoNotWrapTags=['script', 'style', 'img'];
   imageEditButtons=['imageReplace', 'imageAlign', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', '-', 'imageDisplay', 'imageStyle']
 /*  imageUploadURL="share/upload";*/

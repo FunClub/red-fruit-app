@@ -14,6 +14,7 @@ main{
   width: 680px;
 }
 
+/*编辑器操作选项,添加表情图片等*/
 #editor-operation{
   height: 50px;
   border: solid 1px rgb(204,204,204) ;
@@ -26,39 +27,49 @@ main{
   box-shadow:  0 0 2px rgb(210,210,210);
   top: -3px;
 }
+/*每一个具体的操作*/
 .each-operation{
   position: relative;
   float: left;
   margin-left: 20px;
   padding-top: 3px;
 }
+/*上传表情的字体图片*/
 #operation-face-ico{
   color: orange;
 }
+/*添加表情的文本*/
 #insert-face-text{
   position: relative;
   right: 8px;
 }
+/*添加图片的文本*/
 #insert-img-text{
   position: relative;
   right: 8px;
 }
+/*每个操作下的图片字体*/
 .each-operation i{
   font-size: 25px;
 }
+/*操作的文本*/
 .operation-text{
   font-size: 13px;
   color: gray;
 }
+/*添加图片的字体图片*/
 #operation-img-ico{
   color: rgb(132,192,2);
 }
+
+/*谁能见的图片字体*/
 #operation-jurisdiction-ico{
   color:rgb(115,126,149);
 }
 #jurisdiction-text{
   margin-left: 5px;
 }
+/*公共可见图片*/
 #public-view-ico{
   color:rgb(119,161,213);
   float: left;
@@ -67,6 +78,7 @@ main{
   margin-right: 5px;
 
 }
+/*情侣可见图片*/
 #lock-view-ico{
   color:rgb(119,161,213);
   float: left;
@@ -74,7 +86,8 @@ main{
   margin-top: 12px;
   margin-right: 5px;
 }
-#all-face{
+
+#all-face-wrapper{
   background: white;
   position: absolute;
   border: solid 1px rgb(223,223,223);
@@ -83,7 +96,7 @@ main{
   top: 45px;
   left: 5px;
 }
-#all-insert-img{
+#all-insert-img-wrapper{
   background: white;
   position: absolute;
   border: solid 1px rgb(223,223,223);
@@ -91,6 +104,7 @@ main{
   left: 5px;
   padding: 0 10px 10px 10px;
 }
+/*发送心情DIV*/
 #send-mood-div{
   float: right;
   margin-right: 20px;
@@ -99,6 +113,7 @@ main{
   background: rgb(255,129,64);
   margin-top: 5px;
 }
+/*展示所有心情*/
 #all-mood{
   border-left: solid 2px rgb(203,203,203);
   margin: auto;
@@ -106,6 +121,8 @@ main{
   padding-top: 30px;
 
 }
+
+/*每一个心情*/
 .mood{
   position: relative;
   right: 9px;
@@ -134,7 +151,6 @@ main{
   text-align: center;
 }
 
-/*每一个心情*/
 
 /*心情左边的圆形和三角形*/
 .mood-left{
@@ -157,6 +173,7 @@ main{
   left: 1px;
   margin-top: 14px;
 }
+/*心情右边部分*/
 .mood-right{
   width: 640px;
   float: left;

@@ -20,9 +20,6 @@
 @import "~ng2-toastr/bundles/ng2-toastr.min.css";
 
 /*修改material2默认样式*/
-.fr-toolbar {
-  border-top: rgb(255,129,64) 4px solid !important;
-}
 
 .mat-tab-link{/*tabs的标签页*/
   width: 120px;
@@ -70,6 +67,10 @@
   display: block;
   content:'';
   z-index:10;
+}
+/*修改编辑器默认样式*/
+.fr-toolbar {
+  border-top: rgb(255,129,64) 4px solid !important;
 }
 
 *{

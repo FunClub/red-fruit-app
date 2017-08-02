@@ -3,7 +3,7 @@
   <div id="upload-title">
     本地上传
     <button md-icon-button id="close" (click)="closeSelf()">
-      <i class="material-icons">close</i>
+      <i class="material-icons" md-tooltip="删除所有图片">close</i>
     </button>
   </div>
   <p id="upload-tip">最多选择8张图片上传
@@ -11,10 +11,11 @@
       确认上传
     </button>
   </p>
-
+  <div [ngBusy]="{busy:[uploadSubscribe,deleteSubscribe],message:'处理中,请稍候'}"></div>
   <div id="upload-img-div" dnd-sortable-container [sortableData]="preUploadImgs">
+
     <div class="mood-img-wrapper" dnd-sortable [sortableIndex]="i"  *ngFor="let imgSrc of preUploadImgs;let i = index">
-      <img class="pre-send-img"  [src]="this.api.IMAGE_PREFIX+imgSrc+this.api.IMAGE_MOOD_NARROW_STYLE">
+      <img class="pre-send-img"  [src]="this.api.IMAGE_PREFIX+imgSrc+this.api.UPLOAD_MOOD_NARROW_STYLE">
       <div class="img-operation-wrapper">
           <i class="material-icons delete-img-i" md-tooltip="删除" (click)="deleteMoodImg(i)">delete</i>
       </div>
@@ -24,7 +25,7 @@
       <i class="material-icons">add</i>
       <input title=" " md-tooltip="上传图片" accept="image/gif,image/jpeg,image/jpg,image/png" multiple   type="file" (change)="upload($event)" >
     </a>
-    <div [ngBusy]="[uploadSubscribe,deleteSubscribe]"></div>
+
   </div>
 </main>
 

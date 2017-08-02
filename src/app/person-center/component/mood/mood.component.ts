@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RfEditorOptions} from '../../../share/model/rf-editor-options.model';
+import {MoodService} from "../../service/mood.service";
 @Component({
   selector: 'app-mood',
   templateUrl: './mood.component.html',
@@ -9,10 +10,11 @@ export class MoodComponent implements OnInit {
   editorContent="";
   faceOpened=false;
   uploadImgOpened=false;
-  constructor(public rfOptions:RfEditorOptions) {
+  constructor(public rfOptions:RfEditorOptions,public moodServce:MoodService) {
     rfOptions.imageResize=false;
     rfOptions.placeholderText="今天，有什么不高兴的事吗，写写吧";
-    rfOptions.toolbarButtons=['bold','color','insertLink','fullscreen', 'html','undo', 'redo']
+    rfOptions.toolbarButtons=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
+    rfOptions.quickInsertButtons= ['table', 'ul', 'ol', 'hr'];
   }
   ngOnInit() {
   }

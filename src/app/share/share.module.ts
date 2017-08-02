@@ -20,10 +20,14 @@ import { UploadImgComponent } from './component/upload-img/upload-img.component'
 import {ImageUploadService} from "./service/image-upload.service";
 import {DndModule} from "ng2-dnd";
 import {BusyConfig, BusyModule} from "angular2-busy";
+import {HttpModule} from "@angular/http";
+import {ShowMoodImg} from "./model/show-mood-img";
+
 
 @NgModule({
   imports: [
     CommonModule,
+    HttpModule,
     ReactiveFormsModule,
     RouterModule,
     MdButtonModule,
@@ -31,9 +35,7 @@ import {BusyConfig, BusyModule} from "angular2-busy";
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     DndModule.forRoot(),
-    BusyModule.forRoot(new BusyConfig({
-      message: '处理中，请稍后...',
-    }))
+    BusyModule
   ],
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,
@@ -57,9 +59,16 @@ import {BusyConfig, BusyModule} from "angular2-busy";
     Regex,
     /*注入导航模型*/
     NavLink,
+    /*编辑器选项*/
     RfEditorOptions,
+    /*表情模型*/
     Face,
-    ImageUploadService
+
+    /*图片上传服务*/
+    ImageUploadService,
+
+    /*显示图片参数的模型*/
+    ShowMoodImg,
   ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent]
 })

@@ -10,6 +10,7 @@ import { LeaveMessageComponent } from './component/leave-message/leave-message.c
 import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
 import {MdMenuModule} from "@angular/material";
+import {MoodService} from "./service/mood.service";
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,6 @@ import {MdMenuModule} from "@angular/material";
     MdMenuModule
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent, MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent],
-  providers:[PersonCenterService]
+  providers:[PersonCenterService,MoodService]
 })
 export class PersonCenterModule { }

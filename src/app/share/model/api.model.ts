@@ -12,7 +12,7 @@ export  class RedFruitApi {
    * 心情图片缩小参数80X80
    * @type {string}
    */
-  IMAGE_MOOD_NARROW_STYLE:string="?x-oss-process=style/mood-narrow";
+  UPLOAD_MOOD_NARROW_STYLE:string="?x-oss-process=style/upload-mood-narrow";
   /**
    * 图片前缀
    * @type {string}
