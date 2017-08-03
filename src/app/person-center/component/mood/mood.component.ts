@@ -27,23 +27,17 @@ declare let $:any;
   trigger('flyXInOutFromRight', [
     transition('void => *', [
       animate("300ms",keyframes([
-        style({opacity: 0, transform: 'translateX(100%)', offset: 0}),
+        style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
         style({opacity: 0.5, transform: 'translateX(15px)',  offset: 0.3}),
         style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})
       ]))
     ]),
-    transition('* => void', [
-      animate("300ms",keyframes([
-        style({opacity: 1, transform: 'translateX(0)'}),
-        style({opacity: 0.5, transform: 'translateX(-15px)'}),
-        style({opacity: 0, transform: 'translateX(100%)'})
-      ]))
-    ])
+
   ]),
   ]
 })
 export class MoodComponent implements OnInit {
-  editorContent="";
+  editorContent=" ";
   faceOpened=false;
   uploadImgOpened=false;
   public rfOptions:RfEditorOptions;

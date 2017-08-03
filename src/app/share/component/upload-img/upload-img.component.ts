@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ImageUploadService} from "../../service/image-upload.service";
 import {RedFruitApi} from "../../model/api.model";
 import {MoodService} from "../../../person-center/service/mood.service";
+import {BucketFolder} from "../../model/bucket-folder.model";
+
 
 @Component({
   selector: 'app-upload-mood-img',
@@ -15,7 +17,7 @@ export class UploadImgComponent implements OnInit {
    */
   @Output()
   closeUploadImg=new EventEmitter<boolean>();
-  constructor(private uploadService:ImageUploadService,public api:RedFruitApi,private moodService:MoodService) { }
+  constructor(private uploadService:ImageUploadService,public api:RedFruitApi,private moodService:MoodService,private bucketFolder:BucketFolder) { }
 
   /**
    * 从父组件传来图片地址数据，用于关闭本组件后,再次打开依旧显示图片
@@ -43,7 +45,7 @@ export class UploadImgComponent implements OnInit {
    */
   closeSelf(){
     if(this.preUploadImgs.length>0){
-      this.deleteSubscribe=this.uploadService.deleteMoodImg(this.preUploadImgs).subscribe(res=>{
+      this.deleteSubscribe=this.uploadService.deleteImg(this.preUploadImgs).subscribe(res=>{
         if(res){this.preUploadImgs=[]}
         this.updateMoodServiceImg();
         this.closeUploadImg.emit(false);
@@ -69,7 +71,7 @@ export class UploadImgComponent implements OnInit {
       formData.append("moodImgs",file);
       count++;
     }
-    this.uploadSubscribe=this.uploadService.uploadMoodImg(formData).subscribe(res=>{
+    this.uploadSubscribe=this.uploadService.uploadImg(formData,this.bucketFolder.MOOD).subscribe(res=>{
       this.preUploadImgs= this.preUploadImgs.concat(res);
       this.updateMoodServiceImg();
     });
@@ -81,7 +83,7 @@ export class UploadImgComponent implements OnInit {
    */
   deleteMoodImg(index:number){
     let paths=[this.preUploadImgs[index]];
-    this.deleteSubscribe=this.uploadService.deleteMoodImg(paths).subscribe(res=>{
+    this.deleteSubscribe=this.uploadService.deleteImg(paths).subscribe(res=>{
       if(res){this.preUploadImgs.splice(index,1);}
       this.updateMoodServiceImg();
     });

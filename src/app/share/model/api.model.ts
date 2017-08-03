@@ -4,10 +4,14 @@
 export  class RedFruitApi {
 
   /**
-   * 心情图片
+   * 图片操作
    * @type {string}
    */
-  MOOD_IMG:string="share/mood-img";
+  IMG(bucketName:string){
+
+    return "share/img/"+bucketName;
+  }
+
   /**
    * 心情图片缩小参数80X80
    * @type {string}

@@ -23,6 +23,8 @@ import {BusyConfig, BusyModule} from "angular2-busy";
 import {HttpModule} from "@angular/http";
 import {ShowMoodImg} from "./model/show-mood-img";
 import { ArtDiscussionComponent } from './component/art-discussion/art-discussion.component';
+import {BucketFolder} from "./model/bucket-folder.model";
+
 
 
 @NgModule({
@@ -69,6 +71,10 @@ import { ArtDiscussionComponent } from './component/art-discussion/art-discussio
 
     /*显示图片参数的模型*/
     ShowMoodImg,
+    /**
+     * oss 文件夹名
+     */
+    BucketFolder
   ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent, ArtDiscussionComponent]
 })

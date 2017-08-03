@@ -68,9 +68,11 @@
 .show-discussion-by{
   margin-top: 10px;
 }
+/*每一个条件*/
 .show-discussion-by span{
   font-size: 14px;
 }
+/*第一个条件*/
 .show-discussion-by span:first-child{
   border-right: 1px solid rgb(150,150,150);
   padding-right: 8px;
@@ -78,8 +80,102 @@
 .show-discussion-by span:hover{
   color: rgb(255,129,64);
 }
-
+/*激活的条件*/
 .active-discussion-by{
   color: black;
   font-weight: bold;
+}
+/*m每一个评论*/
+.discussion{
+  margin-top: 10px;
+  border-bottom: solid 1px rgb(213,213,213);
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+/*父级评论*/
+.parent-discussion{
+
+}
+/*评论人头像*/
+.discussion-profile{
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-right: 10px;
+
+}
+/*评论体,评论右边部分*/
+.discussion-content{
+ float: right;
+  width: 560px;
+}
+/*父级评论人姓名*/
+.parent-discussion-nickname{
+  font-size: 14px;
+  color:rgb(255,129,64);
+  font-weight: bold;
+}
+/*评论内容*/
+.discussion-text{
+  color: rgb(50,50,50);
+  font-size: 13px;
+}
+/*评论相关，时间和操作*/
+.discussion-info{
+  font-size: 13px;
+  margin-top: 5px;
+  height: 20px;
+
+}
+/*评论时间*/
+.discussion-time{
+  color: rgb(100,100,100);
+}
+/*评论操作*/
+.discussion-operation{
+  float: right;
+
+}
+.discussion-operation span{
+  margin-right: 10px;
+}
+/*操作按钮*/
+.each-operation-btn{
+  height: 20px;
+  line-height: 0px;
+  margin-right: 10px;
+}
+.each-operation-btn span{
+  font-size: 13px;
+  color: rgb(100,100,100);
+  margin-left: 3px;
+}
+.each-operation-btn i{
+  font-size: 18px;
+  color: rgb(150,150,150);
+}
+/*所有的子级评论*/
+.all-sub-discussion{
+  padding: 10px;
+  padding-top: 0;
+  background: rgb(234,234,236);
+
+}
+/*每个子级评论*/
+.sub-discussion{
+  margin-top: 5px;
+}
+/*子级评论人*/
+.sub-discussion-nickname{
+  font-size: 14px;
+  color:rgb(255,129,64);
+
+}
+/*显示更多评论按钮*/
+.show-more-discussion-btn{
+  margin: auto;
+  margin-top: 20px;
+  width: 30%;
+  display: block;
+  background: rgb(34,170,210);
 }

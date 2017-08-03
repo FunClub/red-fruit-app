@@ -13,20 +13,22 @@ export class ImageUploadService extends BaseService{
   constructor(private http:Http,private api:RedFruitApi) {super();}
 
   /**
-   * 上传心情照片
+   * 上传照片
    * @param files 心情文件路径数组
+   * @param bucketName oss bucket名称
    * @returns {Observable<R|T>}
    */
-  uploadMoodImg(files:any):Observable<string[]>{
-    return this.http.put(this.api.MOOD_IMG,files).map(res=>res.json().data).catch(this.handleError);
+  uploadImg(files:any,bucketName:string):Observable<string[]>{
+    return this.http.put(this.api.IMG(bucketName),files).map(res=>res.json().data).catch(this.handleError);
   }
 
   /**
-   * 删除心情照片
-   * @param paths 心情文件路径数组
+   * 删除照片
+   * @param paths 文件路径数组
+   * @param bucketName oss bucket名称
    * @returns {Observable<R|T>}
    */
-  deleteMoodImg(paths:string[]):Observable<boolean>{
-    return this.http.patch(this.api.MOOD_IMG,paths).map(res=>res.json().data).catch(this.handleError);
+  deleteImg(paths:string[]):Observable<boolean>{
+    return this.http.patch(this.api.IMG(""),paths).map(res=>res.json().data).catch(this.handleError);
   }
 }
