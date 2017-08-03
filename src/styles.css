@@ -70,9 +70,16 @@
 }
 /*修改编辑器默认样式*/
 .fr-toolbar {
-  border-top: rgb(255,129,64) 4px solid !important;
+  border-top:none;
 }
 
+ .fr-top {
+  box-shadow: none;
+
+}
+.fr-quick-insert{
+  display: none;
+}
 *{
   margin: 0;
   padding: 0;

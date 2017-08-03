@@ -6,12 +6,16 @@
     </div>
     <div class="mood-content">
       <div class="mood-text-content" style="font-size: 15px">
-        在图片处理服务里会有很多参数需要变成Base64位编码，参考RFC4648。注意这里的URL 安全Base64位编码只是用在水印操作某些特定参数(文字水印的文字内容，文字颜色，文字字体及图片水印的水印object)里，不要将其用来签名字符串(Signature)的内容。编码的格式是：
+        在图片处理服务里会有很多参数需要变成Base64位编码，参考RFC4648。
+        注意这里的URL 安全Base64位编码只是用在水印操作某些特定参数(文字水印的文字内容，文字颜色，
+        文字字体及图片水印的水印object)里，不要将其用来签名字符串(Signature)的内容。编码的格式是：
+
+
       </div>
       <div class="mood-img-content" >
         <div class="mood-img-detail-content" *ngIf="showImgDetail">
           <img #detailImg (mousemove)="changeImgCursor($event,detailImg)"
-               class="detail-img"
+               class="detail-img"  [@flyInFromTop]
                [src]="currentShowImgPath"
               [ngClass]="{'prevCursor':currentImgCursorType==moodOption.PREV_CURSOR,'zoomOutCursor':currentImgCursorType==moodOption.ZOOM_OUT_CURSOR,'nextCursor':currentImgCursorType==moodOption.NEXT_CURSOR}"
           (click)="changeDetailImg($event)"

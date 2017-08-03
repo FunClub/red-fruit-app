@@ -1,6 +1,8 @@
 export class RfEditorOptions {
   language="zh_cn";
   toolbarButtons= ['emoticons','insertImage','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
+  toolbarButtonsSM=['emoticons','insertImage','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
+  toolbarButtonsXS=['emoticons','insertImage','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
   heightMax=300;
   heightMin=80;
   tabSpaces=4;
@@ -10,7 +12,7 @@ export class RfEditorOptions {
   imageDefaultWidth=90;
   imageResize=true;
   editorClass='editor-class';
-  quickInsertButtons=['image', 'table', 'ul', 'ol', 'hr'];
+  quickInsertButtons=null;
   htmlDoNotWrapTags=['script', 'style', 'img'];
   imageEditButtons=['imageReplace', 'imageAlign', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', '-', 'imageDisplay', 'imageStyle']
 /*  imageUploadURL="share/upload";*/

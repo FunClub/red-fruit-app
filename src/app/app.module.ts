@@ -12,6 +12,7 @@ import {Regex} from "./share/model/regex.model";
 import {HomeModule} from "./home/home.module";
 import {PersonCenterModule} from "./person-center/person-center.module";
 import {NgProgressModule} from "ngx-progressbar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 /**
  * 应用根模块
  *
@@ -21,7 +22,7 @@ import {NgProgressModule} from "ngx-progressbar";
     AppComponent,
   ],
   imports: [
-    BrowserModule,   NgProgressModule,
+    BrowserModule,   NgProgressModule,BrowserAnimationsModule,
     AppRoutingModule,
     LoginModule,
     HomeModule

@@ -1,10 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {ShowMoodImg} from "../../model/show-mood-img";
-
+import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 @Component({
   selector: 'app-sigle-mood',
   templateUrl: './sigle-mood.component.html',
-  styleUrls: ['./sigle-mood.component.css']
+  styleUrls: ['./sigle-mood.component.css'],
+  animations: [
+    trigger('flyInFromTop', [
+      transition('void => *', [
+        animate("300ms",keyframes([
+          style({opacity: 0, transform: 'translateY(-5%)'}),
+          style({opacity: 0.5, transform: 'translateY(5px)'}),
+          style({opacity: 1, transform: 'translateY(0)'})
+        ]))
+      ])
+    ])
+  ]
 })
 export class SigleMoodComponent implements OnInit {
   /**
@@ -95,7 +106,6 @@ export class SigleMoodComponent implements OnInit {
     let x = event.offsetX;
     let preMax=(this.currentShowImgWidth/2)-this.currentShowImgWidth/5;
     let nextMin=(this.currentShowImgWidth/2)+this.currentShowImgWidth/5;
-    console.log("x="+x+",preMax="+preMax+",nextMin="+nextMin);
     if(preMax>x){
       if(this.currentShowImgIndex==0)return this.moodOption.SIMPLE_CURSOR;
       return this.moodOption.PREV_CURSOR;

@@ -1,10 +1,12 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Face} from "../../model/face.model";
 
+
 @Component({
   selector: 'app-face',
   templateUrl: './face.component.html',
-  styleUrls: ['./face.component.css']
+  styleUrls: ['./face.component.css'],
+
 })
 export class FaceComponent implements OnInit {
   @Output()
@@ -53,10 +55,9 @@ export class FaceComponent implements OnInit {
   }
   popFacePath(facePath:string){
     let faceImg=`<img src=${facePath}>`;
-    console.log("sub:"+faceImg);
     this.faceSelected.emit(faceImg);
   }
   closeSelf(){
-    alert(1);
+
   }
 }

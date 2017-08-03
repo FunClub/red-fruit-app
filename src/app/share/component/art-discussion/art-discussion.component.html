@@ -1,0 +1,29 @@
+<!--所有评论开始-->
+<div class="all-discussion" [@flyXInOutFromTop]>
+  <!--写评论-->
+  <div class="write-discussion">
+    <img class="my-profile-img" src="../../../../assets/img/profile.jpg"/>
+    <div #discussionEditor class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="editorContent"></div>
+    <button class="send-discussion-btn" md-raised-button color="primary">评论</button>
+    <div class="all-face-wrapper">
+      <button class="toggle-face-btn" md-icon-button (click)="toggleFace()">
+        <i  class="material-icons face-ico">sentiment_very_satisfied</i>
+      </button>
+      <div class="face-wrapper" *ngIf="faceOpened" [@flyXInOutFromTop]>
+        <app-face (faceSelected)="appendFace(discussionEditor,$event)" (faceOpened)="closeFace($event)"></app-face>
+      </div>
+    </div>
+  </div>
+  <!--显示评论-->
+  <div class="show-all-discussion">
+    <div class="show-discussion-by">
+      <span class="active-discussion-by">按热度</span>
+      <span>按时间</span>
+    </div>
+    <div class="discussion">
+
+    </div>
+  </div>
+</div>
+<!--所有评论结束-->
+

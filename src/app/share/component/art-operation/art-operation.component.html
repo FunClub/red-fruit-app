@@ -1,3 +1,4 @@
+<!--动态操作开始-->
 <div class="all-operation" [ngClass]="{'discussOpened':isDiscussOpen}">
   <div class="operation">
     <span class="operation-time">7-28 18:09</span>
@@ -15,8 +16,6 @@
     <span class="count">123</span>
   </div>
 </div>
-<div class="all-discussion" *ngIf="isDiscussOpen">
-  <div class="send-discussion">
-    <img class="my-profile-img" src="../../../../assets/img/profile.jpg"/>
-  </div>
-</div>
+<!--动态操作结束-->
+<app-art-discussion *ngIf="isDiscussOpen"></app-art-discussion>
+

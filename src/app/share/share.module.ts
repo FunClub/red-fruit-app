@@ -8,7 +8,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
-import {MdButtonModule, MdTabsModule, MdTooltipModule} from "@angular/material";
+import {MdButtonModule, MdInputModule, MdTabsModule, MdTooltipModule} from "@angular/material";
 
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {RfEditorOptions} from "./model/rf-editor-options.model";
@@ -22,12 +22,14 @@ import {DndModule} from "ng2-dnd";
 import {BusyConfig, BusyModule} from "angular2-busy";
 import {HttpModule} from "@angular/http";
 import {ShowMoodImg} from "./model/show-mood-img";
+import { ArtDiscussionComponent } from './component/art-discussion/art-discussion.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpModule,
+    MdInputModule,
     ReactiveFormsModule,
     RouterModule,
     MdButtonModule,
@@ -47,8 +49,8 @@ import {ShowMoodImg} from "./model/show-mood-img";
     MdTooltipModule,
     MdButtonModule,
     FaceComponent,
-    UploadImgComponent
-
+    UploadImgComponent,
+    ArtDiscussionComponent
   ],
   providers:[
     /*注入全局的api*/
@@ -59,8 +61,6 @@ import {ShowMoodImg} from "./model/show-mood-img";
     Regex,
     /*注入导航模型*/
     NavLink,
-    /*编辑器选项*/
-    RfEditorOptions,
     /*表情模型*/
     Face,
 
@@ -70,6 +70,6 @@ import {ShowMoodImg} from "./model/show-mood-img";
     /*显示图片参数的模型*/
     ShowMoodImg,
   ],
-  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent]
+  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent, ArtDiscussionComponent]
 })
 export class ShareModule { }

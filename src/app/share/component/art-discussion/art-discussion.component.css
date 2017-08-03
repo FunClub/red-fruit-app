@@ -1,0 +1,85 @@
+/*所有评论*/
+.all-discussion{
+  padding: 20px;
+}
+/*我的头像*/
+.my-profile-img{
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: 10px;
+}
+
+/**
+写评论的总体div
+ */
+.write-discussion{
+  border-bottom: 1px rgb(223,223,223) solid;
+}
+/*编辑器div*/
+.discussion-editor{
+  display: inline-block;
+  width: 470px;
+  font-size: 14px;
+}
+/*编辑器盒子样式*/
+.editor-box{
+  border-top: 2px solid rgb(255,129,64);
+}
+/*发表评论按钮*/
+.send-discussion-btn{
+  display: block!important;
+  width:60px;
+  height: 40px;
+  min-width: 55px;
+  background: rgb(255,129,64);
+  float: right;
+}
+/*切换表情按钮*/
+.toggle-face-btn{
+  margin-left: 40px;
+  margin-bottom: 10px;
+  position: relative;
+  top: -10px;
+}
+/*包裹表情和按钮的div*/
+.all-face-wrapper{
+  position: relative;
+  height: 40px;
+}
+/*包裹表情的div*/
+.face-wrapper{
+  background: white;
+  position: absolute;
+  border: solid 1px rgb(223,223,223);
+  box-shadow: 0 3px 5px rgb(203,203,203);
+  padding-left: 10px;
+  top:30px;
+  left: 45px;
+  z-index: 12;
+  width: 300px;
+}
+
+/*显示所有评论的div*/
+.show-all-discussion{
+
+}
+/*显示评论的条件*/
+.show-discussion-by{
+  margin-top: 10px;
+}
+.show-discussion-by span{
+  font-size: 14px;
+}
+.show-discussion-by span:first-child{
+  border-right: 1px solid rgb(150,150,150);
+  padding-right: 8px;
+}
+.show-discussion-by span:hover{
+  color: rgb(255,129,64);
+}
+
+.active-discussion-by{
+  color: black;
+  font-weight: bold;
+}

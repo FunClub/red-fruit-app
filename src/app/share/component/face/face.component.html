@@ -1,18 +1,19 @@
-<i class="top-border-triangle"></i>
-<main>
-  <div id="face-title">添加表情
-    <button md-icon-button id="close">
+ <i class="top-border-triangle"></i>
+  <main>
+    <div id="face-title">添加表情
+      <button md-icon-button id="close">
 
-      <i class="material-icons" (click)="faceClosedEvent()">close</i>
-    </button>
-  </div>
+        <i class="material-icons" (click)="faceClosedEvent()">close</i>
+      </button>
+    </div>
+    <table id="face-table" cellspacing="0"  (blur)="closeSelf()">
+      <tr *ngFor="let face of faces;">
+        <td *ngFor="let face1 of face" align="center">
+          <img (click)="popFacePath(face1.path)"  [src]="face1.path" [md-tooltip]="face1.tip">
+        </td>
+      </tr>
+    </table>
+  </main>
 
-  <table id="face-table" cellspacing="0"  (blur)="closeSelf()">
-    <tr *ngFor="let face of faces;">
-      <td *ngFor="let face1 of face" align="center">
-        <img (click)="popFacePath(face1.path)"  [src]="face1.path" [md-tooltip]="face1.tip">
-      </td>
-    </tr>
-  </table>
-</main>
+
 
