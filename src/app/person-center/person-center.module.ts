@@ -11,6 +11,8 @@ import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
 import {MdMenuModule} from "@angular/material";
 import {MoodService} from "./service/mood.service";
+import {InsertMood} from "./model/insert-mood";
+import {SelectMoodCondition} from "./model/select-mood-condition.model";
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +20,19 @@ import {MoodService} from "./service/mood.service";
     MdMenuModule
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent, MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent],
-  providers:[PersonCenterService,MoodService]
+
+  providers:[
+    /*用户个人中心服务*/
+    PersonCenterService,
+
+    /*心情服务*/
+    MoodService,
+
+    /*插入心情的模型*/
+    InsertMood,
+
+    /*查询心情的条件模型*/
+    SelectMoodCondition
+  ]
 })
 export class PersonCenterModule { }

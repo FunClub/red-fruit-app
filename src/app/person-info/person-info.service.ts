@@ -37,7 +37,7 @@ export class PersonInfoService extends BaseService{
    * 查询用户的基本资料
    * @returns {Observable<R|T>} 用户基本资料模型
    */
-  selectUserBaseInfo():Observable<BaseInfo>{
+  selectUserBaseInfo(userId:string):Observable<BaseInfo>{
     return this.http.get(this.api.USER_BASE_INFO).map(res=>res.json().data).catch(this.handleError);
   }
 }

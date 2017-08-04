@@ -1,6 +1,6 @@
 <main [@flyXInOutFromRight] >
 
-  <div id="froala-editor" class="mood-editor" [froalaEditor]="rfOptions" [(froalaModel)]="editorContent"></div>
+  <div id="froala-editor" class="mood-editor" [froalaEditor]="rfOptions" [(froalaModel)]="insertMood.content"></div>
   <!--编辑心情操作开始-->
   <div id="editor-operation">
     <!--添加表情-->
@@ -21,28 +21,29 @@
       </button>
       <span class="operation-text" id="insert-img-text">图片</span>
       <div id="all-insert-img-wrapper" *ngIf="uploadImgOpened" [@flyXInOutFromTop]>
-        <app-upload-mood-img [preUploadImgs]="moodServce.sharePreUploadImgs" (closeUploadImg)="closeUploadImg()"></app-upload-mood-img>
+        <app-upload-mood-img [preUploadImgs]="moodService.sharePreUploadImgs" (closeUploadImg)="closeUploadImg()"></app-upload-mood-img>
       </div>
     </div>
 
     <!--设置权限-->
     <div class="each-operation"  >
       <button md-icon-button [mdMenuTriggerFor]="menu">
-        <i class="material-icons" id="operation-jurisdiction-ico">remove_red_eye</i><span class="operation-text" id="jurisdiction-text">公开到分享圈</span>
+        <i class="material-icons" id="operation-jurisdiction-ico">remove_red_eye</i>
+        <span class="operation-text" id="jurisdiction-text">{{insertMood.limit==1?"公开到分享圈":"仅情侣可见"}}</span>
       </button>
       <md-menu #menu="mdMenu">
-        <button md-menu-item >
+        <button md-menu-item (click)="changeLimit(1)" [ngClass]="{'active-limit':insertMood.limit==1}">
           <i class="material-icons" id="public-view-ico">public</i>
-          <span>公开到分享圈</span>
+          <span >公开到分享圈</span>
         </button>
-        <button md-menu-item>
+        <button md-menu-item (click)="changeLimit(0)" [ngClass]="{'active-limit':insertMood.limit==0}" >
           <i class="material-icons" id="lock-view-ico">lock_outline</i>
           <span>仅情侣可见</span>
         </button>
       </md-menu>
     </div>
     <div class="each-operation" id="send-mood-div">
-      <button md-raised-button color="primary">发表</button>
+      <button md-raised-button color="primary" (click)="sendMood()">发表</button>
     </div>
   </div>
   <!--编辑心情操作结束-->

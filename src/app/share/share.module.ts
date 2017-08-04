@@ -66,6 +66,7 @@ import {BucketFolder} from "./model/bucket-folder.model";
     /*表情模型*/
     Face,
 
+    RfEditorOptions,
     /*图片上传服务*/
     ImageUploadService,
 

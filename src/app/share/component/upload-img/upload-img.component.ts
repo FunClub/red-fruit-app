@@ -68,7 +68,7 @@ export class UploadImgComponent implements OnInit {
     let count=this.preUploadImgs.length;
     for(let file of files){
       if(count==8){break;}
-      formData.append("moodImgs",file);
+      formData.append("imgs",file);
       count++;
     }
     this.uploadSubscribe=this.uploadService.uploadImg(formData,this.bucketFolder.MOOD).subscribe(res=>{

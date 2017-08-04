@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {RfEditorOptions} from '../../../share/model/rf-editor-options.model';
 import {MoodService} from "../../service/mood.service";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {InsertMood} from "../../model/insert-mood";
+import {Limit} from "../../model/limit.enum";
+import {ToastOptions, ToastsManager} from "ng2-toastr";
+import {NgProgressService} from "ngx-progressbar";
+import {SelectMoodCondition} from "../../model/select-mood-condition.model";
 declare let $:any;
 @Component({
   selector: 'app-mood',
@@ -40,9 +45,18 @@ export class MoodComponent implements OnInit {
   editorContent=" ";
   faceOpened=false;
   uploadImgOpened=false;
-  public rfOptions:RfEditorOptions;
-  constructor(public moodServce:MoodService) {
-    this.rfOptions = new RfEditorOptions();
+
+  constructor(public moodService:MoodService,public rfOptions:RfEditorOptions,public insertMood:InsertMood,
+              private toastsManager:ToastsManager,private toastOptions:ToastOptions,private ngProgressService:NgProgressService,
+              private selectMoodCondition:SelectMoodCondition
+  ) {
+    this.initEditor();
+  }
+
+  /**
+   * 初始化编辑器
+   */
+  initEditor(){
     this.rfOptions.imageResize=false;
     this.rfOptions.placeholderText="今天，有什么不高兴的事吗，写写吧";
     this.rfOptions.toolbarButtons=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
@@ -51,8 +65,46 @@ export class MoodComponent implements OnInit {
     this.rfOptions.quickInsertButtons= ['table', 'ul', 'ol', 'hr'];
   }
   ngOnInit() {
+    this.selectMoodCondition.byHalf=true;
+    this.moodService.selectMood(this.selectMoodCondition).subscribe(res=>{
+      console.log(res);
+    });
   }
 
+  /**
+   * 发布心情
+   */
+  sendMood(){
+    this.insertMood.imgs=this.moodService.sharePreUploadImgs;
+    this.ngProgressService.start();
+    this.moodService.insertMood(this.insertMood).subscribe(res=>{
+      this.clearData();
+      this.ngProgressService.done();
+      if(res){
+        this.toastsManager.success("发表心情成功","发表结果",this.toastOptions);
+      }else{
+        this.toastsManager.error("发表心情失败，请重试","发表结果",this.toastOptions);
+      }
+    });
+  }
+
+  /**
+   * 发布心情后清空数据
+   */
+  clearData(){
+    this.moodService.sharePreUploadImgs=[];
+    this.insertMood.imgs=[];
+    this.insertMood.content="";
+    this.insertMood.limit=1;
+  }
+
+  /**
+   * 改变心情权限
+   * @param limit
+   */
+  changeLimit(limit:number){
+    this.insertMood.limit=limit;
+  }
   /**
    * 关闭表情面板
    * @param uploadImgOpened
@@ -87,7 +139,6 @@ export class MoodComponent implements OnInit {
    * @param faceImg 表情html
    */
   appendFace(faceImg:string){
-    console.log(faceImg)
     $('.mood-editor').froalaEditor('html.insert', faceImg);
   }
 

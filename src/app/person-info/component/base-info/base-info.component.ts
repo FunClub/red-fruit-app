@@ -8,6 +8,9 @@ import {parseDatepickerDate} from "../../../share/utils/time-util";
 import {NgProgressService} from "_ngx-progressbar@2.0.3@ngx-progressbar";
 import {MdDialog} from "@angular/material";
 import {UploadImgComponent} from "../upload-img/upload-img.component";
+import {LoginService} from "../../../login/service/login.service";
+import {HomeService} from "../../../home/service/home.service";
+import {Home} from "../../../home/model/home.model";
 @Component({
   selector: 'app-base-info',
   templateUrl: './base-info.component.html',
@@ -74,13 +77,14 @@ export class BaseInfoComponent implements OnInit {
   characters:string[];
   constructor(private formBuilder:FormBuilder,private baseInfo:BaseInfo,private personInfoService:PersonInfoService,
               private toastsManager: ToastsManager,private ngProgressService:NgProgressService,
-              private toastOptions: ToastOptions,private dialog:MdDialog,
+              private toastOptions: ToastOptions,private dialog:MdDialog,private homeService:HomeService,private homeModel:Home
   ) {
 
     this.cities=cities;
     this.professions=professions;
     this.hobbies=hobbies;
     this.characters=characters;
+
   }
 
   /**
@@ -89,7 +93,7 @@ export class BaseInfoComponent implements OnInit {
   ngOnInit() {
     this.ngProgressService.start();
     this.createForm();
-    this.personInfoService.selectUserBaseInfo().subscribe(res=>{
+    this.personInfoService.selectUserBaseInfo( this.baseInfo.userId).subscribe(res=>{
       this.baseInfo=res;
       this.personInfoService.personBaseInfo=res;
       this.resetControl();
@@ -111,10 +115,11 @@ export class BaseInfoComponent implements OnInit {
     this.ngProgressService.start();
     let updateInfo  = this.infoGroup.value;
     updateInfo.born=parseDatepickerDate(updateInfo.born);
-    updateInfo.userId=this.baseInfo.userId;
     this.personInfoService.updateUserBaseInfo(updateInfo).subscribe(res=>{
       this.ngProgressService.done();
       if(res){
+        //更新主页数据
+        this.homeService.homeInfo.nickname=updateInfo.nickname;
         this.toastsManager.success("资料修改成功","修改结果",this.toastOptions);
       }else{
         this.toastsManager.warning("资料修改失败","修改结果",this.toastOptions);

@@ -12,6 +12,7 @@ import {PersonInfoService} from "./person-info.service";
 import {BaseInfo} from "./model/base-info";
 import {UploadImgComponent} from "./component/upload-img/upload-img.component";
 import {ImageCropperComponent} from "ng2-img-cropper";
+import {ProfileInfo} from "./model/profile-info";
 
 
 
@@ -38,7 +39,10 @@ import {ImageCropperComponent} from "ng2-img-cropper";
     PersonInfoService,
 
     //用户的基本资料模型
-    BaseInfo
+    BaseInfo,
+
+    //用户头像模型
+    ProfileInfo
   ]
 
 })

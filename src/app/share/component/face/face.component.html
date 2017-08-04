@@ -8,8 +8,8 @@
     </div>
     <table id="face-table" cellspacing="0"  (blur)="closeSelf()">
       <tr *ngFor="let face of faces;">
-        <td *ngFor="let face1 of face" align="center">
-          <img (click)="popFacePath(face1.path)"  [src]="face1.path" [md-tooltip]="face1.tip">
+        <td *ngFor="let face1 of face" align="center" (click)="popFacePath(face1.path)">
+          <img   [src]="face1.path" [md-tooltip]="face1.tip">
         </td>
       </tr>
     </table>

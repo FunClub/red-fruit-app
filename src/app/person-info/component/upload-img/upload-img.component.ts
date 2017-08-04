@@ -4,6 +4,9 @@ import {PersonInfoService} from "../../person-info.service";
 import {ToastsManager} from "_ng2-toastr@4.1.2@ng2-toastr/src/toast-manager";
 import {ToastOptions} from "ng2-toastr";
 import {NgProgressService} from "ngx-progressbar";
+import {ProfileInfo} from "../../model/profile-info";
+import {HomeService} from "../../../home/service/home.service";
+import {Home} from "../../../home/model/home.model";
 
 @Component({
   selector: 'app-upload-img',
@@ -17,14 +20,15 @@ export class UploadImgComponent implements OnInit {
   cropper:ImageCropperComponent;
   data: any;
   cropperSettings: CropperSettings;
-  profileInfo={profileImg:'',originalProfileImg:''};
   /**
    * 存储原始图像，便于取消操作还原
    */
   tempOriginalProfileImg:string;
   constructor(private personInfoService:PersonInfoService,private toastsManager:ToastsManager,
-  private toastOptions:ToastOptions,private ngProgressService:NgProgressService
+  private toastOptions:ToastOptions,private ngProgressService:NgProgressService,private profileInfo:ProfileInfo,
+              private homeService:HomeService
   ) {
+
     this.setUpCropper();
   };
   ngOnInit(){
@@ -91,6 +95,8 @@ export class UploadImgComponent implements OnInit {
    this.personInfoService.updateProfileImg(this.profileInfo).subscribe(res=>{
      this.ngProgressService.done();
      if(res){
+       //更新主页数据
+       this.homeService.homeInfo.profileImg= this.profileInfo.profileImg;
        this.toastsManager.success("头像修改成功","修改结果",this.toastOptions);
        //保存更新结果
        this.personInfoService.personBaseInfo.originalProfileImg= this.profileInfo.originalProfileImg;

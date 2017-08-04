@@ -35,8 +35,8 @@
   <md-sidenav mode="side" opened="true" #sidenav   id="sideNavPanel">
     <div id="navContent">
       <div id="userProfile">
-        <img id="profileImg" src="../../../../assets/img/defaultMeImg.png"/>
-        <p id="nickName">笨笨的小熊</p>
+        <img id="profileImg" [src]="homeService.homeInfo.profileImg"/>
+        <p id="nickName">{{homeService.homeInfo.nickname}}</p>
       </div>
       <!--导航ul-->
       <div id="allNav"><!--(click)="changeActiveLink(0)" [ngClass]="{'navActive':activeLinkFlag[0]}"-->

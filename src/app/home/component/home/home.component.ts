@@ -3,6 +3,9 @@ import {Title} from "@angular/platform-browser";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {RedFruitApi} from "../../../share/model/api.model";
 import {HomeService} from "../../service/home.service";
+import {Home} from "../../model/home.model";
+import {LoginService} from "../../../login/service/login.service";
+import {NgProgressService} from "ngx-progressbar";
 
 @Component({
   selector: 'app-home',
@@ -21,9 +24,11 @@ export class HomeComponent implements OnInit {
   routerLinks:Array<any>;
   constructor(private title:Title, private toastsManager: ToastsManager,
               private vcr: ViewContainerRef, private toastOptions:ToastOptions,
-              private homeService:HomeService
+              public homeService:HomeService,
+              private ngProgressService:NgProgressService
 
   ) {
+
     this.toastsManager.setRootViewContainerRef(vcr);
     this.isNavOpen=true;
     this.routerLinks=[
@@ -39,9 +44,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-    this.title.setTitle("红果-主页")
+    this.ngProgressService.start();
+    this.title.setTitle("红果-主页");
+    this.homeService.getHomeInfo().subscribe(res=>{
+      this.ngProgressService.done();
+    });
   }
   top(){
 

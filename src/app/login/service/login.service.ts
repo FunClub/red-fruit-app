@@ -17,7 +17,10 @@ export class LoginService extends BaseService{
    */
   headerTitle:string;
 
-
+  /**
+   * 用户id，便于home模块使用
+   */
+  userId:string;
   /**
    * 保存在提示框上显示的邀请信息
    */
@@ -65,6 +68,9 @@ export class LoginService extends BaseService{
   login(user:any):Observable<any>{
     return this.http.post(this.api.LOGIN,user).map(res=>{
       let result = res.json();
+      if(result.data!=null){
+        this.userId=result.data.userId;
+      }
       return result;
     }).catch(this.handleError);
   }

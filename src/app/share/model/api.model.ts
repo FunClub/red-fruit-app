@@ -4,6 +4,17 @@
 export  class RedFruitApi {
 
   /**
+   * 心情操作api
+   * @type {string}
+   */
+  MOOD:string="mood/";
+  /**
+   * 用户的主页信息
+   * @type {string}
+   */
+  HOME_INFO :string= "home/info";
+
+  /**
    * 图片操作
    * @type {string}
    */
@@ -38,7 +49,8 @@ export  class RedFruitApi {
    * 操作用户的基本信息
    * @type {string}
    */
-  USER_BASE_INFO:string="person-info/base-info";
+  USER_BASE_INFO:string=`person-info/base-info`;
+
   /**
    * 删除邀请信息
    * @param id 邀请id

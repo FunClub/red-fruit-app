@@ -8,6 +8,7 @@ import {PersonCenterModule} from "../person-center/person-center.module";
 import {PersonInfoModule} from "../person-info/person-info.module";
 import {HomeService} from "./service/home.service";
 import {HomeGuard} from "./guard/home.guard";
+import {Home} from "./model/home.model";
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +25,9 @@ import {HomeGuard} from "./guard/home.guard";
     //home服务
     HomeService,
     //home守卫
-    HomeGuard
+    HomeGuard,
+    /*主页模型*/
+    Home
   ]
 })
 export class HomeModule { }

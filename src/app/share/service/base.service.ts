@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class BaseService {
@@ -22,6 +23,7 @@ export class BaseService {
       errMsg = error.message ? error.message : error.toString();
     }
     console.error(errMsg);
+
     return Observable.throw(errMsg);
   }
 }
