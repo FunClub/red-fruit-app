@@ -9,15 +9,17 @@ import { AlbumComponent } from './component/album/album.component';
 import { LeaveMessageComponent } from './component/leave-message/leave-message.component';
 import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
-import {MdMenuModule} from "@angular/material";
+import {MdMenuModule, MdPaginatorModule} from "@angular/material";
 import {MoodService} from "./service/mood.service";
 import {InsertMood} from "./model/insert-mood";
 import {SelectMoodCondition} from "./model/select-mood-condition.model";
+import {PagedMood} from "./model/paged-mood";
 @NgModule({
   imports: [
     CommonModule,
     ShareModule,
-    MdMenuModule
+    MdMenuModule,
+    MdPaginatorModule
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent, MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent],
 
@@ -32,7 +34,10 @@ import {SelectMoodCondition} from "./model/select-mood-condition.model";
     InsertMood,
 
     /*查询心情的条件模型*/
-    SelectMoodCondition
+    SelectMoodCondition,
+
+    /*分页的心情模型*/
+    PagedMood
   ]
 })
 export class PersonCenterModule { }

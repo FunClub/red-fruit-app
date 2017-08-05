@@ -42,5 +42,5 @@ export class ShowMoodImg {
    * 详细大图参数
    * @type {string}
    */
-  DETAIL_IMG="?x-oss-process=image/resize,m_fill,h_700,w_500";
+  DETAIL_IMG="?x-oss-process=image/resize,m_fill,w_500,h_600";
 }

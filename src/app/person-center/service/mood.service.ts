@@ -5,6 +5,7 @@ import {InsertMood} from "../model/insert-mood";
 import {Observable} from "rxjs/Observable";
 import {RedFruitApi} from "../../share/model/api.model";
 import {SelectMoodCondition} from "../model/select-mood-condition.model";
+import {PagedMood} from "../model/paged-mood";
 
 @Injectable()
 export class MoodService extends BaseService{
@@ -17,9 +18,9 @@ export class MoodService extends BaseService{
     super()
   }
 
-  selectMood(condition:SelectMoodCondition):Observable<any>{
+  selectMood(condition:SelectMoodCondition):Observable<PagedMood>{
     return this.http.get(this.api.MOOD+`${condition.byHalf}/${condition.page}/${condition.pageSize}`).
-    map(res=>res.json().data).catch(this.handleError);
+    map(res=>res.json().data as PagedMood).catch(this.handleError);
   }
   /**
    * 插入心情

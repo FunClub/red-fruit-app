@@ -1,17 +1,14 @@
 <div class="mood-all">
     <div class="mood-title">
-      <img class="mood-profile" src="assets/img/defaultMeImg.png">
-      <p class="mood-nickname">大笨猪</p>
-      <p class="mood-howlong">5分钟前</p>
+      <img class="mood-profile" [src]="showMoodDto.profileImg">
+      <p class="mood-nickname">{{showMoodDto.nickname}}</p>
+      <p class="mood-howlong">{{showMoodDto.howLongAgo}}前</p>
     </div>
     <div class="mood-content">
-      <div class="mood-text-content" style="font-size: 15px">
-        在图片处理服务里会有很多参数需要变成Base64位编码，参考RFC4648。
-        注意这里的URL 安全Base64位编码只是用在水印操作某些特定参数(文字水印的文字内容，文字颜色，
-        文字字体及图片水印的水印object)里，不要将其用来签名字符串(Signature)的内容。编码的格式是：
+      <!--心情文本内容-->
+      <div class="mood-text-content" [innerHTML]="showMoodDto.mood.content" style="font-size: 14px"></div>
 
-
-      </div>
+      <!--心情图片内容-->
       <div class="mood-img-content" >
         <div class="mood-img-detail-content" *ngIf="showImgDetail">
           <img #detailImg (mousemove)="changeImgCursor($event,detailImg)"

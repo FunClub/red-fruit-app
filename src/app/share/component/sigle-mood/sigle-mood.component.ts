@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ShowMoodImg} from "../../model/show-mood-img";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+
+import {ShowMoodDto} from "../../../person-center/model/show-mood-dto.model";
+import {RedFruitApi} from "../../model/api.model";
 @Component({
   selector: 'app-sigle-mood',
   templateUrl: './sigle-mood.component.html',
@@ -18,6 +21,11 @@ import {animate, keyframes, state, style, transition, trigger} from "@angular/an
   ]
 })
 export class SigleMoodComponent implements OnInit {
+  /**
+   * 从父组件传来的单个心情数据
+   */
+  @Input()
+  showMoodDto:ShowMoodDto;
   /**
    * 是否显示详细大图
    * @type {boolean}
@@ -60,20 +68,18 @@ export class SigleMoodComponent implements OnInit {
    * 当前图片的光标类型
    */
   currentImgCursorType:number;
-  constructor(public moodOption:ShowMoodImg) {
+  constructor(public moodOption:ShowMoodImg,private api:RedFruitApi) {
     this.smallMoodImgs=[];
     this.smallDetailImgs=[];
+
   }
 
   ngOnInit() {
-    let imgPath:string="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170802163038-157591535120160805113321841093627C.jpg";
-    let imgPath1="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170802184424-1567889106201608071124511436106873A.jpeg";
-    let imgPath2="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170802184424-1567889224201608071124542081480946B.jpg";
-    let imgPath3="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170802213320-15577530872016091409060720686763502016-09-14_090455.png";
-    let imgPath4="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170802213619-1557573916123.JPG";
-    this.orPath=[
-      imgPath,imgPath1,imgPath,imgPath,imgPath3,imgPath4
-    ];
+    this.orPath=[];
+    for(let path of this.showMoodDto.mood.imgs){
+      this.orPath.push(this.api.IMAGE_PREFIX+path)
+    }
+
     for(let smallMoodImg of this.orPath){
       this.smallMoodImgs.push(smallMoodImg+this.moodOption.SMALL_IMG);
     }

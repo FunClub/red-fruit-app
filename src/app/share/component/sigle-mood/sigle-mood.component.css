@@ -39,6 +39,7 @@
 .mood-img-detail-content{
   padding: 10px;
   background: rgb(242,242,245);
+  overflow: hidden;
 }
 .small-detail-img-wrapper{
   display: block;

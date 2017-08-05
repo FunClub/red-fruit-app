@@ -7,6 +7,8 @@ import {Limit} from "../../model/limit.enum";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {NgProgressService} from "ngx-progressbar";
 import {SelectMoodCondition} from "../../model/select-mood-condition.model";
+import {PagedMood} from "../../model/paged-mood";
+import {ShowMoodDto} from "../../model/show-mood-dto.model";
 declare let $:any;
 @Component({
   selector: 'app-mood',
@@ -45,10 +47,10 @@ export class MoodComponent implements OnInit {
   editorContent=" ";
   faceOpened=false;
   uploadImgOpened=false;
-
+  moods:ShowMoodDto[];
   constructor(public moodService:MoodService,public rfOptions:RfEditorOptions,public insertMood:InsertMood,
               private toastsManager:ToastsManager,private toastOptions:ToastOptions,private ngProgressService:NgProgressService,
-              private selectMoodCondition:SelectMoodCondition
+              private selectMoodCondition:SelectMoodCondition,public pagedMood:PagedMood
   ) {
     this.initEditor();
   }
@@ -67,7 +69,8 @@ export class MoodComponent implements OnInit {
   ngOnInit() {
     this.selectMoodCondition.byHalf=true;
     this.moodService.selectMood(this.selectMoodCondition).subscribe(res=>{
-      console.log(res);
+     this.pagedMood=res;
+     this.moods=this.pagedMood.content;
     });
   }
 
