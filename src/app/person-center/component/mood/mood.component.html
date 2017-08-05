@@ -47,7 +47,6 @@
   </div>
   <!--编辑心情操作结束-->
   <div class="all-mood" *ngFor="let mood of moods">
-
       <div class="mood-times" *ngIf="mood.showSortDate">
         <span>{{mood.sortDate}}</span>
       </div>
@@ -64,6 +63,6 @@
         </div>
       </div>
   </div>
-
+  <md-paginator [length]="pagedMood.totalElements" pageSize="3"></md-paginator>
 </main>
 

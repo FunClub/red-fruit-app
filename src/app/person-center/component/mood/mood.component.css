@@ -1,16 +1,17 @@
 main{
-  width:800px;
+  width:750px;
   /*background: white;*/
  /* box-shadow: 0 0 3px rgb(183,183,183); ;*/
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 30px;
 
 }
 
 /*froala编辑器*/
 #froala-editor{
   font-size: 14px;
-  width: 680px;
+  width: 700px;
   border-top: rgb(255,129,64) 4px solid;
   border-radius: 3px;
 }
@@ -19,7 +20,7 @@ main{
 #editor-operation{
   height: 50px;
   border: solid 1px rgb(204,204,204) ;
-  width: 680px;
+  width: 700px;
   background: white;
   border-top: none;
   position: relative;
@@ -122,26 +123,22 @@ main{
 /*展示所有心情*/
 .all-mood{
   border-left: solid 2px rgb(203,203,203);
-  margin: auto;
   width: 690px;
-  float: left;
-  overflow: visible;
+  margin: auto;
+
 }
 
 /*每一个心情*/
 .mood{
   position: relative;
   right: 9px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  float: left;
+  padding-bottom: 20px;
 }
 /*心情总的时间*/
 .mood-times{
   position: relative;
   right: 45px;
-  background: red;
-  margin-bottom: 20px;
+  height: 35px;
 }
 
 .mood-times span{
@@ -163,7 +160,7 @@ main{
 .mood-left{
   width: 40px;
   height: 50px;
-  display: inline-block;
+
   float: left;
 }
 .b-mood-circle{
@@ -183,9 +180,8 @@ main{
 /*心情右边部分*/
 .mood-right{
   width: 640px;
-  float: left;
   background: white;
-  border-radius: 3px;
+  border-radius: 3px; display: inline-block;
   border: solid 1px rgb(220,220,220) ;
 }
 .mood-bottom{

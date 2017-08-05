@@ -8,6 +8,6 @@ export class SelectMoodCondition {
 
   constructor() {
     this.page=0;
-    this.pageSize=10;
+    this.pageSize=3;
   }
 }
