@@ -24,6 +24,10 @@
   font-size: 12px;
   color: gray;
 }
+/*简短时间*/
+.mood-short-date{
+  margin-right: 10px;
+}
 /*心情内容*/
 .mood-content{
   padding-left: 57px;

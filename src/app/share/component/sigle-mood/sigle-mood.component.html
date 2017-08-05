@@ -2,7 +2,7 @@
     <div class="mood-title">
       <img class="mood-profile" [src]="showMoodDto.profileImg">
       <p class="mood-nickname">{{showMoodDto.nickname}}</p>
-      <p class="mood-howlong">{{showMoodDto.howLongAgo}}前</p>
+      <p class="mood-howlong"><span class="mood-short-date">{{showMoodDto.shortDate}}</span>{{showMoodDto.howLongAgo}}前</p>
     </div>
     <div class="mood-content">
       <!--心情文本内容-->

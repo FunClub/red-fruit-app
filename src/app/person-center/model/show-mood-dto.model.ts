@@ -7,4 +7,7 @@ export class ShowMoodDto {
   profileImg:string;
   howLongAgo:string;
   mood:Mood;
+  showSortDate:boolean;
+  sortDate:string;
+  shortDate:string;
 }

@@ -9,6 +9,8 @@ import {NgProgressService} from "ngx-progressbar";
 import {SelectMoodCondition} from "../../model/select-mood-condition.model";
 import {PagedMood} from "../../model/paged-mood";
 import {ShowMoodDto} from "../../model/show-mood-dto.model";
+import {HomeService} from "../../../home/service/home.service";
+import {Mood} from "../../model/mood";
 declare let $:any;
 @Component({
   selector: 'app-mood',
@@ -50,7 +52,7 @@ export class MoodComponent implements OnInit {
   moods:ShowMoodDto[];
   constructor(public moodService:MoodService,public rfOptions:RfEditorOptions,public insertMood:InsertMood,
               private toastsManager:ToastsManager,private toastOptions:ToastOptions,private ngProgressService:NgProgressService,
-              private selectMoodCondition:SelectMoodCondition,public pagedMood:PagedMood
+              private selectMoodCondition:SelectMoodCondition,public pagedMood:PagedMood,private homeService:HomeService
   ) {
     this.initEditor();
   }
@@ -67,10 +69,12 @@ export class MoodComponent implements OnInit {
     this.rfOptions.quickInsertButtons= ['table', 'ul', 'ol', 'hr'];
   }
   ngOnInit() {
+    this.ngProgressService.start();
     this.selectMoodCondition.byHalf=true;
     this.moodService.selectMood(this.selectMoodCondition).subscribe(res=>{
      this.pagedMood=res;
      this.moods=this.pagedMood.content;
+     this.ngProgressService.done();
     });
   }
 
@@ -81,15 +85,20 @@ export class MoodComponent implements OnInit {
     this.insertMood.imgs=this.moodService.sharePreUploadImgs;
     this.ngProgressService.start();
     this.moodService.insertMood(this.insertMood).subscribe(res=>{
-      this.clearData();
-      this.ngProgressService.done();
       if(res){
         this.toastsManager.success("发表心情成功","发表结果",this.toastOptions);
+        this.moodService.selectMood(this.selectMoodCondition).subscribe(res=>{
+          this.pagedMood=res;
+          this.moods=this.pagedMood.content;
+          this.ngProgressService.done();
+        });
       }else{
         this.toastsManager.error("发表心情失败，请重试","发表结果",this.toastOptions);
       }
+      this.clearData();
     });
   }
+
 
   /**
    * 发布心情后清空数据

@@ -1,5 +1,4 @@
 <main [@flyXInOutFromRight] >
-
   <div id="froala-editor" class="mood-editor" [froalaEditor]="rfOptions" [(froalaModel)]="insertMood.content"></div>
   <!--编辑心情操作开始-->
   <div id="editor-operation">
@@ -47,23 +46,24 @@
     </div>
   </div>
   <!--编辑心情操作结束-->
-  <div id="all-mood">
-    <div class="mood-times">
-      <span>今天</span>
-    </div>
-    <div class="mood" *ngFor="let mood of moods">
-      <div class="mood-left">
-        <span class="b-mood-circle"></span>
-        <img class="leftTriangle" src="../../../../assets/img/bg_dot_left3.png"/>
+  <div class="all-mood" *ngFor="let mood of moods">
+
+      <div class="mood-times" *ngIf="mood.showSortDate">
+        <span>{{mood.sortDate}}</span>
       </div>
-      <div class="mood-right">
-        <app-sigle-mood [showMoodDto]="mood"></app-sigle-mood>
-        <div class="mood-bottom">
-          <app-art-operation></app-art-operation>
+      <div class="mood" >
+        <div class="mood-left">
+          <span class="b-mood-circle"></span>
+          <img class="leftTriangle" src="../../../../assets/img/bg_dot_left3.png"/>
+        </div>
+        <div class="mood-right">
+          <app-sigle-mood [showMoodDto]="mood"></app-sigle-mood>
+          <div class="mood-bottom">
+            <app-art-operation></app-art-operation>
+          </div>
         </div>
       </div>
-    </div>
-
   </div>
-<!--  <md-paginator [pageIndex]="0" pageSize="10"></md-paginator>-->
+
 </main>
+
