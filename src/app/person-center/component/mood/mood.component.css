@@ -184,6 +184,13 @@ main{
   border-radius: 3px; display: inline-block;
   border: solid 1px rgb(220,220,220) ;
 }
+/*心情底部的操作部分*/
 .mood-bottom{
   margin-top: 20px;
+}
+/*分页*/
+md-paginator{
+  margin: auto;
+  margin-top: 20px;
+  width: 640px;
 }

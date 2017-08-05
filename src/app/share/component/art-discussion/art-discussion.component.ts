@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RfEditorOptions} from "../../model/rf-editor-options.model";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {HomeService} from "../../../home/service/home.service";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -30,7 +31,7 @@ export class ArtDiscussionComponent implements OnInit {
   faceOpened=false;
   public editorOptions:RfEditorOptions;
   editorContent:string="";
-  constructor() {
+  constructor(public homeService:HomeService) {
     this.editorOptions= new RfEditorOptions();
     this.editorOptions.toolbarButtons=[];
     this.editorOptions.toolbarButtonsSM=[];

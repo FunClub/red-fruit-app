@@ -9,15 +9,6 @@ export class PagedMood {
   totalElements:number;
 
   /**
-   * 总页数
-   */
-  totalPages:number;
-
-  /**
-   * 当前的页数
-   */
-  currentPage:number;
-  /**
    * 心情数组
    */
   content:ShowMoodDto[];

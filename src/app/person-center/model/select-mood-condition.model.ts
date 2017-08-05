@@ -3,11 +3,11 @@
  */
 export class SelectMoodCondition {
   byHalf:boolean;
-  page:number;
+  pageIndex:number;
   pageSize:number;
 
   constructor() {
-    this.page=0;
-    this.pageSize=3;
+    this.pageIndex=0;
+    this.pageSize=5;
   }
 }

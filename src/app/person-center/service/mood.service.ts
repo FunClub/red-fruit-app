@@ -19,7 +19,7 @@ export class MoodService extends BaseService{
   }
 
   selectMood(condition:SelectMoodCondition):Observable<PagedMood>{
-    return this.http.get(this.api.MOOD+`${condition.byHalf}/${condition.page}/${condition.pageSize}`).
+    return this.http.get(this.api.MOOD+`${condition.byHalf}/${condition.pageIndex}/${condition.pageSize}`).
     map(res=>res.json().data as PagedMood).catch(this.handleError);
   }
   /**

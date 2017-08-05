@@ -36,8 +36,8 @@ declare let $:any;
   trigger('flyXInOutFromRight', [
     transition('void => *', [
       animate("300ms",keyframes([
-        style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
-        style({opacity: 0.5, transform: 'translateX(15px)',  offset: 0.3}),
+        style({opacity: 0, transform: 'translateX(5%)', offset: 0}),
+        style({opacity: 0.5, transform: 'translateX(5px)',  offset: 0.3}),
         style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})
       ]))
     ]),
@@ -50,11 +50,13 @@ export class MoodComponent implements OnInit {
   faceOpened=false;
   uploadImgOpened=false;
   moods:ShowMoodDto[];
+  pageSizeOptions = [5, 10, 25, 100];
   constructor(public moodService:MoodService,public rfOptions:RfEditorOptions,public insertMood:InsertMood,
               private toastsManager:ToastsManager,private toastOptions:ToastOptions,private ngProgressService:NgProgressService,
-              private selectMoodCondition:SelectMoodCondition,public pagedMood:PagedMood,private homeService:HomeService
+              public selectMoodCondition:SelectMoodCondition,public pagedMood:PagedMood,private homeService:HomeService
   ) {
     this.initEditor();
+
   }
 
   /**
@@ -69,15 +71,13 @@ export class MoodComponent implements OnInit {
     this.rfOptions.quickInsertButtons= ['table', 'ul', 'ol', 'hr'];
   }
   ngOnInit() {
-    this.ngProgressService.start();
-    this.selectMoodCondition.byHalf=true;
-    this.moodService.selectMood(this.selectMoodCondition).subscribe(res=>{
-     this.pagedMood=res;
-     this.moods=this.pagedMood.content;
-     this.ngProgressService.done();
-    });
-  }
+    this.initPaginator();
+    this.selectMood();
 
+  }
+ initPaginator(){
+    $(".mat-paginator-page-size-label").html("每页心情数量:")
+ }
   /**
    * 发布心情
    */
@@ -98,8 +98,21 @@ export class MoodComponent implements OnInit {
       this.clearData();
     });
   }
-
-
+  changedPage(e){
+    this.selectMoodCondition.pageSize=e.pageSize;
+    this.selectMoodCondition.pageIndex=e.pageIndex;
+    this.selectMood();
+    $(".mat-sidenav-content").scrollTop(250);
+  }
+  selectMood(){
+    this.ngProgressService.start();
+    this.selectMoodCondition.byHalf=true;
+    this.moodService.selectMood(this.selectMoodCondition).subscribe(res=>{
+      this.pagedMood=res;
+      this.moods=this.pagedMood.content;
+      this.ngProgressService.done();
+    });
+  }
   /**
    * 发布心情后清空数据
    */
