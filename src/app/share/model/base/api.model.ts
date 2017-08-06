@@ -2,7 +2,25 @@
  * 应用api
  */
 export  class RedFruitApi {
+  /**
+   * 心情点赞
+   * @param moodId
+   * @returns {string}
+   * @constructor
+   */
+  MOOD_THUMBSUP(moodId:string){
+    return `mood/${moodId}/thumbsUpUserIds`
+  }
+  /**
+   *查询评论等
+   */
+    DISCUSSION:string="discussion/";
 
+  /**
+   * 父级评论
+   * @type {string}
+   */
+  PARENT_DISCUSSION:string="discussion/parent-discussion";
   /**
    * 心情操作api
    * @type {string}

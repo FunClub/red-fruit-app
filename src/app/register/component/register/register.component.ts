@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RedFruitApi} from "../../../share/model/api.model";
+import {RedFruitApi} from "../../../share/model/base/api.model";
 import {
   FormBuilder, FormControl, FormGroup, ValidationErrors,
   Validators

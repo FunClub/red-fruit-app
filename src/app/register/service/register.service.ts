@@ -4,7 +4,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
 import {ValidationErrors} from "@angular/forms";
-import {RedFruitApi} from "../../share/model/api.model";
+import {RedFruitApi} from "../../share/model/base/api.model";
 import {BaseService} from "../../share/service/base.service";
 @Injectable()
 export class RegisterService extends BaseService{

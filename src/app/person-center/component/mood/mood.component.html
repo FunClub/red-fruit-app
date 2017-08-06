@@ -58,7 +58,7 @@
         <div class="mood-right">
           <app-sigle-mood [showMoodDto]="mood"></app-sigle-mood>
           <div class="mood-bottom">
-            <app-art-operation></app-art-operation>
+            <app-art-operation artType="mood" [discussionCount]="mood.discussionCount" [thumbsUpCount]="mood.thumbsUpCount" [thumbsUpAble]="mood.thumbsUpAble" [artId]="mood.moodId"></app-art-operation>
           </div>
         </div>
       </div>

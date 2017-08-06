@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewContainerRef, ViewEncapsulation} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
-import {RedFruitApi} from "../../../share/model/api.model";
+import {RedFruitApi} from "../../../share/model/base/api.model";
 import {HomeService} from "../../service/home.service";
 import {Home} from "../../model/home.model";
 import {LoginService} from "../../../login/service/login.service";

@@ -7,7 +7,7 @@ import {BrowserXhr, HttpModule} from "@angular/http";
 import {MD_PLACEHOLDER_GLOBAL_OPTIONS} from "@angular/material";
 import {ToastOptions} from "ng2-toastr";
 import {BaseToastsOptions} from "./share/model/toasts-options.model";
-import {RedFruitApi} from "./share/model/api.model";
+import {RedFruitApi} from "./share/model/base/api.model";
 import {Regex} from "./share/model/regex.model";
 import {HomeModule} from "./home/home.module";
 import {PersonCenterModule} from "./person-center/person-center.module";

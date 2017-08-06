@@ -15,5 +15,6 @@ export class RfEditorOptions {
   quickInsertButtons=null;
   htmlDoNotWrapTags=['script', 'style', 'img'];
   imageEditButtons=['imageReplace', 'imageAlign', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', '-', 'imageDisplay', 'imageStyle']
-/*  imageUploadURL="share/upload";*/
+  enter="$.FroalaEditor.ENTER_BR";
+  /*  imageUploadURL="share/upload";*/
 }

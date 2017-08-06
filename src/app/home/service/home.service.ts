@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {BaseService} from "../../share/service/base.service";
-import {RedFruitApi} from "../../share/model/api.model";
+import {RedFruitApi} from "../../share/model/base/api.model";
 import {Observable} from "rxjs/Observable";
 import {Home} from "../model/home.model";
 

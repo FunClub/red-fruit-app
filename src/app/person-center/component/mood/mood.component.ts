@@ -64,7 +64,7 @@ export class MoodComponent implements OnInit {
    */
   initEditor(){
     this.rfOptions.imageResize=false;
-    this.rfOptions.placeholderText="今天，有什么不高兴的事吗，写写吧";
+    this.rfOptions.placeholderText="亲爱的"+this.homeService.homeInfo.nickname+"，有什么高兴的事吗，写写吧";
     this.rfOptions.toolbarButtons=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
     this.rfOptions.toolbarButtonsXS=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
     this.rfOptions.toolbarButtonsSM=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
@@ -73,7 +73,6 @@ export class MoodComponent implements OnInit {
   ngOnInit() {
     this.initPaginator();
     this.selectMood();
-
   }
  initPaginator(){
     $(".mat-paginator-page-size-label").html("每页心情数量:")

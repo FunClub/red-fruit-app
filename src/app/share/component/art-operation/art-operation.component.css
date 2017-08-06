@@ -26,15 +26,19 @@
   color: rgb(170,170,170);
   cursor: pointer;
 }
-.all-operation i:hover{
-  color: orange;
-}
+
 /*次数*/
 .count{
   font-size: 13px;
   display: inline-block;
-
   color: rgb(150,150,150);
+  position: relative;
+  top: -6px;
+}
+
+/*已点赞*/
+.thumbsUpDisable{
+  color: orange !important;
 }
 /*评论打开打样式*/
 .discussOpened{

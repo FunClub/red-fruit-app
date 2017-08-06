@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ImageUploadService} from "../../service/image-upload.service";
-import {RedFruitApi} from "../../model/api.model";
+import {RedFruitApi} from "../../model/base/api.model";
 import {MoodService} from "../../../person-center/service/mood.service";
 import {BucketFolder} from "../../model/bucket-folder.model";
 

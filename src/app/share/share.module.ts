@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Regex} from "./model/regex.model";
-import {RedFruitApi} from "./model/api.model";
+import {RedFruitApi} from "./model/base/api.model";
 
 import { FooterComponent } from './component/footer/footer.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -24,6 +24,11 @@ import {HttpModule} from "@angular/http";
 import {ShowMoodImg} from "./model/show-mood-img";
 import { ArtDiscussionComponent } from './component/art-discussion/art-discussion.component';
 import {BucketFolder} from "./model/bucket-folder.model";
+import {SendDiscussion} from "./model/discussion/send-discussion.model";
+import {DiscussionService} from "./service/discussion.service";
+import {SelectDiscussion} from "./model/discussion/select-discussion";
+import {ShowPagedDiscussion} from "./model/discussion/show-paged-discussion.model";
+import {ArtType} from "./model/art-opreation/art-type.model";
 
 
 
@@ -75,7 +80,23 @@ import {BucketFolder} from "./model/bucket-folder.model";
     /**
      * oss 文件夹名
      */
-    BucketFolder
+    BucketFolder,
+
+    /*发送评论的模型*/
+    SendDiscussion,
+
+    /*评论服务*/
+    DiscussionService,
+    /**
+     * 查询评论时的条件模型
+     */
+    SelectDiscussion,
+
+    /*显示分好页的评论模型*/
+    ShowPagedDiscussion,
+
+    /*动态类型*/
+    ArtType
   ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent, ArtDiscussionComponent]
 })

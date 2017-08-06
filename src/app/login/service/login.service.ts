@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {Observable} from "rxjs";
-import {RedFruitApi} from "../../share/model/api.model";
+import {RedFruitApi} from "../../share/model/base/api.model";
 import {BaseService} from "../../share/service/base.service";
 import {ValidationErrors} from "@angular/forms";
 import {InviteUser} from "../model/invite-user.model";

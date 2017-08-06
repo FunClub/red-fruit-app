@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {BaseService} from "./base.service";
 import {Observable} from "rxjs/Observable";
-import {RedFruitApi} from "../model/api.model";
+import {RedFruitApi} from "../model/base/api.model";
 
 /**
  * 图片上传相关服务
