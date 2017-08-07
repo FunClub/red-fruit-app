@@ -34,6 +34,9 @@
   margin-right: 20px;
   margin-top: 5px;
 }
+.mood-text-content{
+  text-align: left;
+}
 /*心情的图片内容*/
 .mood-img-content{
   margin-top: 10px;

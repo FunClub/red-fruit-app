@@ -4,7 +4,7 @@
   <div class="write-discussion">
     <div [ngBusy]="{busy:[sendParentDiscussionSubscribe,showDiscussionSubscribe],message:'处理中,请稍候'}"></div>
     <img class="my-profile-img" [src]="homeService.homeInfo.profileImg"/>
-    <div #discussionEditor class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="sendDiscussion.content"></div>
+    <div #discussionEditor id="discussion-editor" class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="sendDiscussion.content"></div>
     <button class="send-discussion-btn" md-raised-button color="primary" (click)="insertDiscussion()">评论</button>
     <div class="all-face-wrapper">
       <button class="toggle-face-btn" md-icon-button (click)="toggleFace()">
@@ -18,35 +18,49 @@
   <!--显示评论-->
   <div class="show-all-discussion">
     <div class="show-discussion-by">
-      <span class="active-discussion-by">按热度</span>
-      <span>按时间</span>
+      <span class="active-discussion-by">按时间</span>
+      <span >按热度</span>
     </div>
     <!--一个评论开始-->
-    <div class="discussion" *ngFor="let parentDiscussion of  parentDiscussions">
+    <div class="discussion" *ngFor="let parentDiscussion of  parentDiscussions;let i=index;">
       <img class="discussion-profile" [src]="parentDiscussion.profileImg"/>
       <div class="discussion-content">
         <!--父级评论-->
         <div class="parent-discussion">
-          <span class="parent-discussion-nickname">{{parentDiscussion.nickName}}</span>
-          <span class="discussion-text" [innerHTML]="parentDiscussion.content"></span>
+          <span class="parent-discussion-nickname">{{parentDiscussion.nickname}}</span> <span class="lou">#{{i+1}}楼</span>
+          <div class="discussion-text" [innerHTML]="parentDiscussion.content"></div>
           <div class="discussion-info">
             <span class="discussion-time">{{parentDiscussion.sortDate}} {{parentDiscussion.shortDate}}</span>
-            <div class="discussion-operation">
-              <button class="each-operation-btn" md-icon-button><i  class="material-icons">reply</i></button>
-              <button class="each-operation-btn" md-icon-button><i  class="material-icons">thumb_up</i><span>{{parentDiscussion.thumbsUpCount>0?parentDiscussion.thumbsUpCount:""}}</span></button>
+            <div class="discussion-operation" >
+              <button class="each-operation-btn" md-icon-button (click)="toggleParentReply(parentDiscussion)">
+                <i  class="material-icons">reply</i>
+                <span>回复</span>
+              </button>
+              <button class="each-operation-btn" (click)="updateThumbsUpUserIds(parentDiscussion)" md-icon-button mdTooltip="{{parentDiscussion.thumbsUpAble?'点个赞':'已赞'}}">
+                <i [ngClass]="{'disableThumbsUp':!parentDiscussion.thumbsUpAble}"  class="material-icons">thumb_up</i>
+                <span>{{parentDiscussion.thumbsUpCount>0?parentDiscussion.thumbsUpCount:"赞"}}</span></button>
+            </div>
+            <div class="reply-discussion-wrapper" *ngIf="parentDiscussion.showReply">
+              <app-reply-discussion [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
             </div>
           </div>
         </div>
         <!--子级评论-->
-        <div class="all-sub-discussion">
-          <div class="sub-discussion">
-            <span class="sub-discussion-nickname">张杰达娃儿</span>
-            <span class="discussion-text">:在图片处理服务里会有很多参数需要变成Base64位编码，参考RFC4648。 注意这里的URL 安全Base64位编码只是用在水印</span>
+        <div class="all-sub-discussion" *ngIf="parentDiscussion.subDiscussionDtos">
+          <div class="sub-discussion" *ngFor="let subDiscussion of parentDiscussion.subDiscussionDtos">
+            <span class="sub-discussion-nickname">{{subDiscussion.nickname}}:</span>
+            <span class="discussion-to-nickname" *ngIf="subDiscussion.sendToNickname">@{{subDiscussion.sendToNickname}}</span>
+            <span class="discussion-text" [innerHTML]="subDiscussion.content"></span>
             <div class="discussion-info">
-              <span class="discussion-time">今天:17:35</span>
+              <span class="discussion-time">{{subDiscussion.sortDate}} {{subDiscussion.shortDate}}</span>
               <div class="discussion-operation">
-                <button class="each-operation-btn" md-icon-button><i  class="material-icons">reply</i></button>
-                <button class="each-operation-btn" md-icon-button><i  class="material-icons">thumb_up</i><span>123</span></button>
+                <button class="each-operation-btn" md-icon-button (click)="toggleSubReply(subDiscussion)">
+                  <i  class="material-icons">reply</i>
+                  <span>回复</span>
+                </button>
+              </div>
+              <div class="reply-discussion-wrapper" *ngIf="subDiscussion.showReply">
+                <app-reply-discussion [sendToUserId]="subDiscussion.userId" [sendToNickName]="subDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
               </div>
             </div>
           </div>
@@ -57,7 +71,14 @@
     <!--一个评论结束-->
 
   </div>
-  <button class="show-more-discussion-btn" md-raised-button color="primary">查看更多<i class="material-icons">more_vert</i></button>
+  <button md-icon-button class="close-discussion" (click)="closeAllDiscussion()">
+    收起
+  </button>
+    <button *ngIf="totalElements>10" class="show-more-discussion-btn" md-raised-button color="primary">
+      查看更多<i class="material-icons">more_vert</i>
+    </button>
+
+
 </div>
 <!--所有评论结束-->
 

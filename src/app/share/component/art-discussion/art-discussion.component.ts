@@ -1,12 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {RfEditorOptions} from "../../model/rf-editor-options.model";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {HomeService} from "../../../home/service/home.service";
-import {SendDiscussion} from "../../model/discussion/send-discussion.model";
+import {InsertDiscussion} from "../../model/discussion/insert-discussion.model";
 import {DiscussionService} from "../../service/discussion.service";
 import {SelectDiscussion} from "../../model/discussion/select-discussion";
 import {ShowPagedDiscussion} from "../../model/discussion/show-paged-discussion.model";
 import {ShowParentDiscussion} from "../../model/discussion/show-parent-discussion.model";
+import {DomSanitizer} from "@angular/platform-browser";
+import {ShowSubDiscussion} from "../../model/discussion/show-sub-discussion.model";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -34,26 +36,60 @@ declare let $:any;
 export class ArtDiscussionComponent implements OnInit {
   @Input()
   artId:string;
-
+  @Output()
+  addDiscussionCount=new EventEmitter();
+  @Output()
+  closeDiscussion=new EventEmitter();
   faceOpened=false;
   sendParentDiscussionSubscribe;
   showDiscussionSubscribe;
   parentDiscussions:ShowParentDiscussion[];
+  totalElements:number;
   public editorOptions:RfEditorOptions;
-  constructor(public homeService:HomeService,public sendDiscussion:SendDiscussion,private discussionService:DiscussionService,
-              private selectDiscussion:SelectDiscussion,private pagedDiscussion:ShowPagedDiscussion) {
+  sendDiscussion:InsertDiscussion;
+  constructor(public homeService:HomeService,private discussionService:DiscussionService,
+              private selectDiscussion:SelectDiscussion,private pagedDiscussion:ShowPagedDiscussion,private dom:DomSanitizer) {
     this.initEditor();
-
+    this.sendDiscussion = new InsertDiscussion();
   }
 
   ngOnInit() {
     this.selectDiscussion.artId=this.artId;
     this.showDiscussion();
   }
-  showDiscussion(){
 
+  /**
+   * 父级评论显示与隐藏切换
+   * @param discussion 父级评论
+   */
+  toggleParentReply(discussion:ShowParentDiscussion){
+    discussion.showReply=!discussion.showReply;
+  }
+
+  /**
+   * 子级评论显示与隐藏切换
+   * @param discussion
+   */
+  toggleSubReply(discussion:ShowSubDiscussion){
+    discussion.showReply=!discussion.showReply;
+  }
+  /**
+   *点赞
+   */
+  updateThumbsUpUserIds(parentDiscussion:ShowParentDiscussion){
+      if(parentDiscussion.thumbsUpAble){
+        this.discussionService.updateThumbsUpUserIds(parentDiscussion.discussionId).subscribe(res=>{
+          parentDiscussion.thumbsUpAble=false;parentDiscussion.thumbsUpCount++;
+        });
+      }
+  }
+  /**
+   * 查询评论
+   */
+  showDiscussion(){
     this.showDiscussionSubscribe=this.discussionService.selectDiscussion(this.selectDiscussion).subscribe(res=>{
       this.parentDiscussions=res.content;
+      this.totalElements=res.totalElements;
     });
   }
   /**
@@ -63,6 +99,7 @@ export class ArtDiscussionComponent implements OnInit {
     this.sendDiscussion.artId=this.artId;
     this.sendParentDiscussionSubscribe=this.discussionService.insertParentDiscussion(this.sendDiscussion).subscribe(res=>{
           if(res){
+            this.addDiscussionCount.emit();
             this.sendDiscussion.content="";
             this.showDiscussion();
           }
@@ -101,4 +138,10 @@ export class ArtDiscussionComponent implements OnInit {
     this.faceOpened=faceOpened;
   }
 
+  /**
+   * 关闭评论
+   */
+  closeAllDiscussion(){
+    this.closeDiscussion.emit();
+  }
 }

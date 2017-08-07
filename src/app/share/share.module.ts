@@ -4,7 +4,7 @@ import {Regex} from "./model/regex.model";
 import {RedFruitApi} from "./model/base/api.model";
 
 import { FooterComponent } from './component/footer/footer.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
@@ -24,11 +24,14 @@ import {HttpModule} from "@angular/http";
 import {ShowMoodImg} from "./model/show-mood-img";
 import { ArtDiscussionComponent } from './component/art-discussion/art-discussion.component';
 import {BucketFolder} from "./model/bucket-folder.model";
-import {SendDiscussion} from "./model/discussion/send-discussion.model";
+import {InsertDiscussion} from "./model/discussion/insert-discussion.model";
 import {DiscussionService} from "./service/discussion.service";
 import {SelectDiscussion} from "./model/discussion/select-discussion";
 import {ShowPagedDiscussion} from "./model/discussion/show-paged-discussion.model";
 import {ArtType} from "./model/art-opreation/art-type.model";
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { ReplyDiscussionComponent } from './component/reply-discussion/reply-discussion.component';
+import {InsertSubDiscussion} from "./model/discussion/insert-sub-discussion";
 
 
 
@@ -37,6 +40,7 @@ import {ArtType} from "./model/art-opreation/art-type.model";
     CommonModule,
     HttpModule,
     MdInputModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule,
     MdButtonModule,
@@ -82,8 +86,8 @@ import {ArtType} from "./model/art-opreation/art-type.model";
      */
     BucketFolder,
 
-    /*发送评论的模型*/
-    SendDiscussion,
+    /*插入评论的模型*/
+    InsertDiscussion,
 
     /*评论服务*/
     DiscussionService,
@@ -96,8 +100,14 @@ import {ArtType} from "./model/art-opreation/art-type.model";
     ShowPagedDiscussion,
 
     /*动态类型*/
-    ArtType
-  ],
-  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent, FaceComponent, UploadImgComponent, ArtDiscussionComponent]
+    ArtType,
+
+    /**
+     * 插入子评论模型
+     */
+    InsertSubDiscussion
+    ],
+  declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
+    FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent]
 })
 export class ShareModule { }

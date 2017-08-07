@@ -13,7 +13,7 @@ export class RfEditorOptions {
   imageResize=true;
   editorClass='editor-class';
   quickInsertButtons=null;
-  htmlDoNotWrapTags=['script', 'style', 'img'];
+  htmlDoNotWrapTags=['script', 'img'];
   imageEditButtons=['imageReplace', 'imageAlign', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', '-', 'imageDisplay', 'imageStyle']
   enter="$.FroalaEditor.ENTER_BR";
   /*  imageUploadURL="share/upload";*/

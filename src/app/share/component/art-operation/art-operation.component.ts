@@ -59,9 +59,15 @@ export class ArtOperationComponent implements OnInit {
   constructor(private artType:ArtType,private moodService:MoodService) {
   }
 
+  /**
+   * 添加评论数
+   */
+  addDiscussionCount(){
+      this.discussionCount++;
+  }
   ngOnInit() {
   }
-  openDiscussion(){
+  toggleDiscussion(){
     this.isDiscussOpen=!this.isDiscussOpen;
   }
 
@@ -77,7 +83,7 @@ export class ArtOperationComponent implements OnInit {
       this.moodService.updateThumbsUpUserIds(this.artId).subscribe(res=>{
         if(res){
           this.thumbsUpAble=false;
-          console.log(this.thumbsUpAble);
+           this.thumbsUpCount++;
         }
       });
     }

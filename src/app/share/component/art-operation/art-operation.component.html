@@ -7,15 +7,15 @@
     <i class="material-icons">favorite</i>
 
   </div>
-  <div class="operation" (click)="openDiscussion()">
+  <div class="operation" (click)="toggleDiscussion()">
     <i class="material-icons" >sms</i>
-    <span class="count">{{discussionCount>0?discussionCount:""}}</span>
+    <span class="count">{{discussionCount>0?discussionCount:"评论"}}</span>
   </div>
   <div class="operation" mdTooltip="{{thumbsUpAble?'点个赞':'已赞'}}" (click)="updateThumbsUpCount()">
     <i class="material-icons" [ngClass]="{'thumbsUpDisable':!thumbsUpAble}">thumb_up</i>
-    <span class="count">{{thumbsUpCount>0?thumbsUpCount:""}}</span>
+    <span class="count">{{thumbsUpCount>0?thumbsUpCount:"赞"}}</span>
   </div>
 </div>
 <!--动态操作结束-->
-<app-art-discussion *ngIf="isDiscussOpen" [artId]="artId"></app-art-discussion>
+<app-art-discussion (addDiscussionCount)="addDiscussionCount()" (closeDiscussion)="toggleDiscussion()" *ngIf="isDiscussOpen" [artId]="artId"></app-art-discussion>
 

@@ -2,6 +2,21 @@
  * 应用api
  */
 export  class RedFruitApi {
+
+  /**
+   * 插入子评论
+   * @type {string}
+   */
+  SUB_DISCUSSION="discussion/sub-discussion";
+  /**
+   * 给评论点赞
+   * @param discussionId 评论ID
+   * @returns {string}
+   * @constructor
+   */
+  DISCUSSION_THUMBSUP(discussionId:string){
+    return  `discussion/${discussionId}/thumbsUpUserIds`;
+  }
   /**
    * 心情点赞
    * @param moodId

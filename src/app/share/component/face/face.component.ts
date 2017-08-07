@@ -54,7 +54,7 @@ export class FaceComponent implements OnInit {
     this.faceOpened.emit(false);
   }
   popFacePath(facePath:string){
-    let faceImg=`<img src=${facePath}>`;
+    let faceImg=`<img src=${facePath} class="a-f">`;
     this.faceSelected.emit(faceImg);
   }
   closeSelf(){

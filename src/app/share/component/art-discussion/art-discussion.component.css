@@ -1,6 +1,7 @@
 /*所有评论*/
 .all-discussion{
   padding: 20px;
+  background: rgb(242,242,245);
 }
 /*我的头像*/
 .my-profile-img{
@@ -91,7 +92,7 @@
   margin-top: 10px;
   border-bottom: solid 1px rgb(233,233,233);
   padding-bottom: 10px;
-  overflow: hidden;
+
 }
 /*父级评论*/
 .parent-discussion{
@@ -107,8 +108,7 @@
 }
 /*评论体,评论右边部分*/
 .discussion-content{
- float: right;
-  width: 560px;
+padding-left: 40px;
 }
 /*父级评论人姓名*/
 .parent-discussion-nickname{
@@ -116,20 +116,24 @@
   color:rgb(255,129,64);
   font-weight: bold;
 }
+/*楼层*/
+.lou{
+  font-size: 12px;
+  color: rgb(150,150,150);
+  margin-left: 5px;
+}
 /*评论内容*/
 .discussion-text{
   color: rgb(50,50,50);
-  font-size: 14px;
+  font-size: 13px;
 }
-.discussion-text p{
-  color: red;
+.disableThumbsUp{
+  color:rgb(255,129,64)!important;
 }
 /*评论相关，时间和操作*/
 .discussion-info{
   font-size: 13px;
   margin-top: 5px;
-  height: 20px;
-
 }
 /*评论时间*/
 .discussion-time{
@@ -140,23 +144,36 @@
   float: right;
 
 }
-.discussion-operation span{
-  margin-right: 10px;
-}
+
 /*操作按钮*/
 .each-operation-btn{
   height: 20px;
+  width: 50px;
   line-height: 0px;
-  margin-right: 10px;
 }
 .each-operation-btn span{
-  font-size: 13px;
+  font-size: 12px;
   color: rgb(100,100,100);
   margin-left: 3px;
+}
+.each-operation-btn span:hover{
+  color:rgb(255,129,64);
 }
 .each-operation-btn i{
   font-size: 18px;
   color: rgb(150,150,150);
+}
+/*回复Div包裹*/
+.reply-discussion-wrapper{
+  margin-top: 20px;
+  background: white;
+  padding: 10px;
+  position: relative;
+}
+
+.reply-textarea:focus{
+  border-color: orange;
+  box-shadow: none;
 }
 /*所有的子级评论*/
 .all-sub-discussion{
@@ -175,11 +192,25 @@
   color:rgb(255,129,64);
 
 }
+/*评论目标昵称*/
+.discussion-to-nickname{
+  font-size: 14px;
+  color:rgb(255,129,64);
+}
 /*显示更多评论按钮*/
+.bottom-operation{
+  margin-top: 20px;
+  position: relative;
+}
 .show-more-discussion-btn{
   margin: auto;
-  margin-top: 20px;
   width: 30%;
   display: block;
   background: rgb(34,170,210);
+
+}
+/*关闭评论*/
+.close-discussion{
+  float: right;
+  text-decoration: underline;
 }
