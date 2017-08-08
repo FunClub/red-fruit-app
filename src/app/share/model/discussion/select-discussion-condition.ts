@@ -1,14 +1,14 @@
 /**
  * 查询评论时的条件模型
  */
-export class SelectDiscussion{
+export class SelectDiscussionCondition{
   artId:string;
   sortBy:string;
   pageIndex:number;
   pageSize:number;
 
   constructor() {
-    this.sortBy="latest";
+    this.sortBy="hot";
     this.pageIndex=0;
     this.pageSize=10;
   }

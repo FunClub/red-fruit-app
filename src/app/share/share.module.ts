@@ -8,7 +8,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
-import {MdButtonModule, MdInputModule, MdTabsModule, MdTooltipModule} from "@angular/material";
+import {
+  MdButtonModule, MdDialogModule, MdInputModule, MdPaginatorModule, MdTabsModule,
+  MdTooltipModule
+} from "@angular/material";
 
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {RfEditorOptions} from "./model/rf-editor-options.model";
@@ -19,23 +22,20 @@ import {Face} from "./model/face.model";
 import { UploadImgComponent } from './component/upload-img/upload-img.component';
 import {ImageUploadService} from "./service/image-upload.service";
 import {DndModule} from "ng2-dnd";
-import {BusyConfig, BusyModule} from "angular2-busy";
+import {BusyModule} from "angular2-busy";
 import {HttpModule} from "@angular/http";
 import {ShowMoodImg} from "./model/show-mood-img";
 import { ArtDiscussionComponent } from './component/art-discussion/art-discussion.component';
 import {BucketFolder} from "./model/bucket-folder.model";
 import {InsertDiscussion} from "./model/discussion/insert-discussion.model";
 import {DiscussionService} from "./service/discussion.service";
-import {SelectDiscussion} from "./model/discussion/select-discussion";
 import {ShowPagedDiscussion} from "./model/discussion/show-paged-discussion.model";
 import {ArtType} from "./model/art-opreation/art-type.model";
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ReplyDiscussionComponent } from './component/reply-discussion/reply-discussion.component';
-import {InsertSubDiscussion} from "./model/discussion/insert-sub-discussion";
 import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
-
-
-
+import { MoreDiscussionComponent } from './component/more-discussion/more-discussion.component';
+import { OpenMoreDiscussionComponent } from './component/open-more-discussion/open-more-discussion.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -45,11 +45,13 @@ import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
     ReactiveFormsModule,
     RouterModule,
     MdButtonModule,
+    MdDialogModule,
     MdTooltipModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     DndModule.forRoot(),
-    BusyModule
+    BusyModule,
+    MdPaginatorModule
   ],
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,
@@ -62,8 +64,10 @@ import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
     MdButtonModule,
     FaceComponent,
     UploadImgComponent,
-    ArtDiscussionComponent
+    ArtDiscussionComponent,
+    OpenMoreDiscussionComponent
   ],
+  entryComponents:[MoreDiscussionComponent],
   providers:[
     /*注入全局的api*/
     RedFruitApi,
@@ -92,10 +96,6 @@ import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
 
     /*评论服务*/
     DiscussionService,
-    /**
-     * 查询评论时的条件模型
-     */
-    SelectDiscussion,
 
     /*显示分好页的评论模型*/
     ShowPagedDiscussion,
@@ -103,15 +103,10 @@ import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
     /*动态类型*/
     ArtType,
 
-    /**
-     * 插入子评论模型
-     */
-    InsertSubDiscussion,
-
     /*刷新父级评论*/
     RefreshDiscussion
     ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
-    FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent]
+    FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent, MoreDiscussionComponent, OpenMoreDiscussionComponent]
 })
 export class ShareModule { }

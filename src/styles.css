@@ -87,6 +87,16 @@
   margin-left: 3px;
   margin-right: 3px;
 }
+/*material dialog*/
+.mat-dialog-container{
+  padding: 0!important;
+}
+/*显示更多评论dialog*/
+.more-discussion-panel{
+  position: absolute;
+  height: 90%;
+  width: 60%;
+}
 *{
   margin: 0;
   padding: 0;

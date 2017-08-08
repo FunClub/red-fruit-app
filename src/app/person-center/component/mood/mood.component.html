@@ -58,11 +58,14 @@
         <div class="mood-right">
           <app-sigle-mood [showMoodDto]="mood"></app-sigle-mood>
           <div class="mood-bottom">
-            <app-art-operation artType="mood" [discussionCount]="mood.discussionCount" [thumbsUpCount]="mood.thumbsUpCount" [thumbsUpAble]="mood.thumbsUpAble" [artId]="mood.moodId"></app-art-operation>
+            <app-art-operation [artArgs]="mood.artArgs"></app-art-operation>
+            <app-art-discussion *ngIf="mood.artArgs.isDiscussOpen" [artArgs]="mood.artArgs"></app-art-discussion>
+            <app-open-more-discussion [artArgs]="mood.artArgs"></app-open-more-discussion>
           </div>
         </div>
       </div>
   </div>
-  <md-paginator (page)="changedPage($event)" [pageSizeOptions]="pageSizeOptions" [length]="pagedMood.totalElements" [pageSize]="selectMoodCondition.pageSize"></md-paginator>
+  <md-paginator (page)="changedPage($event)" [pageSizeOptions]="pageSizeOptions"
+                [length]="pagedMood.totalElements" [pageSize]="selectMoodCondition.pageSize"></md-paginator>
 </main>
 

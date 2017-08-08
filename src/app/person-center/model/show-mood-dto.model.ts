@@ -1,4 +1,5 @@
 import {Mood} from "./mood";
+import {ArtArgs} from "../../share/model/base/art-args.model";
 /**
  * 包含单个心情和头像姓名的dto
  */
@@ -14,4 +15,5 @@ export class ShowMoodDto {
   thumbsUpCount:number;
   thumbsUpAble:boolean;
   discussionCount:number;
+  artArgs:ArtArgs;
 }

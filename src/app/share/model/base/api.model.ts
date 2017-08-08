@@ -4,7 +4,7 @@
 export  class RedFruitApi {
 
   /**
-   * 插入子评论
+   * 子评论
    * @type {string}
    */
   SUB_DISCUSSION="discussion/sub-discussion";
@@ -31,6 +31,9 @@ export  class RedFruitApi {
    */
     DISCUSSION:string="discussion/";
 
+    DELETE_PARENT_DISCUSSION(id:string){
+      return `discussion/${id}/parent-discussion`
+    }
   /**
    * 父级评论
    * @type {string}

@@ -1,15 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {RfEditorOptions} from "../../model/rf-editor-options.model";
-import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {animate, keyframes,style, transition, trigger} from "@angular/animations";
 import {HomeService} from "../../../home/service/home.service";
 import {InsertDiscussion} from "../../model/discussion/insert-discussion.model";
 import {DiscussionService} from "../../service/discussion.service";
-import {SelectDiscussion} from "../../model/discussion/select-discussion";
+import {SelectDiscussionCondition} from "../../model/discussion/select-discussion-condition";
 import {ShowPagedDiscussion} from "../../model/discussion/show-paged-discussion.model";
 import {ShowParentDiscussion} from "../../model/discussion/show-parent-discussion.model";
-import {DomSanitizer} from "@angular/platform-browser";
 import {ShowSubDiscussion} from "../../model/discussion/show-sub-discussion.model";
 import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";
+import {ArtArgs} from "../../model/base/art-args.model";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -34,31 +34,83 @@ declare let $:any;
     ]),
   ]
 })
-export class ArtDiscussionComponent implements OnInit {
+export class ArtDiscussionComponent{
+
+
   @Input()
-  artId:string;
-  @Output()
-  addDiscussionCount=new EventEmitter();
-  @Output()
-  closeDiscussion=new EventEmitter();
+    artArgs:ArtArgs;
+
+  /**
+   * 表情开关
+   * @type {boolean}
+   */
   faceOpened=false;
-  sendParentDiscussionSubscribe;
-  showDiscussionSubscribe;
+
+  /**
+   * 评论订阅，用于显示正在处理的提示
+   */
+  discussionSubscribe;
+
+  /**
+   * 父级评论数组
+   */
   parentDiscussions:ShowParentDiscussion[];
-  totalElements:number;
-  public editorOptions:RfEditorOptions;
+
+  /**
+   * 编辑器配置
+   */
+  editorOptions:RfEditorOptions;
+
+  /**
+   * 评论查询条件
+   */
+  selectDiscussion:SelectDiscussionCondition;
+
+  /**
+   * 插入评论
+   */
   sendDiscussion:InsertDiscussion;
-  constructor(public homeService:HomeService,private discussionService:DiscussionService,
-              private selectDiscussion:SelectDiscussion,private pagedDiscussion:ShowPagedDiscussion,private dom:DomSanitizer) {
+
+
+  constructor(public homeService:HomeService,public discussionService:DiscussionService,
+              private pagedDiscussion:ShowPagedDiscussion) {
     this.initEditor();
     this.sendDiscussion = new InsertDiscussion();
+
+
   }
 
   ngOnInit() {
-    this.selectDiscussion.artId=this.artId;
-    this.showDiscussion();
+    this.selectDiscussion = this.artArgs.selectDiscussionCondition;
+
+    this.selectDiscussion.artId=this.artArgs.artId;
+    if(this.artArgs.discussionCount>0){
+      this.showDiscussion();
+
+    }
+
   }
 
+  /**
+   * 删除评论
+   * @param discussionId 评论id
+   * @param index 评论索引，便于在界面上删除
+   */
+  deleteDiscussion(discussionId:string,index:number){
+    this.discussionSubscribe=this.discussionService.deleteParentDiscussion(discussionId).subscribe(res=>{
+      if(res){
+       this.parentDiscussions.splice(index,1);
+       this.artArgs.discussionCount--;
+      }
+    })
+  }
+  /**
+   * 按照时间或热度排序
+   */
+  sortDiscussionBy(sortBy:string){
+    this.selectDiscussion.sortBy=sortBy;
+    this.showDiscussion();
+  }
   /**
    * 刷新子评论
    * @param refreshDiscussion
@@ -68,7 +120,7 @@ export class ArtDiscussionComponent implements OnInit {
     if(parentDiscussion.subDiscussionDtos==null){
       parentDiscussion.subDiscussionDtos=[];
     }
-    parentDiscussion.subDiscussionDtos.push(refreshDiscussion.subDiscussion)
+    parentDiscussion.subDiscussionDtos.push(refreshDiscussion.subDiscussion);
     //关闭评论回复组件
     if( refreshDiscussion.subDiscussionIndex==null){//如果不是回复子评论，就直接关闭父评论回复
       parentDiscussion.showReply=false;
@@ -106,20 +158,20 @@ export class ArtDiscussionComponent implements OnInit {
    * 查询评论
    */
   showDiscussion(){
-    this.showDiscussionSubscribe=this.discussionService.selectDiscussion(this.selectDiscussion).subscribe(res=>{
+    this.discussionSubscribe=this.discussionService.selectDiscussion(this.selectDiscussion).subscribe(res=>{
       this.parentDiscussions=res.content;
-      this.totalElements=res.totalElements;
     });
   }
   /**
    * 插入父级评论
    */
   insertDiscussion(){
-    this.sendDiscussion.artId=this.artId;
-    this.sendParentDiscussionSubscribe=this.discussionService.insertParentDiscussion(this.sendDiscussion).subscribe(res=>{
+    this.sendDiscussion.artId=this.artArgs.artId;
+    this.discussionSubscribe=this.discussionService.insertParentDiscussion(this.sendDiscussion).subscribe(res=>{
           if(res){
-            this.addDiscussionCount.emit();
+            this.artArgs.discussionCount++;
             this.sendDiscussion.content="";
+            this.parentDiscussions==null? this.parentDiscussions=[]:"";
             this.parentDiscussions.push(res);
           }
     })
@@ -148,6 +200,7 @@ export class ArtDiscussionComponent implements OnInit {
    */
   appendFace(discussionEditor:any,faceImg:string){
     $('.discussion-editor').froalaEditor('html.insert', faceImg);
+    this.faceOpened=false;
   }
   /**
    * 关闭表情面板
@@ -161,6 +214,6 @@ export class ArtDiscussionComponent implements OnInit {
    * 关闭评论
    */
   closeAllDiscussion(){
-    this.closeDiscussion.emit();
+    this.artArgs.isDiscussOpen=false;
   }
 }

@@ -2,7 +2,7 @@
 <div class="all-discussion" [@flyXInOutFromTop]>
   <!--写评论-->
   <div class="write-discussion">
-    <div [ngBusy]="{busy:[sendParentDiscussionSubscribe,showDiscussionSubscribe],message:'处理中,请稍候'}"></div>
+    <div [ngBusy]="{busy:[discussionSubscribe],message:'处理中,请稍候'}"></div>
     <img class="my-profile-img" [src]="homeService.homeInfo.profileImg"/>
     <div #discussionEditor id="discussion-editor" class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="sendDiscussion.content"></div>
     <button class="send-discussion-btn" md-raised-button color="primary" (click)="insertDiscussion()">评论</button>
@@ -16,10 +16,11 @@
     </div>
   </div>
   <!--显示评论-->
-  <div class="show-all-discussion">
+  <div class="show-all-discussion" *ngIf="artArgs.discussionCount>0">
     <div class="show-discussion-by">
-      <span class="active-discussion-by">按时间</span>
-      <span >按热度</span>
+      <span (click)="sortDiscussionBy('hot')" [ngClass]="{'active-discussion-by':selectDiscussion.sortBy=='hot'}">按热度</span>
+      <hr class="sortByHr">
+      <span (click)="sortDiscussionBy('latest')" [ngClass]="{'active-discussion-by':selectDiscussion.sortBy=='latest'}" >按时间</span>
     </div>
     <!--一个评论开始-->
     <div class="discussion" *ngFor="let parentDiscussion of  parentDiscussions;let i=index;">
@@ -27,18 +28,23 @@
       <div class="discussion-content">
         <!--父级评论-->
         <div class="parent-discussion">
-          <span class="parent-discussion-nickname">{{parentDiscussion.nickname}}</span> <span class="lou">#{{i+1}}楼</span>
+          <span class="parent-discussion-nickname">{{parentDiscussion.nickname}}</span> <span class="lou">#{{10*artArgs.selectDiscussionCondition.pageIndex+1+i}}楼</span>
           <div class="discussion-text" [innerHTML]="parentDiscussion.content"></div>
           <div class="discussion-info">
             <span class="discussion-time">{{parentDiscussion.sortDate}} {{parentDiscussion.shortDate}}</span>
             <div class="discussion-operation" >
+              <button class="each-operation-btn" (click)="deleteDiscussion(parentDiscussion.discussionId,i)"  md-icon-button *ngIf="parentDiscussion.userId==homeService.homeInfo.userId" >
+                <i  class="material-icons">delete</i>
+                <span>删除</span>
+              </button>
               <button class="each-operation-btn" md-icon-button (click)="toggleParentReply(parentDiscussion)">
                 <i  class="material-icons">reply</i>
                 <span>回复</span>
               </button>
               <button class="each-operation-btn" (click)="updateThumbsUpUserIds(parentDiscussion)" md-icon-button mdTooltip="{{parentDiscussion.thumbsUpAble?'点个赞':'已赞'}}">
                 <i [ngClass]="{'disableThumbsUp':!parentDiscussion.thumbsUpAble}"  class="material-icons">thumb_up</i>
-                <span>{{parentDiscussion.thumbsUpCount>0?parentDiscussion.thumbsUpCount:"赞"}}</span></button>
+                <span>{{parentDiscussion.thumbsUpCount>0?parentDiscussion.thumbsUpCount:"赞"}}</span>
+              </button>
             </div>
             <div class="reply-discussion-wrapper" *ngIf="parentDiscussion.showReply">
               <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)"[parentDiscussionIndex]="i"   [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
@@ -65,17 +71,11 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
     <!--一个评论结束-->
   </div>
-    <button md-icon-button class="close-discussion" (click)="closeAllDiscussion()">
-      收起
-    </button>
-    <button *ngIf="totalElements>10" class="show-more-discussion-btn" md-raised-button color="primary">
-      查看更多<i class="material-icons">more_horiz</i>
-    </button>
+
 </div>
 <!--所有评论结束-->
 

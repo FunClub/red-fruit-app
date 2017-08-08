@@ -4,7 +4,7 @@ import {Http} from "@angular/http";
 import {RedFruitApi} from "../model/base/api.model";
 import {InsertDiscussion} from "../model/discussion/insert-discussion.model";
 import {Observable} from "rxjs/Observable";
-import {SelectDiscussion} from "../model/discussion/select-discussion";
+import {SelectDiscussionCondition} from "../model/discussion/select-discussion-condition";
 import {ShowPagedDiscussion} from "../model/discussion/show-paged-discussion.model";
 import {InsertSubDiscussion} from "../model/discussion/insert-sub-discussion";
 import {ShowSubDiscussion} from "../model/discussion/show-sub-discussion.model";
@@ -15,8 +15,19 @@ import {ShowParentDiscussion} from "../model/discussion/show-parent-discussion.m
 @Injectable()
 export class DiscussionService extends BaseService{
 
-  constructor(private http:Http,private api:RedFruitApi) { super()}
+  constructor(private http:Http,private api:RedFruitApi) {
+    super();
 
+  }
+
+  /**
+   * 删除评论
+   * @param discussionId
+   * @returns {Observable<R|T>}
+   */
+  deleteParentDiscussion(discussionId:string){
+    return this.http.delete(this.api.DELETE_PARENT_DISCUSSION(discussionId)).map(res=>res.json().data).catch(this.handleError);
+  }
   /**
    * 插入子评论
    * @param subDiscussion 子评论模型
@@ -47,7 +58,7 @@ export class DiscussionService extends BaseService{
    * @param select 查询条件
    * @returns {Observable<R|T>}
    */
-  selectDiscussion(select:SelectDiscussion):Observable<ShowPagedDiscussion>{
+  selectDiscussion(select:SelectDiscussionCondition):Observable<ShowPagedDiscussion>{
     return this.http.post(this.api.DISCUSSION,select).map(res=>res.json().data).catch(this.handleError);
   }
 }

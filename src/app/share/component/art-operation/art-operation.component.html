@@ -1,5 +1,5 @@
 <!--动态操作开始-->
-<div class="all-operation" [ngClass]="{'discussOpened':isDiscussOpen}">
+<div class="all-operation" [ngClass]="{'discussOpened':artArgs.isDiscussOpen}">
   <div class="operation">
     <span class="operation-time">7-28 18:09</span>
   </div>
@@ -9,13 +9,11 @@
   </div>
   <div class="operation" (click)="toggleDiscussion()">
     <i class="material-icons" >sms</i>
-    <span class="count">{{discussionCount>0?discussionCount:"评论"}}</span>
+    <span class="count">{{artArgs.discussionCount>0?artArgs.discussionCount:"评论"}}</span>
   </div>
-  <div class="operation" mdTooltip="{{thumbsUpAble?'点个赞':'已赞'}}" (click)="updateThumbsUpCount()">
-    <i class="material-icons" [ngClass]="{'thumbsUpDisable':!thumbsUpAble}">thumb_up</i>
-    <span class="count">{{thumbsUpCount>0?thumbsUpCount:"赞"}}</span>
+  <div class="operation" mdTooltip="{{artArgs.thumbsUpAble?'点个赞':'已赞'}}" (click)="updateThumbsUpCount()">
+    <i class="material-icons" [ngClass]="{'thumbsUpDisable':!artArgs.thumbsUpAble}">thumb_up</i>
+    <span class="count">{{artArgs.thumbsUpCount>0?artArgs.thumbsUpCount:"赞"}}</span>
   </div>
 </div>
 <!--动态操作结束-->
-<app-art-discussion (addDiscussionCount)="addDiscussionCount()" (closeDiscussion)="toggleDiscussion()" *ngIf="isDiscussOpen" [artId]="artId"></app-art-discussion>
-

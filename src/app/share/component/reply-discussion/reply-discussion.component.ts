@@ -3,12 +3,31 @@ import {RfEditorOptions} from "../../model/rf-editor-options.model";
 import {InsertSubDiscussion} from "../../model/discussion/insert-sub-discussion";
 import {DiscussionService} from "../../service/discussion.service";
 import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";
+import {animate, keyframes, style, transition, trigger} from "@angular/animations";
 
 declare var $:any;
 @Component({
   selector: 'app-reply-discussion',
   templateUrl: './reply-discussion.component.html',
-  styleUrls: ['./reply-discussion.component.css']
+  styleUrls: ['./reply-discussion.component.css'],
+  animations:[
+    trigger('flyXInOutFromTop', [
+      transition('void => *', [
+        animate("300ms",keyframes([
+          style({opacity: 0, transform: 'translateY(-5%)', offset: 0}),
+          style({opacity: 0.5, transform: 'translateY(5px)',  offset: 0.3}),
+          style({opacity: 1, transform: 'translateY(0)',     offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate("300ms",keyframes([
+          style({opacity: 1, transform: 'translateY(0)'}),
+          style({opacity: 0.5, transform: 'translateY(5px)'}),
+          style({opacity: 0, transform: 'translateY(-5%)'})
+        ]))
+      ])
+    ]),
+  ]
 })
 export class ReplyDiscussionComponent implements OnInit {
   /**
@@ -120,6 +139,7 @@ export class ReplyDiscussionComponent implements OnInit {
    */
   appendFace(discussionEditor:any,faceImg:string){
     $('.sub-discussion-editor').froalaEditor('html.insert', faceImg);
+    this.faceOpened=false;
   }
 
   /**

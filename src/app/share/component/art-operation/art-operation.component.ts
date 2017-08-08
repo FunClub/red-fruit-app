@@ -1,8 +1,10 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
-import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
-import {RfEditorOptions} from "../../model/rf-editor-options.model";
+import {Component, Input, OnInit} from '@angular/core';
+import {animate, keyframes, style, transition, trigger} from "@angular/animations";
+
 import {ArtType} from "../../model/art-opreation/art-type.model";
 import {MoodService} from "../../../person-center/service/mood.service";
+
+import {ArtArgs} from "../../model/base/art-args.model";
 
 @Component({
   selector: 'app-art-operation',
@@ -44,31 +46,32 @@ import {MoodService} from "../../../person-center/service/mood.service";
   ]
 })
 export class ArtOperationComponent implements OnInit {
-  @Input()
-  artId:string;
-  @Input()
-  thumbsUpCount:number;
-  @Input()
-  thumbsUpAble:boolean;
-  isDiscussOpen=false;
-  @Input()
-  discussionCount:number;
-  @Input("artType")
-  actualArtType:string;
 
+  /**
+   * 动态参数
+   */
+  @Input()
+  artArgs:ArtArgs;
   constructor(private artType:ArtType,private moodService:MoodService) {
+
+  }
+  ngOnInit() {
+
   }
 
   /**
-   * 添加评论数
+   * 更新评论数
    */
-  addDiscussionCount(){
-      this.discussionCount++;
+  updateDiscussionCount(count:number){
+      this.artArgs.discussionCount+=(count);
   }
-  ngOnInit() {
-  }
+
+
+  /**
+   * 评论切换
+   */
   toggleDiscussion(){
-    this.isDiscussOpen=!this.isDiscussOpen;
+    this.artArgs.isDiscussOpen=!this.artArgs.isDiscussOpen;
   }
 
   /**
@@ -76,14 +79,13 @@ export class ArtOperationComponent implements OnInit {
    */
   updateThumbsUpCount(){
     //已经点赞就退出方法
-    if(!this.thumbsUpAble)return;
+    if(!this.artArgs.thumbsUpAble)return;
     //如果是心情点赞
-    if(this.actualArtType==this.artType.MOOD){
-
-      this.moodService.updateThumbsUpUserIds(this.artId).subscribe(res=>{
+    if(this.artArgs.artType==this.artType.MOOD){
+      this.moodService.updateThumbsUpUserIds(this.artArgs.artId).subscribe(res=>{
         if(res){
-          this.thumbsUpAble=false;
-           this.thumbsUpCount++;
+          this.artArgs.thumbsUpAble=false;
+           this.artArgs.thumbsUpCount++;
         }
       });
     }

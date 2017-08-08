@@ -6,6 +6,11 @@ import {Observable} from "rxjs/Observable";
 import {RedFruitApi} from "../../share/model/base/api.model";
 import {SelectMoodCondition} from "../model/select-mood-condition.model";
 import {PagedMood} from "../model/paged-mood";
+import {ShowMoodDto} from "../model/show-mood-dto.model";
+import {ArtArgs} from "../../share/model/base/art-args.model";
+import {ArtType} from "../../share/model/art-opreation/art-type.model";
+import {SelectDiscussionCondition} from "../../share/model/discussion/select-discussion-condition";
+
 
 @Injectable()
 export class MoodService extends BaseService{
@@ -14,7 +19,7 @@ export class MoodService extends BaseService{
    * @type {Array}
    */
   public sharePreUploadImgs:string[]=[];
-  constructor(private http:Http,private api:RedFruitApi) {
+  constructor(private http:Http,private api:RedFruitApi,private artType:ArtType) {
     super()
   }
 
@@ -33,7 +38,23 @@ export class MoodService extends BaseService{
    */
   selectMood(condition:SelectMoodCondition):Observable<PagedMood>{
     return this.http.get(this.api.MOOD+`${condition.byHalf}/${condition.pageIndex}/${condition.pageSize}`).
-    map(res=>res.json().data as PagedMood).catch(this.handleError);
+    map(res=>{
+      let pagedMood:PagedMood= res.json().data;
+      let moods:ShowMoodDto[]=pagedMood.content;
+      //初始化动态参数
+      for(let mood of moods){
+        let args = new ArtArgs();
+        args.discussionCount=mood.discussionCount;
+        args.thumbsUpCount=mood.thumbsUpCount;
+        args.thumbsUpAble=mood.thumbsUpAble;
+        args.artType=this.artType.MOOD;
+        args.artId=mood.moodId;
+        //评论的查询参数
+        args.selectDiscussionCondition = new SelectDiscussionCondition();
+        mood.artArgs=args;
+      }
+      return pagedMood;
+    }).catch(this.handleError);
   }
   /**
    * 插入心情

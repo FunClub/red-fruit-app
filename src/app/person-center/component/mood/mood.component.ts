@@ -11,6 +11,7 @@ import {PagedMood} from "../../model/paged-mood";
 import {ShowMoodDto} from "../../model/show-mood-dto.model";
 import {HomeService} from "../../../home/service/home.service";
 import {Mood} from "../../model/mood";
+import {ArtArgs} from "../../../share/model/base/art-args.model";
 declare let $:any;
 @Component({
   selector: 'app-mood',
@@ -46,7 +47,6 @@ declare let $:any;
   ]
 })
 export class MoodComponent implements OnInit {
-  editorContent=" ";
   faceOpened=false;
   uploadImgOpened=false;
   moods:ShowMoodDto[];
@@ -107,11 +107,13 @@ export class MoodComponent implements OnInit {
     this.ngProgressService.start();
     this.selectMoodCondition.byHalf=true;
     this.moodService.selectMood(this.selectMoodCondition).subscribe(res=>{
+
       this.pagedMood=res;
       this.moods=this.pagedMood.content;
       this.ngProgressService.done();
     });
   }
+
   /**
    * 发布心情后清空数据
    */
@@ -164,6 +166,7 @@ export class MoodComponent implements OnInit {
    */
   appendFace(faceImg:string){
     $('.mood-editor').froalaEditor('html.insert', faceImg);
+    this.faceOpened=false;
   }
 
 }
