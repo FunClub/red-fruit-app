@@ -1,0 +1,8 @@
+<div class="discussion-bottom-operation" *ngIf="artArgs.isDiscussOpen">
+  <button md-icon-button class="close-discussion" (click)="closeDiscussion()">
+    收起
+  </button>
+  <button *ngIf="artArgs.discussionCount>10" (click)="showMoreDiscussion()" class="show-more-discussion-btn" md-raised-button color="primary">
+    查看更多<i class="material-icons">more_horiz</i>
+  </button>
+</div>

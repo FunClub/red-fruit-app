@@ -1,0 +1,6 @@
+<main>
+  <app-art-discussion [artArgs]="artArgs"></app-art-discussion>
+  <md-paginator (page)="changedPage($event)"  [pageSizeOptions]="pageSizeOptions" [pageIndex]="artArgs.selectDiscussionCondition.pageIndex"
+                [length]="artArgs.discussionCount"  [pageSize]="artArgs.selectDiscussionCondition.pageSize"></md-paginator>
+</main>
+
