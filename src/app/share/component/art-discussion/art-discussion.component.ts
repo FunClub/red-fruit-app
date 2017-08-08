@@ -9,6 +9,7 @@ import {ShowPagedDiscussion} from "../../model/discussion/show-paged-discussion.
 import {ShowParentDiscussion} from "../../model/discussion/show-parent-discussion.model";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ShowSubDiscussion} from "../../model/discussion/show-sub-discussion.model";
+import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -59,6 +60,24 @@ export class ArtDiscussionComponent implements OnInit {
   }
 
   /**
+   * 刷新子评论
+   * @param refreshDiscussion
+   */
+  refreshSubDiscussion(refreshDiscussion:RefreshDiscussion){
+    let parentDiscussion = this.parentDiscussions[refreshDiscussion.parentDiscussionIndex];
+    if(parentDiscussion.subDiscussionDtos==null){
+      parentDiscussion.subDiscussionDtos=[];
+    }
+    parentDiscussion.subDiscussionDtos.push(refreshDiscussion.subDiscussion)
+    //关闭评论回复组件
+    if( refreshDiscussion.subDiscussionIndex==null){//如果不是回复子评论，就直接关闭父评论回复
+      parentDiscussion.showReply=false;
+    }else{
+      parentDiscussion.subDiscussionDtos[refreshDiscussion.subDiscussionIndex].showReply=false;
+    }
+
+  }
+  /**
    * 父级评论显示与隐藏切换
    * @param discussion 父级评论
    */
@@ -101,7 +120,7 @@ export class ArtDiscussionComponent implements OnInit {
           if(res){
             this.addDiscussionCount.emit();
             this.sendDiscussion.content="";
-            this.showDiscussion();
+            this.parentDiscussions.push(res);
           }
     })
   }

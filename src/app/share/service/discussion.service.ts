@@ -7,6 +7,8 @@ import {Observable} from "rxjs/Observable";
 import {SelectDiscussion} from "../model/discussion/select-discussion";
 import {ShowPagedDiscussion} from "../model/discussion/show-paged-discussion.model";
 import {InsertSubDiscussion} from "../model/discussion/insert-sub-discussion";
+import {ShowSubDiscussion} from "../model/discussion/show-sub-discussion.model";
+import {ShowParentDiscussion} from "../model/discussion/show-parent-discussion.model";
 /**
  * 评论服务
  */
@@ -20,7 +22,7 @@ export class DiscussionService extends BaseService{
    * @param subDiscussion 子评论模型
    * @returns {Observable<R|T>}
    */
-  insertSubDiscussion(subDiscussion:InsertSubDiscussion):Observable<boolean>{
+  insertSubDiscussion(subDiscussion:InsertSubDiscussion):Observable<ShowSubDiscussion>{
     return this.http.post(this.api.SUB_DISCUSSION,subDiscussion).map(res=>res.json().data).catch(this.handleError);
   }
   /**
@@ -36,7 +38,7 @@ export class DiscussionService extends BaseService{
    * @param discussion
    * @returns {Observable<R|T>}
    */
-  insertParentDiscussion(discussion:InsertDiscussion):Observable<boolean>{
+  insertParentDiscussion(discussion:InsertDiscussion):Observable<ShowParentDiscussion>{
     return this.http.post(this.api.PARENT_DISCUSSION,discussion).map(res=>res.json().data).catch(this.handleError);
   }
 

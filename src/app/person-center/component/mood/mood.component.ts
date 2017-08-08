@@ -81,7 +81,6 @@ export class MoodComponent implements OnInit {
    * 发布心情
    */
   sendMood(){
-    console.log(this.insertMood.content)
     this.insertMood.imgs=this.moodService.sharePreUploadImgs;
     this.ngProgressService.start();
     this.moodService.insertMood(this.insertMood).subscribe(res=>{

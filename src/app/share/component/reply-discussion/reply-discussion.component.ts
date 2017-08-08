@@ -1,7 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {RfEditorOptions} from "../../model/rf-editor-options.model";
 import {InsertSubDiscussion} from "../../model/discussion/insert-sub-discussion";
 import {DiscussionService} from "../../service/discussion.service";
+import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";
+
 declare var $:any;
 @Component({
   selector: 'app-reply-discussion',
@@ -41,12 +43,29 @@ export class ReplyDiscussionComponent implements OnInit {
    * 回复子评论的昵称,显示在编辑器中
    */
   @Input()
-    sendToNickName:string;
+  sendToNickName:string;
+
+  /**
+   * 父级评论索引,用于更新子评论
+   */
+  @Input()
+  parentDiscussionIndex:number;
+
+  /**
+   * 子评论索引，用于关闭子评论
+   */
+  @Input()
+  subDiscussionIndex:number;
+  /**
+   * 通知父组件刷新评论
+   */
+  @Output()
+  refreshDiscussionNotice = new EventEmitter<RefreshDiscussion>();
   /**
    * 发送子评论的订阅
    */
   sendSubDiscussionSubscribe;
-  constructor(private discussionService:DiscussionService) {
+  constructor(private discussionService:DiscussionService,private refreshDiscussion:RefreshDiscussion) {
     this.subDiscussion = new InsertSubDiscussion();
   }
 
@@ -57,6 +76,8 @@ export class ReplyDiscussionComponent implements OnInit {
     this.sendSubDiscussionSubscribe=this.discussionService.insertSubDiscussion(this.subDiscussion).subscribe(res=>{
       if(res){
         this.subDiscussion.contend="";
+        this.refreshDiscussion.subDiscussion = res;
+        this.refreshDiscussionNotice.emit(this.refreshDiscussion);
       }
     })
   }
@@ -80,6 +101,8 @@ export class ReplyDiscussionComponent implements OnInit {
     this.subDiscussion.discussionId=this.discussionId;
     this.subDiscussion.sendToUserId = this.sendToUserId;
     this.subDiscussion.sendToUserId=this.sendToUserId;
+    this.refreshDiscussion.parentDiscussionIndex=this.parentDiscussionIndex;
+    this.refreshDiscussion.subDiscussionIndex=this.subDiscussionIndex;
     this.initEditor();
   }
 

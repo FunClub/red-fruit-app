@@ -32,6 +32,7 @@ import {ArtType} from "./model/art-opreation/art-type.model";
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ReplyDiscussionComponent } from './component/reply-discussion/reply-discussion.component';
 import {InsertSubDiscussion} from "./model/discussion/insert-sub-discussion";
+import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
 
 
 
@@ -105,7 +106,10 @@ import {InsertSubDiscussion} from "./model/discussion/insert-sub-discussion";
     /**
      * 插入子评论模型
      */
-    InsertSubDiscussion
+    InsertSubDiscussion,
+
+    /*刷新父级评论*/
+    RefreshDiscussion
     ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
     FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent]

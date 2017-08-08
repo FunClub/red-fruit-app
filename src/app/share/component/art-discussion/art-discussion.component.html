@@ -41,13 +41,13 @@
                 <span>{{parentDiscussion.thumbsUpCount>0?parentDiscussion.thumbsUpCount:"赞"}}</span></button>
             </div>
             <div class="reply-discussion-wrapper" *ngIf="parentDiscussion.showReply">
-              <app-reply-discussion [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
+              <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)"[parentDiscussionIndex]="i"   [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
             </div>
           </div>
         </div>
         <!--子级评论-->
         <div class="all-sub-discussion" *ngIf="parentDiscussion.subDiscussionDtos">
-          <div class="sub-discussion" *ngFor="let subDiscussion of parentDiscussion.subDiscussionDtos">
+          <div class="sub-discussion" *ngFor="let subDiscussion of parentDiscussion.subDiscussionDtos;let subI=index;">
             <span class="sub-discussion-nickname">{{subDiscussion.nickname}}:</span>
             <span class="discussion-to-nickname" *ngIf="subDiscussion.sendToNickname">@{{subDiscussion.sendToNickname}}</span>
             <span class="discussion-text" [innerHTML]="subDiscussion.content"></span>
@@ -60,7 +60,7 @@
                 </button>
               </div>
               <div class="reply-discussion-wrapper" *ngIf="subDiscussion.showReply">
-                <app-reply-discussion [sendToUserId]="subDiscussion.userId" [sendToNickName]="subDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
+                <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)" [subDiscussionIndex]="subI" [parentDiscussionIndex]="i" [sendToUserId]="subDiscussion.userId" [sendToNickName]="subDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
               </div>
             </div>
           </div>
@@ -69,16 +69,13 @@
       </div>
     </div>
     <!--一个评论结束-->
-
   </div>
-  <button md-icon-button class="close-discussion" (click)="closeAllDiscussion()">
-    收起
-  </button>
-    <button *ngIf="totalElements>10" class="show-more-discussion-btn" md-raised-button color="primary">
-      查看更多<i class="material-icons">more_vert</i>
+    <button md-icon-button class="close-discussion" (click)="closeAllDiscussion()">
+      收起
     </button>
-
-
+    <button *ngIf="totalElements>10" class="show-more-discussion-btn" md-raised-button color="primary">
+      查看更多<i class="material-icons">more_horiz</i>
+    </button>
 </div>
 <!--所有评论结束-->
 
