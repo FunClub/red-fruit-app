@@ -75,7 +75,7 @@ export class MoodComponent implements OnInit {
     this.selectMood();
   }
  initPaginator(){
-    $(".mat-paginator-page-size-label").html("每页心情数量:")
+    $("#mood-tab-content").find(".mat-paginator-page-size-label").html("每页心情数量:")
  }
   /**
    * 发布心情

@@ -9,6 +9,7 @@ import {PersonInfoModule} from "../person-info/person-info.module";
 import {HomeService} from "./service/home.service";
 import {HomeGuard} from "./guard/home.guard";
 import {Home} from "./model/home.model";
+import {FootMarkModule} from "../foot-mark/foot-mark.module";
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +19,8 @@ import {Home} from "./model/home.model";
     MdButtonModule,
     MdInputModule,
     PersonCenterModule,
-    PersonInfoModule
+    PersonInfoModule,
+    FootMarkModule
   ],
   declarations: [HomeComponent],
   providers:[

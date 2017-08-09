@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {RfEditorOptions} from "../../model/rf-editor-options.model";
 import {animate, keyframes,style, transition, trigger} from "@angular/animations";
 import {HomeService} from "../../../home/service/home.service";
@@ -36,10 +36,18 @@ declare let $:any;
 })
 export class ArtDiscussionComponent{
 
-
+  /**
+   * 动态参数
+   */
   @Input()
-    artArgs:ArtArgs;
+  artArgs:ArtArgs;
 
+  /**
+   * 分页变化
+   * @type {EventEmitter}
+   */
+  @Output()
+    pageChange = new EventEmitter();
   /**
    * 表情开关
    * @type {boolean}
@@ -71,26 +79,27 @@ export class ArtDiscussionComponent{
    */
   sendDiscussion:InsertDiscussion;
 
-
+  pageSizeOptions = [5, 10, 25, 100];
   constructor(public homeService:HomeService,public discussionService:DiscussionService,
               private pagedDiscussion:ShowPagedDiscussion) {
     this.initEditor();
     this.sendDiscussion = new InsertDiscussion();
-
-
   }
 
   ngOnInit() {
     this.selectDiscussion = this.artArgs.selectDiscussionCondition;
-
-    this.selectDiscussion.artId=this.artArgs.artId;
     if(this.artArgs.discussionCount>0){
       this.showDiscussion();
-
     }
 
   }
 
+  changePage(e){
+    this.selectDiscussion.pageIndex=e.pageIndex;
+    this.selectDiscussion.pageSize=e.pageSize;
+    this.showDiscussion();
+    this.pageChange.emit()
+  }
   /**
    * 删除评论
    * @param discussionId 评论id

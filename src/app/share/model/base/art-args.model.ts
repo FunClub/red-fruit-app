@@ -34,7 +34,11 @@ export class ArtArgs {
 
   artType:string;
 
+  /**
+   * 是否显示分页组件
+   */
 
+  showPaginator:boolean;
   /**
    * 查询评论条件
    */

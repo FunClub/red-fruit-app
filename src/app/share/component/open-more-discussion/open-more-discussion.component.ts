@@ -31,13 +31,10 @@ export class OpenMoreDiscussionComponent implements OnInit {
    * 显示更多评论
    */
   showMoreDiscussion(){
-    this.artArgs.selectDiscussionCondition.pageIndex=1;
-
     this.dialog.open(MoreDiscussionComponent,{
       data:this.artArgs,
       panelClass:'more-discussion-panel'
     }).afterClosed().subscribe(()=>{
-      this.artArgs.selectDiscussionCondition.pageIndex=0;
       $('.sub-discussion-editor').froalaEditor("html.set","");
     });
   }

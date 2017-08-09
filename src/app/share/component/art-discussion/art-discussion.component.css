@@ -2,6 +2,8 @@
 .all-discussion{
   padding: 20px;
   background: rgb(242,242,245);
+  padding-bottom: 10px;
+
 }
 /*我的头像*/
 .my-profile-img{
@@ -176,16 +178,14 @@ padding-left: 40px;
 }
 .each-operation-btn i{
   font-size: 18px;
-  color: rgb(150,150,150);
+  color: rgb(170,170,170);
 }
 /*回复Div包裹*/
 .reply-discussion-wrapper{
-
   margin-top: 20px;
   background: white;
   padding: 10px;
   position: relative;
-
 }
 
 .reply-textarea:focus{
@@ -213,4 +213,8 @@ padding-left: 40px;
 .discussion-to-nickname{
   font-size: 14px;
   color:rgb(255,129,64);
+}
+/*评论分页*/
+.discussion-paginator{
+  margin-top: 20px;
 }

@@ -49,8 +49,10 @@ export class MoodService extends BaseService{
         args.thumbsUpAble=mood.thumbsUpAble;
         args.artType=this.artType.MOOD;
         args.artId=mood.moodId;
+        args.showPaginator=false;
         //评论的查询参数
         args.selectDiscussionCondition = new SelectDiscussionCondition();
+        args.selectDiscussionCondition.artId=args.artId;
         mood.artArgs=args;
       }
       return pagedMood;

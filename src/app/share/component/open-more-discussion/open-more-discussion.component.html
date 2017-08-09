@@ -1,4 +1,4 @@
-<div class="discussion-bottom-operation" *ngIf="artArgs.isDiscussOpen">
+<div class="discussion-bottom-operation" *ngIf="artArgs.isDiscussOpen&&artArgs.discussionCount>0">
   <button md-icon-button class="close-discussion" (click)="closeDiscussion()">
     收起
   </button>

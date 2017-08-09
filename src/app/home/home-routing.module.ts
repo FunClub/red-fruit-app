@@ -13,6 +13,8 @@ import {PersonInfoComponent} from "../person-info/component/person-info/person-i
 import {BaseInfoComponent} from "../person-info/component/base-info/base-info.component";
 import {PrivacySettingsComponent} from "../person-info/component/privacy-settings/privacy-settings.component";
 import {HomeGuard} from "./guard/home.guard";
+import {FootMarkComponent} from "../foot-mark/component/foot-mark/foot-mark.component";
+import {MyArtComponent} from "../foot-mark/component/my-art/my-art.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -23,8 +25,7 @@ const  homeRoutes:Routes=[
       {
         path:'person-center',
         component:PersonCenterComponent,
-        children:
-        [
+        children: [
           {path:'home-page',component:HomePageComponent},
           {path:'mood',component:MoodComponent},
           {path:'memory-day',component:MemoryDayComponent},
@@ -34,7 +35,15 @@ const  homeRoutes:Routes=[
           {path:'',redirectTo:'home-page',pathMatch:'full'}
         ]
       },
-
+      /*足迹*/
+      {
+        path:'foot-mark',
+        component:FootMarkComponent,
+        children:[
+          {path:'my-art',component:MyArtComponent},
+          {path:'',redirectTo:'my-art',pathMatch:'full'}
+        ]
+      },
       /*个人资料*/
       {
         path:'person-info',
@@ -45,6 +54,7 @@ const  homeRoutes:Routes=[
           {path:'',redirectTo:"base-info",pathMatch:'full'}
         ]
       },
+
       {path:'',redirectTo:"person-center",pathMatch:'full'}
 
       /*....*/

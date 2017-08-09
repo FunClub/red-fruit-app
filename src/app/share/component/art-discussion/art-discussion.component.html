@@ -75,7 +75,9 @@
     </div>
     <!--一个评论结束-->
   </div>
-
+<md-paginator class="discussion-paginator"  *ngIf="artArgs.showPaginator" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)"   [pageIndex]="artArgs.selectDiscussionCondition.pageIndex"
+                [length]="artArgs.discussionCount"  [pageSize]="artArgs.selectDiscussionCondition.pageSize"></md-paginator>
 </div>
+
 <!--所有评论结束-->
 
