@@ -4,7 +4,7 @@
   <div class="write-discussion">
     <div [ngBusy]="{busy:[discussionSubscribe],message:'处理中,请稍候'}"></div>
     <img class="my-profile-img" [src]="homeService.homeInfo.profileImg"/>
-    <div #discussionEditor id="discussion-editor" class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="sendDiscussion.content"></div>
+    <div #discussionEditor id="discussion-editor" class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="sendDiscussion.parentDiscussion.content"></div>
     <button class="send-discussion-btn" md-raised-button color="primary" (click)="insertDiscussion()">评论</button>
     <div class="all-face-wrapper">
       <button class="toggle-face-btn" md-icon-button (click)="toggleFace()">
@@ -14,13 +14,15 @@
         <app-face (faceSelected)="appendFace(discussionEditor,$event)" (faceOpened)="closeFace($event)"></app-face>
       </div>
     </div>
+    <!--清除浮动-->
+    <div style="clear: both"></div>
   </div>
   <!--显示评论-->
   <div class="show-all-discussion" *ngIf="artArgs.discussionCount>0">
     <div class="show-discussion-by">
-      <span (click)="sortDiscussionBy('hot')" [ngClass]="{'active-discussion-by':selectDiscussion.sortBy=='hot'}">按热度</span>
+      <span (click)="sortDiscussionBy('subDiscussionsLength')" [ngClass]="{'active-discussion-by':selectDiscussion.sortBy=='subDiscussionsLength'}">按热度</span>
       <hr class="sortByHr">
-      <span (click)="sortDiscussionBy('latest')" [ngClass]="{'active-discussion-by':selectDiscussion.sortBy=='latest'}" >按时间</span>
+      <span (click)="sortDiscussionBy('date')" [ngClass]="{'active-discussion-by':selectDiscussion.sortBy=='date'}" >按时间</span>
     </div>
     <!--一个评论开始-->
     <div class="discussion" *ngFor="let parentDiscussion of  parentDiscussions;let i=index;">
@@ -47,7 +49,7 @@
               </button>
             </div>
             <div class="reply-discussion-wrapper" *ngIf="parentDiscussion.showReply">
-              <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)"[parentDiscussionIndex]="i"   [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
+              <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)"[parentDiscussionIndex]="i" [artArgs]="artArgs"  [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
             </div>
           </div>
         </div>
@@ -66,7 +68,7 @@
                 </button>
               </div>
               <div class="reply-discussion-wrapper" *ngIf="subDiscussion.showReply">
-                <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)" [subDiscussionIndex]="subI" [parentDiscussionIndex]="i" [sendToUserId]="subDiscussion.userId" [sendToNickName]="subDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
+                <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)" [artArgs]="artArgs" [subDiscussionIndex]="subI" [parentDiscussionIndex]="i" [sendToUserId]="subDiscussion.userId" [sendToNickName]="subDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
               </div>
             </div>
           </div>

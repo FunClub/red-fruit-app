@@ -1,0 +1,52 @@
+<main>
+  <div class="art-user-info-wrapper">
+    <img class="art-user-profile" [src]="noticeArt.generateProfileImg"/>
+    <p>
+      <span>{{noticeArt.generateNickname}}</span>
+      <span class="art-generate-target">{{noticeArt.noticeArtType}}了你的{{noticeArt.artType}}</span>
+    </p>
+    <p class="art-date-wrapper">
+      <span class="art-sort-date">{{noticeArt.sortDate}}</span>
+      <span class="art-short-date">{{noticeArt.shortDate}}</span>
+    </p>
+  </div>
+  <div class="art-single-content">
+    <img class="art-img" *ngIf="noticeArt.firstArtImg" [src]="noticeArt.firstArtImg"/>
+    <div class="art-text-content-wrapper">
+        <span class="art-user-content-name">{{noticeArt.artNickname}}:</span>
+        <span class="art-text-content" [innerHTML]="noticeArt.artContent"></span>
+    </div>
+  </div>
+  <div class="art-discussion-wrapper" *ngIf="noticeArt.discussion">
+    <img class="discussion-profile" src="../../../../assets/img/profile.jpg"/>
+    <div class="art-discussion-content">
+      <!--父级评论-->
+      <div class="parent-discussion">
+        <span class="parent-discussion-nickname">大宝子</span>
+        <span class="discussion-text">:如何解决Mybatis自动创建表？来过</span>
+        <div class="discussion-info">
+          <span class="discussion-time">今天18.30</span> 回复
+         <!-- <div class="reply-discussion-wrapper" >
+           <app-reply-discussion [sendToNickName]="true"></app-reply-discussion>
+          </div>-->
+        </div>
+      </div>
+      <div class="all-sub-discussion">
+        <div class="sub-discussion">
+          <img class="discussion-profile" src="../../../../assets/img/profile.jpg"/>
+          <span class="sub-discussion-nickname">纽尔沟:</span>
+          <span class="discussion-to-nickname" >@狗蛋</span>
+          <span class="discussion-text">哈哈</span>
+          <div class="discussion-info">
+            <span class="discussion-time">182</span>
+            <div class="discussion-operation">
+            </div>
+           <!-- <div class="reply-discussion-wrapper" >
+              <app-reply-discussion [sendToNickName]="true"></app-reply-discussion>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

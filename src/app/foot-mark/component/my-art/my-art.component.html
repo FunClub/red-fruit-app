@@ -1,3 +1,18 @@
-<p>
-  my-art works!
-</p>
+<main class="all-my-art">
+  <div class="art-title-wrapper">
+    <span class="title-text">动态列表</span>
+    <div class="art-operation-wrapper">
+      <md-slide-toggle
+        class="art-toggle"
+        color=warn
+        [checked]="onlyShowHalf">
+        显示非情侣动态
+      </md-slide-toggle>
+    </div>
+  </div>
+  <div class="art-content" *ngFor="let noticeArt of showNoticeDtos">
+    <app-single-art [noticeArt]="noticeArt"></app-single-art>
+  </div>
+  <md-paginator  [pageSizeOptions]="pageSizeOptions"
+                [length]="pageNotice?.totalElements" [pageSize]="selectionCondition.pageSize"></md-paginator>
+</main>

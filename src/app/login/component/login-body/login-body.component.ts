@@ -75,7 +75,7 @@ export class LoginBodyComponent implements OnInit {
   openRegisterModal() {
     let re = this.dialog.open(RegisterComponent, {
       position: {
-        top: "65px",
+        top: "30px",
       },
       disableClose: true
     });

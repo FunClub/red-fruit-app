@@ -8,8 +8,9 @@
       <app-face (faceSelected)="appendFace(discussionEditor,$event)" (faceOpened)="closeFace($event)"></app-face>
     </div>
   </div>
-  <div #discussionEditor id="sub-discussion-editor" class="sub-discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="subDiscussion.contend"></div>
+  <div #discussionEditor id="sub-discussion-editor" class="sub-discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="subDiscussion.subDiscussion.content"></div>
   <button class="send-discussion-btn" md-raised-button color="primary" (click)="insertSubDiscussion()">回复</button>
-
+  <!--清除浮动-->
+  <div style="clear: both"></div>
 </main>
 

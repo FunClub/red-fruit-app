@@ -33,8 +33,6 @@ import {PagedMood} from "./model/paged-mood";
     /*插入心情的模型*/
     InsertMood,
 
-    /*查询心情的条件模型*/
-    SelectMoodCondition,
 
     /*分页的心情模型*/
     PagedMood

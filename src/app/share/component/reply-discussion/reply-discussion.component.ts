@@ -4,6 +4,8 @@ import {InsertSubDiscussion} from "../../model/discussion/insert-sub-discussion"
 import {DiscussionService} from "../../service/discussion.service";
 import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
+import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
+import {ArtArgs} from "../../model/base/art-args.model";
 
 declare var $:any;
 @Component({
@@ -59,6 +61,11 @@ export class ReplyDiscussionComponent implements OnInit {
   sendToUserId:string;
 
   /**
+   * 动态类型
+   */
+  @Input()
+  artArgs:ArtArgs;
+  /**
    * 回复子评论的昵称,显示在编辑器中
    */
   @Input()
@@ -84,7 +91,7 @@ export class ReplyDiscussionComponent implements OnInit {
    * 发送子评论的订阅
    */
   sendSubDiscussionSubscribe;
-  constructor(private discussionService:DiscussionService,private refreshDiscussion:RefreshDiscussion) {
+  constructor(private discussionService:DiscussionService,private refreshDiscussion:RefreshDiscussion,private noticeType:NoticeArtType) {
     this.subDiscussion = new InsertSubDiscussion();
   }
 
@@ -94,7 +101,7 @@ export class ReplyDiscussionComponent implements OnInit {
   insertSubDiscussion(){
     this.sendSubDiscussionSubscribe=this.discussionService.insertSubDiscussion(this.subDiscussion).subscribe(res=>{
       if(res){
-        this.subDiscussion.contend="";
+        this.subDiscussion.subDiscussion.content="";
         this.refreshDiscussion.subDiscussion = res;
         this.refreshDiscussionNotice.emit(this.refreshDiscussion);
       }
@@ -118,13 +125,32 @@ export class ReplyDiscussionComponent implements OnInit {
   ngOnInit() {
     /*初始化从父组件传来的参数*/
     this.subDiscussion.discussionId=this.discussionId;
-    this.subDiscussion.sendToUserId = this.sendToUserId;
-    this.subDiscussion.sendToUserId=this.sendToUserId;
+    this.subDiscussion.subDiscussion.sendToUserId=this.sendToUserId;
     this.refreshDiscussion.parentDiscussionIndex=this.parentDiscussionIndex;
     this.refreshDiscussion.subDiscussionIndex=this.subDiscussionIndex;
+
+    this.initNoticeArtData();
     this.initEditor();
   }
 
+  /**
+   * 初始化通知动态
+   */
+  initNoticeArtData(){
+    this.subDiscussion.noticeArt.artId=this.artArgs.artId;
+    this.subDiscussion.noticeArt.noticeArtUserId=this.artArgs.artUserId;
+    this.subDiscussion.noticeArt.artType=this.artArgs.artType;
+    this.subDiscussion.noticeArt.noticeArtType=this.noticeType.DISCUSSION;
+    if(!this.artArgs.original){
+      this.subDiscussion.noticeArt.originalArtId = this.artArgs.originalArtId;
+      this.subDiscussion.noticeArt.originalUserId = this.artArgs.originalUserId;
+    }
+    this.subDiscussion.noticeArt.firstArtImg = this.artArgs.firstArtImg;
+    this.subDiscussion.noticeArt.artContent = this.artArgs.artContent;
+  }
+  ngAfterViewInit(){
+    $('.fr-box a').remove();
+  }
   /**
    * 切换表情
    */

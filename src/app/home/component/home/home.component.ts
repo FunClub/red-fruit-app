@@ -50,10 +50,7 @@ export class HomeComponent implements OnInit {
       this.ngProgressService.done();
     });
   }
-  top(){
 
-
-  }
 
   /**
    *改变路由激活的标志

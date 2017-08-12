@@ -1,14 +1,12 @@
+import {PageRequest} from "../base/page-request.model";
 /**
  * 查询评论时的条件模型
  */
-export class SelectDiscussionCondition{
+export class SelectDiscussionCondition extends PageRequest{
   artId:string;
-  sortBy:string;
-  pageIndex:number;
-  pageSize:number;
-
   constructor() {
-    this.sortBy="hot";
+    super();
+    this.sortBy="subDiscussionsLength";
     this.pageIndex=0;
     this.pageSize=10;
   }

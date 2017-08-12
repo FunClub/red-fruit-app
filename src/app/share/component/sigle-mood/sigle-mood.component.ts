@@ -71,10 +71,10 @@ export class SigleMoodComponent implements OnInit {
   constructor(public moodOption:ShowMoodImg,private api:RedFruitApi) {
     this.smallMoodImgs=[];
     this.smallDetailImgs=[];
-
   }
 
   ngOnInit() {
+
     this.orPath=[];
     for(let path of this.showMoodDto.mood.imgs){
       this.orPath.push(this.api.IMAGE_PREFIX+path)

@@ -6,7 +6,7 @@
     </div>
     <div class="mood-content">
       <!--心情文本内容-->
-      <div class="mood-text-content" [innerHTML]="showMoodDto.mood.content" style="font-size: 14px"></div>
+      <div class="mood-text-content" [innerHTML]="showMoodDto.mood.content|safeHtml" style="font-size: 14px"></div>
 
       <!--心情图片内容-->
       <div class="mood-img-content" >

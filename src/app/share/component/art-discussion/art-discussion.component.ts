@@ -10,6 +10,7 @@ import {ShowParentDiscussion} from "../../model/discussion/show-parent-discussio
 import {ShowSubDiscussion} from "../../model/discussion/show-sub-discussion.model";
 import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";
 import {ArtArgs} from "../../model/base/art-args.model";
+import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -81,19 +82,38 @@ export class ArtDiscussionComponent{
 
   pageSizeOptions = [5, 10, 25, 100];
   constructor(public homeService:HomeService,public discussionService:DiscussionService,
-              private pagedDiscussion:ShowPagedDiscussion) {
+              private pagedDiscussion:ShowPagedDiscussion,private noticeType:NoticeArtType) {
     this.initEditor();
     this.sendDiscussion = new InsertDiscussion();
   }
 
   ngOnInit() {
-    this.selectDiscussion = this.artArgs.selectDiscussionCondition;
+    this.initNoticeArtData();
     if(this.artArgs.discussionCount>0){
       this.showDiscussion();
     }
-
   }
 
+  /**
+   * 初始化通知动态数据
+   */
+  initNoticeArtData(){
+    this.selectDiscussion = this.artArgs.selectDiscussionCondition;
+    this.sendDiscussion.parentDiscussion.artId=this.artArgs.artId;
+    if(!this.artArgs.original){
+      this.sendDiscussion.noticeArt.originalArtId =this.artArgs.originalArtId;
+      this.sendDiscussion.noticeArt.originalUserId =this.artArgs.originalUserId;
+    }
+    this.sendDiscussion.noticeArt.artId=this.artArgs.artId;
+    this.sendDiscussion.noticeArt.noticeArtUserId = this.artArgs.artUserId;
+    this.sendDiscussion.noticeArt.artType=this.artArgs.artType;
+    this.sendDiscussion.noticeArt.noticeArtType=this.noticeType.DISCUSSION;
+    this.sendDiscussion.noticeArt.artContent = this.artArgs.artContent;
+    this.sendDiscussion.noticeArt.firstArtImg = this.artArgs.firstArtImg;
+  }
+  ngAfterViewInit(){
+    $('.fr-box a').remove();
+  }
   changePage(e){
     this.selectDiscussion.pageIndex=e.pageIndex;
     this.selectDiscussion.pageSize=e.pageSize;
@@ -175,11 +195,10 @@ export class ArtDiscussionComponent{
    * 插入父级评论
    */
   insertDiscussion(){
-    this.sendDiscussion.artId=this.artArgs.artId;
     this.discussionSubscribe=this.discussionService.insertParentDiscussion(this.sendDiscussion).subscribe(res=>{
           if(res){
             this.artArgs.discussionCount++;
-            this.sendDiscussion.content="";
+            this.sendDiscussion.parentDiscussion.content="";
             this.parentDiscussions==null? this.parentDiscussions=[]:"";
             this.parentDiscussions.push(res);
           }

@@ -1,7 +1,6 @@
 main{
   position: relative;
-  height: 50px;
-  padding-left: 7%;
+  max-height: 100px;
 }
 /*编辑器div*/
 .sub-discussion-editor{

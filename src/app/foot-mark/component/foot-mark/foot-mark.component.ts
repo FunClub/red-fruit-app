@@ -11,7 +11,6 @@ export class FootMarkComponent implements OnInit {
   constructor() {
     this.navLinks=[
       {path:'my-art',label:'我的动态'},
-
     ];
   }
 

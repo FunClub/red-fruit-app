@@ -7,6 +7,11 @@ export class ArtArgs {
    * 动态id
    */
   artId:string;
+
+  /**
+   * 动态所属userId;
+   */
+  artUserId:string;
   /**
    * 点赞数量
    */
@@ -39,6 +44,30 @@ export class ArtArgs {
    */
 
   showPaginator:boolean;
+
+  /**
+   * 第一张动态图片
+   */
+  firstArtImg:string;
+
+  /**
+   * 动态内容
+   */
+  artContent:string;
+  /**
+   * 是否是原创
+   */
+  original:boolean;
+
+  /**
+   * 原创用户id
+   */
+  originalUserId:string;
+
+  /**
+   * 原创动态id
+   */
+  originalArtId:string;
   /**
    * 查询评论条件
    */

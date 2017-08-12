@@ -2,7 +2,11 @@
  * 应用api
  */
 export  class RedFruitApi {
-
+  /**
+   * 动态通知
+   * @type {string}
+   */
+  NOTICE_ART:string ="notice-art/";
   /**
    * 子评论
    * @type {string}
@@ -23,9 +27,9 @@ export  class RedFruitApi {
    * @returns {string}
    * @constructor
    */
-  MOOD_THUMBSUP(moodId:string){
-    return `mood/${moodId}/thumbsUpUserIds`
-  }
+
+  MOOD_THUMBSUP=`mood/thumbsUpUserIds`;
+
   /**
    *查询评论等
    */

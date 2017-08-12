@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReplyDiscussionComponent } from './reply-discussion.component';
+import { SingleArtComponent } from './single-art.component';
 
-describe('ReplyDiscussionComponent', () => {
-  let component: ReplyDiscussionComponent;
-  let fixture: ComponentFixture<ReplyDiscussionComponent>;
+describe('SingleArtComponent', () => {
+  let component: SingleArtComponent;
+  let fixture: ComponentFixture<SingleArtComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReplyDiscussionComponent ]
+      declarations: [ SingleArtComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReplyDiscussionComponent);
+    fixture = TestBed.createComponent(SingleArtComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,10 +9,9 @@ export class InviteSocketService {
   constructor() {
   }
   connection(userId:string):Observable<any>{
-    this.url="ws://172.22.249.1:8080/invite/"+userId;
+    this.url="ws://localhost/invite/"+userId;
     this.ws=this.createSocket();
-    this.ws.onclose=()=>{this.close()};
-    this.ws.onerror=()=>{this.close()};
+
     return new Observable(observer=>{
       this.ws.onmessage=(ev: MessageEvent)=>observer.next(JSON.parse(ev.data));
     });
@@ -28,7 +27,5 @@ export class InviteSocketService {
   sendMessage(message:any){
     this.ws.send(JSON.stringify(message));
   }
-  close(){
-    this.ws.close();
-  }
+
 }

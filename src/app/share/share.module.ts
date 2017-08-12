@@ -30,12 +30,13 @@ import {BucketFolder} from "./model/bucket-folder.model";
 import {InsertDiscussion} from "./model/discussion/insert-discussion.model";
 import {DiscussionService} from "./service/discussion.service";
 import {ShowPagedDiscussion} from "./model/discussion/show-paged-discussion.model";
-import {ArtType} from "./model/art-opreation/art-type.model";
+import {ArtType} from "../foot-mark/model/art-type.model";
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ReplyDiscussionComponent } from './component/reply-discussion/reply-discussion.component';
 import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
 import { MoreDiscussionComponent } from './component/more-discussion/more-discussion.component';
 import { OpenMoreDiscussionComponent } from './component/open-more-discussion/open-more-discussion.component';
+import {NoticeArtType} from "../foot-mark/model/notice-art-type";
 @NgModule({
   imports: [
     CommonModule,
@@ -65,7 +66,8 @@ import { OpenMoreDiscussionComponent } from './component/open-more-discussion/op
     FaceComponent,
     UploadImgComponent,
     ArtDiscussionComponent,
-    OpenMoreDiscussionComponent
+    OpenMoreDiscussionComponent,
+    ReplyDiscussionComponent
   ],
   entryComponents:[MoreDiscussionComponent],
   providers:[
@@ -104,7 +106,10 @@ import { OpenMoreDiscussionComponent } from './component/open-more-discussion/op
     ArtType,
 
     /*刷新父级评论*/
-    RefreshDiscussion
+    RefreshDiscussion,
+
+    /*通知动态类型*/
+    NoticeArtType
     ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
     FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent, MoreDiscussionComponent, OpenMoreDiscussionComponent]

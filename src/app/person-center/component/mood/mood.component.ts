@@ -51,12 +51,13 @@ export class MoodComponent implements OnInit {
   uploadImgOpened=false;
   moods:ShowMoodDto[];
   pageSizeOptions = [5, 10, 25, 100];
+  selectMoodCondition:SelectMoodCondition;
   constructor(public moodService:MoodService,public rfOptions:RfEditorOptions,public insertMood:InsertMood,
               private toastsManager:ToastsManager,private toastOptions:ToastOptions,private ngProgressService:NgProgressService,
-              public selectMoodCondition:SelectMoodCondition,public pagedMood:PagedMood,private homeService:HomeService
+              public pagedMood:PagedMood,private homeService:HomeService
   ) {
     this.initEditor();
-
+    this.selectMoodCondition = new SelectMoodCondition();
   }
 
   /**
@@ -75,8 +76,12 @@ export class MoodComponent implements OnInit {
     this.selectMood();
   }
  initPaginator(){
+
     $("#mood-tab-content").find(".mat-paginator-page-size-label").html("每页心情数量:")
  }
+  ngAfterViewInit(){
+    $('.fr-box a').remove();
+  }
   /**
    * 发布心情
    */
@@ -96,6 +101,7 @@ export class MoodComponent implements OnInit {
       }
       this.clearData();
     });
+
   }
   changedPage(e){
     this.selectMoodCondition.pageSize=e.pageSize;
@@ -110,6 +116,7 @@ export class MoodComponent implements OnInit {
 
       this.pagedMood=res;
       this.moods=this.pagedMood.content;
+
       this.ngProgressService.done();
     });
   }

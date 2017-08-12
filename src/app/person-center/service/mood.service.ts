@@ -8,8 +8,9 @@ import {SelectMoodCondition} from "../model/select-mood-condition.model";
 import {PagedMood} from "../model/paged-mood";
 import {ShowMoodDto} from "../model/show-mood-dto.model";
 import {ArtArgs} from "../../share/model/base/art-args.model";
-import {ArtType} from "../../share/model/art-opreation/art-type.model";
+import {ArtType} from "../../foot-mark/model/art-type.model";
 import {SelectDiscussionCondition} from "../../share/model/discussion/select-discussion-condition";
+import {NoticeArt} from "../../foot-mark/model/notice-art.model";
 
 
 @Injectable()
@@ -25,11 +26,11 @@ export class MoodService extends BaseService{
 
   /**
    * 点赞
-   * @param moodId 心情ID
+   * @param noticeArt 点赞模型
    * @returns {Observable<R|T>}
    */
-  updateThumbsUpUserIds(moodId:string):Observable<boolean>{
-    return this.http.put(this.api.MOOD_THUMBSUP(moodId),null).map(res=>res.json().data).catch(this.handleError);
+  updateThumbsUpUserIds(noticeArt:NoticeArt):Observable<boolean>{
+    return this.http.put(this.api.MOOD_THUMBSUP,noticeArt).map(res=>res.json().data).catch(this.handleError);
   }
   /**
    * 分页查询心情
@@ -48,13 +49,27 @@ export class MoodService extends BaseService{
         args.thumbsUpCount=mood.thumbsUpCount;
         args.thumbsUpAble=mood.thumbsUpAble;
         args.artType=this.artType.MOOD;
-        args.artId=mood.moodId;
+        args.artId = mood.moodId;
+        args.artUserId=mood.mood.userId;
         args.showPaginator=false;
+        args.original = mood.original;
+        if(!args.original){//如果心情不是原创
+          args.originalUserId = mood.originalUserId;
+          args.originalArtId = mood.originalArtId;
+        }
         //评论的查询参数
         args.selectDiscussionCondition = new SelectDiscussionCondition();
         args.selectDiscussionCondition.artId=args.artId;
         mood.artArgs=args;
+
+        //通知动态参数
+        if(mood.mood.imgs.length>0){
+          args.firstArtImg = mood.mood.imgs[0];
+        }
+
+        args.artContent = mood.mood.content;
       }
+
       return pagedMood;
     }).catch(this.handleError);
   }

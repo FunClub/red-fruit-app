@@ -101,10 +101,7 @@ export class InviteBodyComponent implements OnInit {
       }
       this.inviteSocketService.connection(res.userId).subscribe(
         data=>this.receiveMessage(data),
-        error=>{
-          this.inviteSocketService.close();
-          console.log(error)
-        }
+
       );
     });
   }

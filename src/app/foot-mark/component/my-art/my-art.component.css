@@ -1,0 +1,44 @@
+/*我的所有动态*/
+.all-my-art{
+  width: 800px;
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
+
+}
+/*动态头部*/
+.art-title-wrapper{
+  height: 40px;
+
+  border: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 3px rgb(213,213,213);
+  line-height: 40px;
+  background: white;
+}
+/**/
+.title-text{
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: 15px;
+}
+/*动态div*/
+.art-operation-wrapper{
+  float: right;
+  margin-right: 20px;
+}
+.art-toggle{
+  color: rgb(120,120,120);
+}
+/*动态内容*/
+.art-content{
+  margin-top: 10px;
+  background: white;
+  border: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 3px rgb(213,213,213);
+  padding: 15px;
+  border-bottom: solid 1px rgb(223,223,223);
+}
+
+md-paginator{
+  margin-top: 30px;
+}
