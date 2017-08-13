@@ -3,13 +3,13 @@
   <!--编辑心情操作开始-->
   <div id="editor-operation">
     <!--添加表情-->
-    <div class="each-operation" >
-      <button md-icon-button>
-        <i id="operation-face-ico" class="material-icons" (click)="toggleFace()">sentiment_very_satisfied</i>
+    <div class="each-operation">
+      <button md-icon-button   (click)="toggleFace()">
+        <i id="operation-face-ico" class="material-icons">sentiment_very_satisfied</i>
       </button>
       <span class="operation-text" id="insert-face-text">表情</span>
       <div id="all-face-wrapper" *ngIf="faceOpened" [@flyXInOutFromTop]>
-        <app-face (faceSelected)="appendFace($event)" (faceOpened)="closeFace($event)"></app-face>
+        <app-face (faceSelected)="appendFace($event)" (faceOpened)="closeFace()"></app-face>
       </div>
     </div>
 

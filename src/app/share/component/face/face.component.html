@@ -1,9 +1,9 @@
  <i class="top-border-triangle"></i>
   <main>
     <div id="face-title">添加表情
-      <button md-icon-button id="close">
+      <button md-icon-button id="close"  (click)="faceClosedEvent()">
 
-        <i class="material-icons" (click)="faceClosedEvent()">close</i>
+        <i class="material-icons">close</i>
       </button>
     </div>
     <table id="face-table" cellspacing="0"  (blur)="closeSelf()">

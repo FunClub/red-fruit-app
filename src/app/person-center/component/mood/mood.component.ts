@@ -163,8 +163,8 @@ export class MoodComponent implements OnInit {
    * 关闭表情面板
    * @param faceOpened
    */
-  closeFace(faceOpened:boolean){
-    this.faceOpened=faceOpened;
+  closeFace(){
+    this.faceOpened=false;
   }
 
   /**
