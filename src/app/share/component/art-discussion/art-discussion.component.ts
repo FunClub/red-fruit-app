@@ -11,6 +11,7 @@ import {ShowSubDiscussion} from "../../model/discussion/show-sub-discussion.mode
 import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";
 import {ArtArgs} from "../../model/base/art-args.model";
 import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
+import {NoticeArtService} from "../../../foot-mark/service/notice-art.service";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -82,35 +83,23 @@ export class ArtDiscussionComponent{
 
   pageSizeOptions = [5, 10, 25, 100];
   constructor(public homeService:HomeService,public discussionService:DiscussionService,
-              private pagedDiscussion:ShowPagedDiscussion,private noticeType:NoticeArtType) {
+              private pagedDiscussion:ShowPagedDiscussion,private noticeArtService:NoticeArtService,private noticeType:NoticeArtType) {
     this.initEditor();
     this.sendDiscussion = new InsertDiscussion();
   }
 
   ngOnInit() {
-    this.initNoticeArtData();
+    this.selectDiscussion = this.artArgs.selectDiscussionCondition;
+    this.sendDiscussion.parentDiscussion.artId=this.artArgs.artId;
+    //初始化通知动态数据
+    this.sendDiscussion.noticeArt=this.noticeArtService.initNoticeArtData(this.artArgs);
+    this.sendDiscussion.noticeArt.noticeArtType=this.noticeType.DISCUSSION;
     if(this.artArgs.discussionCount>0){
       this.showDiscussion();
     }
   }
 
-  /**
-   * 初始化通知动态数据
-   */
-  initNoticeArtData(){
-    this.selectDiscussion = this.artArgs.selectDiscussionCondition;
-    this.sendDiscussion.parentDiscussion.artId=this.artArgs.artId;
-    if(!this.artArgs.original){
-      this.sendDiscussion.noticeArt.originalArtId =this.artArgs.originalArtId;
-      this.sendDiscussion.noticeArt.originalUserId =this.artArgs.originalUserId;
-    }
-    this.sendDiscussion.noticeArt.artId=this.artArgs.artId;
-    this.sendDiscussion.noticeArt.noticeArtUserId = this.artArgs.artUserId;
-    this.sendDiscussion.noticeArt.artType=this.artArgs.artType;
-    this.sendDiscussion.noticeArt.noticeArtType=this.noticeType.DISCUSSION;
-    this.sendDiscussion.noticeArt.artContent = this.artArgs.artContent;
-    this.sendDiscussion.noticeArt.firstArtImg = this.artArgs.firstArtImg;
-  }
+
   ngAfterViewInit(){
     $('.fr-box a').remove();
   }

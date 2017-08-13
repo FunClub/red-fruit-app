@@ -49,7 +49,7 @@
               </button>
             </div>
             <div class="reply-discussion-wrapper" *ngIf="parentDiscussion.showReply">
-              <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)"[parentDiscussionIndex]="i" [artArgs]="artArgs"  [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
+              <app-reply-discussion (refreshDiscussionNotice)="refreshSubDiscussion($event)" [sendToUserId]="parentDiscussion.userId" [parentDiscussionIndex]="i" [artArgs]="artArgs" [sendToNickName]="parentDiscussion.nickname" [discussionId]="parentDiscussion.discussionId"></app-reply-discussion>
             </div>
           </div>
         </div>

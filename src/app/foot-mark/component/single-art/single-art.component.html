@@ -4,46 +4,48 @@
     <p>
       <span>{{noticeArt.generateNickname}}</span>
       <span class="art-generate-target">{{noticeArt.noticeArtType}}了你的{{noticeArt.artType}}</span>
+
     </p>
     <p class="art-date-wrapper">
       <span class="art-sort-date">{{noticeArt.sortDate}}</span>
       <span class="art-short-date">{{noticeArt.shortDate}}</span>
     </p>
   </div>
-  <div class="art-single-content">
-    <img class="art-img" *ngIf="noticeArt.firstArtImg" [src]="noticeArt.firstArtImg"/>
+  <p class="currentContent" [innerHTML]="noticeArt.currentContent"></p>
+  <div class="art-single-content" [ngClass]="{'no-art-img':!noticeArt.firstArtImg}">
+    <img class="art-img" *ngIf="noticeArt.firstArtImg" [src]="api.IMAGE_PREFIX+noticeArt.firstArtImg+api.UPLOAD_MOOD_NARROW_STYLE"/>
     <div class="art-text-content-wrapper">
         <span class="art-user-content-name">{{noticeArt.artNickname}}:</span>
         <span class="art-text-content" [innerHTML]="noticeArt.artContent"></span>
     </div>
   </div>
   <div class="art-discussion-wrapper" *ngIf="noticeArt.discussion">
-    <img class="discussion-profile" src="../../../../assets/img/profile.jpg"/>
+    <img class="discussion-profile" [src]="noticeArt.discussion.profileImg"/>
     <div class="art-discussion-content">
       <!--父级评论-->
       <div class="parent-discussion">
-        <span class="parent-discussion-nickname">大宝子</span>
-        <span class="discussion-text">:如何解决Mybatis自动创建表？来过</span>
+        <span class="parent-discussion-nickname">{{noticeArt.discussion.nickname}}</span>
+        <span class="discussion-text"[innerHTML]="noticeArt.discussion.content"></span>
         <div class="discussion-info">
-          <span class="discussion-time">今天18.30</span> 回复
-         <!-- <div class="reply-discussion-wrapper" >
-           <app-reply-discussion [sendToNickName]="true"></app-reply-discussion>
-          </div>-->
+          <span class="discussion-time">{{noticeArt.discussion.sortDate}} {{noticeArt.discussion.shortDate}}</span>
+          <i  class="material-icons discussion-reply" (click)="toggleReply(noticeArt.discussion)">textsms</i>
+          <div class="reply-discussion-wrapper" *ngIf="noticeArt.discussion.showReply">
+           <app-reply-discussion  (refreshNoticeArtDiscussion)="refreshDiscussion($event,noticeArt.discussion)" [sendToNickName]="noticeArt.discussion.nickname" [discussionId]="noticeArt.discussion.discussionId" [artArgs]="artArgs" [sendToUserId]="noticeArt.discussion.userId"></app-reply-discussion>
+          </div>
         </div>
       </div>
-      <div class="all-sub-discussion">
-        <div class="sub-discussion">
-          <img class="discussion-profile" src="../../../../assets/img/profile.jpg"/>
-          <span class="sub-discussion-nickname">纽尔沟:</span>
-          <span class="discussion-to-nickname" >@狗蛋</span>
-          <span class="discussion-text">哈哈</span>
+      <div class="all-sub-discussion" *ngIf="noticeArt.discussion.subDiscussionDtos">
+        <div class="sub-discussion" *ngFor="let sub of noticeArt.discussion.subDiscussionDtos">
+          <img class="discussion-profile" [src]="sub.profileImg"/>
+          <span class="sub-discussion-nickname">{{sub.nickname}}:</span>
+          <span class="discussion-to-nickname" *ngIf="sub.sendToNickname" >@{{sub.sendToNickname}}</span>
+          <span class="discussion-text" [innerHTML]="sub.content|safeHtml"></span>
           <div class="discussion-info">
-            <span class="discussion-time">182</span>
-            <div class="discussion-operation">
+            <span class="discussion-time">{{sub.sortDate}} {{sub.shortDate}}</span>
+            <i  class="material-icons discussion-reply" (click)="toggleReply(sub)">textsms</i>
+            <div class="reply-discussion-wrapper" *ngIf="sub.showReply">
+              <app-reply-discussion (refreshNoticeArtDiscussion)="refreshDiscussion($event,sub)" [sendToNickName]="sub.nickname" [artArgs]="artArgs" [discussionId]="noticeArt.discussion.discussionId" [sendToUserId]="sub.userId"></app-reply-discussion>
             </div>
-           <!-- <div class="reply-discussion-wrapper" >
-              <app-reply-discussion [sendToNickName]="true"></app-reply-discussion>
-            </div>-->
           </div>
         </div>
       </div>

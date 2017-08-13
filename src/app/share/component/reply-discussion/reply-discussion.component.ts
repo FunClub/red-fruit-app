@@ -6,6 +6,8 @@ import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
 import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
 import {ArtArgs} from "../../model/base/art-args.model";
+import {NoticeArtService} from "../../../foot-mark/service/notice-art.service";
+import {ShowSubDiscussion} from "../../model/discussion/show-sub-discussion.model";
 
 declare var $:any;
 @Component({
@@ -87,11 +89,18 @@ export class ReplyDiscussionComponent implements OnInit {
    */
   @Output()
   refreshDiscussionNotice = new EventEmitter<RefreshDiscussion>();
+
+  /**
+   * 通知动态通知组件刷新评论
+   * @type {EventEmitter<ShowSubDiscussion>}
+   */
+  @Output()
+  refreshNoticeArtDiscussion = new EventEmitter<ShowSubDiscussion>();
   /**
    * 发送子评论的订阅
    */
   sendSubDiscussionSubscribe;
-  constructor(private discussionService:DiscussionService,private refreshDiscussion:RefreshDiscussion,private noticeType:NoticeArtType) {
+  constructor(private discussionService:DiscussionService,private noticeArtService:NoticeArtService,private refreshDiscussion:RefreshDiscussion,private noticeType:NoticeArtType) {
     this.subDiscussion = new InsertSubDiscussion();
   }
 
@@ -103,7 +112,9 @@ export class ReplyDiscussionComponent implements OnInit {
       if(res){
         this.subDiscussion.subDiscussion.content="";
         this.refreshDiscussion.subDiscussion = res;
+        //通知父组件查新评论
         this.refreshDiscussionNotice.emit(this.refreshDiscussion);
+        this.refreshNoticeArtDiscussion.emit(res);
       }
     })
   }
@@ -129,25 +140,14 @@ export class ReplyDiscussionComponent implements OnInit {
     this.refreshDiscussion.parentDiscussionIndex=this.parentDiscussionIndex;
     this.refreshDiscussion.subDiscussionIndex=this.subDiscussionIndex;
 
-    this.initNoticeArtData();
+    this.subDiscussion.noticeArt=this.noticeArtService.initNoticeArtData(this.artArgs);
+    this.subDiscussion.noticeArt.noticeArtType=this.noticeType.REPLY;
+    this.subDiscussion.noticeArt.artType=this.noticeType.DISCUSSION;
+    this.subDiscussion.noticeArt.noticeArtUserId = this.sendToUserId;
     this.initEditor();
   }
 
-  /**
-   * 初始化通知动态
-   */
-  initNoticeArtData(){
-    this.subDiscussion.noticeArt.artId=this.artArgs.artId;
-    this.subDiscussion.noticeArt.noticeArtUserId=this.artArgs.artUserId;
-    this.subDiscussion.noticeArt.artType=this.artArgs.artType;
-    this.subDiscussion.noticeArt.noticeArtType=this.noticeType.DISCUSSION;
-    if(!this.artArgs.original){
-      this.subDiscussion.noticeArt.originalArtId = this.artArgs.originalArtId;
-      this.subDiscussion.noticeArt.originalUserId = this.artArgs.originalUserId;
-    }
-    this.subDiscussion.noticeArt.firstArtImg = this.artArgs.firstArtImg;
-    this.subDiscussion.noticeArt.artContent = this.artArgs.artContent;
-  }
+
   ngAfterViewInit(){
     $('.fr-box a').remove();
   }

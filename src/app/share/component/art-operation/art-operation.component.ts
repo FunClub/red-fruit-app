@@ -7,6 +7,7 @@ import {MoodService} from "../../../person-center/service/mood.service";
 import {ArtArgs} from "../../model/base/art-args.model";
 import {NoticeArt} from "../../../foot-mark/model/notice-art.model";
 import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
+import {NoticeArtService} from "../../../foot-mark/service/notice-art.service";
 
 @Component({
   selector: 'app-art-operation',
@@ -55,27 +56,15 @@ export class ArtOperationComponent implements OnInit {
   @Input()
   artArgs:ArtArgs;
   noticeArt:NoticeArt;
-  constructor(private artType:ArtType,private moodService:MoodService,private noticeArtType:NoticeArtType) {
+  constructor(private artType:ArtType,private noticeType:NoticeArtType,private moodService:MoodService,private noticeArtService:NoticeArtService) {
 
 
   }
   ngOnInit() {
-    this.initNoticeArtData();
+    this.noticeArt = this.noticeArtService.initNoticeArtData(this.artArgs);
+    this.noticeArt.noticeArtType=this.noticeType.THUMBSUP;
   }
-  initNoticeArtData(){
-    this.noticeArt = new NoticeArt();
-    this.noticeArt.artId=this.artArgs.artId;
-    if(!this.artArgs.original){//非原创
-     this.noticeArt.originalUserId =this.artArgs.originalUserId;
-      this.noticeArt.originalArtId =this.artArgs.originalArtId;
-    }
-    this.noticeArt.original = this.artArgs.original;
-    this.noticeArt.noticeArtUserId = this.artArgs.artUserId;
-    this.noticeArt.artType =this.artArgs.artType;
-    this.noticeArt.noticeArtType =this.noticeArtType.THUMBSUP;
-    this.noticeArt.artContent = this.artArgs.artContent;
-    this.noticeArt.firstArtImg = this.artArgs.firstArtImg;
-  }
+
   /**
    * 更新评论数
    */

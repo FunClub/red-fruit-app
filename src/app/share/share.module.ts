@@ -67,7 +67,9 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     UploadImgComponent,
     ArtDiscussionComponent,
     OpenMoreDiscussionComponent,
-    ReplyDiscussionComponent
+    ReplyDiscussionComponent,
+    SafeHtmlPipe,
+    BusyModule
   ],
   entryComponents:[MoreDiscussionComponent],
   providers:[

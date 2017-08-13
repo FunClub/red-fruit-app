@@ -4,6 +4,7 @@
 export class ShowSubDiscussion {
   userId:string;
   nickname:string;
+  profileImg:string;
   content:string;
   sortDate:string;
   shortDate:string;

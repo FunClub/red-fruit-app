@@ -3,6 +3,7 @@
  */
 export class NoticeArt {
   artId:string;
+  artUserId:string;
   original:boolean;
   originalArtId :string;
   originalUserId:string;
@@ -11,5 +12,4 @@ export class NoticeArt {
   noticeArtType:string;
   artContent:string;
   firstArtImg:string;
-  discussion:any;
 }
