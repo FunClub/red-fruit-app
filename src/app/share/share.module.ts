@@ -9,7 +9,7 @@ import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
 import {NavLink} from "./model/nav-link.model";
 import {
-  MdButtonModule, MdDialogModule, MdInputModule, MdPaginatorModule, MdTabsModule,
+  MdButtonModule, MdDialogModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdTabsModule,
   MdTooltipModule
 } from "@angular/material";
 
@@ -52,7 +52,8 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     FroalaViewModule.forRoot(),
     DndModule.forRoot(),
     BusyModule,
-    MdPaginatorModule
+    MdPaginatorModule,
+    MdMenuModule
   ],
   exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
     RouterModule,
@@ -69,7 +70,9 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     OpenMoreDiscussionComponent,
     ReplyDiscussionComponent,
     SafeHtmlPipe,
-    BusyModule
+    BusyModule,
+    DndModule,
+    MdMenuModule
   ],
   entryComponents:[MoreDiscussionComponent],
   providers:[

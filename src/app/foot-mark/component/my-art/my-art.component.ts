@@ -36,10 +36,7 @@ export class MyArtComponent implements OnInit {
    */
   pageSizeOptions = [5, 10, 25, 100];
 
-  /**
-   * 查询通知动态订阅
-   */
-  selectNoticeSubscribe;
+
   constructor(private noticeService:NoticeArtService,private ngProgressService:NgProgressService) {
     this.onlyShowHalf=true;
     this.selectionCondition = new SelectNoticeCondition();
@@ -50,15 +47,20 @@ export class MyArtComponent implements OnInit {
     this.selectNoticeArt();
   }
   ngOnInit() {
+
    this.selectNoticeArt();
   }
   selectNoticeArt(){
     this.ngProgressService.start();
-    this.selectNoticeSubscribe=this.noticeService.selectNoticeArt(this.selectionCondition).subscribe(res=>{
+   this.noticeService.selectNoticeArt(this.selectionCondition).subscribe(res=>{
       this.ngProgressService.done();
       this.pageNotice = res;
       this.showNoticeDtos = this.pageNotice.content;
       $(".mat-sidenav-content").scrollTop(60);
     });
+  }
+  deleteNotice(index:number){
+    this.showNoticeDtos.splice(index,1);
+    this.pageNotice.totalElements--;
   }
 }

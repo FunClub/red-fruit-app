@@ -1,3 +1,19 @@
+main{
+
+}
+/*动态操作*/
+.notice-art-operation{
+  float: right;
+  position: relative;
+  bottom: 10px;
+}
+.notice-art-operation i{
+  color: rgb(150,150,150);
+}
+.mat-menu-item i{
+    vertical-align: middle;
+}
+
 /*用户动态信息*/
 .art-user-info-wrapper{
   height: 60px;

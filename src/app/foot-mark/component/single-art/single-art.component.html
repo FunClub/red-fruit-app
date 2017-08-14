@@ -1,6 +1,17 @@
 <main>
   <div class="art-user-info-wrapper">
     <img class="art-user-profile" [src]="noticeArt.generateProfileImg"/>
+    <div class="notice-art-operation" [mdMenuTriggerFor]="menu">
+      <button md-icon-button>
+        <i class="material-icons">keyboard_arrow_down</i>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item (click)="deleteNotice()">
+         <i class="material-icons">delete</i>
+          <span>删除</span>
+        </button>
+      </md-menu>
+    </div>
     <p>
       <span>{{noticeArt.generateNickname}}</span>
       <span class="art-generate-target">{{noticeArt.noticeArtType}}了你的{{noticeArt.artType}}</span>

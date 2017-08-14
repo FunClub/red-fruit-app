@@ -9,12 +9,21 @@ import {ShowNoticeDto} from "../model/show-notice-dto.model";
 import {ArtArgs} from "../../share/model/base/art-args.model";
 import {NoticeArt} from "../model/notice-art.model";
 import {NoticeArtType} from "../model/notice-art-type";
+import {DeleteNoticeArt} from "../model/delete-notice-art.model";
 
 @Injectable()
 export class NoticeArtService extends BaseService{
 
   constructor(private http:Http,private api:RedFruitApi,private noticeType:NoticeArtType) {super(); }
 
+  /**
+   * 删除动态通知
+   * @param deleteNotice 删除动态通知模型
+   * @returns {Observable<R|T>}
+   */
+  deleteNoticeArt(deleteNotice:DeleteNoticeArt):Observable<boolean>{
+    return this.http.patch(this.api.NOTICE_ART,deleteNotice).map(res=>res.json()).catch(this.handleError);
+  }
   /**
    * 查询动态通知
    * @param condition 查询条件

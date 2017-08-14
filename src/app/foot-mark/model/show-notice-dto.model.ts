@@ -11,6 +11,7 @@ export class ShowNoticeDto {
   originalArtId:string;
   originalUserId:string;
   artType:string;
+  noticeArtId:string;
   artId:string;
   artUserId:string;
   sortDate:string;

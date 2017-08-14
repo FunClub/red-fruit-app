@@ -3,6 +3,6 @@
  */
 export class ProfileInfo {
   userId:string;
-  profileImg:string;
-  originalProfileImg:string;
+  profileImg:any;
+  originalProfileImg:any;
 }

@@ -11,9 +11,8 @@
       </md-slide-toggle>
     </div>
   </div>
-  <div [ngBusy]="{busy:[selectNoticeSubscribe],message:'动态加载中...请稍后'}"></div>
-  <div class="art-content" *ngFor="let noticeArt of showNoticeDtos">
-    <app-single-art [noticeArt]="noticeArt"></app-single-art>
+  <div class="art-content" *ngFor="let noticeArt of showNoticeDtos;let  i=index;">
+    <app-single-art [noticeArtIndex]="i" (refreshNoticeArt)="deleteNotice($event)" [noticeArt]="noticeArt"></app-single-art>
   </div>
   <md-paginator (page)="changePage($event)"  [pageSizeOptions]="pageSizeOptions"
                 [length]="pageNotice?.totalElements" [pageSize]="selectionCondition.pageSize"></md-paginator>
