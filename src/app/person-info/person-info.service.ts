@@ -22,8 +22,8 @@ export class PersonInfoService extends BaseService{
    * @param profileInfo
    * @returns {Observable<R|T>}
    */
-  updateProfileImg(profileInfo:any):Observable<boolean>{
-    return this.http.put(this.api.UPDATE_PROFILE,profileInfo).map(res=>res.json().data).catch(this.handleError);
+  updateProfileImg(profileInfo:any):Observable<any>{
+    return this.http.put(this.api.UPDATE_PROFILE,profileInfo).map(res=>res.json()).catch(this.handleError);
   }
   /**
    * 修改用户基本资料

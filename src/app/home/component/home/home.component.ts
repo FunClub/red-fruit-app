@@ -22,10 +22,15 @@ export class HomeComponent implements OnInit {
    */
 
   routerLinks:Array<any>;
+  s:string= `
+  <img style="float: left;width: 80px" class="message-profile" 
+    src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170814190940-52957292020160805122047159702265psb.jpg">
+    动态通知
+  `;
   constructor(private title:Title, private toastsManager: ToastsManager,
               private vcr: ViewContainerRef, private toastOptions:ToastOptions,
               public homeService:HomeService,
-              private ngProgressService:NgProgressService
+              private ngProgressService:NgProgressService,public api:RedFruitApi
 
   ) {
 
@@ -72,6 +77,9 @@ export class HomeComponent implements OnInit {
   openNav(nav:any){
    this.isNavOpen=!this.isNavOpen;
     nav.toggle();
+    this.toastOptions.positionClass="toast-bottom-right";
+    this.toastOptions.toastLife=50000;
+    this.toastsManager.custom(this.s,'通知动态', {enableHTML: true});
   }
 
   /**

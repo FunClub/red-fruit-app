@@ -12,6 +12,7 @@ import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model
 import {ArtArgs} from "../../model/base/art-args.model";
 import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
 import {NoticeArtService} from "../../../foot-mark/service/notice-art.service";
+import {RedFruitApi} from "../../model/base/api.model";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -82,7 +83,7 @@ export class ArtDiscussionComponent{
   sendDiscussion:InsertDiscussion;
 
   pageSizeOptions = [5, 10, 25, 100];
-  constructor(public homeService:HomeService,public discussionService:DiscussionService,
+  constructor(public homeService:HomeService,public discussionService:DiscussionService,public api:RedFruitApi,
               private pagedDiscussion:ShowPagedDiscussion,private noticeArtService:NoticeArtService,private noticeType:NoticeArtType) {
     this.initEditor();
     this.sendDiscussion = new InsertDiscussion();

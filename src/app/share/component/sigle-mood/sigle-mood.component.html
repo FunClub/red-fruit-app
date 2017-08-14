@@ -1,9 +1,21 @@
 <div class="mood-all">
+  <div class="mood-operation" [mdMenuTriggerFor]="menu">
+    <button md-icon-button>
+      <i class="material-icons">keyboard_arrow_down</i>
+    </button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item >
+        <i class="material-icons">delete</i>
+        <span>删除</span>
+      </button>
+    </md-menu>
+  </div>
     <div class="mood-title">
       <img class="mood-profile" [src]="showMoodDto.profileImg">
       <p class="mood-nickname">{{showMoodDto.nickname}}</p>
       <p class="mood-howlong"><span class="mood-short-date">{{showMoodDto.shortDate}}</span>{{showMoodDto.howLongAgo}}前</p>
     </div>
+
     <div class="mood-content">
       <!--心情文本内容-->
       <div class="mood-text-content" [innerHTML]="showMoodDto.mood.content|safeHtml" style="font-size: 14px"></div>

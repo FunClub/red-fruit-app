@@ -11,6 +11,7 @@ import {UploadImgComponent} from "../upload-img/upload-img.component";
 import {LoginService} from "../../../login/service/login.service";
 import {HomeService} from "../../../home/service/home.service";
 import {Home} from "../../../home/model/home.model";
+import {RedFruitApi} from "../../../share/model/base/api.model";
 @Component({
   selector: 'app-base-info',
   templateUrl: './base-info.component.html',
@@ -76,7 +77,7 @@ export class BaseInfoComponent implements OnInit {
    */
   characters:string[];
   constructor(private formBuilder:FormBuilder,private baseInfo:BaseInfo,private personInfoService:PersonInfoService,
-              private toastsManager: ToastsManager,private ngProgressService:NgProgressService,
+              private toastsManager: ToastsManager,private ngProgressService:NgProgressService,private api:RedFruitApi,
               private toastOptions: ToastOptions,private dialog:MdDialog,private homeService:HomeService,private homeModel:Home
   ) {
 

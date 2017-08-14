@@ -68,14 +68,14 @@ export class SigleMoodComponent implements OnInit {
    * 当前图片的光标类型
    */
   currentImgCursorType:number;
-  constructor(public moodOption:ShowMoodImg,private api:RedFruitApi) {
+  constructor(public moodOption:ShowMoodImg,public api:RedFruitApi) {
     this.smallMoodImgs=[];
     this.smallDetailImgs=[];
   }
 
   ngOnInit() {
-
     this.orPath=[];
+    this.showMoodDto.profileImg=this.api.IMAGE_PREFIX+this.showMoodDto.profileImg;
     for(let path of this.showMoodDto.mood.imgs){
       this.orPath.push(this.api.IMAGE_PREFIX+path)
     }

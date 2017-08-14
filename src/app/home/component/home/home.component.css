@@ -231,3 +231,6 @@ input::-webkit-input-placeholder {
   box-shadow: 0 0 3px gray;
   display: none;
 }
+.message-profile{
+  width: 80px;
+}

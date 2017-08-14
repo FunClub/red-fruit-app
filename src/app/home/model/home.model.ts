@@ -7,7 +7,7 @@ export class Home {
   nickname:string;
 
   constructor() {
-    this.profileImg="assets/img/defaultMeImg.png";
+    this.profileImg="profile/defaultMeImg.png";
     this.nickname="";
   }
 }

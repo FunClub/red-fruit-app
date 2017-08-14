@@ -3,7 +3,7 @@
   <!--写评论-->
   <div class="write-discussion">
     <div [ngBusy]="{busy:[discussionSubscribe],message:'处理中,请稍候'}"></div>
-    <img class="my-profile-img" [src]="homeService.homeInfo.profileImg"/>
+    <img class="my-profile-img" [src]="api.IMAGE_PREFIX+homeService.homeInfo.profileImg"/>
     <div #discussionEditor id="discussion-editor" class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="sendDiscussion.parentDiscussion.content"></div>
     <button class="send-discussion-btn" md-raised-button color="primary" (click)="insertDiscussion()">评论</button>
     <div class="all-face-wrapper">
@@ -26,7 +26,7 @@
     </div>
     <!--一个评论开始-->
     <div class="discussion" *ngFor="let parentDiscussion of  parentDiscussions;let i=index;">
-      <img class="discussion-profile" [src]="parentDiscussion.profileImg"/>
+      <img class="discussion-profile" [src]="api.IMAGE_PREFIX+parentDiscussion.profileImg"/>
       <div class="discussion-content">
         <!--父级评论-->
         <div class="parent-discussion">

@@ -35,7 +35,7 @@
   <md-sidenav mode="side" opened="true" #sidenav   id="sideNavPanel">
     <div id="navContent">
       <div id="userProfile">
-        <img id="profileImg" [src]="homeService.homeInfo.profileImg"/>
+        <img id="profileImg" [src]="api.IMAGE_PREFIX+homeService.homeInfo.profileImg"/>
         <p id="nickName">{{homeService.homeInfo.nickname}}</p>
       </div>
       <!--导航ul-->

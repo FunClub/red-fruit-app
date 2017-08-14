@@ -28,6 +28,19 @@
 .mood-short-date{
   margin-right: 10px;
 }
+
+/*心情操作*/
+.mood-operation{
+  float: right;
+
+}
+.mood-operation i{
+  color: rgb(150,150,150);
+}
+.mood-operation .mat-menu-item i{
+  vertical-align: middle;
+}
+
 /*心情内容*/
 .mood-content{
   padding-left: 57px;

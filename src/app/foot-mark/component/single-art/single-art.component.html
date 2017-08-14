@@ -1,6 +1,6 @@
 <main>
   <div class="art-user-info-wrapper">
-    <img class="art-user-profile" [src]="noticeArt.generateProfileImg"/>
+    <img class="art-user-profile" [src]="api.IMAGE_PREFIX+noticeArt.generateProfileImg"/>
     <div class="notice-art-operation" [mdMenuTriggerFor]="menu">
       <button md-icon-button>
         <i class="material-icons">keyboard_arrow_down</i>
@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="art-discussion-wrapper" *ngIf="noticeArt.discussion">
-    <img class="discussion-profile" [src]="noticeArt.discussion.profileImg"/>
+    <img class="discussion-profile" [src]="api.IMAGE_PREFIX+noticeArt.discussion.profileImg"/>
     <div class="art-discussion-content">
       <!--父级评论-->
       <div class="parent-discussion">
@@ -47,7 +47,7 @@
       </div>
       <div class="all-sub-discussion" *ngIf="noticeArt.discussion.subDiscussionDtos">
         <div class="sub-discussion" *ngFor="let sub of noticeArt.discussion.subDiscussionDtos">
-          <img class="discussion-profile" [src]="sub.profileImg"/>
+          <img class="discussion-profile" [src]="api.IMAGE_PREFIX+sub.profileImg"/>
           <span class="sub-discussion-nickname">{{sub.nickname}}:</span>
           <span class="discussion-to-nickname" *ngIf="sub.sendToNickname" >@{{sub.sendToNickname}}</span>
           <span class="discussion-text" [innerHTML]="sub.content|safeHtml"></span>
