@@ -3,9 +3,8 @@ import {Title} from "@angular/platform-browser";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {RedFruitApi} from "../../../share/model/base/api.model";
 import {HomeService} from "../../service/home.service";
-import {Home} from "../../model/home.model";
-import {LoginService} from "../../../login/service/login.service";
 import {NgProgressService} from "ngx-progressbar";
+import {PushNotificationsService} from "_angular2-notifications@0.7.7@angular2-notifications/dist";
 
 @Component({
   selector: 'app-home',
@@ -30,7 +29,7 @@ export class HomeComponent implements OnInit {
   constructor(private title:Title, private toastsManager: ToastsManager,
               private vcr: ViewContainerRef, private toastOptions:ToastOptions,
               public homeService:HomeService,
-              private ngProgressService:NgProgressService,public api:RedFruitApi
+              private ngProgressService:NgProgressService,public api:RedFruitApi,private _pushNotifications: PushNotificationsService
 
   ) {
 
@@ -77,9 +76,6 @@ export class HomeComponent implements OnInit {
   openNav(nav:any){
    this.isNavOpen=!this.isNavOpen;
     nav.toggle();
-    this.toastOptions.positionClass="toast-bottom-right";
-    this.toastOptions.toastLife=50000;
-    this.toastsManager.custom(this.s,'通知动态', {enableHTML: true});
   }
 
   /**

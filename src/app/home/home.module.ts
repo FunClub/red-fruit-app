@@ -10,6 +10,10 @@ import {HomeService} from "./service/home.service";
 import {HomeGuard} from "./guard/home.guard";
 import {Home} from "./model/home.model";
 import {FootMarkModule} from "../foot-mark/foot-mark.module";
+import {PushNotificationsModule} from "angular2-notifications";
+
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +24,8 @@ import {FootMarkModule} from "../foot-mark/foot-mark.module";
     MdInputModule,
     PersonCenterModule,
     PersonInfoModule,
-    FootMarkModule
+    FootMarkModule,
+    PushNotificationsModule
   ],
   declarations: [HomeComponent],
   providers:[
