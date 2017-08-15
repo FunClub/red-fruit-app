@@ -10,9 +10,8 @@ import {HomeService} from "./service/home.service";
 import {HomeGuard} from "./guard/home.guard";
 import {Home} from "./model/home.model";
 import {FootMarkModule} from "../foot-mark/foot-mark.module";
-import {PushNotificationsModule} from "angular2-notifications";
-
-
+import {NoticeMessage} from "../websocket/model/notice-message.model";
+import {BaseSocketService} from "../websocket/socket/base-socket.service";
 
 @NgModule({
   imports: [
@@ -24,8 +23,7 @@ import {PushNotificationsModule} from "angular2-notifications";
     MdInputModule,
     PersonCenterModule,
     PersonInfoModule,
-    FootMarkModule,
-    PushNotificationsModule
+    FootMarkModule
   ],
   declarations: [HomeComponent],
   providers:[
@@ -34,7 +32,13 @@ import {PushNotificationsModule} from "angular2-notifications";
     //home守卫
     HomeGuard,
     /*主页模型*/
-    Home
+    Home,
+
+    /*SOCKET服务*/
+    BaseSocketService,
+
+    /*消息通知数据*/
+    NoticeMessage
   ]
 })
 export class HomeModule { }

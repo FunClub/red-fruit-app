@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {LoginModule} from "./login/login.module";
-import {BrowserXhr, HttpModule} from "@angular/http";
 import {MD_PLACEHOLDER_GLOBAL_OPTIONS} from "@angular/material";
 import {ToastOptions} from "ng2-toastr";
 import {BaseToastsOptions} from "./share/model/toasts-options.model";
-import {RedFruitApi} from "./share/model/base/api.model";
-import {Regex} from "./share/model/regex.model";
+
 import {HomeModule} from "./home/home.module";
-import {PersonCenterModule} from "./person-center/person-center.module";
+
 import {NgProgressModule} from "ngx-progressbar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PushNotificationsModule} from "angular2-notifications";
+
 /**
  * 应用根模块
  *
@@ -22,10 +22,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AppComponent,
   ],
   imports: [
-    BrowserModule,   NgProgressModule,BrowserAnimationsModule,
+    BrowserModule,
+    NgProgressModule,BrowserAnimationsModule,
     AppRoutingModule,
     LoginModule,
-    HomeModule
+    HomeModule,
+    PushNotificationsModule
   ],
   providers: [
     /*弹出框全局配置*/

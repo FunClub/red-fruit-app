@@ -2,6 +2,26 @@
  * 应用api
  */
 export  class RedFruitApi {
+
+  /**
+   * 通知socket
+   * @param userId
+   * @returns {string}
+   * @constructor
+   */
+  NOTICE_SOCKET(userId:string){
+    return `ws://localhost/notice/${userId}`
+  }
+
+  /**
+   * 情侣邀请socket
+   * @param userId
+   * @returns {string}
+   * @constructor
+   */
+  INVITE_SOCKET(userId:string){
+    return `ws://localhost/invite/${userId}`
+  }
   /**
    * 动态通知
    * @type {string}

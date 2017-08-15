@@ -8,6 +8,9 @@ import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
 import {ArtArgs} from "../../model/base/art-args.model";
 import {NoticeArtService} from "../../../foot-mark/service/notice-art.service";
 import {ShowSubDiscussion} from "../../model/discussion/show-sub-discussion.model";
+import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
+import {HomeService} from "../../../home/service/home.service";
+import {NoticeMessage} from "../../../websocket/model/notice-message.model";
 
 declare var $:any;
 @Component({
@@ -100,7 +103,10 @@ export class ReplyDiscussionComponent implements OnInit {
    * 发送子评论的订阅
    */
   sendSubDiscussionSubscribe;
-  constructor(private discussionService:DiscussionService,private noticeArtService:NoticeArtService,private refreshDiscussion:RefreshDiscussion,private noticeType:NoticeArtType) {
+  constructor(private discussionService:DiscussionService,private noticeArtService:NoticeArtService,
+              private refreshDiscussion:RefreshDiscussion,private noticeType:NoticeArtType,
+  private socketService:BaseSocketService,private homeService:HomeService,private noticeMessage:NoticeMessage
+  ) {
     this.subDiscussion = new InsertSubDiscussion();
   }
 
@@ -115,6 +121,13 @@ export class ReplyDiscussionComponent implements OnInit {
         //通知父组件查新评论
         this.refreshDiscussionNotice.emit(this.refreshDiscussion);
         this.refreshNoticeArtDiscussion.emit(res);
+        //发送评论通知
+        //发送评论回复通知
+        if(this.sendToUserId!=this.homeService.homeInfo.userId){
+          this.noticeMessage.content="回复了你的评论";
+          this.noticeMessage.receivedUserId = this.sendToUserId;
+          this.socketService.sendMessage(this.noticeMessage);
+        }
       }
     })
   }

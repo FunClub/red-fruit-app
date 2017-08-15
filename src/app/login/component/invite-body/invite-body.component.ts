@@ -3,7 +3,7 @@ import {LoginService} from "../../service/login.service";
 import {Title} from "@angular/platform-browser";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
-import {InviteSocketService} from "../../../websocket/socket/invite-socket.service";
+import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
 import {InviteMessage} from "../../../websocket/model/invite-message.model";
 import {InviteUser} from "../../model/invite-user.model";
 import {InviteMessageType} from "../../../websocket/message-type/invite-message-type.enum";
@@ -31,7 +31,7 @@ export class InviteBodyComponent implements OnInit {
   inviteIdControl:FormControl;
   inviteCount=0;
   constructor(private loginService:LoginService,private title:Title,private formBuilder:FormBuilder,
-  private inviteSocketService:InviteSocketService,  public inviteUser:InviteUser,
+  private baseSocketService:BaseSocketService,  public inviteUser:InviteUser,
               private toastsManager: ToastsManager, private vcr: ViewContainerRef,
               private toastOptions: ToastOptions,
               private inviteMessage:InviteMessage,private  dialog: MdDialog,private router:Router
@@ -99,9 +99,8 @@ export class InviteBodyComponent implements OnInit {
       if(this.inviteUser.invitations.length>0){
        this.openMessageDialog()
       }
-      this.inviteSocketService.connection(res.userId).subscribe(
+      this.baseSocketService.connection("ws://localhost/invite/"+res.userId).subscribe(
         data=>this.receiveMessage(data),
-
       );
     });
   }
@@ -115,7 +114,7 @@ export class InviteBodyComponent implements OnInit {
     this.inviteMessage.nickname=this.inviteUser.nickname;
     this.inviteMessage.profileImg=this.inviteUser.profileImg;
     this.inviteMessage.type=InviteMessageType.INVITE;
-    this.inviteSocketService.sendMessage(this.inviteMessage);
+    this.baseSocketService.sendMessage(this.inviteMessage);
 
   }
 

@@ -13,6 +13,8 @@ import {ArtArgs} from "../../model/base/art-args.model";
 import {NoticeArtType} from "../../../foot-mark/model/notice-art-type";
 import {NoticeArtService} from "../../../foot-mark/service/notice-art.service";
 import {RedFruitApi} from "../../model/base/api.model";
+import {NoticeMessage} from "../../../websocket/model/notice-message.model";
+import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
 declare let $:any;
 @Component({
   selector: 'app-art-discussion',
@@ -84,7 +86,9 @@ export class ArtDiscussionComponent{
 
   pageSizeOptions = [5, 10, 25, 100];
   constructor(public homeService:HomeService,public discussionService:DiscussionService,public api:RedFruitApi,
-              private pagedDiscussion:ShowPagedDiscussion,private noticeArtService:NoticeArtService,private noticeType:NoticeArtType) {
+              private pagedDiscussion:ShowPagedDiscussion,private noticeArtService:NoticeArtService,private noticeType:NoticeArtType,
+  private noticeMessage:NoticeMessage,private socketService:BaseSocketService
+  ) {
     this.initEditor();
     this.sendDiscussion = new InsertDiscussion();
   }
@@ -191,6 +195,12 @@ export class ArtDiscussionComponent{
             this.sendDiscussion.parentDiscussion.content="";
             this.parentDiscussions==null? this.parentDiscussions=[]:"";
             this.parentDiscussions.push(res);
+            //发送评论通知
+            if(this.artArgs.artUserId!=this.homeService.homeInfo.userId){
+              this.noticeMessage.content="评论了你的"+this.artArgs.artType;
+              this.noticeMessage.receivedUserId = this.artArgs.artUserId;
+              this.socketService.sendMessage(this.noticeMessage);
+            }
           }
     })
   }

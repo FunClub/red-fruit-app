@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../service/login.service";
 import {InviteMessage} from "../../../websocket/model/invite-message.model";
 import {InviteMessageType} from "../../../websocket/message-type/invite-message-type.enum";
-import {InviteSocketService} from "../../../websocket/socket/invite-socket.service";
 import {NgProgressService} from "ngx-progressbar";
+import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
 
 @Component({
   selector: 'app-invite-message',
@@ -18,7 +18,7 @@ export class InviteMessageComponent implements OnInit {
    * 邀请信息，从loginService中获取
    */
   inviteMessage:InviteMessage;
-  constructor(private loginService:LoginService,private inviteSocketService:InviteSocketService,
+  constructor(private loginService:LoginService,private socketService:BaseSocketService,
   private progressService:NgProgressService
   ) {
     //取出邀请组件放入loginService的邀请信息
@@ -35,7 +35,7 @@ export class InviteMessageComponent implements OnInit {
     //清除多余信息减少网络流量
     this.inviteMessage.nickname="";
     this.inviteMessage.profileImg="";
-    this.inviteSocketService.sendMessage(this.inviteMessage);
+    this.socketService.sendMessage(this.inviteMessage);
   }
 
   /**

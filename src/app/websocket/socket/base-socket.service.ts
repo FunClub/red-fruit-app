@@ -3,13 +3,13 @@ import {Observable} from "rxjs";
 import {InviteMessage} from "../model/invite-message.model";
 
 @Injectable()
-export class InviteSocketService {
+export class BaseSocketService {
   private url:string;
   private ws:WebSocket;
   constructor() {
   }
-  connection(userId:string):Observable<any>{
-    this.url="ws://localhost/invite/"+userId;
+  connection(url:string):Observable<any>{
+    this.url=url;
     this.ws=this.createSocket();
 
     return new Observable(observer=>{

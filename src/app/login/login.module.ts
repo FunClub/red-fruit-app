@@ -15,7 +15,7 @@ import {RouterModule} from "@angular/router";
 import { LoginBodyComponent } from './component/login-body/login-body.component';
 import { InviteBodyComponent } from './component/invite-body/invite-body.component';
 import {InviteGuard} from "./guard/invite.guard";
-import {InviteSocketService} from "../websocket/socket/invite-socket.service";
+import {BaseSocketService} from "../websocket/socket/base-socket.service";
 import {InviteMessage} from "../websocket/model/invite-message.model";
 import {InviteUser} from "./model/invite-user.model";
 
@@ -47,8 +47,8 @@ import { InviteMessageComponent } from './component/invite-message/invite-messag
      */
     InviteGuard,
 
-    /*邀请另一半的socket服务*/
-    InviteSocketService,
+    /*socket服务*/
+    BaseSocketService,
 
     /**
      * 邀请另一半的消息模型

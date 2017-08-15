@@ -4,8 +4,10 @@ import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {RedFruitApi} from "../../../share/model/base/api.model";
 import {HomeService} from "../../service/home.service";
 import {NgProgressService} from "ngx-progressbar";
-import {PushNotificationsService} from "_angular2-notifications@0.7.7@angular2-notifications/dist";
-
+import {PushNotificationsService} from "angular2-notifications/dist";
+import {Router} from "@angular/router";
+import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
+import {NoticeMessage} from "../../../websocket/model/notice-message.model";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,18 +23,13 @@ export class HomeComponent implements OnInit {
    */
 
   routerLinks:Array<any>;
-  s:string= `
-  <img style="float: left;width: 80px" class="message-profile" 
-    src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170814190940-52957292020160805122047159702265psb.jpg">
-    动态通知
-  `;
   constructor(private title:Title, private toastsManager: ToastsManager,
               private vcr: ViewContainerRef, private toastOptions:ToastOptions,
-              public homeService:HomeService,
-              private ngProgressService:NgProgressService,public api:RedFruitApi,private _pushNotifications: PushNotificationsService
+              public homeService:HomeService,private noticeMessage:NoticeMessage,
+              private ngProgressService:NgProgressService,public api:RedFruitApi,
+              private noticeService:PushNotificationsService,private router:Router,private socketService:BaseSocketService
 
   ) {
-
     this.toastsManager.setRootViewContainerRef(vcr);
     this.isNavOpen=true;
     this.routerLinks=[
@@ -52,9 +49,13 @@ export class HomeComponent implements OnInit {
     this.title.setTitle("红果-主页");
     this.homeService.getHomeInfo().subscribe(res=>{
       this.ngProgressService.done();
+      this.socketService.connection(this.api.NOTICE_SOCKET(this.homeService.homeInfo.userId)).subscribe(data=>this.receiveMessage(data));
     });
   }
-
+  receiveMessage(data:NoticeMessage){
+    this.noticeService.requestPermission();
+    this.noticeService.create("动态通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+data.content}).subscribe();
+  }
 
   /**
    *改变路由激活的标志

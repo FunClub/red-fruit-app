@@ -5,7 +5,6 @@ import {ArtArgs} from "../../../share/model/base/art-args.model";
 import {ShowSubDiscussion} from "../../../share/model/discussion/show-sub-discussion.model";
 import {DeleteNoticeArt} from "../../model/delete-notice-art.model";
 import {NoticeArtService} from "../../service/notice-art.service";
-
 @Component({
   selector: 'app-single-art',
   templateUrl: './single-art.component.html',
@@ -68,6 +67,7 @@ export class SingleArtComponent implements OnInit {
    * 删除动态通知
    */
   deleteNotice(){
+
     this.noticeArtService.deleteNoticeArt(this.deleteNoticeArt).subscribe(res=>{
       if(res){
         this.refreshNoticeArt.emit(this.noticeArtIndex);
