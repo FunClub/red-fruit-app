@@ -37,6 +37,7 @@ import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
 import { MoreDiscussionComponent } from './component/more-discussion/more-discussion.component';
 import { OpenMoreDiscussionComponent } from './component/open-more-discussion/open-more-discussion.component';
 import {NoticeArtType} from "../foot-mark/model/notice-art-type";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -55,7 +56,7 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     MdPaginatorModule,
     MdMenuModule
   ],
-  exports:[FooterComponent,ReactiveFormsModule,HeaderComponent,  ReactiveFormsModule,
+  exports:[FooterComponent,HeaderComponent,  ReactiveFormsModule,FormsModule,
     RouterModule,
     MdTabsModule,
     FroalaViewModule,

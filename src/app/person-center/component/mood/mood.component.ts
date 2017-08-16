@@ -3,15 +3,13 @@ import {RfEditorOptions} from '../../../share/model/rf-editor-options.model';
 import {MoodService} from "../../service/mood.service";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {InsertMood} from "../../model/insert-mood";
-import {Limit} from "../../model/limit.enum";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {NgProgressService} from "ngx-progressbar";
 import {SelectMoodCondition} from "../../model/select-mood-condition.model";
 import {PagedMood} from "../../model/paged-mood";
 import {ShowMoodDto} from "../../model/show-mood-dto.model";
 import {HomeService} from "../../../home/service/home.service";
-import {Mood} from "../../model/mood";
-import {ArtArgs} from "../../../share/model/base/art-args.model";
+
 declare let $:any;
 @Component({
   selector: 'app-mood',
@@ -36,7 +34,7 @@ declare let $:any;
     ]),
   trigger('flyXInOutFromRight', [
     transition('void => *', [
-      animate("300ms",keyframes([
+      animate("500ms",keyframes([
         style({opacity: 0, transform: 'translateX(5%)', offset: 0}),
         style({opacity: 0.5, transform: 'translateX(5px)',  offset: 0.3}),
         style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})

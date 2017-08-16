@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {cities,professions,hobbies,characters} from "../../../share/model/static-data.model"
+import {cities,professions,hobbies,characters} from "../../../share/model/base/static-data.model"
 import {PersonInfoService} from "../../person-info.service";
 import {BaseInfo} from "../../model/base-info";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
@@ -104,9 +104,8 @@ export class BaseInfoComponent implements OnInit {
   }
   openUploadDialog(){
     this.dialog.open(UploadImgComponent,{
-     position:{
-       top:"50px"
-     }
+      panelClass:'base-dialog-panel'
+
     });
   }
   /**

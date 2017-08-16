@@ -35,6 +35,11 @@
   margin-right: 10px;
   font-size: 14px;
 }
+/*select placehoder*/
+.mat-select-trigger{
+  font-size: 13px;
+  color: rgb(100,100,100);
+}
 /*上三角形边框*/
 .top-border-triangle:before{
   box-sizing: content-box;
@@ -97,6 +102,20 @@
   height: 90%;
   width: 60%;
 }
+/*基本的弹出框面板*/
+.base-dialog-panel{
+  position: absolute;
+}
+
+/*dialog背景*/
+.cdk-overlay-dark-backdrop{
+  background: rgb(141, 150, 165);
+  opacity: 0.71!important;
+}
+/*字体图片*/
+i{
+   vertical-align: middle;
+ }
 
 *{
   margin: 0;

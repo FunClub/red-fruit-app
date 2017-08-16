@@ -1,0 +1,47 @@
+/*添加相册整体*/
+.add-album-main{
+  width: 400px;
+  height: 300px;
+
+}
+/*title*/
+.add-album-title{
+  padding: 10px;
+  border-bottom: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(213,213,213);
+}
+/*关闭*/
+.add-album-close{
+  float: right;
+  cursor: pointer;
+}
+/*内容体*/
+.add-album-content{
+ padding-left: 30px;
+  padding-right: 30px;
+}
+/*输入框*/
+md-input-container{
+  width: 100%;
+}
+/*下拉框*/
+md-select{
+  width: 100%;
+  font-size: 13px!important;
+}
+.album-type-select{
+  margin-top: 10px;
+
+}
+
+.album-limit-select{
+  margin-top: 30px;
+}
+/*底部*/
+.add-album-bottom{
+  padding:30px 30px 0 30px;
+}
+.add-album-bottom button{
+  width: 100%;
+  background: rgb(34,170,210);
+}

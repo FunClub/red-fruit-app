@@ -138,26 +138,7 @@ main{
   float: right;
 }
 
-/*操作按钮*/
-.each-operation-btn{
-  height: 20px;
-  width: 50px;
-  line-height: 0;
-  position: relative;
-  bottom: 3px;
-}
-.each-operation-btn span{
-  font-size: 12px;
-  color: rgb(100,100,100);
-  margin-left: 3px;
-}
-.each-operation-btn span:hover{
-  color:rgb(255,129,64);
-}
-.each-operation-btn i{
-  font-size: 18px;
-  color: rgb(170,170,170);
-}
+
 /*回复Div包裹*/
 .reply-discussion-wrapper{
   margin-top: 5px;

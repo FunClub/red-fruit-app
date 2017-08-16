@@ -6,12 +6,11 @@ import {LoginModule} from "./login/login.module";
 import {MD_PLACEHOLDER_GLOBAL_OPTIONS} from "@angular/material";
 import {ToastOptions} from "ng2-toastr";
 import {BaseToastsOptions} from "./share/model/toasts-options.model";
-
 import {HomeModule} from "./home/home.module";
-
 import {NgProgressModule} from "ngx-progressbar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PushNotificationsModule} from "angular2-notifications";
+
 
 /**
  * 应用根模块
@@ -36,7 +35,7 @@ import {PushNotificationsModule} from "angular2-notifications";
     /*注入title服务*/
     Title,
     /*material2 Input组件placeholder自动浮动*/
-    {provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: { float: 'auto' }}
+    {provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: { float: 'never' }}
   ],
   bootstrap: [AppComponent]
 })

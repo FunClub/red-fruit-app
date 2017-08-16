@@ -1,0 +1,32 @@
+/*总体相册*/
+.album-main{
+  width:80%;
+  min-width: 750px;
+  margin: auto;
+  margin-top: 20px;
+
+  margin-bottom: 30px;
+
+}
+/*相册操作*/
+.all-album-operation{
+/*  background: white;
+  border: solid 1px rgb(223,223,223);
+  box-shadow: 0 0 3px rgb(213,213,213);
+  height: 50px;*/
+
+}
+.all-album-operation button{
+  margin-left: 10px;
+}
+.upload-img{
+  background: rgb(34,170,210);
+}
+.all-album-operation i{
+ vertical-align: middle;
+  font-size: 20px;
+}
+/*全部相册div*/
+.all-album-wrapper{
+  margin-top: 10px;
+}

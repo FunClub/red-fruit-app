@@ -9,7 +9,7 @@ import {RegisterService} from "../../service/register.service";
 import {Observable} from "rxjs";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {NgProgressService} from "ngx-progressbar";
-import {cities} from "../../../share/model/static-data.model"
+import {cities} from "../../../share/model/base/static-data.model"
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
