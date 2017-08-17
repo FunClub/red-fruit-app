@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {ShowAlbum} from "../../../model/album/show-album.model";
+import {RedFruitApi} from "../../../../share/model/base/api.model";
 @Component({
   selector: 'app-single-album',
   templateUrl: './single-album.component.html',
@@ -24,8 +26,15 @@ import {animate, keyframes, state, style, transition, trigger} from "@angular/an
   ]
 })
 export class SingleAlbumComponent implements OnInit {
-  img="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170812220857-691615814QQ%E5%9B%BE%E7%89%8720170805114350.jpg?x-oss-process=style/album-cover";
-  constructor() { }
+  /**
+   * 单一相册数据
+   */
+  @Input()
+  album:ShowAlbum;
+
+  constructor(public api:RedFruitApi) {
+
+  }
 
   ngOnInit() {
   }

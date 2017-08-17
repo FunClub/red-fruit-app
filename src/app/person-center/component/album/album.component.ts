@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {MdDialog} from "@angular/material";
 import {AddAlbumComponent} from "./add-album/add-album.component";
+import {AlbumService} from "../../service/album.service";
+import {ShowAlbum, ShowAllAlbum} from "../../model/album/show-album.model";
+import {AddPhotoComponent} from "./add-photo/add-photo.component";
+
+
+
 
 @Component({
   selector: 'app-album',
@@ -8,17 +14,33 @@ import {AddAlbumComponent} from "./add-album/add-album.component";
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
+  /**
+   * 显示所有相册的数据模型
+   */
+  showAllAlbum:ShowAllAlbum;
+  albums:ShowAlbum[];
+  constructor(private dialog:MdDialog,private albumService:AlbumService) {
+    this.albums=[];
+  }
 
-  img="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170812220857-691615814QQ%E5%9B%BE%E7%89%8720170805114350.jpg?x-oss-process=style/album-cover";
-  constructor(private dialog:MdDialog) { }
-  i=20;
   ngOnInit() {
-
+    this.albumService.selectAllAlbum().subscribe(res=>{
+      this.showAllAlbum = res;
+      this.albums = this.showAllAlbum.albums;
+    })
   }
 
   openAddAlumDialog(){
     this.dialog.open(AddAlbumComponent,{
-      panelClass:'base-dialog-panel'
+      data:this.albums,
+
     });
   }
+  openAddPhotoDialog(){
+    this.dialog.open(AddPhotoComponent,{
+      panelClass:'add-photo-panel'
+    });
+  }
+
+
 }

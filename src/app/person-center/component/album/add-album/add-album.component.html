@@ -3,25 +3,29 @@
     <i class="material-icons">add_to_photos</i>
     添加相册
 
-    <i class="material-icons add-album-close">close</i>
+    <i class="material-icons add-album-close" (click)="closeAddAlbumDialog(close)">close</i>
   </p>
-  <div class="add-album-content">
-    <md-input-container>
-      <span mdPrefix class="input-prefix">相册名称:</span>
-      <input mdInput>
-    </md-input-container>
-    <md-select class="album-type-select" placeholder="相册分类">
-      <md-option *ngFor="let albumType of albumTypes" [value]="albumType">
-        {{ albumType}}
-      </md-option>
-    </md-select>
-    <md-select class="album-limit-select" placeholder="相册权限">
-      <md-option *ngFor="let albumLimit of albumLimits" [value]="albumLimit.value">
-        {{ albumLimit.label}}
-      </md-option>
-    </md-select>
-  </div>
-  <div class="add-album-bottom">
-    <button md-raised-button color="primary">保存</button>
-  </div>
+  <form #albumForm="ngForm" (ngSubmit)="createAlbum(albumForm.value,close)">
+    <div class="add-album-content">
+      <md-input-container>
+        <span mdPrefix class="input-prefix">相册名称:</span>
+        <input mdInput name="albumName" ngModel>
+      </md-input-container>
+      <md-select class="album-type-select" name="sort" ngModel placeholder="相册分类">
+        <md-option *ngFor="let albumType of albumTypes" [value]="albumType">
+          {{ albumType}}
+        </md-option>
+      </md-select>
+      <md-select class="album-limit-select" name="limit" ngModel placeholder="相册权限">
+        <md-option *ngFor="let albumLimit of albumLimits" [value]="albumLimit.value">
+          {{ albumLimit.label}}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="add-album-bottom">
+      <button md-raised-button color="primary" type="submit">保存</button>
+    </div>
+  </form>
+  <!--隐藏按钮用于,关闭dialog-->
+  <button md-dialog-close #close style="display: none"></button>
 </main>

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {RfEditorOptions} from '../../../share/model/rf-editor-options.model';
 import {MoodService} from "../../service/mood.service";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
-import {InsertMood} from "../../model/insert-mood";
+import {InsertMood} from "../../model/mood/insert-mood";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {NgProgressService} from "ngx-progressbar";
-import {SelectMoodCondition} from "../../model/select-mood-condition.model";
-import {PagedMood} from "../../model/paged-mood";
-import {ShowMoodDto} from "../../model/show-mood-dto.model";
+import {SelectMoodCondition} from "../../model/mood/select-mood-condition.model";
+import {PagedMood} from "../../model/mood/paged-mood";
+import {ShowMoodDto} from "../../model/mood/show-mood-dto.model";
 import {HomeService} from "../../../home/service/home.service";
 
 declare let $:any;

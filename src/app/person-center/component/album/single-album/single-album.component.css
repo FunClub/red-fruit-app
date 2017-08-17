@@ -39,7 +39,7 @@
     transform: rotate(0deg)
   }
   100%{
-    transform: scale(1.05,1.05) rotate(1deg);
+    transform: scale(1.1,1.1) rotate(1deg);
     position: relative;
     box-shadow: 0 5px 10px rgb(213,213,213);
   }

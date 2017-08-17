@@ -1,4 +1,4 @@
-import {PageRequest} from "../../share/model/base/page-request.model";
+import {PageRequest} from "../../../share/model/base/page-request.model";
 /**
  * 查询心情的条件
  */

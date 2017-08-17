@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ShowMoodImg} from "../../model/show-mood-img";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 
-import {ShowMoodDto} from "../../../person-center/model/show-mood-dto.model";
+import {ShowMoodDto} from "../../../person-center/model/mood/show-mood-dto.model";
 import {RedFruitApi} from "../../model/base/api.model";
 @Component({
   selector: 'app-sigle-mood',

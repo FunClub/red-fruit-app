@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../share/service/base.service";
 import {Http} from "@angular/http";
-import {InsertMood} from "../model/insert-mood";
+import {InsertMood} from "../model/mood/insert-mood";
 import {Observable} from "rxjs/Observable";
 import {RedFruitApi} from "../../share/model/base/api.model";
-import {SelectMoodCondition} from "../model/select-mood-condition.model";
-import {PagedMood} from "../model/paged-mood";
-import {ShowMoodDto} from "../model/show-mood-dto.model";
+import {SelectMoodCondition} from "../model/mood/select-mood-condition.model";
+import {PagedMood} from "../model/mood/paged-mood";
+import {ShowMoodDto} from "../model/mood/show-mood-dto.model";
 import {ArtArgs} from "../../share/model/base/art-args.model";
 import {ArtType} from "../../foot-mark/model/art-type.model";
 import {SelectDiscussionCondition} from "../../share/model/discussion/select-discussion-condition";

@@ -11,10 +11,13 @@ import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
 import {MdDialogModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdSelectModule} from "@angular/material";
 import {MoodService} from "./service/mood.service";
-import {InsertMood} from "./model/insert-mood";
-import {PagedMood} from "./model/paged-mood";
+import {InsertMood} from "./model/mood/insert-mood";
+import {PagedMood} from "./model/mood/paged-mood";
 import {SingleAlbumComponent } from './component/album/single-album/single-album.component';
 import { AddAlbumComponent } from './component/album/add-album/add-album.component';
+import {AlbumService} from "./service/album.service";
+import {AlbumApi} from "./model/base/album-api.model";
+import { AddPhotoComponent } from './component/album/add-photo/add-photo.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,9 +30,10 @@ import { AddAlbumComponent } from './component/album/add-album/add-album.compone
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
-    SingleAlbumComponent, AddAlbumComponent],
+    SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent],
   entryComponents:[
-    AddAlbumComponent
+    AddAlbumComponent,
+    AddPhotoComponent
   ],
   providers:[
     /*用户个人中心服务*/
@@ -41,9 +45,14 @@ import { AddAlbumComponent } from './component/album/add-album/add-album.compone
     /*插入心情的模型*/
     InsertMood,
 
-
     /*分页的心情模型*/
-    PagedMood
+    PagedMood,
+
+    /*相册服务*/
+    AlbumService,
+
+    /*相册API*/
+    AlbumApi
   ]
 })
 export class PersonCenterModule { }
