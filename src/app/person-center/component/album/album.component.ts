@@ -38,7 +38,8 @@ export class AlbumComponent implements OnInit {
   }
   openAddPhotoDialog(){
     this.dialog.open(AddPhotoComponent,{
-      panelClass:'add-photo-panel'
+      panelClass:'add-photo-panel',
+      data:this.albums
     });
   }
 

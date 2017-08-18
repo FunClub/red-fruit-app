@@ -1,0 +1,12 @@
+.water-mark-main{
+  width: 750px;
+  height: 500px;
+}
+.water-mark-title{
+  padding: 10px;
+  border-bottom: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(213,213,213);
+}
+.water-mark-title i{
+  margin-right: 5px;
+}

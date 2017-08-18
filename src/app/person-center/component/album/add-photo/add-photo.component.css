@@ -10,12 +10,18 @@
   border-bottom: 1px solid rgb(223,223,223);
   box-shadow: 0 0 5px rgb(213,213,213);
 }
-/*内容体*/
-.add-photo-content{
+/*关闭按钮*/
+.add-photo-close{
+  float: right;
+  cursor: pointer;
+}
+/*全部内容体*/
+.all-add-photo-content{
   overflow-y: auto;
   height: 80%;
   width: 100%;
   position: absolute;
+
 }
 /*首次添加照片的按钮*/
 .first-upload{
@@ -24,12 +30,118 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-100%);
+  display: none;
 }
 .first-upload i{
-  font-size: 35px;
+  font-size: 30px;
 }
 .first-upload span{
   margin-left: 7px;
+}
+/*内容体*/
+.add-photo-content{
+  margin: auto;
+}
+/*每一张整体照片DIV*/
+.photo-wrapper{
+  background: rgb(243,243,243);
+  width: 130px;
+  padding: 5px;
+  height: 162px;
+  margin-left: 5px;
+  display: inline-block;
+  margin-top: 5px;
+  position: relative;
+  vertical-align: top;
+}
+/*包裹片的div*/
+.photo-content{
+  height:130px;
+  width: 130px;
+}
+/*待上传的div*/
+.pre-upload-photo{
+  display: inline-block;
+  z-index: 1;
+  position: absolute;
+
+}
+/*图片处理操作div*/
+.photo-operation-wrapper{
+  background: rgba(0,0,0,0.3);
+  height: 130px;
+  width: 130px;
+  z-index: 2;
+  display: none;
+  position: absolute;
+  cursor: move;
+}
+/*删除图片字体图标*/
+.delete-img-i{
+  color: white;
+  float: right;
+  cursor: pointer;
+}
+.photo-content:hover > .photo-operation-wrapper{
+  display: inline-block;
+}
+/*添加水印按钮*/
+.photo-operation-watermark{
+  background: rgba(0,0,0,0.6);
+  color: white;
+  display: block;
+  top:45%;
+  left: 30%;
+  position: absolute;
+  height: 25px;
+  min-width: 50px;
+  padding-left: 5px;
+  padding-right: 10px;
+  line-height: 25px;
+  font-size: 12px;
+}
+
+/*相片标签*/
+.photo-label{
+  font-size: 13px;
+  padding: 5px;
+  max-height: 26px;
+  width: 120px;
+  overflow: hidden;
+  background: white;
+  margin-top: 5px;
+}
+/*继续添加相片的div*/
+.add-photo-wrapper{
+  height: 130px;
+  width: 130px;
+  display: inline-block;
+  background: rgb(234,234,234);
+  position: relative;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.add-photo-wrapper i{
+  font-size: 70px;
+  position: absolute;
+  color: #cccccc;
+  left: 20%;
+  top: 20%;
+}
+.add-photo-wrapper span{
+  font-size: 15px;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-weight: bold;
+  color: rgb(170,170,170);
+}
+.add-photo-wrapper:hover span{
+  color: #ffa124;
+}
+.add-photo-wrapper:hover i{
+  color: #ffa124;
 }
 /*底部*/
 .add-photo-bottom{
@@ -38,10 +150,96 @@
   position: absolute;
   width: 100%;
   bottom: 0;
+  min-width: 1000px;
 }
-/*关闭按钮*/
-.add-photo-close{
+/*上传照片的选项DIV*/
+.add-photo-operation{
+  position: absolute;
+  bottom: 8%;
+  width: 100%
+}
+
+.select-album-wrapper{
+  height: 40px;
+  padding-left: 10px;
+  display: inline-block;
+}
+/*上传到什么的相册的label*/
+.photo-operation-label{
+  font-size: 13px;
+  color: rgb(80,80,80);
+}
+/*相册选择器*/
+.album-selector{
+  margin-left: 5px;
+  width: 100px;
+}
+/*相册封面*/
+.select-cover-img{
+  float: left;
+  margin-right: 5px;
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+/*相册名称*/
+.album-name{
+  font-size: 15px;
+}
+/*相册数量*/
+.album-count{
+  font-size: 13px;
+  color: rgb(100,100,100);
+}
+/*相片私有度*/
+.album-privacy{
   float: right;
+    font-size: 22px;
+    margin-top: 15px;
+    color: rgb(120,120,120);
+}
+/*选择相片质量*/
+.select-quality-wrapper{
+  display: inline-block;
+  margin-left: 20px;
+  border-left: 1px rgb(213,213,213) solid;
+  padding-left: 10px;
+}
+.select-quality-label{
+  font-size: 13px;
+}
+/*设置水印*/
+.set-watermark-wrapper{
+  display: inline-block;
+  margin-left: 10px;
   cursor: pointer;
+}
+
+.set-watermark-label{
+  position: relative;
+  right: 10px;
+}
+/*清空所有相片*/
+.remove-all-photo i{
+  color: gray;
+}
+.remove-all-photo{
+ margin-right: 20px;
+}
+/*保存相片*/
+.save-photo-wrapper{
+  float: right;
+  right: 0;
+  margin-right: 30px;
 
 }
+/*保存相片*/
+.save-photo i{
+  margin-right: 5px;
+}
+.save-photo {
+  background: rgb(34,170,210);
+}
+
+
+

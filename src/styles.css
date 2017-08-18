@@ -53,6 +53,10 @@
   height: 90%;
   width: 60%;
 }
+
+.mat-button-wrapper{
+  min-width: 20px!important;
+}
 /*添加相片面板*/
 .add-photo-panel{
   width: 80%;
@@ -67,7 +71,15 @@
 i{
   vertical-align: middle;
 }
+/*下拉选项高度设为自动*/
+.mat-option{
+ height: auto;
+}
+/*单选按钮变小*/
+.mat-radio-outer-circle{
+  transform: scale(0.8,0.8);
 
+}
 
 /*上三角形边框*/
 .top-border-triangle:before{

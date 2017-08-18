@@ -14,9 +14,9 @@ export class ImageUploadService extends BaseService{
 
   /**
    * 上传照片
-   * @param files 心情文件路径数组
+   * @param files 文件路径数组
    * @param bucketName oss bucket名称
-   * @returns {Observable<R|T>}
+   * @returns {Observable<R|T>}图片路径数组
    */
   uploadImg(files:any,bucketName:string):Observable<string[]>{
     return this.http.put(this.api.IMG(bucketName),files).map(res=>res.json().data).catch(this.handleError);

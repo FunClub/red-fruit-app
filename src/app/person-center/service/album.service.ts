@@ -5,16 +5,27 @@ import {Observable} from "rxjs/Observable";
 import {AlbumApi} from "../model/base/album-api.model";
 import {ResultView} from "../../share/model/base/result-view";
 import {ShowAllAlbum} from "../model/album/show-album.model";
+import {ImageUploadService} from "../../share/service/image-upload.service";
+import {BucketFolder} from "../../share/model/bucket-folder.model";
 /**
  * 相册服务
  */
 @Injectable()
 export class AlbumService extends BaseService{
 
-  constructor(private http:Http,private api:AlbumApi) {
+  constructor(private http:Http,private api:AlbumApi, private bucketFolder:BucketFolder) {
     super();
   }
 
+  uploadPhoto(files:any[]){
+    let formData = new FormData();
+    for(let file of files){
+      formData.append("imgs",file);
+    }
+    return this.http.post(this.api.PHOTO,formData).map(res=>{
+
+    }).catch(this.handleError);
+  }
   /**
    * 查询相册
    * @returns {Observable<R|T>}

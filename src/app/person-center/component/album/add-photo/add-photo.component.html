@@ -4,23 +4,89 @@
     上传相片
     <i class="material-icons add-photo-close" (click)="closeAddPhotoDialog(close)">close</i>
   </p>
-  <!--中部开始-->
-  <div class="add-photo-content">
+  <!--上传照片操作-->
 
+
+  <!--中部开始-->
+  <div class="all-add-photo-content">
+
+    <!--内容体开始-->
+    <div class="add-photo-content">
+      <div class="photo-wrapper">
+        <div class="photo-content">
+          <img [src]="img" class="pre-upload-photo">
+          <div class="photo-operation-wrapper">
+            <i class="material-icons delete-img-i" md-tooltip="删除">delete</i>
+            <button md-raised-button class="photo-operation-watermark" (click)="openWaterMarkDialog()" color="primary">
+              <i class="material-icons">add</i>
+              <span>水印</span>
+            </button>
+          </div>
+        </div>
+        <div class="photo-label" contenteditable="true">相片名称</div>
+      </div>
+      <div class="add-photo-wrapper" (click)="fileInput.click()">
+        <i class="material-icons">add_to_photos</i>
+        <span>继续添加相片</span>
+      </div>
+    </div>
+    <!--内容体结束-->
+
+    <!--第一次添加图片的按钮-->
     <button md-raised-button class="first-upload" color="primary" (click)="fileInput.click()">
       <i class="material-icons">add_to_queue</i>
       <span>从电脑选择</span>
     </button>
   </div>
   <!--中部结束-->
-  <div class="add-photo-bottom">
 
+  <!--底部开始-->
+  <div class="add-photo-bottom">
+    <div class="add-photo-operation">
+    <!--选择相册-->
+      <div class="select-album-wrapper">
+        <span class="photo-operation-label">上传照片到:</span>
+        <md-select placeholder="选择相册" class="album-selector">
+          <md-option *ngFor="let album of albums" [value]="album.albumId">
+
+              <img class="select-cover-img" [src]="api.IMAGE_PREFIX+album.coverImg">
+              <span class="album-name">{{ album.albumName}}</span><br>
+              <span class="album-count"> {{album.photoCount?album.photoCount:0}}张</span>
+              <span *ngIf="album.limit==0"><i class="material-icons album-privacy">lock_outline</i></span>
+          </md-option>
+        </md-select>
+      </div>
+
+      <!--相片质量-->
+      <div class="select-quality-wrapper">
+        <span class="photo-operation-label">相片质量:</span>
+        <md-radio-group >
+          <md-radio-button value="60" color="primary"><span class="select-quality-label">普通</span></md-radio-button>
+          <md-radio-button value="80" color="primary"><span class="select-quality-label">高清</span></md-radio-button>
+          <md-radio-button value="100" color="primary"><span class="select-quality-label">原图</span></md-radio-button>
+        </md-radio-group>
+      </div>
+
+      <!--设置水印-->
+      <div class="set-watermark-wrapper" (click)="openWaterMarkDialog()">
+        <button md-icon-button>
+          <i class="material-icons">gradient</i>
+        </button>
+        <span class="set-watermark-label photo-operation-label">设置水印</span>
+      </div>
+      <!--保存上传图片-->
+      <div class="save-photo-wrapper">
+          <button md-raised-button class="remove-all-photo"><i class="material-icons">delete</i>清空相片</button>
+          <button md-raised-button color="primary" class="save-photo"><i class="material-icons">save</i>保存相片</button>
+      </div>
+    </div>
   </div>
+  <!--底部结束-->
 
   <!--隐藏按钮用于,关闭dialog-->
   <button md-dialog-close #close style="display: none"></button>
   <!--隐藏文件上传Input-->
-  <input #fileInput type="file" (change)="uploadPhoto()" style="display: none;">
+  <input #fileInput type="file" (change)="uploadPhoto($event)" style="display: none;">
 
 </main>
 

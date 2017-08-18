@@ -7,4 +7,10 @@ export class BucketFolder {
    * @type {string}
    */
   MOOD:string="mood";
+
+  /**
+   * 相册文件夹
+   * @type {string}
+   */
+  ALBUM:string="album";
 }
