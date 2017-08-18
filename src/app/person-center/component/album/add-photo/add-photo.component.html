@@ -1,0 +1,26 @@
+<main class="add-photo-main">
+  <p class="add-photo-title">
+    <i class="material-icons">add_a_photo</i>
+    上传相片
+    <i class="material-icons add-photo-close" (click)="closeAddPhotoDialog(close)">close</i>
+  </p>
+  <!--中部开始-->
+  <div class="add-photo-content">
+
+    <button md-raised-button class="first-upload" color="primary" (click)="fileInput.click()">
+      <i class="material-icons">add_to_queue</i>
+      <span>从电脑选择</span>
+    </button>
+  </div>
+  <!--中部结束-->
+  <div class="add-photo-bottom">
+
+  </div>
+
+  <!--隐藏按钮用于,关闭dialog-->
+  <button md-dialog-close #close style="display: none"></button>
+  <!--隐藏文件上传Input-->
+  <input #fileInput type="file" (change)="uploadPhoto()" style="display: none;">
+
+</main>
+

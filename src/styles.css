@@ -55,9 +55,8 @@
 }
 /*添加相片面板*/
 .add-photo-panel{
-  width: 60%;
-  height: 70%;
-
+  width: 80%;
+  height: 80%;
 }
 /*dialog背景*/
 .cdk-overlay-dark-backdrop{
