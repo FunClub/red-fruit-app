@@ -11,29 +11,31 @@
   <div class="all-add-photo-content">
 
     <!--内容体开始-->
-    <div class="add-photo-content">
-      <div class="photo-wrapper">
+    <div class="add-photo-content" dnd-sortable-container [sortableData]="uploadPhotoInfo">
+      <div [ngBusy]="{busy:uploadSubscribe,message:'图片处理中，请稍后...'}"></div>
+      <div class="photo-wrapper" dnd-sortable [sortableIndex]="i" *ngFor="let photo of uploadPhotoInfo;let i=index;">
         <div class="photo-content">
-          <img [src]="img" class="pre-upload-photo">
+          <img [src]="api.IMAGE_PREFIX+photo.path+albumApi.SHOW_PHOTO_STYLE" class="pre-upload-photo">
           <div class="photo-operation-wrapper">
-            <i class="material-icons delete-img-i" md-tooltip="删除">delete</i>
-            <button md-raised-button class="photo-operation-watermark" (click)="openWaterMarkDialog()" color="primary">
+            <i class="material-icons delete-img-i" md-tooltip="删除" (click)="deletePhoto(i)">delete</i>
+            <button md-raised-button class="photo-operation-watermark" (click)="addWaterMark(photo)" color="primary">
               <i class="material-icons">add</i>
               <span>水印</span>
             </button>
           </div>
         </div>
-        <div class="photo-label" contenteditable="true">相片名称</div>
+        <div class="photo-label" contenteditable="true">{{photo.fileName}}</div>
       </div>
-      <div class="add-photo-wrapper" (click)="fileInput.click()">
-        <i class="material-icons">add_to_photos</i>
+
+      <div *ngIf="uploadPhotoInfo.length>0" class="add-photo-wrapper" (click)="fileInput.click()">
+        <i class="material-icons">queue_play_next</i>
         <span>继续添加相片</span>
       </div>
     </div>
     <!--内容体结束-->
 
     <!--第一次添加图片的按钮-->
-    <button md-raised-button class="first-upload" color="primary" (click)="fileInput.click()">
+    <button *ngIf="uploadPhotoInfo.length==0" md-raised-button class="first-upload" color="primary" (click)="fileInput.click()">
       <i class="material-icons">add_to_queue</i>
       <span>从电脑选择</span>
     </button>
@@ -48,7 +50,6 @@
         <span class="photo-operation-label">上传照片到:</span>
         <md-select placeholder="选择相册" class="album-selector">
           <md-option *ngFor="let album of albums" [value]="album.albumId">
-
               <img class="select-cover-img" [src]="api.IMAGE_PREFIX+album.coverImg">
               <span class="album-name">{{ album.albumName}}</span><br>
               <span class="album-count"> {{album.photoCount?album.photoCount:0}}张</span>
@@ -68,11 +69,11 @@
       </div>
 
       <!--设置水印-->
-      <div class="set-watermark-wrapper" (click)="openWaterMarkDialog()">
+      <div class="set-watermark-wrapper" (click)="addAllWaterMark()">
         <button md-icon-button>
           <i class="material-icons">gradient</i>
         </button>
-        <span class="set-watermark-label photo-operation-label">设置水印</span>
+        <span class="set-watermark-label photo-operation-label">批量设置水印</span>
       </div>
       <!--保存上传图片-->
       <div class="save-photo-wrapper">
@@ -86,7 +87,7 @@
   <!--隐藏按钮用于,关闭dialog-->
   <button md-dialog-close #close style="display: none"></button>
   <!--隐藏文件上传Input-->
-  <input #fileInput type="file" (change)="uploadPhoto($event)" style="display: none;">
+  <input #fileInput type="file" multiple accept="image/gif,image/jpeg,image/jpg,image/png" (change)="uploadPhoto($event)" style="display: none;">
 
 </main>
 

@@ -59,8 +59,6 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
   exports:[FooterComponent,HeaderComponent,  ReactiveFormsModule,FormsModule,
     RouterModule,
     MdTabsModule,
-    FroalaViewModule,
-    FroalaEditorModule,
     SigleMoodComponent,
     ArtOperationComponent,
     MdTooltipModule,
@@ -72,7 +70,6 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     ReplyDiscussionComponent,
     SafeHtmlPipe,
     BusyModule,
-    DndModule,
     MdMenuModule
   ],
   entryComponents:[MoreDiscussionComponent],

@@ -30,7 +30,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-100%);
-  display: none;
 }
 .first-upload i{
   font-size: 30px;
@@ -105,7 +104,7 @@
 .photo-label{
   font-size: 13px;
   padding: 5px;
-  max-height: 26px;
+  max-height: 15px;
   width: 120px;
   overflow: hidden;
   background: white;
@@ -123,16 +122,16 @@
   border-radius: 5px;
 }
 .add-photo-wrapper i{
-  font-size: 70px;
+  font-size: 60px;
   position: absolute;
   color: #cccccc;
-  left: 20%;
+  left: 25%;
   top: 20%;
 }
 .add-photo-wrapper span{
   font-size: 15px;
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 20px;
   font-weight: bold;
   color: rgb(170,170,170);

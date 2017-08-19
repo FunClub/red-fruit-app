@@ -6,6 +6,8 @@ import {WaterMarkComponent} from "../water-mark/water-mark.component";
 import {BucketFolder} from "../../../../share/model/bucket-folder.model";
 import {ImageUploadService} from "../../../../share/service/image-upload.service";
 import {AlbumService} from "../../../service/album.service";
+import {ShowUploadPhoto} from "../../../model/album/show-upload-photo.model";
+import {AlbumApi} from "../../../model/base/album-api.model";
 
 @Component({
   selector: 'app-add-photo',
@@ -13,14 +15,27 @@ import {AlbumService} from "../../../service/album.service";
   styleUrls: ['./add-photo.component.css']
 })
 export class AddPhotoComponent implements OnInit {
+  uploadPhotoInfo:ShowUploadPhoto[];
+  uploadSubscribe;
+  constructor(@Inject(MD_DIALOG_DATA) public albums:ShowAlbum[],public api:RedFruitApi,public albumApi:AlbumApi,private dialog:MdDialog,
+              private albumService:AlbumService,private imageService:ImageUploadService
+  ) {
+    this.uploadPhotoInfo=[];
 
-  constructor(@Inject(MD_DIALOG_DATA) public albums:ShowAlbum[],public api:RedFruitApi,private dialog:MdDialog,
-              private albumService:AlbumService
-  ) { }
-  img="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/mood/20170802213619-1557573916123.JPG?x-oss-process=style/add-photo";
+  }
   ngOnInit() {
   }
 
+  deletePhoto(index:number){
+    let path = this.uploadPhotoInfo[index].path;
+    let paths:string[]=[];
+    paths.push(path);
+    this.uploadSubscribe=this.imageService.deleteImg(paths).subscribe(res=>{
+      if(res){
+        this.uploadPhotoInfo.splice(index,1);
+      }
+    });
+  }
   /**
    * 关闭添加相片dialog
    * @param close
@@ -35,15 +50,25 @@ export class AddPhotoComponent implements OnInit {
    */
   uploadPhoto(event){
     let files = event.target.files;
-    this.albumService.uploadPhoto(files).subscribe(res=>{
-
-    })
+    this.uploadSubscribe=this.albumService.uploadPhoto(files).subscribe(res=>{
+      this.uploadPhotoInfo =this.uploadPhotoInfo.concat(res);
+    });
   }
-
+  addWaterMark(photo:ShowUploadPhoto){
+    this. openWaterMarkDialog(photo);
+  }
+  addAllWaterMark(){
+    let photo = new ShowUploadPhoto();
+    photo.path="static/photo-default.jpg";
+    photo.zoomSize=70;
+    this. openWaterMarkDialog(photo);
+  }
   /**
    * 打开水印dialog
    */
-  openWaterMarkDialog(){
-    this.dialog.open(WaterMarkComponent);
+  openWaterMarkDialog(photo:ShowUploadPhoto){
+    this.dialog.open(WaterMarkComponent,{
+      data:photo
+    });
   }
 }

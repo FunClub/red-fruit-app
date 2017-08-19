@@ -11,7 +11,7 @@
       确认上传
     </button>
   </p>
-  <div [ngBusy]="{busy:[uploadSubscribe,deleteSubscribe],message:'处理中,请稍候'}"></div>
+  <div [ngBusy]="{busy:[uploadSubscribe,deleteSubscribe],message:'处理中,请稍候...'}"></div>
   <div id="upload-img-div" dnd-sortable-container [sortableData]="preUploadImgs">
 
     <div class="mood-img-wrapper" dnd-sortable [sortableIndex]="i"  *ngFor="let imgSrc of preUploadImgs;let i = index">
