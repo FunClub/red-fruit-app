@@ -8,6 +8,7 @@ import {ImageUploadService} from "../../../../share/service/image-upload.service
 import {AlbumService} from "../../../service/album.service";
 import {ShowUploadPhoto} from "../../../model/album/show-upload-photo.model";
 import {AlbumApi} from "../../../model/base/album-api.model";
+import {WaterMarkArgs} from "../../../model/album/water-mark-args";
 
 @Component({
   selector: 'app-add-photo',
@@ -25,7 +26,9 @@ export class AddPhotoComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+  savePhoto(){
+    console.log(this.uploadPhotoInfo);
+  }
   deletePhoto(index:number){
     let path = this.uploadPhotoInfo[index].path;
     let paths:string[]=[];
@@ -54,21 +57,40 @@ export class AddPhotoComponent implements OnInit {
       this.uploadPhotoInfo =this.uploadPhotoInfo.concat(res);
     });
   }
-  addWaterMark(photo:ShowUploadPhoto){
-    this. openWaterMarkDialog(photo);
+
+  /**
+   * 处理单张相片
+   * @param index
+   */
+  addWaterMark(index:number){
+    let photo = this.uploadPhotoInfo[index];
+    let waterMarkArgs = new WaterMarkArgs();
+    waterMarkArgs.isBatch=false;
+    waterMarkArgs.photo=photo;
+    waterMarkArgs.photos=this.uploadPhotoInfo;
+    waterMarkArgs.currentIndex=index;
+    this. openWaterMarkDialog(waterMarkArgs);
   }
+
+  /**
+   * 批量处理相片
+   */
   addAllWaterMark(){
     let photo = new ShowUploadPhoto();
     photo.path="static/photo-default.jpg";
-    photo.zoomSize=70;
-    this. openWaterMarkDialog(photo);
+    photo.zoomSize=65;
+    let waterMarkArgs = new WaterMarkArgs();
+    waterMarkArgs.isBatch=true;
+    waterMarkArgs.photo=photo;
+    waterMarkArgs.photos = this.uploadPhotoInfo;
+    this. openWaterMarkDialog(waterMarkArgs);
   }
   /**
    * 打开水印dialog
    */
-  openWaterMarkDialog(photo:ShowUploadPhoto){
+  openWaterMarkDialog(args:WaterMarkArgs){
     this.dialog.open(WaterMarkComponent,{
-      data:photo
+      data:args
     });
   }
 }

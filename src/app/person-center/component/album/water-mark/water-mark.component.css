@@ -32,7 +32,7 @@
 /*包裹当前正在显示的相片div*/
 .current-photo-wrapper{
   width: 480px;
-  height: 330px;
+  height: 380px;
   margin-top: 10px;
   margin-left: 10px;
   overflow: hidden;
@@ -43,53 +43,76 @@
   margin: auto;
   display: block;
 }
-/*操作相片预览*/
-.view-photo-operation{
+
+/*批处理标签*/
+.batch-label{
+  margin-left: 80px;
+  float: left;
+  font-size: 13px;
+  color: rgb(120,120,120);
   padding-top: 10px;
-  padding-right: 10px;
-  height: 50px;
 }
-.water-mark-viewer button{
-  margin-left: 30px;
-  margin-bottom: 10px;
-}
-/*切换视图的按钮*/
-.view-photo-toggle{
-  float: right;
-margin-top: 10px;
-}
+
 /*设置水印*/
 .water-mark-setting{
   float: right;
   width: 240px;
   height: 400px;
-
+  overflow-y: auto;
+}
+/*切换视图的按钮*/
+.view-photo-toggle{
+  margin-left: 20px;
 }
 /*选择样式的label*/
 .select-style-label{
   margin-top: 10px;
+  font-size: 15px;
+  color: rgb(255, 161, 36);
+  margin-bottom: 10px;
+  border-bottom: 1px rgb(233,233,233) solid;
+  padding-bottom: 10px;
+}
+/*相册样式div*/
+.photo-style{
+  margin-top: 10px;
+}
+/*样式标题*/
+.photo-style-title{
+  font-size: 14px;
+  color: rgb(100,100,100);
+  margin-bottom: 5px;
+}
+/*样式lable*/
+.photo-style-label{
   font-size: 13px;
   color: rgb(100,100,100);
+  margin-bottom: 5px;
 }
-/*水印*/
-.water-mark-style{
-  height: 70px;
-  width: 230px;
-  margin-top: 10px;
-  background: rgb(241,241,241);
-  padding-left: 10px;
-  cursor: pointer;
+/*水印底部*/
+.water-mark-bottom{
+  padding-top: 10px;
+  padding-right: 30px;
+  text-align: right;
 }
-.water-logo{
-  height: 45px;
-  margin-top: 15px;
-  margin-right: 10px;
+/*操作相片预览*/
+.view-photo-operation{
+  padding-right: 10px;
+  height: 50px;
+  width: 450px;
+  display: inline-block;
+  float: left;
+  padding-left: 50px;
+}
+/*上一张下一张div*/
+.next-prev-wrapper{
+  margin-left: 80px;
   float: left;
 }
-.logo-text{
-  color: rgb(196,196,196);
-  font-size: 17px;
-  font-weight: bold;
-  margin-top: 23px;
-  float: left;
+.next-prev-wrapper button{
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+.operation-btn-wrapper{
+  float: right;
 }

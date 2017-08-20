@@ -18,9 +18,9 @@
           <img [src]="api.IMAGE_PREFIX+photo.path+albumApi.SHOW_PHOTO_STYLE" class="pre-upload-photo">
           <div class="photo-operation-wrapper">
             <i class="material-icons delete-img-i" md-tooltip="删除" (click)="deletePhoto(i)">delete</i>
-            <button md-raised-button class="photo-operation-watermark" (click)="addWaterMark(photo)" color="primary">
+            <button  md-raised-button class="photo-operation-watermark" (click)="addWaterMark(i)" color="primary">
               <i class="material-icons">add</i>
-              <span>水印</span>
+              <span>样式</span>
             </button>
           </div>
         </div>
@@ -71,14 +71,14 @@
       <!--设置水印-->
       <div class="set-watermark-wrapper" (click)="addAllWaterMark()">
         <button md-icon-button>
-          <i class="material-icons">gradient</i>
+          <i class="material-icons">palette</i>
         </button>
-        <span class="set-watermark-label photo-operation-label">批量设置水印</span>
+        <span class="set-watermark-label photo-operation-label">批量设置样式</span>
       </div>
       <!--保存上传图片-->
       <div class="save-photo-wrapper">
           <button md-raised-button class="remove-all-photo"><i class="material-icons">delete</i>清空相片</button>
-          <button md-raised-button color="primary" class="save-photo"><i class="material-icons">save</i>保存相片</button>
+          <button md-raised-button color="primary" class="save-photo" (click)="savePhoto()"><i class="material-icons">save</i>保存相片</button>
       </div>
     </div>
   </div>

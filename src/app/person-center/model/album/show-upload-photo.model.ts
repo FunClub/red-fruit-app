@@ -5,10 +5,19 @@ export class ShowUploadPhoto {
   path: string;
   width: number;
   height: number;
-  /**
-   * 计算出的水印字体大小
-   */
-  fontSize: number;
+
   zoomSize:number;
   fileName: string;
+  fontSize:string;
+  watermark:string;
+  bright:number;
+  contrast:number;
+  sharpen:number;
+  blurR:number;
+  blurS:number;
+  constructor() {
+    this.bright=0;
+    this.contrast=0;
+    this.sharpen=50;
+  }
 }

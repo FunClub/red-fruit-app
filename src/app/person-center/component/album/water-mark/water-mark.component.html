@@ -1,7 +1,7 @@
 <main class="water-mark-main">
   <!--标题-->
   <div class="water-mark-title">
-    <i class="material-icons">gradient</i>设置水印(批量)
+    <i class="material-icons">palette</i>设置样式  <span *ngIf="photoInfo.isBatch">(批量)</span>
     <i class="material-icons close-water-mark">close</i>
   </div>
 
@@ -11,31 +11,122 @@
     <!--预览水印照片-->
     <div class="water-mark-viewer">
       <div class="current-photo-wrapper">
-        <img class="current-photo" [src]="api.IMAGE_PREFIX+photo.path+zoomArgs+waterMarkArgs+base64UrlName+fontSize">
+        <img class="current-photo" [src]="api.IMAGE_PREFIX+photo.path+photoBaeArgs+waterMarkArgs+effectArgs">
       </div>
-
-      <div class="view-photo-operation">
-        <button md-raised-button >上一张</button>
-        <button md-raised-button >下一张</button>
-        <md-slide-toggle
-          class="view-photo-toggle"
-          [checked]="waterMarkView"
-          (change)="toggleView($event)"
-          color=primary>
-          水印视角
-        </md-slide-toggle>
-      </div>
-
     </div>
 
     <!--设置水印-->
     <div class="water-mark-setting">
-      <p class="select-style-label">选择样式</p>
-      <div class="water-mark-style">
-        <img class="water-logo" src="assets/img/water-logo.png">
-        <p class="logo-text">红果情侣</p>
+      <p class="select-style-label">编辑样式</p>
+      <div class="photo-style">
+        <span class="photo-style-title" style="margin-bottom: 10px">水印</span>
+        <md-slide-toggle
+          [checked]="addWaterMark"
+          (change)="changeAddWaterMark($event)"
+          color="primary">
+        </md-slide-toggle>
+        <md-slide-toggle [disabled]="!addWaterMark"
+                         class="view-photo-toggle"
+                         [checked]="waterMarkView"
+                         (change)="toggleView($event)"
+                         color=primary>
+          <span>最佳视角</span>
+        </md-slide-toggle>
+      </div>
+      <div class="photo-style">
+        <span class="photo-style-title">亮度</span>
+        <md-slider style="width: 180px"
+          class="example-margin"
+          [max]="100"
+          [min]="-100"
+          [step]="1"
+          [value]="tempPhoto.bright"
+          [thumb-label]="true"
+          [tick-interval]="1"
+          (change)="changeBright($event)"
+          color="primary"
+        >
+        </md-slider>
+
+      </div>
+      <div class="photo-style">
+        <span class="photo-style-title">锐化</span>
+        <md-slider style="width: 180px"
+          class="example-margin"
+          [max]="399"
+          [min]="50"
+          [step]="1"
+          [value]="tempPhoto.sharpen"
+          (change)="changeSharpen($event)"
+          [thumb-label]="true"
+          [tick-interval]="1"
+          color="primary"
+        >
+        </md-slider>
+
+      </div>
+      <div class="photo-style">
+        <span class="photo-style-title">对比度</span>
+        <md-slider
+          class="example-margin" style="width: 170px"
+          [max]="100"
+          [min]="-100"
+          [step]="1"
+          [value]="tempPhoto.contrast"
+          (change)="changeContrast($event)"
+          [thumb-label]="true"
+          [tick-interval]="1"
+          color="primary"
+        >
+        </md-slider>
+
+      </div>
+      <div class="photo-style">
+        <p class="photo-style-title">模糊</p>
+        <md-slider style="width: 150px"
+          class="example-margin"
+          [max]="50"
+          [min]="0"
+          [step]="1"
+          [value]="tempPhoto.blurR"
+           (change)="changeBlurR($event)"
+          [thumb-label]="true"
+          [tick-interval]="1"
+          color="primary"
+        >
+        </md-slider>
+        <span class="photo-style-label">模糊半径</span>
+        <md-slider style="width: 150px"
+          class="example-margin"
+          [max]="50"
+          [min]="0"
+          [step]="1"
+          [value]="tempPhoto.blurS"
+          (change)="changeBlurS($event)"
+          [thumb-label]="true"
+          [tick-interval]="1"
+          color="primary"
+        >
+        </md-slider>
+        <span class="photo-style-label">模糊程度</span>
       </div>
     </div>
   </div>
-  <!--整体结束-->
+  <!--正体结束-->
+  <div class="water-mark-bottom">
+    <div class="view-photo-operation">
+      <div class="next-prev-wrapper" *ngIf="!photoInfo.isBatch">
+        <button md-raised-button [disabled]="currentIndex==0" (click)="prevPhoto()">上一张</button>
+        <button md-raised-button [disabled]="currentIndex==photos.length-1" (click)="nextPhoto()">下一张</button>
+      </div>
+      <div class="batch-label" *ngIf="photoInfo.isBatch">
+        正在为全部相片修改统一样式
+      </div>
+    </div>
+    <div class="operation-btn-wrapper">
+      <button md-raised-button>重置</button>
+      <button md-raised-button color="primary" (click)="save()">保存</button>
+    </div>
+
+  </div>
 </main>

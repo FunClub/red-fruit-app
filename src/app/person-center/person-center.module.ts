@@ -12,7 +12,7 @@ import {ShareModule} from "../share/share.module";
 import {
   MdButtonToggleModule,
   MdDialogModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdRadioModule,
-  MdSelectModule, MdSlideToggleModule
+  MdSelectModule, MdSliderModule, MdSlideToggleModule
 } from "@angular/material";
 import {MoodService} from "./service/mood.service";
 import {InsertMood} from "./model/mood/insert-mood";
@@ -38,7 +38,8 @@ import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
     DndModule,
     FroalaViewModule,
     FroalaEditorModule,
-    MdSlideToggleModule
+    MdSlideToggleModule,
+    MdSliderModule
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
