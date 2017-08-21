@@ -24,7 +24,10 @@
             </button>
           </div>
         </div>
-        <div class="photo-label" contenteditable="true">{{photo.fileName}}</div>
+        <form>
+          <div class="photo-label" contenteditable="true" name="fileName" [(ngModel)]="photo.fileName"></div>
+        </form>
+
       </div>
 
       <div *ngIf="uploadPhotoInfo.length>0" class="add-photo-wrapper" (click)="fileInput.click()">
@@ -69,7 +72,7 @@
       </div>
 
       <!--设置水印-->
-      <div class="set-watermark-wrapper" (click)="addAllWaterMark()">
+      <div class="set-watermark-wrapper" (click)="addAllWaterMark()" *ngIf="uploadPhotoInfo.length>0">
         <button md-icon-button>
           <i class="material-icons">palette</i>
         </button>

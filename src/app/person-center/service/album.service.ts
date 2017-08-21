@@ -33,7 +33,19 @@ export class AlbumService extends BaseService{
     for(let file of files){
       formData.append("imgs",file);
     }
-    return this.http.post(this.api.PHOTO(this.bucketFolder.ALBUM),formData).map(res=>res.json().data).catch(this.handleError);
+    return this.http.post(this.api.PHOTO(this.bucketFolder.ALBUM),formData).map(res=>{
+     let photos= res.json().data as ShowUploadPhoto[];
+     for(let p of photos){
+       p.hasWaterMark=false;
+       p.blurS=0;
+       p.sharpen=50;
+       p.contrast=0;
+       p.bright=0;
+       p.blurS=0;
+       p.blurR=0;
+     }
+     return photos;
+    }).catch(this.handleError);
   }
   /**
    * 查询相册

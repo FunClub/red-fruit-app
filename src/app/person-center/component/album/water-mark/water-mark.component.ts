@@ -31,16 +31,12 @@ export class WaterMarkComponent implements OnInit {
    */
   waterMarkView:boolean;
 
-  /**
-   * 是否添加水印
-   */
-  addWaterMark:boolean;
+
 
   /**
    * 零时相片模型
    */
-  tempPhoto:ShowUploadPhoto;
-
+  tempPhotos:ShowUploadPhoto[];
   /**
    * 当前正在显示的照片
    */
@@ -60,29 +56,79 @@ export class WaterMarkComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.photoInfo.isBatch){
+      this.photo = this.photoInfo.photo;
+    }else{
+      this.photo = this.photoInfo.photos[this.currentIndex];
+    }
+    /*备份相片数组信息便于恢复*/
+    this.tempPhotos = [];
+    for(let p of this.photos){
+      let obj = new ShowUploadPhoto();
+      for(let key in p){
+        obj[key]=p[key];
+      }
+      this.tempPhotos.push(obj);
+    }
     this.initPhotoData()
   }
-  save(){
+  save(close:HTMLButtonElement){
     if(this.photoInfo.isBatch){
         for (let p of this.photos){
-          this.savePhotoInfo(p);
+          if(this.photo.hasWaterMark){
+            p.waterMark = this.zoomInWaterArgs+this.base64UrlName+`,size_${p.fontSize}`;
+          }
+          p.hasWaterMark=this.photo.hasWaterMark;
+          p.blurR=this.photo.blurR;
+          p.blurS= this.photo.blurS;
+          p.contrast=this.photo.contrast;
+          p.sharpen=this.photo.sharpen;
+          p.bright = this.photo.bright;
         }
     }else{
-      this.savePhotoInfo(this.photo);
+      for(let p of this.photos){
+        if(p.hasWaterMark){
+          p.waterMark = this.zoomInWaterArgs+this.base64UrlName+`,size_${p.fontSize}`;
+        }
+      }
     }
-    console.log(this.photoInfo)
+    close.click();
   }
-  savePhotoInfo(photo:ShowUploadPhoto){
-    photo.bright = this.tempPhoto.bright;
-    photo.contrast = this.tempPhoto.contrast;
-    photo.sharpen = this.tempPhoto.sharpen;
-    photo.blurR = this.tempPhoto.blurR;
-    photo.blurS = this.tempPhoto.blurS;
-    if(this.addWaterMark){
-      photo.watermark = this.zoomInWaterArgs+this.base64UrlName+`,size_${photo.fontSize}`;
-    }else{
-      photo.watermark=undefined;
-      console.log(photo.watermark)
+
+  /**
+   * 关闭dialog
+   * @param close
+   */
+  closeDialog(close:HTMLHtmlElement){
+    if(!this.photoInfo.isBatch){
+      for(let i=0;i<this.photos.length;i++){
+        this.resetPhoto(this.photos[i],this.tempPhotos[i]);
+      }
+    }
+    close.click();
+  }
+
+  /**
+   * 点击重置按钮恢复信息
+   */
+  clickResetPhoto(){
+    this.photo.bright=0;
+    this.photo.sharpen=50;
+    this.photo.contrast=0;
+    this.photo.blurS=0;
+    this.photo.blurR=0;
+    this.photo.hasWaterMark=false;
+    this.photo.waterMark="";
+    this.initPhotoData()
+  }
+  /**
+   * 恢复相片信息
+   * @param photo 待恢复的相片
+   * @param targetPhoto 恢复的相片
+   */
+  resetPhoto(photo:ShowUploadPhoto,targetPhoto:ShowUploadPhoto){
+    for(let key in targetPhoto){
+      photo[key]=targetPhoto[key];
     }
   }
   /**
@@ -108,17 +154,17 @@ export class WaterMarkComponent implements OnInit {
    */
   initCurrentPhoto(){
     this.photo=this.photos[this.currentIndex];
-    this.waterMarkView=false;
-    this.addWaterMark=false;
-
+    if(this.photo.hasWaterMark){
+      this.waterMarkView=true;
+      this.zoomOutWaterMark();
+    }
   }
 
   /**
-   * 初始化相片数据
+   * 初始化相片数据(用于每次相片切换后，包括第一张相片初始化)
    */
   initPhotoData(){
     this.initArgs();
-    this.initTempPhoto();
     this.refreshEffect();
   }
 
@@ -126,57 +172,19 @@ export class WaterMarkComponent implements OnInit {
    * 初始化基本参数
    */
   initArgs(){
-    if(this.photoInfo.isBatch){
-      this.photo = this.photoInfo.photo;
-    }else{
-      this.photo = this.photoInfo.photos[this.currentIndex];
-    }
     this.zoomInArgs="?x-oss-process=image/resize,m_fill,w_480,h_380/quality,q_100";
     this.zoomOutArgs =`?x-oss-process=image/resize,p_${this.photo.zoomSize}/crop,w_480,h_380,g_sw/quality,q_100`;
     this.zoomOutWaterArgs=`/watermark,image_c3RhdGljL3dhdGVyLWxvZ28ucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHBfNDA,g_sw,align_1,interval_5,color_FFFFFF,x_20,y_20,text_`;
     this.zoomInWaterArgs =  `/watermark,image_c3RhdGljL3dhdGVyLWxvZ28ucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHBfMjU,g_sw,align_1,interval_5,color_FFFFFF,x_20,y_20,text_`;
     this.zoomInFontSize=`,size_13`;
     this.zoomOutFontSize=",size_18";
-    this.waterMarkView=false;
-    this.addWaterMark=false;
 
     this.photoBaeArgs = this.zoomInArgs;
     this.waterMarkArgs = "";
     this.fontSize = "";
-  }
-
-
-  /**
-   * 初始化临时相片
-   */
-  initTempPhoto(){
-    console.log(this.photo);
-    this.tempPhoto = new ShowUploadPhoto();
-    this.tempPhoto.path = this.photo.path;
-    this.tempPhoto.blurR=this.photo.blurR;
-    this.tempPhoto.blurS=this.photo.blurS;
-
-    /*如果有修改过就直接取出对应的值，否者初始化值*/
-    if(this.photo.bright){
-      this.tempPhoto.bright=this.photo.bright;
-    }else{
-      this.tempPhoto.bright=0
-    }
-    if(this.photo.sharpen){
-      this.tempPhoto.sharpen=this.photo.sharpen;
-    }else{
-      this.tempPhoto.sharpen=50
-    }
-    if(this.photo.contrast){
-      this.tempPhoto.contrast=this.photo.contrast;
-    }else {
-      this.tempPhoto.contrast=0;
-    }
-    if(this.photo.watermark){
-      this.addWaterMark=true;
+    if(this.photo.hasWaterMark){
       this.generateWaterMark();
-    }else{
-
+      this.waterMarkView=true;
     }
   }
 
@@ -185,7 +193,7 @@ export class WaterMarkComponent implements OnInit {
    * @param event
    */
   changeBright(event){
-    this.tempPhoto.bright =event.value;
+    this.photo.bright =event.value;
     this.refreshEffect();
   }
 
@@ -194,7 +202,7 @@ export class WaterMarkComponent implements OnInit {
    * @param event
    */
   changeSharpen(event){
-    this.tempPhoto.sharpen =event.value;
+    this.photo.sharpen =event.value;
     this.refreshEffect();
   }
 
@@ -203,7 +211,7 @@ export class WaterMarkComponent implements OnInit {
    * @param event
    */
   changeContrast(event){
-    this.tempPhoto.contrast =event.value;
+    this.photo.contrast =event.value;
     this.refreshEffect();
   }
 
@@ -212,12 +220,12 @@ export class WaterMarkComponent implements OnInit {
    * @param event
    */
   changeBlurR(event){
-    this.tempPhoto.blurR =event.value;
-    if(this.tempPhoto.blurR==0){
-      this.tempPhoto.blurS=0;
+    this.photo.blurR =event.value;
+    if(this.photo.blurR==0){
+      this.photo.blurS=0;
     }else{
-      if(!this.tempPhoto.blurS){
-        this.tempPhoto.blurS=1;
+      if(!this.photo.blurS){
+        this.photo.blurS=1;
       }
     }
     this.refreshEffect();
@@ -228,12 +236,12 @@ export class WaterMarkComponent implements OnInit {
    * @param event
    */
   changeBlurS(event){
-    this.tempPhoto.blurS =event.value;
-    if(this.tempPhoto.blurS==0){
-      this.tempPhoto.blurR=0;
+    this.photo.blurS =event.value;
+    if(this.photo.blurS==0){
+      this.photo.blurR=0;
     }else {
-      if(!this.tempPhoto.blurR){
-        this.tempPhoto.blurR=1;
+      if(!this.photo.blurR){
+        this.photo.blurR=1;
       }
     }
     this.refreshEffect();
@@ -244,12 +252,12 @@ export class WaterMarkComponent implements OnInit {
    */
   refreshEffect(){
     this.effectArgs="";
-    this.effectArgs+=`/bright,${this.tempPhoto.bright}/sharpen,${this.tempPhoto.sharpen}/contrast,${this.tempPhoto.contrast}`;
-    if(this.tempPhoto.blurR||this.tempPhoto.blurS){
-      if(this.tempPhoto.blurR==0||this.tempPhoto.blurS==0){
+    this.effectArgs+=`/bright,${this.photo.bright}/sharpen,${this.photo.sharpen}/contrast,${this.photo.contrast}`;
+    if(this.photo.blurR||this.photo.blurS){
+      if(this.photo.blurR==0||this.photo.blurS==0){
         this.effectArgs="";
       }else{
-        this.effectArgs+=`/blur,r_${this.tempPhoto.blurR},s_${this.tempPhoto.blurS}`;
+        this.effectArgs+=`/blur,r_${this.photo.blurR},s_${this.photo.blurS}`;
       }
 
     }
@@ -284,8 +292,8 @@ export class WaterMarkComponent implements OnInit {
    * @param event
    */
   changeAddWaterMark(event){
-    this.addWaterMark=event.checked;
-    if(this.addWaterMark){
+    this.photo.hasWaterMark=event.checked;
+    if(this.photo.hasWaterMark){
      this.generateWaterMark();
     }else{
       this.noWaterMark();

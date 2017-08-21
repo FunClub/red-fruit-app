@@ -25,10 +25,12 @@ import { AddPhotoComponent } from './component/album/add-photo/add-photo.compone
 import { WaterMarkComponent } from './component/album/water-mark/water-mark.component';
 import {DndModule} from "ng2-dnd";
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
+import {FormsModule} from "@angular/forms";
 @NgModule({
   imports: [
     CommonModule,
     ShareModule,
+    FormsModule,
     MdMenuModule,
     MdPaginatorModule,
     MdDialogModule,

@@ -63,10 +63,8 @@ export class AddPhotoComponent implements OnInit {
    * @param index
    */
   addWaterMark(index:number){
-    let photo = this.uploadPhotoInfo[index];
     let waterMarkArgs = new WaterMarkArgs();
     waterMarkArgs.isBatch=false;
-    waterMarkArgs.photo=photo;
     waterMarkArgs.photos=this.uploadPhotoInfo;
     waterMarkArgs.currentIndex=index;
     this. openWaterMarkDialog(waterMarkArgs);
@@ -90,7 +88,8 @@ export class AddPhotoComponent implements OnInit {
    */
   openWaterMarkDialog(args:WaterMarkArgs){
     this.dialog.open(WaterMarkComponent,{
-      data:args
+      data:args,
+      disableClose:true
     });
   }
 }

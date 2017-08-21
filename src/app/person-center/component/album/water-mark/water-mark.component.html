@@ -2,7 +2,7 @@
   <!--标题-->
   <div class="water-mark-title">
     <i class="material-icons">palette</i>设置样式  <span *ngIf="photoInfo.isBatch">(批量)</span>
-    <i class="material-icons close-water-mark">close</i>
+    <i class="material-icons close-water-mark" (click)="closeDialog(close)">close</i>
   </div>
 
   <!--正体开始-->
@@ -21,11 +21,11 @@
       <div class="photo-style">
         <span class="photo-style-title" style="margin-bottom: 10px">水印</span>
         <md-slide-toggle
-          [checked]="addWaterMark"
+          [checked]="photo.hasWaterMark"
           (change)="changeAddWaterMark($event)"
           color="primary">
         </md-slide-toggle>
-        <md-slide-toggle [disabled]="!addWaterMark"
+        <md-slide-toggle [disabled]="!photo.hasWaterMark"
                          class="view-photo-toggle"
                          [checked]="waterMarkView"
                          (change)="toggleView($event)"
@@ -40,7 +40,7 @@
           [max]="100"
           [min]="-100"
           [step]="1"
-          [value]="tempPhoto.bright"
+          [value]="photo.bright"
           [thumb-label]="true"
           [tick-interval]="1"
           (change)="changeBright($event)"
@@ -56,7 +56,7 @@
           [max]="399"
           [min]="50"
           [step]="1"
-          [value]="tempPhoto.sharpen"
+          [value]="photo.sharpen"
           (change)="changeSharpen($event)"
           [thumb-label]="true"
           [tick-interval]="1"
@@ -72,7 +72,7 @@
           [max]="100"
           [min]="-100"
           [step]="1"
-          [value]="tempPhoto.contrast"
+          [value]="photo.contrast"
           (change)="changeContrast($event)"
           [thumb-label]="true"
           [tick-interval]="1"
@@ -88,7 +88,7 @@
           [max]="50"
           [min]="0"
           [step]="1"
-          [value]="tempPhoto.blurR"
+          [value]="photo.blurR"
            (change)="changeBlurR($event)"
           [thumb-label]="true"
           [tick-interval]="1"
@@ -101,7 +101,7 @@
           [max]="50"
           [min]="0"
           [step]="1"
-          [value]="tempPhoto.blurS"
+          [value]="photo.blurS"
           (change)="changeBlurS($event)"
           [thumb-label]="true"
           [tick-interval]="1"
@@ -124,9 +124,11 @@
       </div>
     </div>
     <div class="operation-btn-wrapper">
-      <button md-raised-button>重置</button>
-      <button md-raised-button color="primary" (click)="save()">保存</button>
+      <button md-raised-button (click)="clickResetPhoto()">重置</button>
+      <button md-raised-button color="primary" (click)="save(close)">保存</button>
     </div>
 
   </div>
+  <!--隐藏按钮用于,关闭dialog-->
+  <button md-dialog-close #close style="display: none"></button>
 </main>

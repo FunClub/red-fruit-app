@@ -10,7 +10,6 @@ import {HomeModule} from "./home/home.module";
 import {NgProgressModule} from "ngx-progressbar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PushNotificationsModule} from "angular2-notifications";
-
 /**
  * 应用根模块
  *

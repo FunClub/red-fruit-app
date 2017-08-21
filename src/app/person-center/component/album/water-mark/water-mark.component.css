@@ -15,6 +15,7 @@
 /*关闭按钮*/
 .close-water-mark{
   float: right;
+  cursor: pointer;
 }
 /*正体*/
 .water-mark-center{

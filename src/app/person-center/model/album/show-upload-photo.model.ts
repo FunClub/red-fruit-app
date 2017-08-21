@@ -9,12 +9,13 @@ export class ShowUploadPhoto {
   zoomSize:number;
   fileName: string;
   fontSize:string;
-  watermark:string;
+  waterMark:string;
   bright:number;
   contrast:number;
   sharpen:number;
   blurR:number;
   blurS:number;
+  hasWaterMark:boolean;
   constructor() {
     this.bright=0;
     this.contrast=0;
