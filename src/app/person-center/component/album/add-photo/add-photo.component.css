@@ -101,14 +101,15 @@
 }
 
 /*相片标签*/
-.photo-label{
+.photo-name{
   font-size: 13px;
-  padding: 5px;
-  max-height: 15px;
-  width: 120px;
+  width: 125px;
+  padding-left: 5px;
+  height: 25px;
   overflow: hidden;
   background: white;
   margin-top: 5px;
+  border: rgb(233,233,233) solid 1px;
 }
 /*继续添加相片的div*/
 .add-photo-wrapper{

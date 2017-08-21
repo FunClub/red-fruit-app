@@ -25,4 +25,5 @@ export class AlbumApi {
   PHOTO(folder:string){
     return `${this.ALBUM}${folder}/photo`
   }
+  ADD_PHOTO:string = "album/photo"
 }

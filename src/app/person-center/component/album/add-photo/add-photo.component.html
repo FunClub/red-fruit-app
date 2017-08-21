@@ -24,10 +24,7 @@
             </button>
           </div>
         </div>
-        <form>
-          <div class="photo-label" contenteditable="true" name="fileName" [(ngModel)]="photo.fileName"></div>
-        </form>
-
+        <input class="photo-name" contenteditable="true" name="fileName" [(ngModel)]="photo.name">
       </div>
 
       <div *ngIf="uploadPhotoInfo.length>0" class="add-photo-wrapper" (click)="fileInput.click()">
@@ -51,7 +48,7 @@
     <!--选择相册-->
       <div class="select-album-wrapper">
         <span class="photo-operation-label">上传照片到:</span>
-        <md-select placeholder="选择相册" class="album-selector">
+        <md-select placeholder="选择相册" class="album-selector" name="albumId" [(ngModel)]="addPhotoInfo.albumId">
           <md-option *ngFor="let album of albums" [value]="album.albumId">
               <img class="select-cover-img" [src]="api.IMAGE_PREFIX+album.coverImg">
               <span class="album-name">{{ album.albumName}}</span><br>
@@ -64,10 +61,10 @@
       <!--相片质量-->
       <div class="select-quality-wrapper">
         <span class="photo-operation-label">相片质量:</span>
-        <md-radio-group >
-          <md-radio-button value="60" color="primary"><span class="select-quality-label">普通</span></md-radio-button>
-          <md-radio-button value="80" color="primary"><span class="select-quality-label">高清</span></md-radio-button>
-          <md-radio-button value="100" color="primary"><span class="select-quality-label">原图</span></md-radio-button>
+        <md-radio-group name="photoQuality" [(ngModel)]="addPhotoInfo.quality">
+          <md-radio-button value=60 color="primary"><span class="select-quality-label">普通</span></md-radio-button>
+          <md-radio-button value=80 color="primary"><span class="select-quality-label">高清</span></md-radio-button>
+          <md-radio-button value=100 color="primary"><span class="select-quality-label">原图</span></md-radio-button>
         </md-radio-group>
       </div>
 
@@ -80,8 +77,8 @@
       </div>
       <!--保存上传图片-->
       <div class="save-photo-wrapper">
-          <button md-raised-button class="remove-all-photo"><i class="material-icons">delete</i>清空相片</button>
-          <button md-raised-button color="primary" class="save-photo" (click)="savePhoto()"><i class="material-icons">save</i>保存相片</button>
+          <button md-raised-button class="remove-all-photo" [disabled]="uploadPhotoInfo.length==0" (click)="clearPhoto()"><i class="material-icons">delete</i>清空相片</button>
+          <button md-raised-button color="primary" class="save-photo" [disabled]="uploadPhotoInfo.length==0" (click)="savePhoto(close)"><i class="material-icons">save</i>保存相片</button>
       </div>
     </div>
   </div>

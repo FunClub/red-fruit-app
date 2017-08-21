@@ -1,0 +1,74 @@
+.photos-main{
+  width:80%;
+  min-width: 750px;
+  margin: auto;
+  margin-top: 20px;
+}
+/*封面图片包裹DIV*/
+.cover-wrapper{
+  width: 90px;
+  height: 90px;
+  background: white;
+  border: solid 1px rgb(223,223,223);
+  display: inline-block;
+  vertical-align: top;
+}
+.cover-wrapper img{
+  display: block;
+  margin-left: 5px;
+  position: relative;
+  top: 5px;
+}
+/*相册信息*/
+.album-info{
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+/*相片名称*/
+.album-name{
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(120,120,120);
+
+}
+/*相片数量*/
+.photo-count{
+  font-size: 13px;
+  color: rgb(120,120,120);margin-top: 5px;
+  font-weight: normal;
+}
+.photo-count i{
+  font-size: 20px;
+}
+/*分隔标志*/
+.separate{
+  font-weight: normal;
+  font-size: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: rgb(150,150,150);
+}
+/*相册限制*/
+.album-limit{
+  font-weight: normal;
+  font-size: 14px;
+}
+/*相册权限*/
+.album-privacy{
+  font-size: 20px;
+  color: rgb(120,120,120);
+}
+/*相册操作*/
+.album-operation{
+  margin-top: 15px;
+}
+.all-album-operation button{
+  margin-left: 20px;
+}
+/*上传相片*/
+.upload-img{
+  background: rgb(34,170,210);
+  margin-right: 10px;
+}
+

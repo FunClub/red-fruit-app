@@ -10,7 +10,6 @@ import { LeaveMessageComponent } from './component/leave-message/leave-message.c
 import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
 import {
-  MdButtonToggleModule,
   MdDialogModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdRadioModule,
   MdSelectModule, MdSliderModule, MdSlideToggleModule
 } from "@angular/material";
@@ -26,6 +25,8 @@ import { WaterMarkComponent } from './component/album/water-mark/water-mark.comp
 import {DndModule} from "ng2-dnd";
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {FormsModule} from "@angular/forms";
+import { ShowPhotosComponent } from './component/album/show-photos/show-photos.component';
+import { ShowAlbumComponent } from './component/album/show-album/show-album.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -45,7 +46,7 @@ import {FormsModule} from "@angular/forms";
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
-    SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent],
+    SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent, ShowPhotosComponent, ShowAlbumComponent],
   entryComponents:[
     AddAlbumComponent,
     AddPhotoComponent,

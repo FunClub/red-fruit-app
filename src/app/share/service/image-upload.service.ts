@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {BaseService} from "./base.service";
 import {Observable} from "rxjs/Observable";
 import {RedFruitApi} from "../model/base/api.model";
+import {ShowUploadPhoto} from "../../person-center/model/album/show-upload-photo.model";
 
 /**
  * 图片上传相关服务
@@ -22,6 +23,18 @@ export class ImageUploadService extends BaseService{
     return this.http.put(this.api.IMG(folder),files).map(res=>res.json().data).catch(this.handleError);
   }
 
+  /**
+   * 清空相片
+   * @param photos 相片数组
+   * @returns {Observable<boolean>}
+   */
+  clearImg(photos:ShowUploadPhoto[]){
+    let paths = [];
+    for (let p of photos){
+      paths.push(p.path);
+    }
+    return this.deleteImg(paths);
+  }
   /**
    * 删除照片
    * @param paths 文件路径数组

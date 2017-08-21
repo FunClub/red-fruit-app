@@ -4,7 +4,7 @@ import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {RedFruitApi} from "../../../share/model/base/api.model";
 import {HomeService} from "../../service/home.service";
 import {NgProgressService} from "ngx-progressbar";
-import {PushNotificationsService} from "angular2-notifications/dist";
+import {PushNotificationsService} from "angular2-notifications";
 import {Router} from "@angular/router";
 import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
 import {NoticeMessage} from "../../../websocket/model/notice-message.model";

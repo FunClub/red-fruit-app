@@ -12,27 +12,52 @@ import {WaterMarkArgs} from "../../../model/album/water-mark-args";
   styleUrls: ['./water-mark.component.css']
 })
 export class WaterMarkComponent implements OnInit {
+  /**
+   * 相片放大缩小基本参数
+   */
   zoomOutArgs:string;
   zoomInArgs:string;
 
+  /**
+   * 相片放大缩小字体大小
+   */
   zoomInFontSize:string;
   zoomOutFontSize:string;
 
+  /**
+   * 相片放大缩小水印参数
+   */
   zoomOutWaterArgs:string;
   zoomInWaterArgs:string;
 
+  /**
+   * 昵称BASE64URL
+   */
   base64UrlName:string;
+
+  /**
+   * 相片基本参数
+   */
   photoBaeArgs:string;
+
+  /**
+   * 水印字体大小
+   */
   fontSize:string;
+
+  /**
+   * 水印参数
+   */
   waterMarkArgs:string;
+
+  /**
+   * 相片效果参数
+   */
   effectArgs:string;
   /**
    * 是否显示水印视图
    */
   waterMarkView:boolean;
-
-
-
   /**
    * 零时相片模型
    */
@@ -47,6 +72,9 @@ export class WaterMarkComponent implements OnInit {
    */
   photos:ShowUploadPhoto[];
 
+  /**
+   * 相片索引
+   */
   currentIndex:number;
   constructor(@Inject(MD_DIALOG_DATA)public photoInfo:WaterMarkArgs, public api:RedFruitApi,
               private homeService:HomeService,private albumService:AlbumService) {
@@ -72,7 +100,13 @@ export class WaterMarkComponent implements OnInit {
     }
     this.initPhotoData()
   }
+
+  /**
+   * 保存相册编辑信息
+   * @param close
+   */
   save(close:HTMLButtonElement){
+    //批处理
     if(this.photoInfo.isBatch){
         for (let p of this.photos){
           if(this.photo.hasWaterMark){
@@ -84,11 +118,13 @@ export class WaterMarkComponent implements OnInit {
           p.contrast=this.photo.contrast;
           p.sharpen=this.photo.sharpen;
           p.bright = this.photo.bright;
+          p.effect = this.effectArgs;
         }
-    }else{
+    }else{//单张处理
       for(let p of this.photos){
         if(p.hasWaterMark){
           p.waterMark = this.zoomInWaterArgs+this.base64UrlName+`,size_${p.fontSize}`;
+          p.effect = this.effectArgs;
         }
       }
     }
@@ -100,6 +136,7 @@ export class WaterMarkComponent implements OnInit {
    * @param close
    */
   closeDialog(close:HTMLHtmlElement){
+    //不是批处理，关闭dialog，恢复相册数据
     if(!this.photoInfo.isBatch){
       for(let i=0;i<this.photos.length;i++){
         this.resetPhoto(this.photos[i],this.tempPhotos[i]);

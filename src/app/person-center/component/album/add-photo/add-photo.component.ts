@@ -3,12 +3,13 @@ import {MD_DIALOG_DATA, MdDialog} from "@angular/material";
 import {ShowAlbum} from "../../../model/album/show-album.model";
 import {RedFruitApi} from "../../../../share/model/base/api.model";
 import {WaterMarkComponent} from "../water-mark/water-mark.component";
-import {BucketFolder} from "../../../../share/model/bucket-folder.model";
 import {ImageUploadService} from "../../../../share/service/image-upload.service";
 import {AlbumService} from "../../../service/album.service";
 import {ShowUploadPhoto} from "../../../model/album/show-upload-photo.model";
 import {AlbumApi} from "../../../model/base/album-api.model";
 import {WaterMarkArgs} from "../../../model/album/water-mark-args";
+import {AddPhoto} from "../../../model/album/add-photo.model";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'app-add-photo',
@@ -17,18 +18,50 @@ import {WaterMarkArgs} from "../../../model/album/water-mark-args";
 })
 export class AddPhotoComponent implements OnInit {
   uploadPhotoInfo:ShowUploadPhoto[];
+  addPhotoInfo:AddPhoto;
   uploadSubscribe;
   constructor(@Inject(MD_DIALOG_DATA) public albums:ShowAlbum[],public api:RedFruitApi,public albumApi:AlbumApi,private dialog:MdDialog,
-              private albumService:AlbumService,private imageService:ImageUploadService
+              private albumService:AlbumService,private imageService:ImageUploadService,private toastsManager:ToastsManager
   ) {
     this.uploadPhotoInfo=[];
-
+    this.addPhotoInfo = new AddPhoto();
+    this.addPhotoInfo.albumId=albums[0].albumId;
+    this.addPhotoInfo.quality=60;
   }
   ngOnInit() {
+
   }
-  savePhoto(){
-    console.log(this.uploadPhotoInfo);
+
+  /**
+   * 保存上传的相片
+   * @param close
+   */
+  savePhoto(close:HTMLButtonElement){
+    this.uploadSubscribe=this.albumService.save(this.addPhotoInfo,this.uploadPhotoInfo).subscribe(res=>{
+      if(res){
+        this.toastsManager.success("相片添加成功","添加结果");
+        close.click();
+      }else{
+        this.toastsManager.error("相片添加失败,请重试...","添加结果");
+      }
+    })
   }
+
+  /**
+   * 清空相片
+   */
+  clearPhoto(){
+    this.uploadSubscribe=this.imageService.clearImg(this.uploadPhotoInfo).subscribe(res=>{
+      if(res){
+        this.uploadPhotoInfo=[];
+      }
+    });
+  }
+
+  /**
+   * 删除相片
+   * @param index
+   */
   deletePhoto(index:number){
     let path = this.uploadPhotoInfo[index].path;
     let paths:string[]=[];
@@ -39,12 +72,24 @@ export class AddPhotoComponent implements OnInit {
       }
     });
   }
+
   /**
    * 关闭添加相片dialog
    * @param close
    */
   closeAddPhotoDialog(close:HTMLButtonElement,){
-    close.click();
+    if(this.uploadPhotoInfo.length>0){
+      this.uploadSubscribe=this.imageService.clearImg(this.uploadPhotoInfo).subscribe(res=>{
+        if(res){
+          this.uploadPhotoInfo=[];
+          close.click();
+        }
+      });
+    }else{
+      close.click();
+    }
+
+
   }
 
   /**

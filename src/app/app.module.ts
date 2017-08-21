@@ -33,7 +33,8 @@ import {PushNotificationsModule} from "angular2-notifications";
     /*注入title服务*/
     Title,
     /*material2 Input组件placeholder自动浮动*/
-    {provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: { float: 'never' }}
+    {provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: { float: 'never' }},
+
   ],
   bootstrap: [AppComponent]
 })

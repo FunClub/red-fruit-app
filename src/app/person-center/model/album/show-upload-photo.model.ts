@@ -7,9 +7,10 @@ export class ShowUploadPhoto {
   height: number;
 
   zoomSize:number;
-  fileName: string;
+  name: string;
   fontSize:string;
   waterMark:string;
+  effect:string;
   bright:number;
   contrast:number;
   sharpen:number;

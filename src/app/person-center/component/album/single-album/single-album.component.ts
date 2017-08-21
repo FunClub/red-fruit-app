@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {ShowAlbum} from "../../../model/album/show-album.model";
 import {RedFruitApi} from "../../../../share/model/base/api.model";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-single-album',
   templateUrl: './single-album.component.html',
@@ -32,11 +33,14 @@ export class SingleAlbumComponent implements OnInit {
   @Input()
   album:ShowAlbum;
 
-  constructor(public api:RedFruitApi) {
+  constructor(public api:RedFruitApi,private router:Router) {
 
   }
 
   ngOnInit() {
   }
+  toPhotos(){
+    this.router.navigate(["home/person-center/album/photos",this.album.albumId])
 
+  }
 }

@@ -15,6 +15,8 @@ import {PrivacySettingsComponent} from "../person-info/component/privacy-setting
 import {HomeGuard} from "./guard/home.guard";
 import {FootMarkComponent} from "../foot-mark/component/foot-mark/foot-mark.component";
 import {MyArtComponent} from "../foot-mark/component/my-art/my-art.component";
+import {ShowPhotosComponent} from "../person-center/component/album/show-photos/show-photos.component";
+import {ShowAlbumComponent} from "../person-center/component/album/show-album/show-album.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -30,7 +32,14 @@ const  homeRoutes:Routes=[
           {path:'mood',component:MoodComponent},
           {path:'memory-day',component:MemoryDayComponent},
           {path:'note',component:NoteComponent},
-          {path:'album',component:AlbumComponent},
+          {
+            path:'album',
+            component:AlbumComponent,
+            children:[
+              {path:'',component:ShowAlbumComponent},
+              {path:'photos/:albumId',component:ShowPhotosComponent}
+            ]
+          },
           {path:'leave-message',component:LeaveMessageComponent},
           {path:'',redirectTo:'home-page',pathMatch:'full'}
         ]
