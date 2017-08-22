@@ -1,8 +1,21 @@
 .photos-main{
   width:80%;
-  min-width: 750px;
+  max-width: 1520px;
+  min-width: 910px;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.photos-top{
+  height: 100px;
+  padding: 10px;
+}
+.photos-top-left{
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+
 }
 /*封面图片包裹DIV*/
 .cover-wrapper{
@@ -72,3 +85,135 @@
   margin-right: 10px;
 }
 
+/*相片顶部右侧*/
+.photo-top-right{
+  height: 100px;
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+  float: right;
+}
+/*相册动态信息*/
+.album-art-info{
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+/*动态信息label*/
+.art-info-label{
+  color: rgb(50,50,50);
+  font-size:17px;
+  border-right: 1px solid rgb(230,230,230);
+  padding-right: 10px;
+  width: 70px;
+}
+.art-info-label:last-child{
+  border: none;
+}
+.album-art-info i{
+  color: rgb(122,149,153);
+}
+/*动态计数*/
+.art-count{
+  text-align: right;
+  color: rgb(140,140,140);
+  padding-right: 20px;
+}
+/*相册中心*/
+.photos-center{
+  margin-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+}
+/*照片总的包裹*/
+.photo-all-wrapper{/*170,130*/
+  width: 18%;
+  max-width: 170px;
+  max-height: 170px;
+  min-height: 160px;
+  min-width: 160px;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  margin-left: 15px;
+  margin-top: 20px;
+  background: white;
+  border: solid 1px rgb(233,233,233);
+}
+
+.photo-all-wrapper:hover{
+  box-shadow:  0 3px 5px rgb(183,183,183);
+  border: solid 1px rgb(233,233,233);
+}
+.photo-all-wrapper:hover .photo{
+  animation: photo-hover 0.5s forwards;
+}
+.photo-all-wrapper:hover .photo-name{
+  display: none;
+}
+.photo-all-wrapper:hover .photo-art-operation{
+  display: block;
+  animation: photo-art-operation-hover 0.3s forwards;
+}
+
+/*相片hover动画*/
+@keyframes photo-hover {
+  0%{
+    transform: scale(1,1);
+  }
+  100%{
+    transform: scale(1.2,1.2);
+  }
+}
+@keyframes photo-art-operation-hover {
+0%{transform: translateY(10px)}
+50%{transform: translateY(0px)}
+100%{transform: translateY(5%)}
+}
+/*直接包裹相片的div*/
+.photo-wrapper {
+  overflow: hidden;
+
+;
+}
+/*相片*/
+.photo{
+  display: block;
+  max-width: 170px;
+  max-height: 130px;
+  cursor: pointer;
+}
+/*相片名称*/
+.photo-name{
+  text-align: center;
+  height: 30px;
+  line-height: 33px;
+  font-size: 15px;
+  background: white;
+  margin-bottom: 5px;
+}
+/*相片动态操作操作*/
+.photo-art-operation{
+  padding: 2px 3px 8px 10px;
+  display: none;
+
+}
+.photo-art-operation i{
+  color: rgb(122,149,153);
+  font-size: 20px;
+  cursor: pointer;
+}
+.photo-art-operation i:hover{
+  color: #ffa124;
+}
+/*相片动态计数*/
+.photo-art-operation span{
+  margin-right: 3px;
+  font-size: 12px;
+  color: rgb(100,100,100);
+}
+.photo-more-operation{
+  float: right;
+  font-size: 27px!important;
+}

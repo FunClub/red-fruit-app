@@ -12,7 +12,6 @@ export class ShowAllAlbum{
  */
 export class ShowAlbum {
   albumId:string;
-  halfId:string;
   coverImg:string;
   albumName:string;
   /**
@@ -23,8 +22,6 @@ export class ShowAlbum {
    * 权限
    */
   limit:number;
-  createDate:string;
-  updateDate:string;
   photoCount:string;
-  thumbsUpCount:string;
+
 }

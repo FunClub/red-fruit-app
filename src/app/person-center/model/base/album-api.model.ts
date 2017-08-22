@@ -3,6 +3,26 @@
  */
 export class AlbumApi {
   /**
+   * 小的相片样式
+   * @type {string}
+   */
+  SMALL_PHOTO_STYLE:string = "?x-oss-process=style/small-show-photo";
+
+  /**
+   * 小的封面照样式
+   * @type {string}
+   */
+  SMALL_ALBUM_COVER_STYLE:string="?x-oss-process=style/small-album-cover";
+  /**
+   * 查询一个相册及其相片信息
+   * @param albumId
+   * @returns {string}
+   * @constructor
+   */
+  PHOTOS(albumId:string){
+    return  `album/${albumId}/photos`
+  }
+  /**
    * 生成base64URL
    * @type {string}
    */

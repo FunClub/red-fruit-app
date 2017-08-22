@@ -1,12 +1,13 @@
 /*相册*/
 .album{
   display: inline-block;
-  width: 15%;
+  width: 16%;
   height: 30%;
   max-width: 150px;
   max-height: 190px;
-  min-width: 120px;
-  min-height: 150px;
+
+  min-width: 10%;
+  min-height: 130px;
   border: solid 1px rgb(223,223,223);
   box-shadow: 0 2px 3px rgb(213,213,213);
   background: white;

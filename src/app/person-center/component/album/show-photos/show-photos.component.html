@@ -1,14 +1,18 @@
 <main class="photos-main">
-  <div class="photos-top">
+
+  <!--相册顶部开始-->
+  <div class="photos-top white-box">
+
+    <!--左边-->
     <div class="photos-top-left">
       <div class="cover-wrapper">
-        <img [src]="img">
+        <img *ngIf="showAlbumPhoto" [src]="api.IMAGE_PREFIX+showAlbumPhoto?.album.coverImg+albumApi.SMALL_ALBUM_COVER_STYLE">
       </div>
       <div class="album-info">
           <p class="album-name">
-            我的妖精棍儿
+            {{showAlbumPhoto?.album.albumName}}
             <span class="separate"> / </span>
-            <span class="photo-count">77张</span>
+            <span class="photo-count">{{showAlbumPhoto?.album.photoCount}}张</span>
             <span class="album-limit"><i class="material-icons album-privacy">lock</i>仅情侣可见</span>
           </p>
           <p class="album-operation">
@@ -21,8 +25,47 @@
               相册管理
             </button>
           </p>
+      </div>
+    </div>
 
+    <!--右边-->
+    <div class="photo-top-right">
+      <div class="album-art-info">
+
+        <span class="art-info-label">访客</span>
+        <p class="art-count">12 </p>
+      </div>
+      <div class="album-art-info">
+
+        <span class="art-info-label">评论</span>
+        <p class="art-count">2</p>
+      </div>
+      <div class="album-art-info">
+
+        <span class="art-info-label">点赞</span>
+        <p class="art-count">12 </p>
       </div>
     </div>
   </div>
+  <!--相册顶部结束-->
+
+  <!--相片内容开始-->
+  <div class="photos-center white-box">
+    <div class="photo-all-wrapper" *ngFor="let photo of photos">
+      <div class="photo-wrapper">
+        <img class="photo" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_PHOTO_STYLE">
+      </div>
+      <div class="photo-name">
+        {{photo.name}}
+      </div>
+      <div class="photo-art-operation">
+        <i class="material-icons" >sms</i>
+        <span>123</span>
+        <i class="material-icons">thumb_up</i>
+        <span>123</span>
+        <i class="material-icons photo-more-operation">more_horiz</i>
+      </div>
+    </div>
+  </div>
+  <!--相片内容end-->
 </main>

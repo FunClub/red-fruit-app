@@ -1,12 +1,10 @@
 /*总体相册*/
 .album-main{
   width:80%;
-  min-width: 750px;
+  min-width: 800px;
   margin: auto;
   margin-top: 20px;
-
   margin-bottom: 30px;
-
 }
 /*相册操作*/
 .all-album-operation{
@@ -25,6 +23,7 @@
 .all-album-operation i{
   vertical-align: middle;
   font-size: 20px;
+
 }
 /*全部相册div*/
 .all-album-wrapper{

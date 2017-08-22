@@ -15,10 +15,18 @@ import {AddPhoto, Photo} from "../model/album/add-photo.model";
 export class AlbumService extends BaseService{
 
 
-  constructor(private http:Http,private api:AlbumApi, private bucketFolder:BucketFolder) {
+  constructor(private http:Http,private albumApi:AlbumApi, private bucketFolder:BucketFolder) {
     super();
   }
 
+  /**
+   * 查询相册及其相片
+   * @param albumId 相册id
+   * @returns {Observable<R|T>}
+   */
+  selectPhotos(albumId:string){
+    return this.http.get(this.albumApi.PHOTOS(albumId)).map(res=>res.json().data).catch(this.handleError);
+  }
   /**
    * 添加相片
    * @param addPhoto 添加相片模型
@@ -56,7 +64,7 @@ export class AlbumService extends BaseService{
       photos.push(photo);
     }
    addPhoto.photos=photos;
-    return this.http.post(this.api.ADD_PHOTO,addPhoto).map(res=>res.json().data).catch(this.handleError);
+    return this.http.post(this.albumApi.ADD_PHOTO,addPhoto).map(res=>res.json().data).catch(this.handleError);
   }
   /**
    * 生成base64位url
@@ -66,7 +74,7 @@ export class AlbumService extends BaseService{
   generateBase64Url(code:string){
     let formData = new FormData();
     formData.append("code",code);
-    return this.http.post(this.api.BASE64_URL,formData).map(res=>res.json().data).catch(this.handleError);
+    return this.http.post(this.albumApi.BASE64_URL,formData).map(res=>res.json().data).catch(this.handleError);
   }
   /**
    * 上传照片
@@ -78,7 +86,7 @@ export class AlbumService extends BaseService{
     for(let file of files){
       formData.append("imgs",file);
     }
-    return this.http.post(this.api.PHOTO(this.bucketFolder.ALBUM),formData).map(res=>{
+    return this.http.post(this.albumApi.PHOTO(this.bucketFolder.ALBUM),formData).map(res=>{
      let photos= res.json().data as ShowUploadPhoto[];
      for(let p of photos){
        p.hasWaterMark=false;
@@ -97,7 +105,7 @@ export class AlbumService extends BaseService{
    * @returns {Observable<R|T>}
    */
   selectAllAlbum():Observable<ShowAllAlbum>{
-    return this.http.get(this.api.ALBUM).map(res=>res.json().data).catch(this.handleError);
+    return this.http.get(this.albumApi.ALBUM).map(res=>res.json().data).catch(this.handleError);
   }
   /**
    * 创建相册
@@ -105,6 +113,6 @@ export class AlbumService extends BaseService{
    * @returns {Observable<R|T>} 新增的相册
    */
   createAlbum(album:any):Observable<ResultView>{
-    return this.http.post(this.api.ALBUM,album).map(res=>res.json()).catch(this.handleError);
+    return this.http.post(this.albumApi.ALBUM,album).map(res=>res.json()).catch(this.handleError);
   }
 }

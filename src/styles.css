@@ -134,7 +134,12 @@ i{
   margin-right: 3px;
 }
 
-
+/*全局Box*/
+.white-box{
+  border: solid 1px rgb(223,223,223);
+  box-shadow: 0 0 3px rgb(213,213,213);
+  background: white;
+}
 *{
   margin: 0;
   padding: 0;
