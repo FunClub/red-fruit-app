@@ -1,0 +1,19 @@
+<main class="edit-photo-main">
+  <div [ngBusy]="{busy:busySubscribe,message:'信息修改中,请稍候...'}"></div>
+  <div class="dialog-title">
+    <i class="material-icons">mode_edit</i>编辑相片信息
+    <i class="material-icons dialog-close" (click)="close.click()">close</i>
+  </div>
+  <div class="edit-content">
+    <md-input-container>
+      <span class="input-prefix" mdPrefix="">名称:</span>
+      <input type="text" mdInput [(ngModel)]="editInfo.name">
+    </md-input-container>
+    <md-input-container>
+      <span class="input-prefix" mdPrefix="">说明:</span>
+      <input type="text" mdInput [(ngModel)]="editInfo.description">
+    </md-input-container>
+    <button md-raised-button class="save-edit-photo" color="primary" (click)="savePhotoInfo(close)">保存</button>
+  </div>
+  <button md-dialog-close #close style="display: none"></button>
+</main>

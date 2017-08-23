@@ -4,16 +4,9 @@
   height: 300px;
 
 }
-/*title*/
-.add-album-title{
-  padding: 10px;
-  border-bottom: 1px solid rgb(223,223,223);
-  box-shadow: 0 0 5px rgb(213,213,213);
-}
-/*关闭*/
-.add-album-close{
-  float: right;
-  cursor: pointer;
+/*关闭按钮*/
+.dialog-close{
+  font-size: 20px;
 }
 /*内容体*/
 .add-album-content{

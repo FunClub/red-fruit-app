@@ -27,8 +27,8 @@ import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {FormsModule} from "@angular/forms";
 import { ShowPhotosComponent } from './component/album/show-photos/show-photos.component';
 import { ShowAlbumComponent } from './component/album/show-album/show-album.component';
-import {ShowAlbum} from "./model/album/show-album.model";
-import {ShowAddPhotoDialogArgs} from "./model/album/add-photo.model";
+import { EditPhotoInfoComponent } from './component/album/show-photos/edit-photo-info/edit-photo-info.component';
+import { MovePhotoComponent } from './component/album/show-photos/move-photo/move-photo.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -48,11 +48,13 @@ import {ShowAddPhotoDialogArgs} from "./model/album/add-photo.model";
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
-    SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent, ShowPhotosComponent, ShowAlbumComponent],
+    SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent, ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent],
   entryComponents:[
     AddAlbumComponent,
     AddPhotoComponent,
-    WaterMarkComponent
+    WaterMarkComponent,
+    EditPhotoInfoComponent,
+    MovePhotoComponent
   ],
   providers:[
     /*用户个人中心服务*/

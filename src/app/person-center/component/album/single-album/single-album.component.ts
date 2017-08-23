@@ -3,6 +3,7 @@ import {animate, keyframes, state, style, transition, trigger} from "@angular/an
 import {ShowAlbum} from "../../../model/album/show-album.model";
 import {RedFruitApi} from "../../../../share/model/base/api.model";
 import {Router} from "@angular/router";
+import {AlbumApi} from "../../../model/base/album-api.model";
 @Component({
   selector: 'app-single-album',
   templateUrl: './single-album.component.html',
@@ -33,7 +34,7 @@ export class SingleAlbumComponent implements OnInit {
   @Input()
   album:ShowAlbum;
 
-  constructor(public api:RedFruitApi,private router:Router) {
+  constructor(public api:RedFruitApi,private router:Router,public albumApi:AlbumApi) {
 
   }
 

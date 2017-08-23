@@ -1,9 +1,9 @@
 <main class="add-album-main">
-  <p class="add-album-title">
+  <p class="dialog-title">
     <i class="material-icons">add_to_photos</i>
     添加相册
 
-    <i class="material-icons add-album-close" (click)="closeAddAlbumDialog(close)">close</i>
+    <i class="material-icons dialog-close" (click)="closeAddAlbumDialog(close)">close</i>
   </p>
   <form #albumForm="ngForm" (ngSubmit)="createAlbum(albumForm.value,close)">
     <div class="add-album-content">

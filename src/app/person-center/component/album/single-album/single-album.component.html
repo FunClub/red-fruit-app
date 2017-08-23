@@ -1,6 +1,6 @@
 <div class="album" [@flyXInOutFromTop] (click)="toPhotos()">
   <div class="cover-wrapper">
-    <img class="cover-img" [src]="api.IMAGE_PREFIX+album.coverImg">
+    <img class="cover-img" [src]="api.IMAGE_PREFIX+album.coverImg+albumApi.ALBUM_COVER_STYLE">
     <p class="album-count">{{album.photoCount?album.photoCount:0}}</p>
   </div>
   <div class="album-operation">

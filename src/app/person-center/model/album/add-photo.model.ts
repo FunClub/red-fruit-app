@@ -9,10 +9,11 @@ export class AddPhoto {
   quality:number;
 }
 /**
- * 相片
+ * 相片文档
  */
 export class Photo{
   path: string;
+  photoId:string;
   name: string;
   albumId:string;
   waterMark:string;
@@ -23,6 +24,7 @@ export class Photo{
   blurR:number;
   blurS:number;
   quality:number;
+  description:string;
 }
 
 /**

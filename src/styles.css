@@ -2,19 +2,13 @@
 @import "~froala-editor/css/froala_editor.pkgd.min.css";
 @import "~froala-editor/css/froala_style.min.css";
 @import "~font-awesome/css/font-awesome.css";
+
 /*material2*/
-/*@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "~@angular/material/prebuilt-themes/purple-green.css";*/
-/*@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";*/
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /*ng2-busy*/
 @import "~angular2-busy/build/style/busy.css";
 @import "~ng2-dnd/bundles/style.css";
-/*ng-primeng*/
-/*@import "~font-awesome/css/font-awesome.min.css";
-@import "~primeng/resources/themes/omega/theme.css";
-@import "~primeng/resources/primeng.min.css";*/
 
 /*ng2toastr*/
 @import "~ng2-toastr/bundles/ng2-toastr.min.css";
@@ -35,27 +29,19 @@
   margin-right: 10px;
   font-size: 14px;
 }
-/*select placehoder*/
-.mat-select-trigger{
-  font-size: 13px;
-  color: rgb(100,100,100);
-}
 
-/*material dialog*/
+/*
+material dialog
+*/
 .mat-dialog-container{
   padding: 0!important;
 }
-
 
 /*显示更多评论面板*/
 .more-discussion-panel{
   position: absolute;
   height: 90%;
   width: 60%;
-}
-
-.mat-button-wrapper{
-  min-width: 20px!important;
 }
 /*添加相片面板*/
 .add-photo-panel{
@@ -67,17 +53,47 @@
   background: rgb(141, 150, 165);
   opacity: 0.71!important;
 }
-/*字体图片*/
-i{
-  vertical-align: middle;
+/*弹出框标题*/
+.dialog-title{
+  padding: 8px;
+  font-size: 15px;
+  border-bottom: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(213,213,213);
 }
+.big-dialog-title{
+  padding: 10px;
+  border-bottom: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(213,213,213);
+}
+.dialog-close{
+  float: right;
+  cursor: pointer;
+}
+/*material button*/
+.mat-button-wrapper{
+  min-width: 20px!important;
+}
+
+/*material select*/
 /*下拉选项高度设为自动*/
 .mat-option{
  height: auto;
 }
+/*下拉选项placeholder*/
+.mat-select-trigger{
+  font-size: 13px;
+  color: rgb(100,100,100);
+}
+
+/*material radio*/
 /*单选按钮变小*/
 .mat-radio-outer-circle{
   transform: scale(0.8,0.8);
+}
+
+/*字体图片*/
+i{
+  vertical-align: middle;
 }
 
 /*上三角形边框*/

@@ -4,17 +4,7 @@
   height: 100%;
   width: 100%;
 }
-/*title*/
-.add-photo-title{
-  padding: 10px;
-  border-bottom: 1px solid rgb(223,223,223);
-  box-shadow: 0 0 5px rgb(213,213,213);
-}
-/*关闭按钮*/
-.add-photo-close{
-  float: right;
-  cursor: pointer;
-}
+
 /*全部内容体*/
 .all-add-photo-content{
   overflow-y: auto;

@@ -8,15 +8,32 @@ import {ShowAllAlbum} from "../model/album/show-album.model";
 import {BucketFolder} from "../../share/model/bucket-folder.model";
 import {ShowUploadPhoto} from "../model/album/show-upload-photo.model";
 import {AddPhoto, Photo} from "../model/album/add-photo.model";
+import {UpdateAlbumCover, UpdatePhotoInfo} from "../model/album/update-photo.model";
 /**
  * 相册服务
  */
 @Injectable()
 export class AlbumService extends BaseService{
 
-  private albums:ShowAllAlbum;
+
   constructor(private http:Http,private albumApi:AlbumApi, private bucketFolder:BucketFolder) {
     super();
+  }
+
+  /**
+   * 更新相册封面
+   * @param updateCover 封面更新模型
+   * @returns {Observable<R|T>}
+   */
+  updateAlbumCover(updateCover:UpdateAlbumCover):Observable<boolean>{
+    return this.http.put(this.albumApi.ALBUM_COVER,updateCover).map(res=>res.json().data).catch(this.handleError);
+  }
+  /**
+   * 保存相片信息
+   * @param photoInfo
+   */
+  savePhotoInfo(photoInfo:UpdatePhotoInfo):Observable<boolean>{
+    return this.http.put(this.albumApi.PHOTO_INFO,photoInfo).map(res=>res.json().data).catch(this.handleError);
   }
 
   /**

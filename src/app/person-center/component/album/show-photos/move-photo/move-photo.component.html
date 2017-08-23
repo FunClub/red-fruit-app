@@ -1,0 +1,17 @@
+<main class="move-photo-main">
+  <div class="dialog-title"><i class="material-icons"></i>选择相册<i class="dialog-close material-icons">close</i></div>
+  <div class="move-photo-content">
+    <div class="all-album-wrapper" *ngFor="let album of albums">
+      <div class="album-cover-wrapper">
+        <img class="album-cover" [src]="api.IMAGE_PREFIX+album.coverImg+albumApi.SMALL_ALBUM_COVER_STYLE">
+      </div>
+      <p class="album-name">{{album.albumName}}</p>
+      <p *ngIf="album.limit==0" class="album-privacy"><i class="material-icons">lock</i>仅情侣可见</p>
+      <p *ngIf="album.limit==1" class="album-privacy"><i class="material-icons">person</i>公开</p>
+    </div>
+
+  </div>
+  <div class="move-photo-bottom">
+    <button md-raised-button color="primary">移动</button>
+  </div>
+</main>

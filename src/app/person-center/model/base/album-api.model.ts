@@ -3,6 +3,21 @@
  */
 export class AlbumApi {
   /**
+   * 相册封面样式
+   * @type {string}
+   */
+  ALBUM_COVER_STYLE:string ="?x-oss-process=style/album-cover";
+  /**
+   * 相册封面
+   * @type {string}
+   */
+  ALBUM_COVER:string = "album/cover";
+  /**
+   * 相片信息
+   * @type {string}
+   */
+  PHOTO_INFO:string="album/photo-info";
+  /**
    * 小的相片样式
    * @type {string}
    */
