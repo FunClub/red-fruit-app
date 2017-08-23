@@ -14,7 +14,7 @@ import {AddPhoto, Photo} from "../model/album/add-photo.model";
 @Injectable()
 export class AlbumService extends BaseService{
 
-
+  private albums:ShowAllAlbum;
   constructor(private http:Http,private albumApi:AlbumApi, private bucketFolder:BucketFolder) {
     super();
   }
@@ -64,7 +64,7 @@ export class AlbumService extends BaseService{
       photos.push(photo);
     }
    addPhoto.photos=photos;
-    return this.http.post(this.albumApi.ADD_PHOTO,addPhoto).map(res=>res.json().data).catch(this.handleError);
+    return this.http.post(this.albumApi.ADD_PHOTO,addPhoto).map(res=>res.json()).catch(this.handleError);
   }
   /**
    * 生成base64位url

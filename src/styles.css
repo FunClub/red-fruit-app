@@ -78,7 +78,6 @@ i{
 /*单选按钮变小*/
 .mat-radio-outer-circle{
   transform: scale(0.8,0.8);
-
 }
 
 /*上三角形边框*/

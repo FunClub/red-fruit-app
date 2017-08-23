@@ -49,7 +49,7 @@
       <div class="select-album-wrapper">
         <span class="photo-operation-label">上传照片到:</span>
         <md-select placeholder="选择相册" class="album-selector" name="albumId" [(ngModel)]="addPhotoInfo.albumId">
-          <md-option *ngFor="let album of albums" [value]="album.albumId">
+          <md-option *ngFor="let album of addPhotoArgs.albums" [value]="album.albumId">
               <img class="select-cover-img" [src]="api.IMAGE_PREFIX+album.coverImg">
               <span class="album-name">{{ album.albumName}}</span><br>
               <span class="album-count"> {{album.photoCount?album.photoCount:0}}张</span>
@@ -85,7 +85,7 @@
   <!--底部结束-->
 
   <!--隐藏按钮用于,关闭dialog-->
-  <button md-dialog-close #close style="display: none"></button>
+  <button [md-dialog-close]="photoSaved" #close style="display: none"></button>
   <!--隐藏文件上传Input-->
   <input #fileInput type="file" multiple accept="image/gif,image/jpeg,image/jpg,image/png" (change)="uploadPhoto($event)" style="display: none;">
 

@@ -6,17 +6,18 @@
     <!--左边-->
     <div class="photos-top-left">
       <div class="cover-wrapper">
-        <img *ngIf="showAlbumPhoto" [src]="api.IMAGE_PREFIX+showAlbumPhoto?.album.coverImg+albumApi.SMALL_ALBUM_COVER_STYLE">
+        <img *ngIf="showAlbumPhoto" [src]="api.IMAGE_PREFIX+currentAlbum.coverImg+albumApi.SMALL_ALBUM_COVER_STYLE">
       </div>
       <div class="album-info">
           <p class="album-name">
-            {{showAlbumPhoto?.album.albumName}}
+            {{currentAlbum?.albumName}}
             <span class="separate"> / </span>
-            <span class="photo-count">{{showAlbumPhoto?.album.photoCount}}张</span>
-            <span class="album-limit"><i class="material-icons album-privacy">lock</i>仅情侣可见</span>
+            <span class="photo-count">{{photos.length}}张</span>
+            <span *ngIf="currentAlbum.limit==0" class="album-limit"><i class="material-icons album-privacy">lock</i>仅情侣可见</span>
+            <span *ngIf="currentAlbum.limit==1" class="album-limit"><i class="material-icons album-privacy">people</i>公开</span>
           </p>
           <p class="album-operation">
-            <button class="upload-img" md-raised-button color="primary" >
+            <button class="upload-img" md-raised-button color="primary" (click)="addPhoto()">
               <i class="material-icons">add_a_photo</i>
               上传照片
             </button>
@@ -54,6 +55,9 @@
     <div class="photo-all-wrapper" *ngFor="let photo of photos">
       <div class="photo-wrapper">
         <img class="photo" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_PHOTO_STYLE">
+        <div class="photo-detail">
+         好好学习天天向上
+        </div>
       </div>
       <div class="photo-name">
         {{photo.name}}
@@ -63,7 +67,14 @@
         <span>123</span>
         <i class="material-icons">thumb_up</i>
         <span>123</span>
-        <i class="material-icons photo-more-operation">more_horiz</i>
+        <i class="material-icons photo-more-operation" [mdMenuTriggerFor]="photoMenu">more_horiz</i>
+        <md-menu #photoMenu="mdMenu" class="photo-menu">
+          <button md-menu-item class="photo-menu-btn"><i class="material-icons photo-menu-i">mode_edit</i>编辑</button>
+          <button md-menu-item class="photo-menu-btn"><i class="material-icons photo-menu-i">color_lens</i>特效</button>
+          <button md-menu-item class="photo-menu-btn"><i class="material-icons photo-menu-i">photo_library</i>设为封面</button>
+          <button md-menu-item class="photo-menu-btn"><i class="material-icons photo-menu-i">zoom_out_map</i>移动到相册</button>
+          <button md-menu-item class="photo-menu-btn"><i class="material-icons photo-menu-i">delete</i>删除</button>
+        </md-menu>
       </div>
     </div>
   </div>

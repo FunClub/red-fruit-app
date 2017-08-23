@@ -25,7 +25,6 @@ export class AddAlbumComponent implements OnInit {
   }
   createAlbum(album:any,close:HTMLButtonElement){
     this.albumService.createAlbum(album).subscribe(res=>{
-      console.log(res);
       if(res.code==200){
         this.closeAddAlbumDialog(close);
         this.albums.unshift(res.data);

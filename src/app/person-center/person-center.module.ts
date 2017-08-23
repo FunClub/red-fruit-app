@@ -27,6 +27,8 @@ import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {FormsModule} from "@angular/forms";
 import { ShowPhotosComponent } from './component/album/show-photos/show-photos.component';
 import { ShowAlbumComponent } from './component/album/show-album/show-album.component';
+import {ShowAlbum} from "./model/album/show-album.model";
+import {ShowAddPhotoDialogArgs} from "./model/album/add-photo.model";
 @NgModule({
   imports: [
     CommonModule,

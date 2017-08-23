@@ -1,4 +1,5 @@
 import {ShowUploadPhoto} from "./show-upload-photo.model";
+import {ShowAlbum} from "./show-album.model";
 /**
  * 添加相片模型
  */
@@ -22,4 +23,20 @@ export class Photo{
   blurR:number;
   blurS:number;
   quality:number;
+}
+
+/**
+ * 显示添加相片的dialog参数模型
+ */
+export class ShowAddPhotoDialogArgs{
+  albums:ShowAlbum[];
+  /**
+   * 将要上传照片的相册Id
+   */
+  currentAlbumId:string;
+
+  /**
+   * 被添加到后台的相片信息
+   */
+  addedPhotos:Photo[];
 }

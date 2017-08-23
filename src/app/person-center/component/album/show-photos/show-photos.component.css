@@ -143,21 +143,25 @@
 }
 
 .photo-all-wrapper:hover{
-  box-shadow:  0 3px 5px rgb(183,183,183);
+  box-shadow:  0 3px 5px rgb(200,200,200);
   border: solid 1px rgb(233,233,233);
 }
 .photo-all-wrapper:hover .photo{
   animation: photo-hover 0.5s forwards;
+}
+.photo-all-wrapper:hover .photo-detail{
+  display: block;
+  animation: photo-detail-hover 0.5s forwards;
 }
 .photo-all-wrapper:hover .photo-name{
   display: none;
 }
 .photo-all-wrapper:hover .photo-art-operation{
   display: block;
-  animation: photo-art-operation-hover 0.3s forwards;
+  animation: photo-art-operation-hover 0.5s forwards;
 }
 
-/*相片hover动画*/
+/*相片hover放大动画*/
 @keyframes photo-hover {
   0%{
     transform: scale(1,1);
@@ -166,16 +170,22 @@
     transform: scale(1.2,1.2);
   }
 }
+/*相片选项hover动画*/
 @keyframes photo-art-operation-hover {
 0%{transform: translateY(10px)}
 50%{transform: translateY(0px)}
-100%{transform: translateY(5%)}
+100%{transform: translateY(0px)}
+}
+/*相片详细信息动画*/
+@keyframes photo-detail-hover {
+  0%{transform: translateY(10px)}
+  50%{transform: translateY(0px)}
+  100%{transform: translateY(0px)}
 }
 /*直接包裹相片的div*/
 .photo-wrapper {
   overflow: hidden;
-
-;
+  position: relative;
 }
 /*相片*/
 .photo{
@@ -183,6 +193,20 @@
   max-width: 170px;
   max-height: 130px;
   cursor: pointer;
+}
+/*相片相信信息*/
+.photo-detail{
+  position: absolute;
+  bottom: 0;
+  background: rgba(255,255,255,1);
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 100%;
+  color: black;
+  display: none;
+  font-size: 14px;
+  border-bottom: 1px solid rgb(233,233,233);
 }
 /*相片名称*/
 .photo-name{
@@ -195,7 +219,7 @@
 }
 /*相片动态操作操作*/
 .photo-art-operation{
-  padding: 2px 3px 8px 10px;
+  padding: 2px 1px 8px 10px;
   display: none;
 
 }
@@ -212,8 +236,23 @@
   margin-right: 3px;
   font-size: 12px;
   color: rgb(100,100,100);
+  position: relative;
+  right: 3px;
 }
 .photo-more-operation{
   float: right;
   font-size: 27px!important;
+}
+/*相片菜单*/
+.photo-menu-btn{
+  font-size: 13px !important;
+}
+.photo-menu-i{
+  font-size: 20px;
+  margin-right: 5px;
+}
+/*菜单选项*/
+.mat-menu-item{
+  height: 32px!important;
+  line-height: 32px !important;
 }

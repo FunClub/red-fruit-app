@@ -8,8 +8,9 @@ import {AlbumService} from "../../../service/album.service";
 import {ShowUploadPhoto} from "../../../model/album/show-upload-photo.model";
 import {AlbumApi} from "../../../model/base/album-api.model";
 import {WaterMarkArgs} from "../../../model/album/water-mark-args";
-import {AddPhoto} from "../../../model/album/add-photo.model";
+import {AddPhoto, ShowAddPhotoDialogArgs} from "../../../model/album/add-photo.model";
 import {ToastsManager} from "ng2-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-photo',
@@ -17,16 +18,31 @@ import {ToastsManager} from "ng2-toastr";
   styleUrls: ['./add-photo.component.css']
 })
 export class AddPhotoComponent implements OnInit {
+  /**
+   * 上传的图片信息
+   */
   uploadPhotoInfo:ShowUploadPhoto[];
+  /**
+   * 添加到后台的相片数据
+   */
   addPhotoInfo:AddPhoto;
+  /**
+   * 订阅
+   */
   uploadSubscribe;
-  constructor(@Inject(MD_DIALOG_DATA) public albums:ShowAlbum[],public api:RedFruitApi,public albumApi:AlbumApi,private dialog:MdDialog,
-              private albumService:AlbumService,private imageService:ImageUploadService,private toastsManager:ToastsManager
+
+  /**
+   * 是否保存了相片；
+   */
+  photoSaved:boolean;
+  constructor(@Inject(MD_DIALOG_DATA)public addPhotoArgs:ShowAddPhotoDialogArgs,public api:RedFruitApi,public albumApi:AlbumApi,private dialog:MdDialog,
+              private albumService:AlbumService,private imageService:ImageUploadService,private toastsManager:ToastsManager,private router:Router
   ) {
     this.uploadPhotoInfo=[];
     this.addPhotoInfo = new AddPhoto();
-    this.addPhotoInfo.albumId=albums[0].albumId;
     this.addPhotoInfo.quality=60;
+    this.addPhotoInfo.albumId = addPhotoArgs.currentAlbumId;
+    this.photoSaved=false;
   }
   ngOnInit() {
 
@@ -37,10 +53,12 @@ export class AddPhotoComponent implements OnInit {
    * @param close
    */
   savePhoto(close:HTMLButtonElement){
+    this.photoSaved=true;
     this.uploadSubscribe=this.albumService.save(this.addPhotoInfo,this.uploadPhotoInfo).subscribe(res=>{
-      if(res){
-        this.toastsManager.success("相片添加成功","添加结果");
+      if(res.code==200){
+        this.addPhotoArgs.addedPhotos=res.data;
         close.click();
+        this.router.navigate(["home/person-center/album/photos",this.addPhotoArgs.currentAlbumId])
       }else{
         this.toastsManager.error("相片添加失败,请重试...","添加结果");
       }
