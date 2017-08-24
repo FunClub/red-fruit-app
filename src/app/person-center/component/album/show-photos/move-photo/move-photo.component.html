@@ -1,9 +1,15 @@
 <main class="move-photo-main">
-  <div class="dialog-title"><i class="material-icons"></i>选择相册<i class="dialog-close material-icons">close</i></div>
+  <div class="dialog-title">
+    <i class="material-icons select-album-title-label">art_track</i>选择相册
+    <span class="dialog-close" (click)="close.click()"><i class="material-icons">close</i></span>
+  </div>
   <div class="move-photo-content">
-    <div class="all-album-wrapper" *ngFor="let album of albums">
+    <div [ngBusy]="{busy:movePhotoSubscribe,message:'相片移动中,请稍候...'}"></div>
+    <div  class="all-album-wrapper" *ngFor="let album of albums;let i=index;"
+          [ngClass]="{'album-selected':selectFlag[i]}" (click)="selectAlbum(i)">
       <div class="album-cover-wrapper">
-        <img class="album-cover" [src]="api.IMAGE_PREFIX+album.coverImg+albumApi.SMALL_ALBUM_COVER_STYLE">
+        <span *ngIf="selectFlag[i]" class="album-selected-label"><i class="material-icons">check_box</i></span>
+        <img [ngClass]="{'album-cover-selected':selectFlag[i]}" class="album-cover" [src]="api.IMAGE_PREFIX+album.coverImg+albumApi.SMALL_ALBUM_COVER_STYLE">
       </div>
       <p class="album-name">{{album.albumName}}</p>
       <p *ngIf="album.limit==0" class="album-privacy"><i class="material-icons">lock</i>仅情侣可见</p>
@@ -12,6 +18,7 @@
 
   </div>
   <div class="move-photo-bottom">
-    <button md-raised-button color="primary">移动</button>
+    <button [disabled]="!tartGetAlbumId" class="move-photo-btn" md-raised-button color="primary" (click)="moveAlbumPhoto(close)">移动</button>
   </div>
+  <button md-dialog-close style="display: none" #close></button>
 </main>

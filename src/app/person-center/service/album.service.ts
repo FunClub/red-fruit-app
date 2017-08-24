@@ -9,6 +9,7 @@ import {BucketFolder} from "../../share/model/bucket-folder.model";
 import {ShowUploadPhoto} from "../model/album/show-upload-photo.model";
 import {AddPhoto, Photo} from "../model/album/add-photo.model";
 import {UpdateAlbumCover, UpdatePhotoInfo} from "../model/album/update-photo.model";
+import {MovePhoto} from "../model/album/move-photo.model";
 /**
  * 相册服务
  */
@@ -18,6 +19,15 @@ export class AlbumService extends BaseService{
 
   constructor(private http:Http,private albumApi:AlbumApi, private bucketFolder:BucketFolder) {
     super();
+  }
+
+  /**
+   * 移动相片到其他相册
+   * @param movePhoto  移动相片到其他相册的模型
+   * @returns {Observable<R|T>}
+   */
+  moveAlbumPhoto(movePhoto:MovePhoto):Observable<boolean>{
+    return this.http.put(this.albumApi.MOVE_ALBUM_PHOTO,movePhoto).map(res=>res.json().data).catch(this.handleError);
   }
 
   /**

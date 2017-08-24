@@ -2,16 +2,24 @@
 .move-photo-main{
   width: 705px;
 }
+.dialog-title{
+  height: 25px;
+}
+.select-album-title-label{
+  font-size: 30px;
+  margin-right: 5px;
+}
 /*关闭按钮*/
-.dialog-close{
+.dialog-close i{
   font-size: 20px;
 }
 /*正文内容*/
 .move-photo-content{
-  padding: 0 0 10px 20px;
+  padding: 5px 0 15px 15px;
   max-height: 300px;
   overflow: auto;
   border-bottom: solid 1px rgb(223,223,223);
+  position: relative;
 }
 /*包裹全部相册内容的div*/
 .all-album-wrapper{
@@ -23,7 +31,9 @@
   display: inline-block;
   margin-top: 10px;
   margin-right: 5px;
+  position: relative;
 }
+
 /*包裹相册封面的div*/
 .album-cover-wrapper{
   width: 60px;
@@ -31,6 +41,28 @@
   overflow: hidden;
   float: left;
   margin-right: 10px;
+
+}
+/*选择相册的标签*/
+.album-selected-label{
+  position: absolute;
+  top: 0;
+  left: 0; ;
+  z-index: 1;
+  color: white;
+  width: 60px;
+  height: 60px;
+  background: rgba(0,0,0,0.4);
+}
+.album-selected-label i{
+ color: white;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+/*相册被选择*/
+.album-selected{
+  border: solid 1px rgb(223,223,223);
+  box-shadow: 0 0 3px rgb(223,223,223);
 }
 /*相册封面*/
 .album-cover{
@@ -38,6 +70,10 @@
   height: 60px;
   display: block;
   vertical-align: top;
+}
+/*相册被选择的封面样式*/
+.album-cover-selected{
+  transform: scale(1.2,1.2)
 }
 .all-album-wrapper:hover{
   border: solid 1px rgb(223,223,223);
@@ -68,10 +104,11 @@
   text-align: center;
   padding-bottom: 10px;
 }
-.move-photo-bottom button{
+.move-photo-btn{
   height: 30px;
   line-height: 30px;
   margin-top: 10px;
   background: rgb(34,170,210);
 }
+
 

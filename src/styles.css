@@ -35,6 +35,7 @@ material dialog
 */
 .mat-dialog-container{
   padding: 0!important;
+  max-width: 100%!important;
 }
 
 /*显示更多评论面板*/
@@ -47,6 +48,12 @@ material dialog
 .add-photo-panel{
   width: 80%;
   height: 80%;
+}
+/*显示照片面板*/
+.show-photo-panel{
+  width: 90%;
+  height: 100%;
+  min-width: 800px;
 }
 /*dialog背景*/
 .cdk-overlay-dark-backdrop{
@@ -69,6 +76,7 @@ material dialog
   float: right;
   cursor: pointer;
 }
+
 /*material button*/
 .mat-button-wrapper{
   min-width: 20px!important;
@@ -155,6 +163,29 @@ i{
   box-shadow: 0 0 3px rgb(213,213,213);
   background: white;
 }
+/*滚动条样式*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+  background-color: #F5F5F5;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background: #fff ;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color:rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color:rgba(0, 0, 0, 0.3);
+}
+
 *{
   margin: 0;
   padding: 0;

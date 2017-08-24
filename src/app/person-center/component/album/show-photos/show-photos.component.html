@@ -53,9 +53,9 @@
   <!--相片内容开始-->
   <div class="photos-center white-box">
 
-    <div class="photo-all-wrapper" *ngFor="let photo of photos">
+    <div class="photo-all-wrapper" *ngFor="let photo of photos;let i=index;">
       <div class="photo-wrapper">
-        <img class="photo" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_PHOTO_STYLE">
+        <img class="photo" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_PHOTO_STYLE" (click)="showDetailPhoto()">
         <div class="photo-detail" *ngIf="photo.description">
           {{photo.description}}
         </div>
@@ -73,7 +73,7 @@
           <button md-menu-item class="photo-menu-btn" (click)="editPhotoInfo(photo)"><i class="material-icons photo-menu-i">mode_edit</i>编辑</button>
           <button md-menu-item class="photo-menu-btn" ><i class="material-icons photo-menu-i">color_lens</i>特效</button>
           <button md-menu-item class="photo-menu-btn" (click)="updateAlbumCover(photo.path)"><i class="material-icons photo-menu-i">photo_library</i>设为封面</button>
-          <button md-menu-item class="photo-menu-btn" (click)="movePhoto(photo.photoId)"><i class="material-icons photo-menu-i" >zoom_out_map</i>移动到相册</button>
+          <button md-menu-item class="photo-menu-btn" (click)="movePhoto(photo.photoId,i)"><i class="material-icons photo-menu-i" >zoom_out_map</i>移动到相册</button>
           <button md-menu-item class="photo-menu-btn"><i class="material-icons photo-menu-i">delete</i>删除</button>
         </md-menu>
       </div>

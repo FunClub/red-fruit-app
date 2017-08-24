@@ -1,0 +1,21 @@
+<main class="show-photo-main">
+  <div class="show-photo-left">
+    <div class="photo-content">
+      12121
+      <img class="photo" [src]="img" alt="">
+    </div>
+    <div class="show-photo-operation">
+      <span class="album-name">《我的成长之路》</span>
+      <span class="photo-count-info">13/24</span>
+      <button (click)="togglePhotoList()" class="show-photo-list" md-icon-button> <i class="material-icons">apps</i></button>
+      <span class="photo-info"><i class="material-icons">assignment_late</i>相片信息 </span>
+      <span class="photo-more"><i class="material-icons">more_horiz</i>更多 </span>
+    </div>
+    <div class="photo-list" *ngIf="showPhotoList" [@flyXInOutFromTop]>
+      123
+    </div>
+  </div>
+  <div class="show-photo-right">
+    right
+  </div>
+</main>

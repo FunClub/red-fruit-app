@@ -29,6 +29,7 @@ import { ShowPhotosComponent } from './component/album/show-photos/show-photos.c
 import { ShowAlbumComponent } from './component/album/show-album/show-album.component';
 import { EditPhotoInfoComponent } from './component/album/show-photos/edit-photo-info/edit-photo-info.component';
 import { MovePhotoComponent } from './component/album/show-photos/move-photo/move-photo.component';
+import { ShowOnePhotoComponent } from './component/album/show-photos/show-one-photo/show-one-photo.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -48,13 +49,15 @@ import { MovePhotoComponent } from './component/album/show-photos/move-photo/mov
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
-    SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent, ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent],
+    SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent,
+    ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent, ShowOnePhotoComponent],
   entryComponents:[
     AddAlbumComponent,
     AddPhotoComponent,
     WaterMarkComponent,
     EditPhotoInfoComponent,
-    MovePhotoComponent
+    MovePhotoComponent,
+    ShowOnePhotoComponent
   ],
   providers:[
     /*用户个人中心服务*/

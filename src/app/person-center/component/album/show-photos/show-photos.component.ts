@@ -13,6 +13,7 @@ import {ToastsManager} from "ng2-toastr";
 import {NgProgressService} from "ngx-progressbar";
 import {MovePhotoComponent} from "./move-photo/move-photo.component";
 import {MovePhotoArgs} from "../../../model/album/move-photo.model";
+import {ShowOnePhotoComponent} from "./show-one-photo/show-one-photo.component";
 
 @Component({
   selector: 'app-show-photos',
@@ -61,15 +62,34 @@ export class ShowPhotosComponent implements OnInit {
   ngOnInit() {
     this.selectPhoto();
   }
-
+  showDetailPhoto(){
+    this.dialog.open(ShowOnePhotoComponent,{
+      panelClass:'show-photo-panel'
+    })
+  }
   /**
    * 移动相片到其他相册
    * @param photoId 照片Id
+   * @param index 相片索引，用于在界面上移除相片
    */
-  movePhoto(photoId:string){
+  movePhoto(photoId:string,index:number){
+    /*准备移动到相册的参数*/
       let movePhotoArgs = new MovePhotoArgs();
-      movePhotoArgs.photoId=photoId;
-      movePhotoArgs.albums=this.albums;
+      movePhotoArgs.photoIds=[photoId];
+      movePhotoArgs.photoIdIndex=[index];
+      movePhotoArgs.movedAlbumId=this.albumId;
+      movePhotoArgs.albums=[];
+      movePhotoArgs.photos = this.photos;
+      //复制相册数组
+      for (let album of this.albums){
+        if(album.albumId!=this.currentAlbum.albumId){
+           let al = new ShowAlbum();
+           for(let key in album){
+             al[key]=album[key];
+           }
+          movePhotoArgs.albums.push(al);
+        }
+      }
       this.dialog.open(MovePhotoComponent,{
         data:movePhotoArgs
       });

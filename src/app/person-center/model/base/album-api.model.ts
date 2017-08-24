@@ -3,6 +3,11 @@
  */
 export class AlbumApi {
   /**
+   * 移动相片到其他相册
+   * @type {string}
+   */
+  MOVE_ALBUM_PHOTO:string="album/photo/albumId";
+  /**
    * 相册封面样式
    * @type {string}
    */
