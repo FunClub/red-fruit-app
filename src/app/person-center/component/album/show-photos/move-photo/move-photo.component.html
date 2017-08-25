@@ -15,7 +15,6 @@
       <p *ngIf="album.limit==0" class="album-privacy"><i class="material-icons">lock</i>仅情侣可见</p>
       <p *ngIf="album.limit==1" class="album-privacy"><i class="material-icons">person</i>公开</p>
     </div>
-
   </div>
   <div class="move-photo-bottom">
     <button [disabled]="!tartGetAlbumId" class="move-photo-btn" md-raised-button color="primary" (click)="moveAlbumPhoto(close)">移动</button>

@@ -7,7 +7,7 @@ import {ImageUploadService} from "../../../../share/service/image-upload.service
 import {AlbumService} from "../../../service/album.service";
 import {ShowUploadPhoto} from "../../../model/album/show-upload-photo.model";
 import {AlbumApi} from "../../../model/base/album-api.model";
-import {WaterMarkArgs} from "../../../model/album/water-mark-args";
+import {WaterMarkArgs} from "../../../model/album/water-mark-args.model";
 import {AddPhoto, ShowAddPhotoDialogArgs} from "../../../model/album/add-photo.model";
 import {ToastsManager} from "ng2-toastr";
 import {Router} from "@angular/router";

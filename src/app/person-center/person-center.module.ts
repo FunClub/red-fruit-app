@@ -10,7 +10,7 @@ import { LeaveMessageComponent } from './component/leave-message/leave-message.c
 import {PersonCenterService} from "./service/person-center.service";
 import {ShareModule} from "../share/share.module";
 import {
-  MdDialogModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdRadioModule,
+  MdDialogModule, MdGridListModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdRadioModule,
   MdSelectModule, MdSliderModule, MdSlideToggleModule
 } from "@angular/material";
 import {MoodService} from "./service/mood.service";

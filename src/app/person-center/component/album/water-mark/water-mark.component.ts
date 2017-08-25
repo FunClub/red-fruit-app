@@ -4,7 +4,7 @@ import {HomeService} from "../../../../home/service/home.service";
 import {AlbumService} from "../../../service/album.service";
 import {ShowUploadPhoto} from "../../../model/album/show-upload-photo.model";
 import {MD_DIALOG_DATA} from "@angular/material";
-import {WaterMarkArgs} from "../../../model/album/water-mark-args";
+import {WaterMarkArgs} from "../../../model/album/water-mark-args.model";
 
 @Component({
   selector: 'app-water-mark',

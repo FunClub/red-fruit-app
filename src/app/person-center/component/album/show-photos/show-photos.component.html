@@ -55,7 +55,7 @@
 
     <div class="photo-all-wrapper" *ngFor="let photo of photos;let i=index;">
       <div class="photo-wrapper">
-        <img class="photo" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_PHOTO_STYLE" (click)="showDetailPhoto()">
+        <img class="photo" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_PHOTO_STYLE" (click)="showDetailPhoto(i)">
         <div class="photo-detail" *ngIf="photo.description">
           {{photo.description}}
         </div>
@@ -78,6 +78,7 @@
         </md-menu>
       </div>
     </div>
+
   </div>
   <!--相片内容end-->
 </main>

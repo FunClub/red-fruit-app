@@ -14,6 +14,7 @@ import {NgProgressService} from "ngx-progressbar";
 import {MovePhotoComponent} from "./move-photo/move-photo.component";
 import {MovePhotoArgs} from "../../../model/album/move-photo.model";
 import {ShowOnePhotoComponent} from "./show-one-photo/show-one-photo.component";
+import {ShowPhotoArg} from "../../../model/album/show-photo-arg.model";
 
 @Component({
   selector: 'app-show-photos',
@@ -62,9 +63,14 @@ export class ShowPhotosComponent implements OnInit {
   ngOnInit() {
     this.selectPhoto();
   }
-  showDetailPhoto(){
+  showDetailPhoto(index:number){
+    let photoArgs = new ShowPhotoArg();
+    photoArgs.photos=this.photos;
+    photoArgs.album=this.currentAlbum;
+    photoArgs.currentIndex = index;
     this.dialog.open(ShowOnePhotoComponent,{
-      panelClass:'show-photo-panel'
+      panelClass:'show-photo-panel',
+      data:photoArgs
     })
   }
   /**

@@ -1,21 +1,47 @@
 <main class="show-photo-main">
-  <div class="show-photo-left">
-    <div class="photo-content">
+  <!--左边开始-->
+  <div class="show-photo-left" >
+
+    <!--相片体-->
+    <div class="photo-content" (mousemove)="changeImgCursor($event)" (click)="changeCurrentPhoto($event)"
+         [ngClass]="{'prevCursor':cursorType==cursorArgs.PREV_CURSOR,'zoomOutCursor':cursorType==cursorArgs.ZOOM_OUT_CURSOR,
+       'nextCursor':cursorType==cursorArgs.NEXT_CURSOR}">
       12121
-      <img class="photo" [src]="img" alt="">
+      <img class="big-photo" [src]="api.IMAGE_PREFIX+photos[currentIndex].path" alt="">
     </div>
-    <div class="show-photo-operation">
-      <span class="album-name">《我的成长之路》</span>
-      <span class="photo-count-info">13/24</span>
-      <button (click)="togglePhotoList()" class="show-photo-list" md-icon-button> <i class="material-icons">apps</i></button>
-      <span class="photo-info"><i class="material-icons">assignment_late</i>相片信息 </span>
-      <span class="photo-more"><i class="material-icons">more_horiz</i>更多 </span>
+
+    <!--相片操作部分-->
+    <div class="photo-operation">
+
+      <!--具体操作内容-->
+      <div class="photo-operation-content">
+        <span class="album-name">《{{album.albumName}}》</span>
+        <span class="photo-count-info">{{currentIndex+1}}/{{photos.length}}</span>
+        <button (click)="togglePhotoList()" class="show-photo-list" md-icon-button> <i class="material-icons">apps</i></button>
+        <span class="photo-info"><i class="material-icons">assignment_late</i>相片信息 </span>
+        <span class="photo-more"><i class="material-icons">more_horiz</i>更多 </span>
+      </div>
+
+      <!--相片列表-->
+      <div class="photo-list"  *ngIf="showPhotoList" [@flyXInOutFromTop]>
+        <div class="photo-list-title">《{{album.albumName}}》- {{currentIndex+1}}/{{photos.length}} <i class="material-icons close-photo-list" (click)="togglePhotoList()">close</i></div>
+        <span class="prev-photo" (click)="prevPage()"><i class="material-icons">keyboard_arrow_left</i></span>
+        <div class="photo-list-content"  [ngStyle]="{'width.px':getPhotoContentWidth()}">
+          <div class="photo-list-wrapper" [ngStyle]="{'left.px':photoWrapperLeft}">
+            <img class="pre-photo"  *ngFor="let photo of photos;let i =index;" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_ALBUM_COVER_STYLE"
+            [ngClass]="{'pre-photo-active':i==currentIndex}" (click)="showDetailPhoto(i)"
+            >
+          </div>
+        </div>
+        <span class="next-photo"  (click)="nextPage()"><i class="material-icons">keyboard_arrow_right</i></span>
+      </div>
+
     </div>
-    <div class="photo-list" *ngIf="showPhotoList" [@flyXInOutFromTop]>
-      123
-    </div>
+
   </div>
+  <!--左边结束-->
+
   <div class="show-photo-right">
-    right
+   {{windowRef.innerWidth}}
   </div>
 </main>

@@ -53,7 +53,6 @@ material dialog
 .show-photo-panel{
   width: 90%;
   height: 100%;
-  min-width: 800px;
 }
 /*dialog背景*/
 .cdk-overlay-dark-backdrop{
