@@ -3,7 +3,7 @@
   <div class="show-photo-left" >
 
     <!--相片体-->
-    <div class="photo-content" (mousemove)="changeImgCursor($event)" (click)="changeCurrentPhoto($event)"
+    <div class="photo-content" (mousemove)="changeImgCursor($event)" (click)="changeCurrentPhoto($event,close)"
          [ngClass]="{'prevCursor':cursorType==cursorArgs.PREV_CURSOR,'zoomOutCursor':cursorType==cursorArgs.ZOOM_OUT_CURSOR,
        'nextCursor':cursorType==cursorArgs.NEXT_CURSOR}">
       12121
@@ -24,13 +24,13 @@
 
       <!--相片列表-->
       <div class="photo-list"  *ngIf="showPhotoList" [@flyXInOutFromTop]>
-        <div class="photo-list-title">《{{album.albumName}}》- {{currentIndex+1}}/{{photos.length}} <i class="material-icons close-photo-list" (click)="togglePhotoList()">close</i></div>
+        <div class="photo-list-title">《{{album.albumName}}》 {{currentIndex+1}}/{{photos.length}} <i class="material-icons close-photo-list" (click)="togglePhotoList()">close</i></div>
         <span class="prev-photo" (click)="prevPage()"><i class="material-icons">keyboard_arrow_left</i></span>
         <div class="photo-list-content"  [ngStyle]="{'width.px':getPhotoContentWidth()}">
-          <div class="photo-list-wrapper" [ngStyle]="{'left.px':photoWrapperLeft}">
-            <img class="pre-photo"  *ngFor="let photo of photos;let i =index;" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_ALBUM_COVER_STYLE"
-            [ngClass]="{'pre-photo-active':i==currentIndex}" (click)="showDetailPhoto(i)"
-            >
+          <div class="photo-list-wrapper" [ngStyle]="{'left.px':photoWrapperLeft}" [@flyXInOutFromRight]>
+              <img class="pre-photo"  *ngFor="let photo of photos;let i =index;" [src]="api.IMAGE_PREFIX+photo.path+albumApi.SMALL_ALBUM_COVER_STYLE"
+                   [ngClass]="{'pre-photo-active':i==currentIndex}" (click)="showDetailPhoto(i)"
+              >
           </div>
         </div>
         <span class="next-photo"  (click)="nextPage()"><i class="material-icons">keyboard_arrow_right</i></span>
@@ -41,7 +41,32 @@
   </div>
   <!--左边结束-->
 
+  <!--右边开始-->
+
   <div class="show-photo-right">
-   {{windowRef.innerWidth}}
+    <!--相册用户信息和相册动态操作-->
+   <div class="album-user-info">
+     <div class="album-user-base-info">
+       <img class="album-user-profile" [src]="api.IMAGE_PREFIX+photos[0].path+albumApi.SMALL_ALBUM_COVER_STYLE" alt="">
+       <span class="album-user-name">大脸猫</span> <span class="photo-date">2017-3-2 12:32:12</span>
+       <button md-icon-button class="dialog-close" (click)="close.click()"><i class="material-icons">close</i></button>
+       <p class="photo-name">园博园游玩</p>
+     </div>
+     <div class="photo-description">
+       放松贷款分类看电视里放
+       放松贷款分类看电视里放放松贷款分类看电视里放放松贷款分类看电视里放放松贷款分类看电视里放
+     </div>
+     <div class="photo-art-operation">
+       <app-art-operation [artArgs]="photoArgs.artArgs"></app-art-operation>
+     </div>
+   </div>
+    <div class="photo-discussion">
+      <app-art-discussion  class="photo-all-discussion" [artArgs]="photoArgs.artArgs"></app-art-discussion>
+    </div>
+
+    <!--评论-->
   </div>
+
+  <!--右边结束-->
+  <button md-dialog-close style="display: none" #close></button>
 </main>

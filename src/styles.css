@@ -53,6 +53,7 @@ material dialog
 .show-photo-panel{
   width: 90%;
   height: 100%;
+  overflow: visible!important;
 }
 /*dialog背景*/
 .cdk-overlay-dark-backdrop{

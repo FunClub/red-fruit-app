@@ -1,9 +1,7 @@
 /*所有评论*/
 .all-discussion{
   padding: 20px;
-  background: rgb(242,242,245);
   padding-bottom: 10px;
-
 }
 /*我的头像*/
 .my-profile-img{
@@ -26,6 +24,10 @@
   font-size: 14px;
   float: left;
 }
+/*相片动态的编辑器*/
+.photo-discussion-editor{
+  width: 210px;
+}
 /*编辑器盒子样式*/
 .editor-box{
   border-top: 2px solid rgb(255,129,64);
@@ -33,12 +35,15 @@
 /*发表评论按钮*/
 .send-discussion-btn{
   display: block!important;
-  width:60px;
+  width: 50px;
   height: 40px;
-  min-width: 55px;
+  min-width: 50px;
   background: rgb(255,129,64);
   float: left;
   margin-left: 10px;
+}
+.mat-raised-button{
+  padding: 0;
 }
 /*切换表情按钮*/
 .toggle-face-btn{
@@ -47,11 +52,13 @@
   position: relative;
   top: -5px;
 }
+
 /*包裹表情和按钮的div*/
 .all-face-wrapper{
   position: relative;
   height: 40px;
   clear: both;
+  text-align: left;
 }
 /*包裹表情的div*/
 .face-wrapper{
@@ -140,7 +147,7 @@ padding-left: 40px;
 /*评论内容*/
 .discussion-text{
   color: rgb(50,50,50);
-  font-size: 13px;
+  font-size: 12px;
 }
 .disableThumbsUp{
   color:rgb(255,129,64)!important;

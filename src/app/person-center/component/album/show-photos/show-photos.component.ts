@@ -15,6 +15,9 @@ import {MovePhotoComponent} from "./move-photo/move-photo.component";
 import {MovePhotoArgs} from "../../../model/album/move-photo.model";
 import {ShowOnePhotoComponent} from "./show-one-photo/show-one-photo.component";
 import {ShowPhotoArg} from "../../../model/album/show-photo-arg.model";
+import {ArtArgs} from "../../../../share/model/base/art-args.model";
+import {ArtType} from "../../../../foot-mark/model/art-type.model";
+import {SelectDiscussionCondition} from "../../../../share/model/discussion/select-discussion-condition";
 
 @Component({
   selector: 'app-show-photos',
@@ -52,7 +55,9 @@ export class ShowPhotosComponent implements OnInit {
   addPhotoArgs: ShowAddPhotoDialogArgs;
 
   constructor(private activatedRoute: ActivatedRoute, private albumService: AlbumService, public api: RedFruitApi,
-              public albumApi: AlbumApi, private dialog: MdDialog,private toastsManager:ToastsManager,private ngProgressService:NgProgressService) {
+              public albumApi: AlbumApi, private dialog: MdDialog,private toastsManager:ToastsManager,private ngProgressService:NgProgressService,
+  private artType:ArtType
+  ) {
     this.albumId = activatedRoute.snapshot.params['albumId'];
     this.photos = [];
     this.currentAlbum = new ShowAlbum();
@@ -64,10 +69,24 @@ export class ShowPhotosComponent implements OnInit {
     this.selectPhoto();
   }
   showDetailPhoto(index:number){
+    /*初始化显示详细照片的参数*/
+    let currentPhoto = this.photos[index];
     let photoArgs = new ShowPhotoArg();
     photoArgs.photos=this.photos;
     photoArgs.album=this.currentAlbum;
     photoArgs.currentIndex = index;
+    let artArgs = new ArtArgs();
+    artArgs.artUserId=currentPhoto.userId;
+    artArgs.artType=this.artType.PHOTO;
+    artArgs.original=true;
+    artArgs.isDiscussOpen=true;
+    artArgs.firstArtImg=currentPhoto.path;
+    artArgs.artContent=currentPhoto.name;
+    artArgs.selectDiscussionCondition = new SelectDiscussionCondition();
+    artArgs.selectDiscussionCondition.artId=currentPhoto.photoId;
+    artArgs.artId=currentPhoto.photoId;
+    photoArgs.artArgs=artArgs;
+
     this.dialog.open(ShowOnePhotoComponent,{
       panelClass:'show-photo-panel',
       data:photoArgs

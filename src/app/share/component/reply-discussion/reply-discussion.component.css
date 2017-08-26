@@ -16,18 +16,20 @@ main{
 /*发表评论按钮*/
 .send-discussion-btn{
   display: block!important;
-  width: 60px;
+  width: 50px;
   height: 40px;
-  min-width: 55px;
+  min-width: 50px;
   background: rgb(128, 98, 135);
   float: left;
   margin-left: 10px;
+}
+.mat-raised-button{
+  padding: 0;
 }
 /*切换表情按钮*/
 .toggle-face-btn{
   margin-bottom: 10px;
   position: relative;
-
 }
 /*包裹表情和按钮的div*/
 .all-face-wrapper{

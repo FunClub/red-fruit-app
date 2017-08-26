@@ -131,12 +131,13 @@
   margin-top: 6px;
   overflow: hidden;
 }
-/*直接包裹相片的div*/
+/*包裹相片列表的div*/
 .photo-list-wrapper{
   height: 80px;
   width: 99999px;
   position: relative;
 }
+/*预览相片*/
 .pre-photo{
   width: 80px;
   height: 80px;
@@ -144,8 +145,19 @@
   cursor: pointer;
   border: solid 2px rgba(0,0,0,0);
 }
+/*预览相片激活样式*/
 .pre-photo-active{
   border: solid 2px orange;
+}
+/*光标*/
+.prevCursor{
+  cursor: url('../../../../../../assets/img/pic_prev.cur'),auto;
+}
+.nextCursor{
+  cursor: url('../../../../../../assets/img/pic_next.cur'),auto;
+}
+.zoomOutCursor{
+  cursor: zoom-out;
 }
 /*右边评论部分*/
 .show-photo-right{
@@ -155,14 +167,73 @@
   width: 320px;
   top: 0;
   right: 0;
+  overflow-y: auto;
 }
-.prevCursor{
-  cursor: url('../../../../../../assets/img/pic_prev.cur'),auto;
+/*相册用户相关信息*/
+.album-user-info{
+  padding: 10px 0 5px 10px ;
+  position: relative;
+  border-bottom: solid 1px rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(200,200,200);
+  height:148px;
 }
-.nextCursor{
-  cursor: url('../../../../../../assets/img/pic_next.cur'),auto;
+/*相册用户基本信息*/
+.album-user-base-info{
+
 }
-.zoomOutCursor{
-  cursor: zoom-out;
+/*相册用户头像*/
+.album-user-profile{
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 5px;
+}
+/*相册用户名*/
+.album-user-name{
+  font-size: 14px;
+  color: rgb(100,100,100);
+  font-weight: bold;
+}
+/*相片日期*/
+.photo-date{
+  font-size: 12px;
+  color: rgb(140,140,140);
+  margin-left: 10px;
+}
+/*关闭按钮*/
+.dialog-close{
+  position: absolute;
+  top:0;
+  right: 0;
+}
+.dialog-close i{
+  font-size: 20px;
+}
+/*相片名称*/
+.photo-name{
+  font-size: 12px;
+  color: rgb(130,130,130);
+  margin-top: 3px;
+}
+/*相片解释*/
+.photo-description{
+  font-size: 12px;
+  color: rgb(100,100,100);
+  margin-top: 20px;
+  max-height: 60px;
+  overflow: hidden;
+  padding-right: 5px;
+}
+/*相片动态操作*/
+.photo-art-operation{
+  height: 30px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 30px;
+}
+.photo-discussion{
+
+  overflow-y: auto;
+
 }
 

@@ -91,7 +91,6 @@ export class ArtOperationComponent implements OnInit {
     //已经点赞就退出方法
     if(!this.artArgs.thumbsUpAble)return;
     //如果是心情点赞
-
     if(this.artArgs.artType==this.artType.MOOD){
       this.moodService.updateThumbsUpUserIds(this.noticeArt).subscribe(res=>{
         if(res){

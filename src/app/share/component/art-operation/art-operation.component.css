@@ -1,23 +1,22 @@
 /*整体操作*/
 .all-operation{
-  border-top: 1px rgb(240,240,240) solid;
-  height: 37px;
-  line-height: 47px;
-  background: white;
+  height: 35px;
+  line-height: 35px;
 }
 /*每一个具体的操作*/
 .operation{
   display: inline-block;
-  width: 148px;
+  width: 23%;
   text-align: center;
   height: 20px;
   line-height: 20px;
-  border-left: solid 1px rgb(233,233,233);
+  border-right: solid 1px rgb(233,233,233);
+}
+.operation:last-child{
+  border: none;
 }
 /*时间*/
 .operation-time{
-  position: relative;
-  bottom: 7px;
   font-size: 13px;
 }
 /*操作图片*/
@@ -26,16 +25,11 @@
   color: rgb(122,149,153);
   cursor: pointer;
 }
-
 /*次数*/
 .count{
   font-size: 12px;
-  display: inline-block;
   color: rgb(150,150,150);
-  position: relative;
-  top: -6px;
 }
-
 /*已点赞*/
 .thumbsUpDisable{
   color: orange !important;

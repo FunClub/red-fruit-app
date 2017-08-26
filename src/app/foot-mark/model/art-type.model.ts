@@ -7,4 +7,6 @@ export class ArtType {
    * @type {string}
    */
   MOOD:string="心情";
+
+  PHOTO:string="相片";
 }

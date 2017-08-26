@@ -1,10 +1,10 @@
 <main >
   <div [ngBusy]="{busy:[sendSubDiscussionSubscribe],message:'处理中,请稍候'}"></div>
-  <div class="all-face-wrapper">
+  <div class="all-face-wrapper" *ngIf="artArgs.artType!='相片'">
     <button class="toggle-face-btn" md-icon-button (click)="toggleFace()">
       <i  class="material-icons face-ico">sentiment_very_satisfied</i>
     </button>
-    <div class="face-wrapper" *ngIf="faceOpened" [@flyXInOutFromTop]>
+    <div class="face-wrapper"  *ngIf="faceOpened " [@flyXInOutFromTop]>
       <app-face (faceSelected)="appendFace(discussionEditor,$event)" (faceOpened)="closeFace($event)"></app-face>
     </div>
   </div>

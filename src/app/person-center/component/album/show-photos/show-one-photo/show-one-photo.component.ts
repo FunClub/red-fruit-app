@@ -31,13 +31,13 @@ import {CursorType} from "../../../../../share/model/base/cursor-type.model";
     ]),
     trigger('flyXInOutFromRight', [
       transition('void => *', [
-        animate("500ms", keyframes([
-          style({opacity: 0, transform: 'translateX(5%)', offset: 0}),
-          style({opacity: 0.5, transform: 'translateX(5px)', offset: 0.3}),
-          style({opacity: 1, transform: 'translateX(0)', offset: 1.0})
+        animate("800ms", keyframes([
+          style({opacity: 0, transform: 'translateX(-500px)'}),
+          style({opacity: 0.5, transform: 'translateX(-250px)'}),
+          style({opacity: 1, transform: 'translateX(0px)'})
         ]))
       ]),
-    ]),
+    ])
   ]
 })
 export class ShowOnePhotoComponent implements OnInit {
@@ -101,7 +101,6 @@ export class ShowOnePhotoComponent implements OnInit {
     this.album = photoArgs.album;
     this.currentIndex=this.photoArgs.currentIndex;
     this.cursorArgs = new CursorType();
-
     /*监听窗口大小重置事件*/
     window.onresize = () => {}
   }
@@ -161,7 +160,7 @@ export class ShowOnePhotoComponent implements OnInit {
   /**
    * 改变当前相片（上一张下一张）
    */
-  changeCurrentPhoto(event){
+  changeCurrentPhoto(event,close:HTMLButtonElement){
     this.changeImgCursor(event);
     if(this.cursorType==this.cursorArgs.PREV_CURSOR){
       if(this.currentIndex==0){
@@ -175,6 +174,8 @@ export class ShowOnePhotoComponent implements OnInit {
       }else{
         this.currentIndex++;
       }
+    }else{
+      close.click();
     }
     /*调整相片列表*/
     this.getPhotoPageIndex();

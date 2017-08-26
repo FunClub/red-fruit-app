@@ -13,6 +13,7 @@ export class AddPhoto {
  */
 export class Photo{
   path: string;
+  userId:string;
   photoId:string;
   name: string;
   albumId:string;

@@ -51,7 +51,6 @@ export class NoticeArtService extends BaseService{
     noticeArt.artType=artArgs.artType;
     noticeArt.artContent = artArgs.artContent;
     noticeArt.firstArtImg = artArgs.firstArtImg;
-
     return noticeArt;
   }
 }
