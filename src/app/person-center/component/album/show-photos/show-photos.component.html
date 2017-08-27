@@ -34,17 +34,17 @@
       <div class="album-art-info">
 
         <span class="art-info-label">访客</span>
-        <p class="art-count">12 </p>
+        <p class="art-count">{{currentAlbum.discussionCount}} </p>
       </div>
       <div class="album-art-info">
 
         <span class="art-info-label">评论</span>
-        <p class="art-count">2</p>
+        <p class="art-count">{{currentAlbum.discussionCount}}</p>
       </div>
       <div class="album-art-info">
 
         <span class="art-info-label">点赞</span>
-        <p class="art-count">12 </p>
+        <p class="art-count">{{currentAlbum.thumbsUpCount}}</p>
       </div>
     </div>
   </div>
@@ -64,16 +64,16 @@
         {{photo.name}}
       </div>
       <div class="photo-art-operation">
-        <i class="material-icons" >sms</i>
-        <span>123</span>
-        <i class="material-icons">thumb_up</i>
-        <span>123</span>
-        <i class="material-icons photo-more-operation" [mdMenuTriggerFor]="photoMenu">more_horiz</i>
+        <span><i class="material-icons" (click)="thumbsUp(photo)" [ngClass]="{'active-thumbs-up':!photo.artArgs.thumbsUpAble}">thumb_up</i></span>
+        <span>{{photo.artArgs.thumbsUpCount?photo.artArgs.thumbsUpCount:'点赞'}}</span>
+        <span (click)="showDetailPhoto(i)"><i class="material-icons" >sms</i></span>
+        <span>{{photo.artArgs.discussionCount?photo.artArgs.discussionCount:''}}</span>
+        <span [mdMenuTriggerFor]="photoMenu"><i class="material-icons photo-more-operation">more_horiz</i></span>
         <md-menu #photoMenu="mdMenu" class="photo-menu">
           <button md-menu-item class="photo-menu-btn" (click)="editPhotoInfo(photo)"><i class="material-icons photo-menu-i">mode_edit</i>编辑</button>
           <button md-menu-item class="photo-menu-btn" ><i class="material-icons photo-menu-i">color_lens</i>特效</button>
           <button md-menu-item class="photo-menu-btn" (click)="updateAlbumCover(photo.path)"><i class="material-icons photo-menu-i">photo_library</i>设为封面</button>
-          <button md-menu-item class="photo-menu-btn" (click)="movePhoto(photo.photoId,i)"><i class="material-icons photo-menu-i" >zoom_out_map</i>移动到相册</button>
+          <button *ngIf="albums.length>1" md-menu-item class="photo-menu-btn" (click)="movePhoto(photo.photoId,i)"><i class="material-icons photo-menu-i" >zoom_out_map</i>移动到相册</button>
           <button md-menu-item class="photo-menu-btn"><i class="material-icons photo-menu-i">delete</i>删除</button>
         </md-menu>
       </div>

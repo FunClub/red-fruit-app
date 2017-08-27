@@ -30,6 +30,7 @@
 /*内容体*/
 .add-photo-content{
   margin: auto;
+  padding: 5px;
 }
 /*每一张整体照片DIV*/
 .photo-wrapper{
@@ -168,9 +169,10 @@
 .select-cover-img{
   float: left;
   margin-right: 5px;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   margin-top: 10px;
+  vertical-align: top;
 }
 /*相册名称*/
 .album-name{

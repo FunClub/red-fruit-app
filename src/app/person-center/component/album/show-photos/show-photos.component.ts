@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {AlbumService} from "../../../service/album.service";
 import {RedFruitApi} from "../../../../share/model/base/api.model";
 import {AlbumApi} from "../../../model/base/album-api.model";
-import {Photo, ShowAddPhotoDialogArgs} from "../../../model/album/add-photo.model";
+import {Photo, ShowAddPhotoDialogArgs, ShowPhoto} from "../../../model/album/add-photo.model";
 import {ShowAlbum, ShowAlbumPhoto} from "../../../model/album/show-album.model";
 import {MdDialog} from "@angular/material";
 import {AddPhotoComponent} from "../add-photo/add-photo.component";
@@ -15,9 +15,13 @@ import {MovePhotoComponent} from "./move-photo/move-photo.component";
 import {MovePhotoArgs} from "../../../model/album/move-photo.model";
 import {ShowOnePhotoComponent} from "./show-one-photo/show-one-photo.component";
 import {ShowPhotoArg} from "../../../model/album/show-photo-arg.model";
-import {ArtArgs} from "../../../../share/model/base/art-args.model";
 import {ArtType} from "../../../../foot-mark/model/art-type.model";
-import {SelectDiscussionCondition} from "../../../../share/model/discussion/select-discussion-condition";
+import {NoticeArt} from "../../../../foot-mark/model/notice-art.model";
+import {HomeService} from "../../../../home/service/home.service";
+import {BaseSocketService} from "../../../../websocket/socket/base-socket.service";
+import {NoticeMessage} from "../../../../websocket/model/notice-message.model";
+
+
 
 @Component({
   selector: 'app-show-photos',
@@ -25,6 +29,7 @@ import {SelectDiscussionCondition} from "../../../../share/model/discussion/sele
   styleUrls: ['./show-photos.component.css']
 })
 export class ShowPhotosComponent implements OnInit {
+
   /**
    * 相册id
    */
@@ -37,7 +42,7 @@ export class ShowPhotosComponent implements OnInit {
   /**
    * 相片数组
    */
-  photos: Photo[];
+  photos: ShowPhoto[];
 
   /**
    * 当前相册信息
@@ -55,8 +60,8 @@ export class ShowPhotosComponent implements OnInit {
   addPhotoArgs: ShowAddPhotoDialogArgs;
 
   constructor(private activatedRoute: ActivatedRoute, private albumService: AlbumService, public api: RedFruitApi,
-              public albumApi: AlbumApi, private dialog: MdDialog,private toastsManager:ToastsManager,private ngProgressService:NgProgressService,
-  private artType:ArtType
+              public albumApi: AlbumApi,private dialog: MdDialog,private toastsManager:ToastsManager,private ngProgressService:NgProgressService,
+  private artType:ArtType,private homeService:HomeService,private socketService:BaseSocketService,private noticeMessage:NoticeMessage
   ) {
     this.albumId = activatedRoute.snapshot.params['albumId'];
     this.photos = [];
@@ -68,6 +73,35 @@ export class ShowPhotosComponent implements OnInit {
   ngOnInit() {
     this.selectPhoto();
   }
+  thumbsUp(photo:ShowPhoto){
+    if(!photo.thumbsUpAble)return;
+    let noticeArt:NoticeArt = new NoticeArt();
+    noticeArt.original=true;
+    noticeArt.artId=photo.photoId;
+    noticeArt.artUserId = photo.userId;
+    noticeArt.noticeArtUserId = photo.userId;
+    noticeArt.artType=this.artType.PHOTO;
+    noticeArt.artContent = photo.name;
+    noticeArt.firstArtImg = photo.path;
+    this.albumService.thumbsUp(noticeArt).subscribe(res=>{
+      if(res){
+        photo.artArgs.thumbsUpAble=false;
+        photo.artArgs.thumbsUpCount++;
+        //发送点赞通知
+        if(noticeArt.artUserId!=this.homeService.homeInfo.userId){
+          this.noticeMessage.content="赞了你的相片";
+          this.noticeMessage.receivedUserId = noticeArt.artUserId;
+          this.socketService.sendMessage(this.noticeMessage);
+        }
+      }
+    });
+  }
+  addWaterMark(index:number){
+   /* let waterMarkArgs = new WaterMarkArgs();
+    waterMarkArgs.isBatch=false;
+    waterMarkArgs.photos=this.photos as ShowUploadPhoto[];
+    waterMarkArgs.currentIndex=index;*/
+  }
   showDetailPhoto(index:number){
     /*初始化显示详细照片的参数*/
     let currentPhoto = this.photos[index];
@@ -75,18 +109,6 @@ export class ShowPhotosComponent implements OnInit {
     photoArgs.photos=this.photos;
     photoArgs.album=this.currentAlbum;
     photoArgs.currentIndex = index;
-    let artArgs = new ArtArgs();
-    artArgs.artUserId=currentPhoto.userId;
-    artArgs.artType=this.artType.PHOTO;
-    artArgs.original=true;
-    artArgs.isDiscussOpen=true;
-    artArgs.firstArtImg=currentPhoto.path;
-    artArgs.artContent=currentPhoto.name;
-    artArgs.selectDiscussionCondition = new SelectDiscussionCondition();
-    artArgs.selectDiscussionCondition.artId=currentPhoto.photoId;
-    artArgs.artId=currentPhoto.photoId;
-    photoArgs.artArgs=artArgs;
-
     this.dialog.open(ShowOnePhotoComponent,{
       panelClass:'show-photo-panel',
       data:photoArgs
@@ -175,7 +197,11 @@ export class ShowPhotosComponent implements OnInit {
       data: this.addPhotoArgs
     }).afterClosed().subscribe(res => {
       if (res) {//如果保存了相片就更新相片信息
-        this.photos = this.addPhotoArgs.addedPhotos.concat(this.photos);
+        let addPhotos = this.addPhotoArgs.addedPhotos;
+        for(let photo of addPhotos){
+          this.albumService.initPhotoArtArgs(photo);
+        }
+        this.photos = addPhotos.concat(this.photos);
       }
     });
   }

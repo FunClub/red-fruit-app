@@ -11,6 +11,7 @@ import {NoticeArtService} from "../../../foot-mark/service/notice-art.service";
 import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
 import {HomeService} from "../../../home/service/home.service";
 import {NoticeMessage} from "../../../websocket/model/notice-message.model";
+import {AlbumService} from "../../../person-center/service/album.service";
 
 @Component({
   selector: 'app-art-operation',
@@ -60,7 +61,9 @@ export class ArtOperationComponent implements OnInit {
   artArgs:ArtArgs;
   noticeArt:NoticeArt;
   constructor(private artType:ArtType,private noticeType:NoticeArtType,private moodService:MoodService,private homeService:HomeService,
-              private noticeArtService:NoticeArtService,private socketService:BaseSocketService,private noticeMessage:NoticeMessage) {
+              private noticeArtService:NoticeArtService,private socketService:BaseSocketService,private noticeMessage:NoticeMessage,
+  private albumService:AlbumService
+  ) {
 
 
   }
@@ -104,6 +107,19 @@ export class ArtOperationComponent implements OnInit {
           }
         }
       });
+    }else if(this.artArgs.artType==this.artType.PHOTO) {
+      this.albumService.thumbsUp(this.noticeArt).subscribe(res=>{
+        if(res){
+          this.artArgs.thumbsUpAble=false;
+          this.artArgs.thumbsUpCount++;
+          //发送点赞通知
+          if(this.artArgs.artUserId!=this.homeService.homeInfo.userId){
+            this.noticeMessage.content="赞了你的"+this.artArgs.artType;
+            this.noticeMessage.receivedUserId = this.artArgs.artUserId;
+            this.socketService.sendMessage(this.noticeMessage);
+          }
+        }
+      })
     }
   }
 }

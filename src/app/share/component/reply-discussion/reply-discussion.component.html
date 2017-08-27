@@ -1,6 +1,6 @@
 <main >
   <div [ngBusy]="{busy:[sendSubDiscussionSubscribe],message:'处理中,请稍候'}"></div>
-  <div class="all-face-wrapper" *ngIf="artArgs.artType!='相片'">
+  <div class="all-face-wrapper" *ngIf="artArgs.faceAble">
     <button class="toggle-face-btn" md-icon-button (click)="toggleFace()">
       <i  class="material-icons face-ico">sentiment_very_satisfied</i>
     </button>

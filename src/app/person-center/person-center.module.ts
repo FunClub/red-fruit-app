@@ -45,7 +45,8 @@ import { ShowOnePhotoComponent } from './component/album/show-photos/show-one-ph
     FroalaViewModule,
     FroalaEditorModule,
     MdSlideToggleModule,
-    MdSliderModule
+    MdSliderModule,
+    MdGridListModule
   ],
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,

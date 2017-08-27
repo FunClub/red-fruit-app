@@ -1,7 +1,7 @@
 
 <main class="album-main">
   <div class="all-album-operation">
-    <button class="upload-img" md-raised-button color="primary" (click)="openAddPhotoDialog()">
+    <button class="upload-img" *ngIf="albums.length>0" md-raised-button color="primary" (click)="openAddPhotoDialog()">
       <i class="material-icons">add_a_photo</i>
       上传照片
     </button>

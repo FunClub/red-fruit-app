@@ -1,5 +1,6 @@
-import {ShowUploadPhoto} from "./show-upload-photo.model";
+
 import {ShowAlbum} from "./show-album.model";
+import {ArtArgs} from "../../../share/model/base/art-args.model";
 /**
  * 添加相片模型
  */
@@ -26,8 +27,24 @@ export class Photo{
   blurS:number;
   quality:number;
   description:string;
+  zoomSize:number;
+  hasWaterMark:boolean;
+  fontSize:number;
+  constructor() {
+    this.bright=0;
+    this.contrast=0;
+    this.sharpen=50;
+  }
 }
-
+export  class ShowPhoto extends Photo{
+  discussionCount:number;
+  thumbsUpCount:number;
+  thumbsUpAble:boolean;
+  nickname:string;
+  profile:string;
+  uploadDate:string;
+  artArgs:ArtArgs;
+}
 /**
  * 显示添加相片的dialog参数模型
  */
@@ -41,5 +58,5 @@ export class ShowAddPhotoDialogArgs{
   /**
    * 被添加到后台的相片信息
    */
-  addedPhotos:Photo[];
+  addedPhotos:ShowPhoto[];
 }

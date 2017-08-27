@@ -1,4 +1,4 @@
-import {ShowUploadPhoto} from "./show-upload-photo.model";
+import {Photo} from "./add-photo.model";
 /**
  * 水印参数
  */
@@ -9,14 +9,14 @@ export class WaterMarkArgs {
   isBatch:boolean;
 
   /**
-   * 照片模型,不是批处理时有值
+   * 照片模型,是批处理时有值
    */
-  photo:ShowUploadPhoto;
+  photo:Photo;
 
   /**
-   * 照片模型数组,是批处理时有值
+   * 照片模型数组,不是批处理时有值
    */
-  photos:ShowUploadPhoto[];
+  photos:Photo[];
 
   /**
    * 当前照片Index

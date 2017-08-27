@@ -13,29 +13,36 @@
     <!--内容体开始-->
     <div class="add-photo-content" dnd-sortable-container [sortableData]="uploadPhotoInfo">
       <div [ngBusy]="{busy:uploadSubscribe,message:'图片处理中，请稍后...'}"></div>
-      <div class="photo-wrapper" dnd-sortable [sortableIndex]="i" *ngFor="let photo of uploadPhotoInfo;let i=index;">
-        <div class="photo-content">
-          <img [src]="api.IMAGE_PREFIX+photo.path+albumApi.SHOW_PHOTO_STYLE" class="pre-upload-photo">
-          <div class="photo-operation-wrapper">
-            <i class="material-icons delete-img-i" md-tooltip="删除" (click)="deletePhoto(i)">delete</i>
-            <button  md-raised-button class="photo-operation-watermark" (click)="addWaterMark(i)" color="primary">
-              <i class="material-icons">add</i>
-              <span>样式</span>
-            </button>
+      <md-grid-list [cols]="getPhotoColumn()" rowHeight="130:162">
+        <md-grid-tile dnd-sortable [sortableIndex]="i" *ngFor="let photo of uploadPhotoInfo;let i=index;">
+          <div class="photo-wrapper">
+            <div class="photo-content">
+              <img [src]="api.IMAGE_PREFIX+photo.path+albumApi.SHOW_PHOTO_STYLE" class="pre-upload-photo">
+              <div class="photo-operation-wrapper">
+                <i class="material-icons delete-img-i" md-tooltip="删除" (click)="deletePhoto(i)">delete</i>
+                <button md-raised-button class="photo-operation-watermark" (click)="addWaterMark(i)" color="primary">
+                  <i class="material-icons">add</i>
+                  <span>样式</span>
+                </button>
+              </div>
+            </div>
+            <input class="photo-name" contenteditable="true" name="fileName" [(ngModel)]="photo.name">
           </div>
-        </div>
-        <input class="photo-name" contenteditable="true" name="fileName" [(ngModel)]="photo.name">
-      </div>
+        </md-grid-tile>
+        <md-grid-tile>
+          <div *ngIf="uploadPhotoInfo.length>0" class="add-photo-wrapper" (click)="fileInput.click()">
+            <i class="material-icons">queue_play_next</i>
+            <span>继续添加相片</span>
+          </div>
+        </md-grid-tile>
+      </md-grid-list>
 
-      <div *ngIf="uploadPhotoInfo.length>0" class="add-photo-wrapper" (click)="fileInput.click()">
-        <i class="material-icons">queue_play_next</i>
-        <span>继续添加相片</span>
-      </div>
     </div>
     <!--内容体结束-->
 
     <!--第一次添加图片的按钮-->
-    <button *ngIf="uploadPhotoInfo.length==0" md-raised-button class="first-upload" color="primary" (click)="fileInput.click()">
+    <button *ngIf="uploadPhotoInfo.length==0" md-raised-button class="first-upload" color="primary"
+            (click)="fileInput.click()">
       <i class="material-icons">add_to_queue</i>
       <span>从电脑选择</span>
     </button>
@@ -45,15 +52,15 @@
   <!--底部开始-->
   <div class="add-photo-bottom">
     <div class="add-photo-operation">
-    <!--选择相册-->
+      <!--选择相册-->
       <div class="select-album-wrapper">
         <span class="photo-operation-label">上传照片到:</span>
         <md-select placeholder="选择相册" class="album-selector" name="albumId" [(ngModel)]="addPhotoInfo.albumId">
           <md-option *ngFor="let album of addPhotoArgs.albums" [value]="album.albumId">
-              <img class="select-cover-img" [src]="api.IMAGE_PREFIX+album.coverImg">
-              <span class="album-name">{{ album.albumName}}</span><br>
-              <span class="album-count"> {{album.photoCount?album.photoCount:0}}张</span>
-              <span *ngIf="album.limit==0"><i class="material-icons album-privacy">lock_outline</i></span>
+            <img class="select-cover-img" [src]="api.IMAGE_PREFIX+album.coverImg+albumApi.SMALL_ALBUM_COVER_STYLE">
+            <span class="album-name">{{ album.albumName}}</span><br>
+            <span class="album-count"> {{album.photoCount?album.photoCount:0}}张</span>
+            <span *ngIf="album.limit==0"><i class="material-icons album-privacy">lock_outline</i></span>
           </md-option>
         </md-select>
       </div>
@@ -77,8 +84,12 @@
       </div>
       <!--保存上传图片-->
       <div class="save-photo-wrapper">
-          <button md-raised-button class="remove-all-photo" [disabled]="uploadPhotoInfo.length==0" (click)="clearPhoto()"><i class="material-icons">delete</i>清空相片</button>
-          <button md-raised-button color="primary" class="save-photo" [disabled]="uploadPhotoInfo.length==0" (click)="savePhoto(close)"><i class="material-icons">save</i>保存相片</button>
+        <button md-raised-button class="remove-all-photo" [disabled]="uploadPhotoInfo.length==0" (click)="clearPhoto()">
+          <i class="material-icons">delete</i>清空相片
+        </button>
+        <button md-raised-button color="primary" class="save-photo" [disabled]="uploadPhotoInfo.length==0"
+                (click)="savePhoto(close)"><i class="material-icons">save</i>保存相片
+        </button>
       </div>
     </div>
   </div>
@@ -87,7 +98,8 @@
   <!--隐藏按钮用于,关闭dialog-->
   <button [md-dialog-close]="photoSaved" #close style="display: none"></button>
   <!--隐藏文件上传Input-->
-  <input #fileInput type="file" multiple accept="image/gif,image/jpeg,image/jpg,image/png" (change)="uploadPhoto($event)" style="display: none;">
+  <input #fileInput type="file" multiple accept="image/gif,image/jpeg,image/jpg,image/png"
+         (change)="uploadPhoto($event)" style="display: none;">
 
 </main>
 

@@ -2,6 +2,7 @@
  * 相册模块api
  */
 export class AlbumApi {
+  THUMBS_UP:string="album/photo/thumbsUpUserIds";
   /**
    * 移动相片到其他相册
    * @type {string}

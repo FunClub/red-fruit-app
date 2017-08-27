@@ -1,12 +1,14 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {MD_DIALOG_DATA} from "@angular/material";
 import {ShowPhotoArg} from "../../../../model/album/show-photo-arg.model";
 import {ShowAlbum} from "../../../../model/album/show-album.model";
-import {Photo} from "../../../../model/album/add-photo.model";
+import {Photo, ShowPhoto} from "../../../../model/album/add-photo.model";
 import {RedFruitApi} from "../../../../../share/model/base/api.model";
 import {AlbumApi} from "../../../../model/base/album-api.model";
 import {CursorType} from "../../../../../share/model/base/cursor-type.model";
+import {ArtDiscussionComponent} from "../../../../../share/component/art-discussion/art-discussion.component";
+import {SelectDiscussionCondition} from "../../../../../share/model/discussion/select-discussion-condition";
 
 @Component({
   selector: 'app-show-one-photo',
@@ -41,8 +43,8 @@ import {CursorType} from "../../../../../share/model/base/cursor-type.model";
   ]
 })
 export class ShowOnePhotoComponent implements OnInit {
-  img = "http://red-fruit.oss-cn-shenzhen.aliyuncs.com/album/20170820000636-797568141234.JPG";
-  img1 = "http://red-fruit.oss-cn-shenzhen.aliyuncs.com/album/20170820000636-797568141234.JPG?x-oss-process=style/small-album-cover";
+  @ViewChild(ArtDiscussionComponent)
+  artDiscussionComponent:ArtDiscussionComponent;
   /**
    * 是否显示相片列表
    */
@@ -59,7 +61,7 @@ export class ShowOnePhotoComponent implements OnInit {
   /**
    * 相片数组
    */
-  photos:Photo[];
+  photos:ShowPhoto[];
 
   /**
    * 当前相片索引
@@ -116,7 +118,6 @@ export class ShowOnePhotoComponent implements OnInit {
   getPhotoWrapperLeft(){//100,10
     //当前显示的照片不在第一页
     let photoContentWidth = this.getPhotoContentWidth();
-
     this.photoWrapperLeft = -(this.photoPageIndex*photoContentWidth);
 
   }
@@ -127,6 +128,7 @@ export class ShowOnePhotoComponent implements OnInit {
    */
   showDetailPhoto(index:number){
     this.currentIndex=index;
+    this.refreshDiscussion()
   }
 
   /**
@@ -180,6 +182,17 @@ export class ShowOnePhotoComponent implements OnInit {
     /*调整相片列表*/
     this.getPhotoPageIndex();
     this.getPhotoWrapperLeft();
+    this.refreshDiscussion()
+  }
+
+  /**
+   * 刷新评论
+   */
+  refreshDiscussion(){
+    let select=new SelectDiscussionCondition();
+    select.artId = this.photos[this.currentIndex].photoId;
+    this.artDiscussionComponent.selectDiscussion= select;
+    this.artDiscussionComponent.showDiscussion();
   }
   /**
    * 改变上一页下一页光标
@@ -187,7 +200,7 @@ export class ShowOnePhotoComponent implements OnInit {
    */
   changeImgCursor(event:MouseEvent){
     let x = event.x;
-    let width = window.innerWidth-320;
+    let width = window.innerWidth-340;
     let preMax=(width/2)-(width/10);
     let nextMin=(width/2)+(width/10);
     if(preMax>x){
@@ -206,7 +219,7 @@ export class ShowOnePhotoComponent implements OnInit {
    */
   getPhotoContentWidth():number{
     let innerWidth = window.innerWidth;
-    let photoContentWidth = innerWidth*0.9-450;
+    let photoContentWidth = innerWidth*0.9-470;
     this.photoPageSize=Math.floor(photoContentWidth / 89);
     this.photoTotalPage = Math.ceil(this.photos.length/this.photoPageSize);
     return this.photoPageSize*89;

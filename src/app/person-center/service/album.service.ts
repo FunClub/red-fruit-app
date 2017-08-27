@@ -4,12 +4,16 @@ import {BaseService} from "../../share/service/base.service";
 import {Observable} from "rxjs/Observable";
 import {AlbumApi} from "../model/base/album-api.model";
 import {ResultView} from "../../share/model/base/result-view";
-import {ShowAllAlbum} from "../model/album/show-album.model";
+import {ShowAlbumPhoto, ShowAllAlbum} from "../model/album/show-album.model";
 import {BucketFolder} from "../../share/model/bucket-folder.model";
-import {ShowUploadPhoto} from "../model/album/show-upload-photo.model";
-import {AddPhoto, Photo} from "../model/album/add-photo.model";
+
+import {AddPhoto, Photo, ShowPhoto} from "../model/album/add-photo.model";
 import {UpdateAlbumCover, UpdatePhotoInfo} from "../model/album/update-photo.model";
 import {MovePhoto} from "../model/album/move-photo.model";
+import {NoticeArt} from "../../foot-mark/model/notice-art.model";
+import {ArtArgs} from "../../share/model/base/art-args.model";
+import {ArtType} from "../../foot-mark/model/art-type.model";
+import {SelectDiscussionCondition} from "../../share/model/discussion/select-discussion-condition";
 /**
  * 相册服务
  */
@@ -17,10 +21,12 @@ import {MovePhoto} from "../model/album/move-photo.model";
 export class AlbumService extends BaseService{
 
 
-  constructor(private http:Http,private albumApi:AlbumApi, private bucketFolder:BucketFolder) {
+  constructor(private http:Http,private albumApi:AlbumApi, private bucketFolder:BucketFolder,private artType:ArtType) {
     super();
   }
-
+  thumbsUp(noticeArt:NoticeArt){
+    return this.http.put(this.albumApi.THUMBS_UP,noticeArt).map(res=>res.json().data).catch(this.handleError);
+  }
   /**
    * 移动相片到其他相册
    * @param movePhoto  移动相片到其他相册的模型
@@ -52,7 +58,62 @@ export class AlbumService extends BaseService{
    * @returns {Observable<R|T>}
    */
   selectPhotos(albumId:string){
-    return this.http.get(this.albumApi.PHOTOS(albumId)).map(res=>res.json().data).catch(this.handleError);
+    return this.http.get(this.albumApi.PHOTOS(albumId)).map(res=>{
+      let data=res.json().data as ShowAlbumPhoto;
+      let photos = data.photos;
+      for(let photo of photos){
+       this.initPhotoArtArgs(photo);
+      }
+    return data;
+    }).catch(this.handleError);
+  }
+
+  /**
+   * 初始化相册数据
+   * @param photo
+   */
+  initPhotoArtArgs(photo:ShowPhoto){
+    let artArgs = new ArtArgs();
+    artArgs.artUserId=photo.userId;
+    artArgs.artType=this.artType.PHOTO;
+    artArgs.original=true;
+    artArgs.isDiscussOpen=true;
+    artArgs.firstArtImg=photo.path;
+    artArgs.artContent=photo.name;
+    artArgs.selectDiscussionCondition = new SelectDiscussionCondition();
+    artArgs.selectDiscussionCondition.artId=photo.photoId;
+    artArgs.artId=photo.photoId;
+    artArgs.thumbsUpCount = photo.thumbsUpCount;
+    artArgs.thumbsUpAble = photo.thumbsUpAble;
+    artArgs.discussionCount = photo.discussionCount;
+    artArgs.faceAble=false;
+    photo.artArgs=artArgs;
+    let hasWaterMark=false;
+    if(!photo.waterMark){
+      photo.waterMark="";
+      hasWaterMark=false;
+    }else{
+      photo.waterMark='?x-oss-process=image'+photo.waterMark;
+      hasWaterMark=true;
+    }
+    if(!photo.sharpen){
+      photo.sharpen=50;
+    }
+    if(!photo.contrast){
+      photo.contrast=0;
+    }
+    if(!photo.bright){
+      photo.bright=0;
+    }
+    let effect="";
+    if(!hasWaterMark){
+      effect="?x-oss-process=image";
+    }
+    effect +=  `/bright,${photo.bright}/sharpen,${photo.sharpen}/contrast,${photo.contrast}`;
+    if(photo.blurR){
+      effect+= `/blurR,${photo.blurR}/blurS,${photo.blurS}`
+    }
+    photo.effect=effect;
   }
   /**
    * 添加相片
@@ -60,37 +121,12 @@ export class AlbumService extends BaseService{
    * @param uploadPhotos 上传的相片模型数组
    * @returns {Observable<R|T>}
    */
-  save(addPhoto:AddPhoto,uploadPhotos:ShowUploadPhoto[]){
-    let photos:Photo[] = [];
-    let photo;
+  save(addPhoto:AddPhoto,uploadPhotos:Photo[]){
     for(let upload of uploadPhotos){
-      photo = new Photo();
-      photo.albumId = addPhoto.albumId;
-      photo.path = upload.path;
-      photo.waterMark = upload.waterMark;
-
-      //如果效果是默认值就不保存
-      if(upload.blurS!=0){
-        photo.blurS = upload.blurS;
-      }
-      if(upload.blurR!=0){
-        photo.blurR = upload.blurR;
-      }
-      if (upload.contrast!=0){
-        photo.contrast= upload.contrast;
-      }
-      if(upload.sharpen !=50){
-        photo.sharpen = upload.sharpen;
-      }
-      if(upload.bright !=0){
-        photo.bright = upload.bright;
-      }
-      photo.name = upload.name;
-      photo.effect = upload.effect;
-      photo.quality = addPhoto.quality;
-      photos.push(photo);
+      upload.quality = addPhoto.quality;
+      upload.albumId=addPhoto.albumId;
     }
-   addPhoto.photos=photos;
+    addPhoto.photos=uploadPhotos;
     return this.http.post(this.albumApi.ADD_PHOTO,addPhoto).map(res=>res.json()).catch(this.handleError);
   }
   /**
@@ -108,13 +144,13 @@ export class AlbumService extends BaseService{
    * @param files 文件数组
    * @returns {Observable<R|T>}
    */
-  uploadPhoto(files:any[]):Observable<ShowUploadPhoto[]>{
+  uploadPhoto(files:any[]):Observable<Photo[]>{
     let formData = new FormData();
     for(let file of files){
       formData.append("imgs",file);
     }
     return this.http.post(this.albumApi.PHOTO(this.bucketFolder.ALBUM),formData).map(res=>{
-     let photos= res.json().data as ShowUploadPhoto[];
+     let photos= res.json().data as Photo[];
      for(let p of photos){
        p.hasWaterMark=false;
        p.blurS=0;

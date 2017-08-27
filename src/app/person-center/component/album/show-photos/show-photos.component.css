@@ -208,14 +208,15 @@
   display: none;
   font-size: 14px;
   padding-left: 5px;
-  padding-right: 5px;
+  padding-right: 10px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   border-bottom: 1px solid rgb(233,233,233);
 }
 /*相片名称*/
 .photo-name{
   text-align: center;
-  height: 25px;
-  line-height: 25px;
+  height: 27px;
+  line-height: 27px;
   font-size: 15px;
   background: white;
   margin-bottom: 5px;
@@ -229,6 +230,10 @@
   color: rgb(122,149,153);
   font-size: 20px;
   cursor: pointer;
+}
+/*已点赞*/
+.active-thumbs-up{
+  color: orange!important;
 }
 .photo-art-operation i:hover{
   color: #ffa124;

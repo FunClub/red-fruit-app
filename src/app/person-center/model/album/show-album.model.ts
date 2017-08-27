@@ -1,4 +1,4 @@
-import {Photo} from "./add-photo.model";
+import {Photo, ShowPhoto} from "./add-photo.model";
 /**
  * 显示所有相册模型
  */
@@ -24,7 +24,8 @@ export class ShowAlbum {
    */
   limit:number;
   photoCount:string;
-
+  discussionCount:number;
+  thumbsUpCount:number;
 }
 /**
  * 显示一个相册及其相片的模型
@@ -38,5 +39,5 @@ export class ShowAlbumPhoto {
    * 相册集合，用于显示上传相片时的相册信息
    */
   albums:ShowAlbum[];
-  photos:Photo[];
+  photos:ShowPhoto[];
 }

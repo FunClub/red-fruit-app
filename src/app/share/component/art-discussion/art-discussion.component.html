@@ -2,7 +2,7 @@
 <div class="all-discussion" [@flyXInOutFromTop]>
   <!--写评论-->
   <div class="write-discussion">
-    <div [ngBusy]="{busy:[discussionSubscribe],message:'处理中,请稍候'}"></div>
+    <div *ngIf="artArgs.artType!='相片'" [ngBusy]="{busy:[discussionSubscribe],message:'处理中,请稍候'}"></div>
     <img *ngIf="artArgs.artType!='相片'"  class="my-profile-img" [src]="api.IMAGE_PREFIX+homeService.homeInfo.profileImg"/>
     <div #discussionEditor [ngClass]="{'photo-discussion-editor':artArgs.artType=='相片'}"  class="discussion-editor" [froalaEditor]="editorOptions" [(froalaModel)]="sendDiscussion.parentDiscussion.content"></div>
     <button class="send-discussion-btn" md-raised-button color="primary" (click)="insertDiscussion()">评论</button>
@@ -18,7 +18,7 @@
     <div style="clear: both"></div>
   </div>
   <!--显示评论-->
-  <div class="show-all-discussion" *ngIf="artArgs.discussionCount>0">
+  <div class="show-all-discussion" [ngClass]="{'photo-show-all-discussion':artArgs.artType=='相片'}" *ngIf="artArgs.discussionCount>0">
     <div class="show-discussion-by">
       <span (click)="sortDiscussionBy('subDiscussionsLength')" [ngClass]="{'active-discussion-by':selectDiscussion.sortBy=='subDiscussionsLength'}">按热度</span>
       <hr class="sortByHr">

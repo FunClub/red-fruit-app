@@ -72,8 +72,13 @@ export class ArtArgs {
    * 查询评论条件
    */
   selectDiscussionCondition:SelectDiscussionCondition;
+
+  /**
+   * 启用表情
+   */
+  faceAble:boolean;
   constructor() {
     this.isDiscussOpen=false;
-
+    this.faceAble=true;
   }
 }

@@ -1,5 +1,5 @@
 import {ShowAlbum} from "./show-album.model";
-import {Photo} from "./add-photo.model";
+import {Photo, ShowPhoto} from "./add-photo.model";
 
 /**
  * 移动相片到其他相册的参数模型
@@ -19,7 +19,7 @@ export class MovePhotoArgs{
    */
   movedAlbumId:string;
   albums:ShowAlbum[];
-  photos:Photo[];
+  photos:ShowPhoto[];
 
 }
 /**

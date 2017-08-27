@@ -7,7 +7,7 @@
          [ngClass]="{'prevCursor':cursorType==cursorArgs.PREV_CURSOR,'zoomOutCursor':cursorType==cursorArgs.ZOOM_OUT_CURSOR,
        'nextCursor':cursorType==cursorArgs.NEXT_CURSOR}">
       12121
-      <img class="big-photo" [src]="api.IMAGE_PREFIX+photos[currentIndex].path" alt="">
+      <img class="big-photo" [src]="api.IMAGE_PREFIX+photos[currentIndex].path+photos[currentIndex].waterMark+photos[currentIndex].effect" alt="">
     </div>
 
     <!--相片操作部分-->
@@ -47,21 +47,20 @@
     <!--相册用户信息和相册动态操作-->
    <div class="album-user-info">
      <div class="album-user-base-info">
-       <img class="album-user-profile" [src]="api.IMAGE_PREFIX+photos[0].path+albumApi.SMALL_ALBUM_COVER_STYLE" alt="">
-       <span class="album-user-name">大脸猫</span> <span class="photo-date">2017-3-2 12:32:12</span>
+       <img class="album-user-profile" [src]="api.IMAGE_PREFIX+photos[currentIndex].profile+albumApi.SMALL_ALBUM_COVER_STYLE" alt="">
+       <span class="album-user-name">{{photos[currentIndex].nickname}}</span> <span class="photo-date">{{photos[currentIndex].uploadDate}}</span>
        <button md-icon-button class="dialog-close" (click)="close.click()"><i class="material-icons">close</i></button>
-       <p class="photo-name">园博园游玩</p>
+       <p class="photo-name">{{photos[currentIndex].name}}</p>
      </div>
      <div class="photo-description">
-       放松贷款分类看电视里放
-       放松贷款分类看电视里放放松贷款分类看电视里放放松贷款分类看电视里放放松贷款分类看电视里放
+       {{photos[currentIndex].description}}
      </div>
      <div class="photo-art-operation">
-       <app-art-operation [artArgs]="photoArgs.artArgs"></app-art-operation>
+       <app-art-operation [artArgs]="photos[currentIndex].artArgs"></app-art-operation>
      </div>
    </div>
     <div class="photo-discussion">
-      <app-art-discussion  class="photo-all-discussion" [artArgs]="photoArgs.artArgs"></app-art-discussion>
+      <app-art-discussion  class="photo-all-discussion" [artArgs]="photos[currentIndex].artArgs"></app-art-discussion>
     </div>
 
     <!--评论-->

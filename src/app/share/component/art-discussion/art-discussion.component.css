@@ -16,6 +16,7 @@
  */
 .write-discussion{
   position: relative;
+  margin: auto;
 }
 /*编辑器div*/
 .discussion-editor{
@@ -26,7 +27,7 @@
 }
 /*相片动态的编辑器*/
 .photo-discussion-editor{
-  width: 210px;
+  width: 230px;
 }
 /*编辑器盒子样式*/
 .editor-box{
@@ -76,6 +77,9 @@
 /*显示所有评论的div*/
 .show-all-discussion{
   border-top: 1px rgb(223,223,223) solid;
+}
+.photo-show-all-discussion{
+  margin-top: 30px;
 }
 /*显示评论的条件*/
 .show-discussion-by{

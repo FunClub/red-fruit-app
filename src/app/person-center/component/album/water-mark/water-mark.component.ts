@@ -2,9 +2,10 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {RedFruitApi} from "../../../../share/model/base/api.model";
 import {HomeService} from "../../../../home/service/home.service";
 import {AlbumService} from "../../../service/album.service";
-import {ShowUploadPhoto} from "../../../model/album/show-upload-photo.model";
+
 import {MD_DIALOG_DATA} from "@angular/material";
 import {WaterMarkArgs} from "../../../model/album/water-mark-args.model";
+import {Photo} from "../../../model/album/add-photo.model";
 
 @Component({
   selector: 'app-water-mark',
@@ -61,21 +62,22 @@ export class WaterMarkComponent implements OnInit {
   /**
    * 零时相片模型
    */
-  tempPhotos:ShowUploadPhoto[];
+  tempPhotos:Photo[];
   /**
    * 当前正在显示的照片
    */
-  photo:ShowUploadPhoto;
+  photo:Photo;
 
   /**
    * 相册数组
    */
-  photos:ShowUploadPhoto[];
+  photos:Photo[];
 
   /**
    * 相片索引
    */
   currentIndex:number;
+  saveWaterMark:string;
   constructor(@Inject(MD_DIALOG_DATA)public photoInfo:WaterMarkArgs, public api:RedFruitApi,
               private homeService:HomeService,private albumService:AlbumService) {
     this.photos = photoInfo.photos;
@@ -92,7 +94,7 @@ export class WaterMarkComponent implements OnInit {
     /*备份相片数组信息便于恢复*/
     this.tempPhotos = [];
     for(let p of this.photos){
-      let obj = new ShowUploadPhoto();
+      let obj = new Photo();
       for(let key in p){
         obj[key]=p[key];
       }
@@ -110,7 +112,7 @@ export class WaterMarkComponent implements OnInit {
     if(this.photoInfo.isBatch){
         for (let p of this.photos){
           if(this.photo.hasWaterMark){
-            p.waterMark = this.zoomInWaterArgs+this.base64UrlName+`,size_${p.fontSize}`;
+            p.waterMark = this.saveWaterMark+this.base64UrlName+`,size_${p.fontSize}`;
           }
           p.hasWaterMark=this.photo.hasWaterMark;
           p.blurR=this.photo.blurR;
@@ -123,7 +125,7 @@ export class WaterMarkComponent implements OnInit {
     }else{//单张处理
       for(let p of this.photos){
         if(p.hasWaterMark){
-          p.waterMark = this.zoomInWaterArgs+this.base64UrlName+`,size_${p.fontSize}`;
+          p.waterMark = this.saveWaterMark+this.base64UrlName+`,size_${p.fontSize}`;
           p.effect = this.effectArgs;
         }
       }
@@ -163,7 +165,7 @@ export class WaterMarkComponent implements OnInit {
    * @param photo 待恢复的相片
    * @param targetPhoto 恢复的相片
    */
-  resetPhoto(photo:ShowUploadPhoto,targetPhoto:ShowUploadPhoto){
+  resetPhoto(photo:Photo,targetPhoto:Photo){
     for(let key in targetPhoto){
       photo[key]=targetPhoto[key];
     }
@@ -213,6 +215,7 @@ export class WaterMarkComponent implements OnInit {
     this.zoomOutArgs =`?x-oss-process=image/resize,p_${this.photo.zoomSize}/crop,w_480,h_380,g_sw/quality,q_100`;
     this.zoomOutWaterArgs=`/watermark,image_c3RhdGljL3dhdGVyLWxvZ28ucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHBfNDA,g_sw,align_1,interval_5,color_FFFFFF,x_20,y_20,text_`;
     this.zoomInWaterArgs =  `/watermark,image_c3RhdGljL3dhdGVyLWxvZ28ucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHBfMjU,g_sw,align_1,interval_5,color_FFFFFF,x_20,y_20,text_`;
+    this.saveWaterMark=`/watermark,image_c3RhdGljL3dhdGVyLWxvZ28ucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLFBfMw,g_sw,align_1,interval_5,color_FFFFFF,x_20,y_20,text_`
     this.zoomInFontSize=`,size_13`;
     this.zoomOutFontSize=",size_18";
 
@@ -296,7 +299,6 @@ export class WaterMarkComponent implements OnInit {
       }else{
         this.effectArgs+=`/blur,r_${this.photo.blurR},s_${this.photo.blurS}`;
       }
-
     }
   }
 
