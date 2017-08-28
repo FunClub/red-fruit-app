@@ -103,6 +103,7 @@ export class ShowOnePhotoComponent implements OnInit {
     this.album = photoArgs.album;
     this.currentIndex=this.photoArgs.currentIndex;
     this.cursorArgs = new CursorType();
+
     /*监听窗口大小重置事件*/
     window.onresize = () => {}
   }

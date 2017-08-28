@@ -7,7 +7,7 @@
          [ngClass]="{'prevCursor':cursorType==cursorArgs.PREV_CURSOR,'zoomOutCursor':cursorType==cursorArgs.ZOOM_OUT_CURSOR,
        'nextCursor':cursorType==cursorArgs.NEXT_CURSOR}">
       12121
-      <img class="big-photo" [src]="api.IMAGE_PREFIX+photos[currentIndex].path+photos[currentIndex].waterMark+photos[currentIndex].effect" alt="">
+      <img class="big-photo" [src]="api.IMAGE_PREFIX+photos[currentIndex].path+photos[currentIndex].effect+photos[currentIndex].waterMark" alt="">
     </div>
 
     <!--相片操作部分-->

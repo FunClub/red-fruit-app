@@ -30,7 +30,6 @@ export class MovePhotoComponent implements OnInit {
   constructor(@Inject(MD_DIALOG_DATA)private movePhotoArgs:MovePhotoArgs,public  api:RedFruitApi,public albumApi:AlbumApi,
   private albumService:AlbumService,private toastsManager:ToastsManager
   ) {
-    console.log(movePhotoArgs)
     this.albums=movePhotoArgs.albums;
     this.selectFlag=[];
   }

@@ -27,6 +27,39 @@ export class AlbumService extends BaseService{
   thumbsUp(noticeArt:NoticeArt){
     return this.http.put(this.albumApi.THUMBS_UP,noticeArt).map(res=>res.json().data).catch(this.handleError);
   }
+
+  /**
+   * 删除相片
+   * @param photos 待删除的相片数组
+   * @return
+   */
+  deletePhotos(photos:Photo[]){
+    let deletePhoto;
+    let deletePhotos = [];
+    for(let photo of photos){
+      deletePhoto = new Photo();
+      deletePhoto.path = photo.path;
+      deletePhoto.photoId = photo.photoId;
+      deletePhotos.push(deletePhoto);
+    }
+    return this.http.patch(this.albumApi.DELETE_PHOTOS,deletePhotos).map(res=>res.json().data);
+  }
+  /**
+   * 更新水印
+   * @param photos
+   * @returns {Observable<R|T>}
+   */
+  updateWaterMark(photos:Photo[]){
+    return this.http.put(this.albumApi.UPDATE_WATER_MARK,photos).map(res=>{
+      let result = res.json().data;
+      if(result){
+        for(let photo of photos){
+          this.initEffectAndWaterMark(photo);
+        }
+      }
+      return result;
+    }).catch(this.handleError);
+  }
   /**
    * 移动相片到其他相册
    * @param movePhoto  移动相片到其他相册的模型
@@ -88,13 +121,15 @@ export class AlbumService extends BaseService{
     artArgs.discussionCount = photo.discussionCount;
     artArgs.faceAble=false;
     photo.artArgs=artArgs;
-    let hasWaterMark=false;
+    this.initEffectAndWaterMark(photo);
+  }
+  initEffectAndWaterMark(photo:Photo){
+    let effect=`?x-oss-process=image/quality,q_${photo.quality}`;
     if(!photo.waterMark){
       photo.waterMark="";
-      hasWaterMark=false;
+      photo.hasWaterMark=false;
     }else{
-      photo.waterMark='?x-oss-process=image'+photo.waterMark;
-      hasWaterMark=true;
+      photo. hasWaterMark=true;
     }
     if(!photo.sharpen){
       photo.sharpen=50;
@@ -105,13 +140,10 @@ export class AlbumService extends BaseService{
     if(!photo.bright){
       photo.bright=0;
     }
-    let effect="";
-    if(!hasWaterMark){
-      effect="?x-oss-process=image";
-    }
+
     effect +=  `/bright,${photo.bright}/sharpen,${photo.sharpen}/contrast,${photo.contrast}`;
     if(photo.blurR){
-      effect+= `/blurR,${photo.blurR}/blurS,${photo.blurS}`
+      effect+= `/blur,r_${photo.blurR},s_${photo.blurS}`
     }
     photo.effect=effect;
   }

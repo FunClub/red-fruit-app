@@ -125,10 +125,14 @@
     </div>
     <div class="operation-btn-wrapper">
       <button md-raised-button (click)="clickResetPhoto()">重置</button>
-      <button md-raised-button color="primary" (click)="save(close)">保存</button>
+      <button md-raised-button color="primary" (click)="save(closeSaved)">保存</button>
     </div>
 
   </div>
   <!--隐藏按钮用于,关闭dialog-->
-  <button md-dialog-close #close style="display: none"></button>
+
+  <!--已经修改内容-->
+  <button [md-dialog-close]="true" #closeSaved style="display: none"></button>
+  <!--已经修改未尝-->
+  <button [md-dialog-close]="false" #close style="display: none"></button>
 </main>

@@ -51,7 +51,6 @@ export class AddPhotoComponent implements OnInit {
   getPhotoColumn(){
     let width = window.innerWidth*0.8;
     let column=Math.floor(width/140);
-    console.log(column)
     return column;
   }
   /**

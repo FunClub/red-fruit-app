@@ -34,6 +34,8 @@ export class Photo{
     this.bright=0;
     this.contrast=0;
     this.sharpen=50;
+    this.blurS=0;
+    this.blurR=0;
   }
 }
 export  class ShowPhoto extends Photo{

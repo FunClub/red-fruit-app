@@ -2,6 +2,17 @@
  * 相册模块api
  */
 export class AlbumApi {
+  /**
+   * 删除相片
+   * @type {string}
+   */
+  DELETE_PHOTOS:string = "album/photos";
+  /**
+   * 更新水印
+   * @type {string}
+   */
+  UPDATE_WATER_MARK:string="album/photo/water-mark";
+
   THUMBS_UP:string="album/photo/thumbsUpUserIds";
   /**
    * 移动相片到其他相册

@@ -6,6 +6,8 @@ import {AlbumService} from "../../../service/album.service";
 import {MD_DIALOG_DATA} from "@angular/material";
 import {WaterMarkArgs} from "../../../model/album/water-mark-args.model";
 import {Photo} from "../../../model/album/add-photo.model";
+import {Observable} from "rxjs/Observable";
+import {Observer} from "rxjs/Observer";
 
 @Component({
   selector: 'app-water-mark',
@@ -77,12 +79,15 @@ export class WaterMarkComponent implements OnInit {
    * 相片索引
    */
   currentIndex:number;
+  /**
+   * 用于保存的水印
+   */
   saveWaterMark:string;
+
   constructor(@Inject(MD_DIALOG_DATA)public photoInfo:WaterMarkArgs, public api:RedFruitApi,
               private homeService:HomeService,private albumService:AlbumService) {
     this.photos = photoInfo.photos;
     this.currentIndex = photoInfo.currentIndex;
-
   }
 
   ngOnInit() {
@@ -100,6 +105,7 @@ export class WaterMarkComponent implements OnInit {
       }
       this.tempPhotos.push(obj);
     }
+    this.generateBase64Url();
     this.initPhotoData()
   }
 
@@ -113,6 +119,8 @@ export class WaterMarkComponent implements OnInit {
         for (let p of this.photos){
           if(this.photo.hasWaterMark){
             p.waterMark = this.saveWaterMark+this.base64UrlName+`,size_${p.fontSize}`;
+          }else{
+            p.waterMark=""
           }
           p.hasWaterMark=this.photo.hasWaterMark;
           p.blurR=this.photo.blurR;
@@ -126,8 +134,10 @@ export class WaterMarkComponent implements OnInit {
       for(let p of this.photos){
         if(p.hasWaterMark){
           p.waterMark = this.saveWaterMark+this.base64UrlName+`,size_${p.fontSize}`;
-          p.effect = this.effectArgs;
+        }else{
+          p.waterMark=""
         }
+
       }
     }
     close.click();
@@ -218,13 +228,12 @@ export class WaterMarkComponent implements OnInit {
     this.saveWaterMark=`/watermark,image_c3RhdGljL3dhdGVyLWxvZ28ucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLFBfMw,g_sw,align_1,interval_5,color_FFFFFF,x_20,y_20,text_`
     this.zoomInFontSize=`,size_13`;
     this.zoomOutFontSize=",size_18";
-
     this.photoBaeArgs = this.zoomInArgs;
     this.waterMarkArgs = "";
     this.fontSize = "";
     if(this.photo.hasWaterMark){
-      this.generateWaterMark();
       this.waterMarkView=true;
+      this.generateWaterMark();
     }
   }
 
@@ -322,7 +331,9 @@ export class WaterMarkComponent implements OnInit {
   generateBase64Url(){
     this.albumService.generateBase64Url(this.homeService.homeInfo.nickname).subscribe(res=>{
       this.base64UrlName=res;
-      this.zoomOutWaterMark();
+      if(this.photo.hasWaterMark){
+        this.zoomOutWaterMark();
+      }
     });
   }
 

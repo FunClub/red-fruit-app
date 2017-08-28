@@ -20,6 +20,8 @@ import {NoticeArt} from "../../../../foot-mark/model/notice-art.model";
 import {HomeService} from "../../../../home/service/home.service";
 import {BaseSocketService} from "../../../../websocket/socket/base-socket.service";
 import {NoticeMessage} from "../../../../websocket/model/notice-message.model";
+import {WaterMarkArgs} from "../../../model/album/water-mark-args.model";
+import {WaterMarkComponent} from "../water-mark/water-mark.component";
 
 
 
@@ -73,6 +75,23 @@ export class ShowPhotosComponent implements OnInit {
   ngOnInit() {
     this.selectPhoto();
   }
+
+  deletePhoto(index:number){
+    let photos = [this.photos[index]];
+    this.albumService.deletePhotos(photos).subscribe(res=>{
+      if(res){
+        this.toastsManager.success("删除相片成功","删除结果");
+        this.photos.splice(index,1);
+      }else {
+        this.toastsManager.error("删除相片失败,请重试...","删除结果");
+      }
+    });
+
+  }
+  /**
+   * 点赞
+   * @param photo 点赞的相片
+   */
   thumbsUp(photo:ShowPhoto){
     if(!photo.thumbsUpAble)return;
     let noticeArt:NoticeArt = new NoticeArt();
@@ -96,11 +115,30 @@ export class ShowPhotosComponent implements OnInit {
       }
     });
   }
-  addWaterMark(index:number){
-   /* let waterMarkArgs = new WaterMarkArgs();
+
+  /**
+   * 更新水印
+   * @param index
+   */
+  updateWaterMark(index:number){
+    let waterMarkArgs = new WaterMarkArgs();
     waterMarkArgs.isBatch=false;
-    waterMarkArgs.photos=this.photos as ShowUploadPhoto[];
-    waterMarkArgs.currentIndex=index;*/
+    waterMarkArgs.photos=this.photos;
+    waterMarkArgs.currentIndex=index;
+    this.dialog.open(WaterMarkComponent,{
+      data:waterMarkArgs,
+      disableClose:true
+    }).afterClosed().subscribe(res=>{
+      if(res){/*如果更新了水印就保存*/
+        this.albumService.updateWaterMark(this.photos).subscribe(res=>{
+          if(res){
+            this.toastsManager.success("特效修改成功","修改结果");
+          }else{
+            this.toastsManager.success("特效修改失败，请重试...","修改结果");
+          }
+        });
+      }
+    })
   }
   showDetailPhoto(index:number){
     /*初始化显示详细照片的参数*/
