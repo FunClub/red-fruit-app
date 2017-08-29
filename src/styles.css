@@ -98,7 +98,10 @@ material dialog
 .mat-radio-outer-circle{
   transform: scale(0.8,0.8);
 }
-
+/**/
+.mat-sidenav-content{
+  overflow: hidden;
+}
 /*字体图片*/
 i{
   vertical-align: middle;
@@ -156,8 +159,13 @@ i{
   margin-left: 3px;
   margin-right: 3px;
 }
+/*自定义全局样式*/
 
-/*全局Box*/
+/*按钮颜色*/
+.primary-btn{
+  background: rgb(34,170,210)!important;
+}
+/*Box*/
 .white-box{
   border: solid 1px rgb(223,223,223);
   box-shadow: 0 0 3px rgb(213,213,213);
@@ -199,7 +207,7 @@ i{
 }
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: 'Material Icons', serif;
   font-weight: normal;
   font-style: normal;
   font-size: 24px;

@@ -2,7 +2,11 @@
  * 应用api
  */
 export  class RedFruitApi {
-
+  /**
+   * 编辑器相片
+   * @type {string}
+   */
+  EDITOR_PHOTO:string="album/editor-photo";
   /**
    * 通知socket
    * @param userId
