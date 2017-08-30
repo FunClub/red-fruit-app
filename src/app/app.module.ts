@@ -5,7 +5,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {LoginModule} from "./login/login.module";
 import {MD_PLACEHOLDER_GLOBAL_OPTIONS} from "@angular/material";
 import {ToastOptions} from "ng2-toastr";
-import {BaseToastsOptions} from "./share/model/toasts-options.model";
+import {BaseToastsOptions} from "./share/model/base/toasts-options.model";
 import {HomeModule} from "./home/home.module";
 import {NgProgressModule} from "ngx-progressbar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";

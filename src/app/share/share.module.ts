@@ -7,18 +7,18 @@ import { FooterComponent } from './component/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './component/header/header.component';
 import {RouterModule} from "@angular/router";
-import {NavLink} from "./model/nav-link.model";
+import {NavLink} from "./model/base/nav-link.model";
 import {
   MdButtonModule, MdDialogModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdTabsModule,
   MdTooltipModule
 } from "@angular/material";
 
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
-import {RfEditorOptions} from "./model/rf-editor-options.model";
+import {RfEditorOptions} from "./model/base/rf-editor-options.model";
 import { SigleMoodComponent } from './component/sigle-mood/sigle-mood.component';
 import { ArtOperationComponent } from './component/art-operation/art-operation.component';
 import { FaceComponent } from './component/face/face.component';
-import {Face} from "./model/face.model";
+import {Face} from "./model/base/face.model";
 import { UploadImgComponent } from './component/upload-img/upload-img.component';
 import {ImageUploadService} from "./service/image-upload.service";
 import {DndModule} from "ng2-dnd";
@@ -26,7 +26,7 @@ import {BusyModule} from "angular2-busy";
 import {HttpModule} from "@angular/http";
 import {ShowMoodImg} from "./model/show-mood-img";
 import { ArtDiscussionComponent } from './component/art-discussion/art-discussion.component';
-import {BucketFolder} from "./model/bucket-folder.model";
+import {BucketFolder} from "./model/base/bucket-folder.model";
 import {InsertDiscussion} from "./model/discussion/insert-discussion.model";
 import {DiscussionService} from "./service/discussion.service";
 import {ShowPagedDiscussion} from "./model/discussion/show-paged-discussion.model";
@@ -37,7 +37,8 @@ import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
 import { MoreDiscussionComponent } from './component/more-discussion/more-discussion.component';
 import { OpenMoreDiscussionComponent } from './component/open-more-discussion/open-more-discussion.component';
 import {NoticeArtType} from "../foot-mark/model/notice-art-type";
-
+import { SingleCatalogNoteComponent } from './component/single-catalog-note/single-catalog-note.component';
+import { SingleNoteComponent } from './component/single-note/single-note.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -70,7 +71,8 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     ReplyDiscussionComponent,
     SafeHtmlPipe,
     BusyModule,
-    MdMenuModule
+    MdMenuModule,
+    SingleCatalogNoteComponent
   ],
   entryComponents:[MoreDiscussionComponent],
   providers:[
@@ -115,6 +117,7 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     NoticeArtType
     ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
-    FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent, MoreDiscussionComponent, OpenMoreDiscussionComponent]
+    FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent,
+    MoreDiscussionComponent, OpenMoreDiscussionComponent, SingleCatalogNoteComponent, SingleNoteComponent]
 })
 export class ShareModule { }

@@ -4,6 +4,7 @@ import {InviteMessage} from "../../../websocket/model/invite-message.model";
 import {InviteMessageType} from "../../../websocket/message-type/invite-message-type.enum";
 import {NgProgressService} from "ngx-progressbar";
 import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
+import {RedFruitApi} from "../../../share/model/base/api.model";
 
 @Component({
   selector: 'app-invite-message',
@@ -19,7 +20,7 @@ export class InviteMessageComponent implements OnInit {
    */
   inviteMessage:InviteMessage;
   constructor(private loginService:LoginService,private socketService:BaseSocketService,
-  private progressService:NgProgressService
+  private progressService:NgProgressService,public api:RedFruitApi
   ) {
     //取出邀请组件放入loginService的邀请信息
     this.inviteMessage= loginService.inviteMessage[0];

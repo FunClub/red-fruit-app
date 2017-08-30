@@ -1,0 +1,49 @@
+/*包裹日志的div*/
+.note-wrapper{
+  height: 40px;
+  padding: 10px;
+  border-bottom: 1px rgb(233,233,233) solid;
+}
+/*日志用户头像*/
+.note-user-profile{
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  float: left;
+  margin-right: 10px;
+}
+/*日志标题*/
+.note-title{
+  font-size: 14px;
+  color: rgb(50,50,50);
+  cursor: pointer;
+}
+.note-title:hover{
+  text-decoration: underline;
+}
+/*包裹日志信息d的div*/
+.note-info-wrapper{
+  display: inline-block;
+  margin-right: 20px;
+  float: right;
+}
+
+.note-info-wrapper:first-child{
+  float: none;
+  margin-left: 0;
+}
+.note-info-wrapper i{
+  color: rgb(122,149,153);
+  font-size: 18px;
+}
+.note-wrapper span{
+  color: rgb(100,100,100);
+  font-size: 12px;
+}
+/*日志分类标签*/
+.note-sort-label{
+  width: 40px;
+  display: inline-block;
+  overflow: hidden;
+  white-space:nowrap; text-overflow:ellipsis;
+}

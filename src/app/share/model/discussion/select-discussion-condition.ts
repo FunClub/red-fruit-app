@@ -7,7 +7,5 @@ export class SelectDiscussionCondition extends PageRequest{
   constructor() {
     super();
     this.sortBy="subDiscussionsLength";
-    this.pageIndex=0;
-    this.pageSize=10;
   }
 }

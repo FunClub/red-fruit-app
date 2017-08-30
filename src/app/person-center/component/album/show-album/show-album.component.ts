@@ -31,9 +31,12 @@ export class ShowAlbumComponent implements OnInit {
 
   ngOnInit() {
     this.albumService.selectAllAlbum().subscribe(res=>{
-      this.showAllAlbum = res;
-      this.albums = this.showAllAlbum.albums;
-      this.addPhotoArgs.albums=this.albums;
+      if(res){//如果相册数据不为空
+        this.showAllAlbum = res;
+        this.albums = this.showAllAlbum.albums;
+        this.addPhotoArgs.albums=this.albums;
+      }
+
     })
   }
 

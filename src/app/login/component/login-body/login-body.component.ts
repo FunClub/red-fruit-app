@@ -10,7 +10,7 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Regex} from "../../../share/model/regex.model";
 import {LoginService} from "../../service/login.service";
 import {Router} from "@angular/router";
-import {BaseToastsOptions} from "../../../share/model/toasts-options.model";
+import {BaseToastsOptions} from "../../../share/model/base/toasts-options.model";
 
 @Component({
   selector: 'app-login-body',

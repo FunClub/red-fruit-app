@@ -1,0 +1,62 @@
+/*日志主体内容*/
+.note-main{
+  width: 80%;
+  min-width: 800px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+}
+
+/*日志操作*/
+.note-operation{
+
+}
+.note-operation div{
+  display: inline-block;
+
+}
+.note-operation-left{
+  width: 40%;
+}
+.note-operation-right{
+  width: 57%;
+  text-align: right;
+}
+/*包裹日志操作的div*/
+.note-operation-wrapper{
+  display: inline-block;
+  padding: 5px;
+  margin-left: 10px;
+}
+.note-operation-wrapper:last-child{
+  margin-left: 30px;
+}
+.note-operation-wrapper i{
+  color: rgb(34,170,210);
+}
+/*写日志激活的样式*/
+.write-note-active{
+  border-bottom: solid rgb(34,170,210);
+}
+/*日志操作label*/
+.note-operation-label{
+  font-size: 14px;
+  position: relative;
+  right: 10px;
+  cursor: pointer;
+}
+.note-operation-label-right{
+  font-size: 14px;
+  color: rgb(130,130,130);
+  margin-right: 5px;
+}
+md-select{
+  position: relative;
+  bottom: 10px;
+}
+/*日志内容*/
+.note-content{
+
+  margin-top: 10px;
+}

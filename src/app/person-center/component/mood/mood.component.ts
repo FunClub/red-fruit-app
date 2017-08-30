@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RfEditorOptions} from '../../../share/model/rf-editor-options.model';
+import {RfEditorOptions} from '../../../share/model/base/rf-editor-options.model';
 import {MoodService} from "../../service/mood.service";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {InsertMood} from "../../model/mood/insert-mood";
@@ -9,6 +9,7 @@ import {SelectMoodCondition} from "../../model/mood/select-mood-condition.model"
 import {PagedMood} from "../../model/mood/paged-mood";
 import {ShowMoodDto} from "../../model/mood/show-mood-dto.model";
 import {HomeService} from "../../../home/service/home.service";
+
 
 declare let $:any;
 @Component({
@@ -67,7 +68,7 @@ export class MoodComponent implements OnInit {
     this.rfOptions.toolbarButtons=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
     this.rfOptions.toolbarButtonsXS=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
     this.rfOptions.toolbarButtonsSM=['bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
-    this.rfOptions.quickInsertButtons= ['table', 'ul', 'ol', 'hr'];
+
   }
   ngOnInit() {
     this.initPaginator();

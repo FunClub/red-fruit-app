@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Face} from "../../model/face.model";
+import {Face} from "../../model/base/face.model";
 
 
 @Component({

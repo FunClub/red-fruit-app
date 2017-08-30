@@ -30,6 +30,10 @@ import { ShowAlbumComponent } from './component/album/show-album/show-album.comp
 import { EditPhotoInfoComponent } from './component/album/show-photos/edit-photo-info/edit-photo-info.component';
 import { MovePhotoComponent } from './component/album/show-photos/move-photo/move-photo.component';
 import { ShowOnePhotoComponent } from './component/album/show-photos/show-one-photo/show-one-photo.component';
+import {NoteService} from "./service/note.service";
+import {NoteApi} from "./model/note/note-api.model";
+import { AddNoteComponent } from './component/note/add-note/add-note.component';
+import { CatalogNoteListComponent } from './component/note/catalog-note-list/catalog-note-list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -51,14 +55,15 @@ import { ShowOnePhotoComponent } from './component/album/show-photos/show-one-ph
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
     SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent,
-    ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent, ShowOnePhotoComponent],
+    ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent, ShowOnePhotoComponent, AddNoteComponent, CatalogNoteListComponent],
   entryComponents:[
     AddAlbumComponent,
     AddPhotoComponent,
     WaterMarkComponent,
     EditPhotoInfoComponent,
     MovePhotoComponent,
-    ShowOnePhotoComponent
+    ShowOnePhotoComponent,
+    AddNoteComponent
   ],
   providers:[
     /*用户个人中心服务*/
@@ -77,7 +82,13 @@ import { ShowOnePhotoComponent } from './component/album/show-photos/show-one-ph
     AlbumService,
 
     /*相册API*/
-    AlbumApi
+    AlbumApi,
+
+    /*日志服务*/
+    NoteService,
+
+    /*日志api*/
+    NoteApi
   ]
 })
 export class PersonCenterModule { }

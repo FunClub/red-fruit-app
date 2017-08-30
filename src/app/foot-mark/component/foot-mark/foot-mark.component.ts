@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavLink} from "../../../share/model/nav-link.model";
+import {NavLink} from "../../../share/model/base/nav-link.model";
 
 @Component({
   selector: 'app-foot-mark',

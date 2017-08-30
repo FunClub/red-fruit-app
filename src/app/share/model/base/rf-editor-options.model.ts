@@ -10,9 +10,9 @@ export class RfEditorOptions {
   toolbarBottom=false;
   placeholderText= "书写青春....";
   imageResize=true;
-  imageManagerLoadURL="http://i.froala.com/images";
+  imageManagerLoadURL="album/editor-photo";
   editorClass='editor-class';
-  quickInsertButtons=null;
+/*  quickInsertButtons=['image', 'table', 'ul', 'ol', 'hr'];*/
   htmlDoNotWrapTags=['script', 'img'];
   imageEditButtons=[];
   enter="$.FroalaEditor.ENTER_BR";

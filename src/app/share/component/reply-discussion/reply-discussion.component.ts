@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {RfEditorOptions} from "../../model/rf-editor-options.model";
+import {RfEditorOptions} from "../../model/base/rf-editor-options.model";
 import {InsertSubDiscussion} from "../../model/discussion/insert-sub-discussion";
 import {DiscussionService} from "../../service/discussion.service";
 import {RefreshDiscussion} from "../../model/discussion/refresh-discussion.model";

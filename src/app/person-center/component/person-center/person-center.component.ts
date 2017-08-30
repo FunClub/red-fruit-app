@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 
 import {HomeService} from "../../../home/service/home.service";
-import {NavLink} from "../../../share/model/nav-link.model";
+import {NavLink} from "../../../share/model/base/nav-link.model";
 declare var $:any;
 @Component({
   selector: 'app-person-center',

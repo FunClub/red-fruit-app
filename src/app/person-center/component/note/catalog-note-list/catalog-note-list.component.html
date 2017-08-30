@@ -1,0 +1,42 @@
+<main class="note-main" [@flyXInOutFromRight]>
+  <!--日志操作开始-->
+  <div class="note-operation white-box">
+    <div class="note-operation-left">
+      <div class="note-operation-wrapper" [ngClass]="{'write-note-active':showWriteNote}"  (click)="toggleWriteNote()">
+        <button md-icon-button><i class="material-icons">mode_edit</i></button>
+        <span class="note-operation-label">写日志</span>
+      </div>
+      <div class="note-operation-wrapper">
+        <button md-icon-button><i class="material-icons">assignment</i></button>
+        <span class="note-operation-label">日志管理</span>
+      </div>
+    </div>
+    <div class="note-operation-right">
+      <div class="note-operation-wrapper">
+        <span class="note-operation-label-right">分类</span>
+        <md-select>
+          <md-option value="心情">心情</md-option>
+          <md-option>心情</md-option>
+          <md-option>心情</md-option>
+        </md-select>
+      </div>
+      <div class="note-operation-wrapper">
+        <md-slide-toggle color="primary" [checked]="selectCondition.byHalf">显示Ta的日志</md-slide-toggle>
+      </div>
+
+    </div>
+  </div>
+  <!--日志操作结束-->
+
+  <!--日志内容开始-->
+  <div class="note-content white-box" *ngIf="!showWriteNote" [@flyXInOutFromTop]>
+    <app-single-catalog-note *ngFor="let catalogNote of pagedNote.content" [catalogNote]="catalogNote"></app-single-catalog-note>
+    <md-paginator (page)="changedPage($event)" [pageSizeOptions]="pageSizeOptions"
+                  [length]="pagedNote.totalElements" [pageSize]="selectCondition.pageRequestDto.pageSize"></md-paginator>
+  </div>
+  <!--日志内容结束-->
+  <div  [@flyXInOutFromTop] *ngIf="showWriteNote">
+    <app-add-note></app-add-note>
+  </div>
+
+</main>

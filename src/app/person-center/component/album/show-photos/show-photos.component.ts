@@ -78,7 +78,7 @@ export class ShowPhotosComponent implements OnInit {
 
   deletePhoto(index:number){
     let photos = [this.photos[index]];
-    this.albumService.deletePhotos(photos).subscribe(res=>{
+    this.albumService.deletePhotos(photos,this.currentAlbum.albumId).subscribe(res=>{
       if(res){
         this.toastsManager.success("删除相片成功","删除结果");
         this.photos.splice(index,1);

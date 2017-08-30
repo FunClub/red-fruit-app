@@ -1,0 +1,22 @@
+<div class="note-wrapper" (click)="selectNote()">
+  <img class="note-user-profile" [src]="api.IMAGE_PREFIX+catalogNote.profile">
+  <p class="note-title">{{catalogNote.title}}</p>
+  <div class="note-info">
+    <div class="note-info-wrapper">
+      <i class="material-icons">query_builder</i>
+      <span>{{catalogNote.date}}</span>
+    </div>
+    <div class="note-info-wrapper">
+      <i class="material-icons">bookmark</i>
+      <span class="note-sort-label">{{catalogNote.type}}</span>
+    </div>
+    <div class="note-info-wrapper">
+      <i class="material-icons">thumb_up</i>
+      <span>{{catalogNote.thumbsUpCount}}</span>
+    </div>
+    <div class="note-info-wrapper">
+      <i class="material-icons">sms</i>
+      <span>{{catalogNote.discussionCount}}</span>
+    </div>
+  </div>
+</div>

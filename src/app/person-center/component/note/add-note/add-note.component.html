@@ -1,0 +1,25 @@
+
+
+  <!--写日志开始-->
+  <div class="write-note-content" >
+    <div class="write-note-title-wrapper">
+      <textarea [(ngModel)]="note.title" class="note-title-textarea" placeholder="请输入日志标题"></textarea>
+    </div>
+    <div class="note-editor-wrapper">
+      <div class="note-editor" [froalaEditor]="editorOption" [(froalaModel)]="note.content"></div>
+    </div>
+    <div class="all-add-note-info">
+      <span class="add-note-info-label">分类:</span>
+      <md-select placeholder="选择日志分类" [(ngModel)]="note.type">
+        <md-option *ngFor="let noteType of noteTypes" [value]="noteType">{{noteType}}</md-option>
+      </md-select>
+      <span class="add-note-info-label note-privacy-label">权限:</span>
+      <md-select placeholder="设置权限" [(ngModel)]="note.limit">
+        <md-option *ngFor="let limit of limitTypes" [value]="limit.value">{{limit.label}}</md-option>
+      </md-select>
+      <button (click)="publishNote()" md-raised-button class="primary-btn publish-note-btn" color="primary"><i class="material-icons">publish</i>发布</button>
+      <button md-raised-button class="publish-note-btn">存为草稿</button>
+    </div>
+  </div>
+  <!--写日志结束-->
+

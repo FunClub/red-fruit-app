@@ -5,7 +5,7 @@ import {Observable} from "rxjs/Observable";
 import {AlbumApi} from "../model/base/album-api.model";
 import {ResultView} from "../../share/model/base/result-view";
 import {ShowAlbumPhoto, ShowAllAlbum} from "../model/album/show-album.model";
-import {BucketFolder} from "../../share/model/bucket-folder.model";
+import {BucketFolder} from "../../share/model/base/bucket-folder.model";
 
 import {AddPhoto, Photo, ShowPhoto} from "../model/album/add-photo.model";
 import {UpdateAlbumCover, UpdatePhotoInfo} from "../model/album/update-photo.model";
@@ -14,6 +14,7 @@ import {NoticeArt} from "../../foot-mark/model/notice-art.model";
 import {ArtArgs} from "../../share/model/base/art-args.model";
 import {ArtType} from "../../foot-mark/model/art-type.model";
 import {SelectDiscussionCondition} from "../../share/model/discussion/select-discussion-condition";
+import {DeletePhoto} from "../model/album/delete-photo.model";
 /**
  * 相册服务
  */
@@ -31,9 +32,11 @@ export class AlbumService extends BaseService{
   /**
    * 删除相片
    * @param photos 待删除的相片数组
+   * @param albumId 相册id
    * @return
    */
-  deletePhotos(photos:Photo[]){
+  deletePhotos(photos:Photo[],albumId:string){
+    let deletePhotoDto = new DeletePhoto();
     let deletePhoto;
     let deletePhotos = [];
     for(let photo of photos){
@@ -42,7 +45,9 @@ export class AlbumService extends BaseService{
       deletePhoto.photoId = photo.photoId;
       deletePhotos.push(deletePhoto);
     }
-    return this.http.patch(this.albumApi.DELETE_PHOTOS,deletePhotos).map(res=>res.json().data);
+    deletePhotoDto.photos=photos;
+    deletePhotoDto.albumId=albumId;
+    return this.http.patch(this.albumApi.DELETE_PHOTOS,deletePhotoDto).map(res=>res.json().data);
   }
   /**
    * 更新水印

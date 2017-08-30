@@ -96,7 +96,7 @@ export  class RedFruitApi {
    * 图片前缀
    * @type {string}
    */
-  IMAGE_PREFIX:string="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/";
+  IMAGE_PREFIX:string="http://taomei1314.com/";
   /**
    * 判断能否进入HOME组件
    * @type {string}

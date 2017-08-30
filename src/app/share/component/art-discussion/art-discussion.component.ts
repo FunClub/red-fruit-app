@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {RfEditorOptions} from "../../model/rf-editor-options.model";
+import {RfEditorOptions} from "../../model/base/rf-editor-options.model";
 import {animate, keyframes,style, transition, trigger} from "@angular/animations";
 import {HomeService} from "../../../home/service/home.service";
 import {InsertDiscussion} from "../../model/discussion/insert-discussion.model";
