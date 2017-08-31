@@ -128,6 +128,11 @@ export class AlbumService extends BaseService{
     photo.artArgs=artArgs;
     this.initEffectAndWaterMark(photo);
   }
+
+  /**
+   * 初始化效果和水印参数
+   * @param photo
+   */
   initEffectAndWaterMark(photo:Photo){
     let effect=`?x-oss-process=image/quality,q_${photo.quality}`;
     if(!photo.waterMark){

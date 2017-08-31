@@ -1,5 +1,7 @@
 
 
+import {ArtDto} from "../../../share/model/base/art-dto.model";
+import {ArtArgs} from "../../../share/model/base/art-args.model";
 /**
  * 插入日志的模型
  */
@@ -8,10 +10,11 @@ export class Note {
   content:string;
   type:string;
   limit:number;
-
+  original:boolean;
   constructor() {
     this.limit=1;
     this.type="心情";
+    this.original=true;
   }
 }
 /**
@@ -25,14 +28,18 @@ export  class ShowPagedNote{
 /**
  * 单一日志目录模型
  */
-export  class  ShowCatalogNote{
+export  class  ShowCatalogNote extends ArtDto{
   noteId:string;
   nickname:string;
   profile:string;
   date:string;
   title:string;
   type:string;
-  discussionCount:number;
-  thumbsUpCount:number;
   limit:number;
+}
+/**
+ * 显示一条日志的模型
+ */
+export  class ShowNote extends ShowCatalogNote{
+  content:string;
 }

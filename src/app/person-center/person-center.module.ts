@@ -34,6 +34,9 @@ import {NoteService} from "./service/note.service";
 import {NoteApi} from "./model/note/note-api.model";
 import { AddNoteComponent } from './component/note/add-note/add-note.component';
 import { CatalogNoteListComponent } from './component/note/catalog-note-list/catalog-note-list.component';
+import {SingleCatalogNoteComponent} from "./component/note/single-catalog-note/single-catalog-note.component";
+import {SingleNoteComponent} from "./component/note/single-note/single-note.component";
+import { PreviewNoteComponent } from './component/note/preview-note/preview-note.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -55,7 +58,8 @@ import { CatalogNoteListComponent } from './component/note/catalog-note-list/cat
   declarations: [NoteComponent, PersonCenterComponent, HomePageComponent,
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
     SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent,
-    ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent, ShowOnePhotoComponent, AddNoteComponent, CatalogNoteListComponent],
+    ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent, ShowOnePhotoComponent,
+    AddNoteComponent, CatalogNoteListComponent,SingleCatalogNoteComponent,SingleNoteComponent, PreviewNoteComponent],
   entryComponents:[
     AddAlbumComponent,
     AddPhotoComponent,
@@ -63,7 +67,8 @@ import { CatalogNoteListComponent } from './component/note/catalog-note-list/cat
     EditPhotoInfoComponent,
     MovePhotoComponent,
     ShowOnePhotoComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    PreviewNoteComponent
   ],
   providers:[
     /*用户个人中心服务*/

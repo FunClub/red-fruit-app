@@ -73,7 +73,7 @@
           <button md-menu-item class="photo-menu-btn" (click)="editPhotoInfo(photo)"><i class="material-icons photo-menu-i">mode_edit</i>编辑</button>
           <button md-menu-item class="photo-menu-btn"  (click)="updateWaterMark(i)"><i class="material-icons photo-menu-i">color_lens</i>特效</button>
           <button md-menu-item class="photo-menu-btn" (click)="updateAlbumCover(photo.path)"><i class="material-icons photo-menu-i">photo_library</i>设为封面</button>
-          <button *ngIf="albums.length>1" md-menu-item class="photo-menu-btn" (click)="movePhoto(photo.photoId,i)"><i class="material-icons photo-menu-i" >zoom_out_map</i>移动到相册</button>
+          <button *ngIf="albums.length>1" md-menu-item class="photo-menu-btn" (click)="movePhoto(photo.photoId,i)"><i class="material-icons photo-menu-i" >open_with</i>移动到相册</button>
           <button md-menu-item class="photo-menu-btn" (click)="deletePhoto(i)"><i class="material-icons photo-menu-i">delete</i>删除</button>
         </md-menu>
       </div>

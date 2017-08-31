@@ -2,6 +2,8 @@
  * 动态类型
  */
 export class ArtType {
+
+  NOTE:string="日志";
   /**
    * 心情动态
    * @type {string}

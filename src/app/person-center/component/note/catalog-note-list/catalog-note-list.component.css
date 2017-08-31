@@ -3,8 +3,7 @@
   width: 80%;
   min-width: 800px;
   margin: auto;
-  margin-top: 20px;
-  margin-bottom: 30px;
+
 
 }
 
@@ -57,6 +56,5 @@ md-select{
 }
 /*日志内容*/
 .note-content{
-
   margin-top: 10px;
 }

@@ -1,0 +1,44 @@
+<main class="single-note-main white-box">
+  <!--所有日志开始-->
+  <div class="all-note">
+    <div class="all-note-top">
+        <span class="back-note-catalog">返回日志列表</span>
+        <p class="note-title">{{showNote.title}}</p>
+        <div class="all-note-info">
+          <div class="note-info-wrapper">
+            <i class="material-icons">query_builder</i>
+            <span>{{showNote.date}}</span>
+          </div>
+          <div class="note-info-wrapper">
+            <i class="material-icons">person</i>
+            <span>{{showNote.nickname}}</span>
+          </div>
+          <div class="note-info-wrapper">
+            <i class="material-icons">bookmark</i>
+            <span>{{showNote.type}}</span>
+          </div>
+          <div class="note-info-wrapper right-note-info-wrapper">
+            <i class="material-icons">thumb_up</i>
+            <span>{{showNote.thumbsUpCount}}</span>
+          </div>
+          <div class="note-info-wrapper right-note-info-wrapper">
+            <i class="material-icons">sms</i>
+            <span>{{showNote.discussionCount}}</span>
+          </div>
+          <div class="note-info-wrapper operation-note">
+            <i class="material-icons">more_horiz</i>
+            <span>操作</span>
+          </div>
+        </div>
+    </div>
+    <div class="note-content" [froalaView]="showNote.content"></div>
+  </div>
+  <!--所有日志结束-->
+
+  <!--评论开始-->
+  <div class="all-note-discussion">
+    <p class="note-discussion-label">评论({{showNote.discussionCount}})</p>
+    <app-art-discussion *ngIf="artArgs" [artArgs]="artArgs"></app-art-discussion>
+  </div>
+  <!--评论结束-->
+</main>

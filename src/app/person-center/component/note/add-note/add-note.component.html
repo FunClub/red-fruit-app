@@ -18,6 +18,7 @@
         <md-option *ngFor="let limit of limitTypes" [value]="limit.value">{{limit.label}}</md-option>
       </md-select>
       <button (click)="publishNote()" md-raised-button class="primary-btn publish-note-btn" color="primary"><i class="material-icons">publish</i>发布</button>
+      <button (click)="previewNote()" md-raised-button class="primary-btn publish-note-btn" color="primary">预览</button>
       <button md-raised-button class="publish-note-btn">存为草稿</button>
     </div>
   </div>

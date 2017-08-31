@@ -4,6 +4,9 @@ import {Note} from "../../../model/note/note.model";
 import {RedFruitApi} from "../../../../share/model/base/api.model";
 import {NoteService} from "../../../service/note.service";
 import {limit, noteType} from "../../../../share/model/base/static-data.model";
+import {Router} from "@angular/router";
+import {MdDialog} from "@angular/material";
+import {PreviewNoteComponent} from "../preview-note/preview-note.component";
 
 @Component({
   selector: 'app-add-note',
@@ -28,7 +31,7 @@ import {limit, noteType} from "../../../../share/model/base/static-data.model";
    * 日志模型
    */
   note:Note;
-  constructor(private api:RedFruitApi,private noteService:NoteService) {
+  constructor(private api:RedFruitApi,private noteService:NoteService,private router:Router,private dialog:MdDialog) {
     this.editorOption = new RfEditorOptions();
     this.noteTypes=noteType;
     this.limitTypes = limit;
@@ -45,7 +48,12 @@ import {limit, noteType} from "../../../../share/model/base/static-data.model";
   }
   publishNote(){
     this.noteService.insertNote(this.note).subscribe(res=>{
-      console.log(res)
+      this.router.navigate(["home/person-center/note",res]);
     });
+  }
+  previewNote(){
+    this.dialog.open(PreviewNoteComponent,{
+      data:this.note
+    })
   }
 }

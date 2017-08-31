@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ShowCatalogNote} from "../../../person-center/model/note/note.model";
-import {RedFruitApi} from "../../model/base/api.model";
+import {ShowCatalogNote} from "../../../model/note/note.model";
+import {RedFruitApi} from "../../../../share/model/base/api.model";
 import {Router} from "@angular/router";
 
 @Component({

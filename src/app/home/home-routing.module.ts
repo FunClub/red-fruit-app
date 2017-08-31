@@ -18,7 +18,7 @@ import {MyArtComponent} from "../foot-mark/component/my-art/my-art.component";
 import {ShowPhotosComponent} from "../person-center/component/album/show-photos/show-photos.component";
 import {ShowAlbumComponent} from "../person-center/component/album/show-album/show-album.component";
 import {CatalogNoteListComponent} from "../person-center/component/note/catalog-note-list/catalog-note-list.component";
-import {SingleNoteComponent} from "../share/component/single-note/single-note.component";
+import {SingleNoteComponent} from "../person-center/component/note/single-note/single-note.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -38,7 +38,7 @@ const  homeRoutes:Routes=[
             component:NoteComponent,
             children:[
               {path:'',component:CatalogNoteListComponent},
-              {path:':albumId',component:SingleNoteComponent}
+              {path:':noteId',component:SingleNoteComponent}
             ]
           },
           {
