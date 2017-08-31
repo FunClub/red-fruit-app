@@ -7,6 +7,7 @@ import {SelectCatalogNote} from "../../../../share/model/note/select-catalog-not
 import {PageRequest} from "../../../../share/model/base/page-request.model";
 import {ShowPagedNote} from "../../../model/note/note.model";
 import {NgProgressService} from "ngx-progressbar";
+import {EditorNoteArgs} from "../../../model/note/editor-note-args";
 declare let $:any;
 @Component({
   selector: 'app-catalog-note-list',
@@ -61,7 +62,13 @@ export class CatalogNoteListComponent implements OnInit {
    * @type {[number,number,number,number]}
    */
   pageSizeOptions = [5, 10, 25, 100];
+
+  /**
+   * 日志编辑器参数,
+   */
+  editorNoteArgs:EditorNoteArgs;
   constructor(private api:RedFruitApi,private noteService:NoteService,private dialog:MdDialog,private ngProgressService:NgProgressService) {
+    //初始化日志查询参数
     this.selectCondition = new SelectCatalogNote();
     this.selectCondition.showHalfNote=true;
     this.selectCondition.byHalf=true;
@@ -70,6 +77,10 @@ export class CatalogNoteListComponent implements OnInit {
     this.selectCondition.pageRequestDto=pageRequest;
 
     this.pagedNote = new ShowPagedNote();
+
+    //初始化日志编辑器参数,
+    this.editorNoteArgs = new EditorNoteArgs();
+    this.editorNoteArgs.isAdd=true;
   }
 
   ngOnInit() {

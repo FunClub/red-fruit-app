@@ -69,12 +69,12 @@
         <span (click)="showDetailPhoto(i)"><i class="material-icons" >sms</i></span>
         <span>{{photo.artArgs.discussionCount?photo.artArgs.discussionCount:''}}</span>
         <span [mdMenuTriggerFor]="photoMenu"><i class="material-icons photo-more-operation">more_horiz</i></span>
-        <md-menu #photoMenu="mdMenu" class="photo-menu">
-          <button md-menu-item class="photo-menu-btn" (click)="editPhotoInfo(photo)"><i class="material-icons photo-menu-i">mode_edit</i>编辑</button>
-          <button md-menu-item class="photo-menu-btn"  (click)="updateWaterMark(i)"><i class="material-icons photo-menu-i">color_lens</i>特效</button>
-          <button md-menu-item class="photo-menu-btn" (click)="updateAlbumCover(photo.path)"><i class="material-icons photo-menu-i">photo_library</i>设为封面</button>
-          <button *ngIf="albums.length>1" md-menu-item class="photo-menu-btn" (click)="movePhoto(photo.photoId,i)"><i class="material-icons photo-menu-i" >open_with</i>移动到相册</button>
-          <button md-menu-item class="photo-menu-btn" (click)="deletePhoto(i)"><i class="material-icons photo-menu-i">delete</i>删除</button>
+        <md-menu #photoMenu="mdMenu" class="custom-md-menu">
+          <button md-menu-item (click)="editPhotoInfo(photo)"><i class="material-icons">mode_edit</i>编辑</button>
+          <button md-menu-item  (click)="updateWaterMark(i)"><i class="material-icons">color_lens</i>特效</button>
+          <button md-menu-item  (click)="updateAlbumCover(photo.path)"><i class="material-icons">photo_library</i>设为封面</button>
+          <button *ngIf="albums.length>1" md-menu-item  (click)="movePhoto(photo.photoId,i)"><i class="material-icons photo-menu-i" >open_with</i>移动到相册</button>
+          <button md-menu-item  (click)="deletePhoto(i)"><i class="material-icons">delete</i>删除</button>
         </md-menu>
       </div>
     </div>

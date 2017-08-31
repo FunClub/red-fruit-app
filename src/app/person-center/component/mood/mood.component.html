@@ -30,7 +30,7 @@
         <i class="material-icons" id="operation-jurisdiction-ico">remove_red_eye</i>
         <span class="operation-text" id="jurisdiction-text">{{insertMood.limit==1?"公开到分享圈":"仅情侣可见"}}</span>
       </button>
-      <md-menu #menu="mdMenu">
+      <md-menu #menu="mdMenu" class="custom-md-menu">
         <button md-menu-item (click)="changeLimit(1)" [ngClass]="{'active-limit':insertMood.limit==1}">
           <i class="material-icons" id="public-view-ico">public</i>
           <span >公开到分享圈</span>

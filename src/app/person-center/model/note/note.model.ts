@@ -6,6 +6,7 @@ import {ArtArgs} from "../../../share/model/base/art-args.model";
  * 插入日志的模型
  */
 export class Note {
+  noteId:string;
   title:string;
   content:string;
   type:string;

@@ -1,0 +1,140 @@
+/*修改material2默认样式*/
+
+/*tabs的标签页*/
+.mat-tab-link{
+  width: 120px;
+  min-width: 100px!important;
+}
+/*tabs下划线*/
+.mat-ink-bar{
+  background: red;
+}
+/*输入框前缀*/
+.input-prefix{
+  color: rgb(100,100,100);
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+/*material dialog*/
+.mat-dialog-container{
+  padding: 0!important;
+  max-width: 100%!important;
+}
+
+/*显示更多评论面板*/
+.more-discussion-panel{
+  position: absolute;
+  height: 90%;
+  width: 60%;
+}
+
+/*添加相片面板*/
+.add-photo-panel{
+  width: 80%;
+  height: 80%;
+}
+
+/*显示照片面板*/
+.show-photo-panel{
+  width: 90%;
+  height: 100%;
+  overflow: visible!important;
+}
+
+/*dialog背景*/
+.cdk-overlay-dark-backdrop{
+  background: rgb(141, 150, 165);
+  opacity: 0.71!important;
+}
+
+/*弹出框标题*/
+.dialog-title{
+  padding: 8px;
+  font-size: 15px;
+  border-bottom: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(213,213,213);
+}
+
+/*大的弹出框标题*/
+.big-dialog-title{
+  padding: 10px;
+  border-bottom: 1px solid rgb(223,223,223);
+  box-shadow: 0 0 5px rgb(213,213,213);
+}
+
+/*dialog关闭*/
+.dialog-close{
+  float: right;
+  cursor: pointer;
+}
+
+/*material button*/
+.mat-button-wrapper{
+  min-width: 20px!important;
+}
+
+/*material select*/
+/*下拉选项高度设为自动*/
+.mat-option{
+  height: auto;
+}
+/*下拉选项placeholder*/
+.mat-select-trigger{
+  font-size: 13px;
+  color: rgb(100,100,100);
+}
+
+/*菜单*/
+.custom-md-menu .mat-menu-item{
+  height: 35px;
+  line-height: 35px;
+}
+.custom-md-menu .mat-menu-item:hover{
+  background: rgb(233,233,233);
+}
+.custom-md-menu button{
+  font-size: 13px;
+}
+.custom-md-menu i{
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+  /*material radio*/
+/*单选按钮变小*/
+.mat-radio-outer-circle{
+  transform: scale(0.8,0.8);
+}
+
+.mat-sidenav-content{
+  overflow: hidden;
+}
+/*字体图片*/
+i{
+  vertical-align: middle;
+}
+
+/*icon*/
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v22/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons', serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}

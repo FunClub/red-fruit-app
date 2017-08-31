@@ -9,7 +9,7 @@
 }
 /*所有日志*/
 .all-note{
-
+  position: relative;
 }
 .all-note-top{
   border-bottom: dashed 1px rgb(200,200,200);

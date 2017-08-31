@@ -2,6 +2,11 @@
 /*写日志div*/
 .write-note-content{
   margin-top: 20px;
+  position: relative;
+}
+/*编辑日志的样式*/
+.edit-note{
+  margin-top:0;
 }
 /*包裹编辑器的div*/
 .note-editor-wrapper{

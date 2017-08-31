@@ -1,11 +1,10 @@
-
-
-  <!--写日志开始-->
-  <div class="write-note-content" >
+ <!--写日志开始-->
+  <div class="write-note-content" [ngClass]="{'edit-note':!editorNoteArgs.isAdd}" >
+    <div [ngBusy]="{busy:ngBusy,message:'日志修改中,请稍后'}"></div>
     <div class="write-note-title-wrapper">
       <textarea [(ngModel)]="note.title" class="note-title-textarea" placeholder="请输入日志标题"></textarea>
     </div>
-    <div class="note-editor-wrapper">
+    <div class="note-editor-wrapper show-quick-insert">
       <div class="note-editor" [froalaEditor]="editorOption" [(froalaModel)]="note.content"></div>
     </div>
     <div class="all-add-note-info">
@@ -17,9 +16,10 @@
       <md-select placeholder="设置权限" [(ngModel)]="note.limit">
         <md-option *ngFor="let limit of limitTypes" [value]="limit.value">{{limit.label}}</md-option>
       </md-select>
-      <button (click)="publishNote()" md-raised-button class="primary-btn publish-note-btn" color="primary"><i class="material-icons">publish</i>发布</button>
+      <button *ngIf="editorNoteArgs.isAdd"  (click)="publishNote()" md-raised-button class="primary-btn publish-note-btn" color="primary"><i class="material-icons">publish</i>发布</button>
+      <button *ngIf="!editorNoteArgs.isAdd" (click)="saveNote()"  md-raised-button class="primary-btn publish-note-btn" color="primary"><i class="material-icons">save</i>保存</button>
       <button (click)="previewNote()" md-raised-button class="primary-btn publish-note-btn" color="primary">预览</button>
-      <button md-raised-button class="publish-note-btn">存为草稿</button>
+      <button *ngIf="editorNoteArgs.isAdd" md-raised-button class="publish-note-btn">存为草稿</button>
     </div>
   </div>
   <!--写日志结束-->

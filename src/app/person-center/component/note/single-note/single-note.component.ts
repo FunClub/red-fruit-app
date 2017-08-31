@@ -6,6 +6,9 @@ import {ArtArgs} from "../../../../share/model/base/art-args.model";
 import {ArtType} from "../../../../foot-mark/model/art-type.model";
 import {noteType} from "../../../../share/model/base/static-data.model";
 import {SelectDiscussionCondition} from "../../../../share/model/discussion/select-discussion-condition";
+import {EditorNoteArgs} from "../../../model/note/editor-note-args";
+import {MdDialog} from "@angular/material";
+import {EditNoteComponent} from "../edit-note/edit-note.component";
 
 @Component({
   selector: 'app-single-note',
@@ -13,19 +16,47 @@ import {SelectDiscussionCondition} from "../../../../share/model/discussion/sele
   styleUrls: ['./single-note.component.css']
 })
 export class SingleNoteComponent implements OnInit {
+  /**
+   * 日志模型
+   */
   showNote:ShowNote;
+
+  /**
+   * 动态参数
+   */
   artArgs:ArtArgs;
-  constructor(private activatedRoute:ActivatedRoute,private noteService:NoteService,private artType:ArtType) {
+
+  /**
+   * ngBusy订阅
+   */
+  ngBusy:any;
+
+  /**
+   * 日志编辑器参数,
+   */
+  editorNoteArgs:EditorNoteArgs;
+  constructor(private activatedRoute:ActivatedRoute,private noteService:NoteService,private artType:ArtType,private dialog:MdDialog) {
     this.showNote = new ShowNote();
+    this.showNote.content="";
+
+    //初始化日志编辑器参数,
+    this.editorNoteArgs = new EditorNoteArgs();
+    this.editorNoteArgs.isAdd=false;
   }
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.params['noteId'];
-    this.noteService.selectNote(id).subscribe(res=>{
+   this.ngBusy= this.noteService.selectNote(id).subscribe(res=>{
       if(res){//如果查到了日志
         this.showNote=res;
         this.initNoteArtArgs();
+        this.editorNoteArgs.note=this.showNote;
       }
+    });
+  }
+  editNote(){
+    this.dialog.open(EditNoteComponent,{
+      data: this.editorNoteArgs
     });
   }
   initNoteArtArgs(){
@@ -33,7 +64,7 @@ export class SingleNoteComponent implements OnInit {
     this.artArgs.discussionCount=this.showNote.discussionCount;
     this.artArgs.thumbsUpCount=this.showNote.thumbsUpCount;
     this.artArgs.thumbsUpAble=this.showNote.thumbsUpAble;
-    this.artArgs.artType=this.artType.NOTE
+    this.artArgs.artType=this.artType.NOTE;
     this.artArgs.artId = this.showNote.noteId;
     this.artArgs.artUserId=this.showNote.userId;
     this.artArgs.showPaginator=true;

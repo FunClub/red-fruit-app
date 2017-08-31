@@ -1,6 +1,7 @@
 <main class="single-note-main white-box">
   <!--所有日志开始-->
   <div class="all-note">
+    <div [ngBusy]="{busy:ngBusy,message:'日志加载中，请稍候...'}"></div>
     <div class="all-note-top">
         <span class="back-note-catalog">返回日志列表</span>
         <p class="note-title">{{showNote.title}}</p>
@@ -26,8 +27,12 @@
             <span>{{showNote.discussionCount}}</span>
           </div>
           <div class="note-info-wrapper operation-note">
-            <i class="material-icons">more_horiz</i>
+            <span [mdMenuTriggerFor]="appMenu"><i class="material-icons">more_horiz</i></span>
             <span>操作</span>
+            <md-menu #appMenu class="custom-md-menu">
+              <button (click)="editNote()" md-menu-item><i class="material-icons">mode_edit</i>编辑</button>
+              <button md-menu-item><i class="material-icons">delete</i>删除</button>
+            </md-menu>
           </div>
         </div>
     </div>

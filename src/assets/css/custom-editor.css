@@ -1,0 +1,26 @@
+
+/*修改编辑器默认样式*/
+
+/*工具条*/
+.fr-toolbar {
+  border-top:none;
+}
+
+.fr-top {
+  box-shadow: none;
+
+}
+/*!*默认不显示编辑器的快速插入*!
+.fr-quick-insert{
+  display: none;
+}
+!*显示编辑器的快速插入*!
+.show-quick-insert .fr-quick-insert{
+  display:block;
+}*/
+/*动态中的表情和文字垂直居中*/
+.a-f{
+  vertical-align: middle;
+  margin-left: 3px;
+  margin-right: 3px;
+}

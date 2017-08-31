@@ -37,6 +37,7 @@ import { CatalogNoteListComponent } from './component/note/catalog-note-list/cat
 import {SingleCatalogNoteComponent} from "./component/note/single-catalog-note/single-catalog-note.component";
 import {SingleNoteComponent} from "./component/note/single-note/single-note.component";
 import { PreviewNoteComponent } from './component/note/preview-note/preview-note.component';
+import { EditNoteComponent } from './component/note/edit-note/edit-note.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -59,7 +60,7 @@ import { PreviewNoteComponent } from './component/note/preview-note/preview-note
     MemoryDayComponent, MoodComponent, AlbumComponent, LeaveMessageComponent,
     SingleAlbumComponent, AddAlbumComponent, AddPhotoComponent, WaterMarkComponent,
     ShowPhotosComponent, ShowAlbumComponent, EditPhotoInfoComponent, MovePhotoComponent, ShowOnePhotoComponent,
-    AddNoteComponent, CatalogNoteListComponent,SingleCatalogNoteComponent,SingleNoteComponent, PreviewNoteComponent],
+    AddNoteComponent, CatalogNoteListComponent,SingleCatalogNoteComponent,SingleNoteComponent, PreviewNoteComponent, EditNoteComponent],
   entryComponents:[
     AddAlbumComponent,
     AddPhotoComponent,
@@ -68,7 +69,9 @@ import { PreviewNoteComponent } from './component/note/preview-note/preview-note
     MovePhotoComponent,
     ShowOnePhotoComponent,
     AddNoteComponent,
+    EditNoteComponent,
     PreviewNoteComponent
+
   ],
   providers:[
     /*用户个人中心服务*/

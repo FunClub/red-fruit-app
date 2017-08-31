@@ -14,13 +14,21 @@ export class NoteService extends BaseService{
     super();
   }
 
-  selectNote(noteId:string){
-    return this.http.get(this.noteApi.SELECT_NOTE(noteId)).map(res=>{
-      let showNote:ShowNote=res.json().data;
-      let artArgs = new ArtArgs();
-
-      return showNote;
-    }).catch(this.handleError);
+  /**
+   * 更新日志
+   * @param note 日志模型
+   * @return {Observable<R|T>}
+   */
+  updateNote(note:Note):Observable<boolean>{
+    return this.http.put(this.noteApi.NOTE,note).map(res=>res.json().data).catch(this.handleError);
+  }
+  /**
+   * 查询一篇日志
+   * @param noteId 日志id
+   * @return {Observable<R|T>}
+   */
+  selectNote(noteId:string):Observable<ShowNote>{
+    return this.http.get(this.noteApi.SELECT_NOTE(noteId)).map(res=>res.json().data).catch(this.handleError);
   }
   /**
    * 查询日志目录

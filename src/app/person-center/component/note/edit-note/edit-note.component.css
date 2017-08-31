@@ -1,0 +1,11 @@
+.edit-note-main{
+  width: 1000px;
+}
+.edit-note-label{
+  padding: 10px;
+  font-size: 14px;
+}
+.edit-note-close{
+  float: right;
+  cursor: pointer;
+}

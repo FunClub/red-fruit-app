@@ -256,11 +256,4 @@
   font-size: 20px;
   margin-right: 5px;
 }
-/*菜单选项*/
-.mat-menu-item{
-  height: 35px!important;
-  line-height: 35px !important;
-}
-.mat-menu-item:hover{
-  background: rgb(233,233,233);
-}
+

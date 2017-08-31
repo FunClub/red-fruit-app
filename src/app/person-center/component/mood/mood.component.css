@@ -72,19 +72,10 @@ main{
 /*公共可见图片*/
 #public-view-ico{
   color:rgb(119,161,213);
-  float: left;
-  vertical-align: middle;
-  margin-top: 12px;
-  margin-right: 5px;
-
 }
 /*情侣可见图片*/
 #lock-view-ico{
   color:rgb(119,161,213);
-  float: left;
-  vertical-align: middle;
-  margin-top: 12px;
-  margin-right: 5px;
 }
 /*可见状态被激活*/
 .active-limit{

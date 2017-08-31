@@ -12,7 +12,6 @@ export class RfEditorOptions {
   imageResize=true;
   imageManagerLoadURL="album/editor-photo";
   editorClass='editor-class';
-/*  quickInsertButtons=['image', 'table', 'ul', 'ol', 'hr'];*/
   htmlDoNotWrapTags=['script', 'img'];
   imageEditButtons=[];
   enter="$.FroalaEditor.ENTER_BR";

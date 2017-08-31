@@ -1,0 +1,12 @@
+<main class="preview-note-main">
+  <div class="dialog-title"><i class="material-icons">visibility</i>
+    预览日志
+    <span class="dialog-close" (click)="close.click()"><i class="material-icons">close</i></span>
+  </div>
+  <div class="preview-note-all-content" [ngStyle]="{'max-height.px':getNoteHeight()}">
+    <div class="preview-note-title">{{note.title}}</div>
+    <div class="preview-note-content"  [froalaView]="note.content"></div>
+  </div>
+
+  <button md-dialog-close style="display: none" #close></button>
+</main>

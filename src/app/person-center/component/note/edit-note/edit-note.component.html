@@ -1,0 +1,8 @@
+<main class="edit-note-main">
+  <div class="edit-note-label"><i class="material-icons">mode_edit</i>编辑日志
+    <span class="edit-note-close" (click)="close.click()"><i class="material-icons">close</i></span>
+  </div>
+  <app-add-note [editorNoteArgs]="editorNoteArgs" (noteUpdate)="noteUpdate($event,close)"></app-add-note>
+  <button md-dialog-close #close style="display: none"></button>
+</main>
+
