@@ -85,6 +85,7 @@ export class CatalogNoteListComponent implements OnInit {
 
   ngOnInit() {
     this.selectCatalogNote();
+
   }
 
   /**

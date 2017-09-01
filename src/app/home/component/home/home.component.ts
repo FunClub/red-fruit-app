@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.routerLinks=[
       {path:'person-center/home-page','label':'我的主页','isActive':true,'ico':'dashboard'},
       {path:'foot-mark/my-art','label':'点滴足迹','isActive':false,'ico':'grade'},
-      {path:'person-center/home-page','label':'浪漫密聊','isActive':false,'ico':'forum'},
+      {path:'chat','label':'浪漫密聊','isActive':false,'ico':'forum'},
       {path:'person-center/home-page','label':'飞鸽传书','isActive':false,'ico':'email'},
       {path:'person-center/home-page','label':'红果密圈','isActive':false,'ico':'group_work'},
       {path:'person-center/home-page','label':'分享圈子','isActive':false,'ico':'shop_two'},

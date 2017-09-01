@@ -12,6 +12,7 @@ import {Home} from "./model/home.model";
 import {FootMarkModule} from "../foot-mark/foot-mark.module";
 import {NoticeMessage} from "../websocket/model/notice-message.model";
 import {BaseSocketService} from "../websocket/socket/base-socket.service";
+import {ChatModule} from "../chat/chat.module";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {BaseSocketService} from "../websocket/socket/base-socket.service";
     MdInputModule,
     PersonCenterModule,
     PersonInfoModule,
-    FootMarkModule
+    FootMarkModule,
+    ChatModule
   ],
   declarations: [HomeComponent],
   providers:[

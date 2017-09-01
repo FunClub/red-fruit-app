@@ -19,6 +19,7 @@ import {ShowPhotosComponent} from "../person-center/component/album/show-photos/
 import {ShowAlbumComponent} from "../person-center/component/album/show-album/show-album.component";
 import {CatalogNoteListComponent} from "../person-center/component/note/catalog-note-list/catalog-note-list.component";
 import {SingleNoteComponent} from "../person-center/component/note/single-note/single-note.component";
+import {ChatComponent} from "../chat/component/chat/chat.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -61,6 +62,11 @@ const  homeRoutes:Routes=[
           {path:'my-art',component:MyArtComponent},
           {path:'',redirectTo:'my-art',pathMatch:'full'}
         ]
+      },
+      /*聊天*/
+      {
+        path:'chat',
+        component:ChatComponent
       },
       /*个人资料*/
       {
