@@ -8,8 +8,6 @@ import {Router} from "@angular/router";
 import {MdDialog} from "@angular/material";
 import {PreviewNoteComponent} from "../preview-note/preview-note.component";
 import {EditorNoteArgs} from "../../../model/note/editor-note-args";
-
-
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
@@ -118,5 +116,8 @@ import {EditorNoteArgs} from "../../../model/note/editor-note-args";
         this.noteUpdate.emit(false);
       }
     })
+  }
+  caogao(){
+
   }
 }

@@ -1,0 +1,17 @@
+<div class="warpNav" >
+  <nav md-tab-nav-bar>
+    <a md-tab-link
+       *ngFor="let link of navLinks"
+       [routerLink]="link.path"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      {{link.label}}
+    </a>
+  </nav>
+</div>
+<div>
+
+</div>
+<div style="padding: 20px 0 30px 0">
+  <router-outlet></router-outlet>
+</div>

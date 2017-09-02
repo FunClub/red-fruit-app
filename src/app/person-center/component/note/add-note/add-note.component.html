@@ -19,7 +19,7 @@
       <button *ngIf="editorNoteArgs.isAdd"  (click)="publishNote()" md-raised-button class="primary-btn publish-note-btn" color="primary"><i class="material-icons">publish</i>发布</button>
       <button *ngIf="!editorNoteArgs.isAdd" (click)="saveNote()"  md-raised-button class="primary-btn publish-note-btn" color="primary"><i class="material-icons">save</i>保存</button>
       <button (click)="previewNote()" md-raised-button class="primary-btn publish-note-btn" color="primary">预览</button>
-      <button *ngIf="editorNoteArgs.isAdd" md-raised-button class="publish-note-btn">存为草稿</button>
+      <button (click)="caogao()" *ngIf="editorNoteArgs.isAdd" md-raised-button class="publish-note-btn">存为草稿</button>
     </div>
   </div>
   <!--写日志结束-->

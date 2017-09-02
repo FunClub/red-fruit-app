@@ -115,11 +115,12 @@
 .mat-sidenav-content{
   overflow: hidden;
 }
-/*字体图片*/
-i{
-  vertical-align: middle;
+/*主要的字体图片*/
+.primary-icon{
+  font-size: 20px;
+  color: rgb(122,149,153);
+  cursor: pointer;
 }
-
 /*icon*/
 @font-face {
   font-family: 'Material Icons';
@@ -140,6 +141,7 @@ i{
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  vertical-align: middle;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }

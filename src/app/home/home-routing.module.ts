@@ -20,6 +20,8 @@ import {ShowAlbumComponent} from "../person-center/component/album/show-album/sh
 import {CatalogNoteListComponent} from "../person-center/component/note/catalog-note-list/catalog-note-list.component";
 import {SingleNoteComponent} from "../person-center/component/note/single-note/single-note.component";
 import {ChatComponent} from "../chat/component/chat/chat.component";
+import {CircleComponent} from "../circle/component/circle/circle.component";
+import {CircleCenterComponent} from "../circle/component/circle-center/circle-center.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -67,6 +69,14 @@ const  homeRoutes:Routes=[
       {
         path:'chat',
         component:ChatComponent
+      },
+      /*聊天*/
+      {
+        path:'circle',
+        component:CircleComponent,
+        children:[
+          {path:'circle-center',component:CircleCenterComponent}
+        ]
       },
       /*个人资料*/
       {
