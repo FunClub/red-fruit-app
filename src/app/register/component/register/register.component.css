@@ -1,8 +1,9 @@
 main{
-  padding: 10px;
-  width: 630px;
+
+  width: 600px;
   position: relative;
   color: black;
+  padding-bottom: 20px;
 }
 #close{
   background-color: white;
@@ -20,15 +21,15 @@ main{
 #registerTitle{
   text-align: center;
   display: inline-block;
-  width: 630px;
+
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(202,202,202);
 }
 
 #registerForm{
-  width: 560px;
+  width: 500px;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 20px;
 
 }
 md-error{
@@ -44,14 +45,9 @@ md-error{
 #womanRadio{
   margin-left: 185px;
 }
-md-input-container span{
-  color: rgb(100,100,100);
-  font-size: 14px;
-  margin-right: 10px;
-}
+
 #registerForm input:not(#born){
   width: 200px;
-
 }
 md-input-container{
   font-size: 16px;
@@ -64,15 +60,18 @@ md-input-container:not(#accountContainer){
   font-size: 16px;
   margin-left: 5px;
 }
+.password{
+  margin-left: 70px!important;
+}
 #bornContainer{
   margin-left: 5px!important;
 }
 #born{
-  width: 150px;
+  width: 100px;
 }
 #city{
-  width: 242px!important;
-  margin-left: 27px;
+  width: 200px!important;
+  margin-left: 70px;
 }
 #verificationCode{
   width: 190px !important;
@@ -80,15 +79,16 @@ md-input-container:not(#accountContainer){
 #verificationCodeImg{
   border: solid 1px rgb(213,213,213);
   box-shadow: 0 0 2px rgb(190,190,190);
-  float: right;
-  margin-right: 127px;
+  top: 10px;
+  margin-left:  70px;
+  position: relative;
   cursor: pointer;
 }
 #verificationCodeContainer{
   margin-left: 5px!important;
 }
 #registerBtn{
-  margin-top: 40px;
+  margin-top: 20px;
   width: 100%;
 }
 

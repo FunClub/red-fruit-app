@@ -7,7 +7,7 @@
 }
 /*tabs下划线*/
 .mat-ink-bar{
-  background: red;
+  background: red!important;
 }
 /*输入框前缀*/
 .input-prefix{
@@ -15,7 +15,10 @@
   margin-right: 10px;
   font-size: 14px;
 }
-
+/*input和select下划线*/
+.mat-form-field-underline , .mat-select-underline{
+  background-color: rgb(203,203,203);
+}
 /*material dialog*/
 .mat-dialog-container{
   padding: 0!important;
@@ -100,7 +103,9 @@
   font-size: 20px;
   margin-right: 5px;
 }
-
+.mat-menu-panel{
+  border-top: solid 2px black;
+}
   /*material radio*/
 /*单选按钮变小*/
 .mat-radio-outer-circle{

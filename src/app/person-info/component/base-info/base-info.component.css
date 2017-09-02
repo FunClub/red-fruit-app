@@ -37,8 +37,10 @@ main{
 
 }
 /*input*/
-md-input-container input{
-  width:250px;
+md-input-container{
+  width: 290px;
+
+
 }
 
 /*左边的资料开始*/
@@ -53,7 +55,7 @@ md-input-container input{
 }
 /*城市下拉框*/
 #city-select{
-  margin-top: 25px;
+  margin-top: 10px;
 }
 /*职业下拉框*/
 #professions-select{
@@ -84,10 +86,10 @@ md-input-container input{
 }
 
 #hobby-select{
-  margin-top: 50px;
+  margin-top: 30px;
 }
 #character-select{
-  margin-top: 40px;
+  margin-top: 35px;
 }
 /*右边的资料结束*/
 

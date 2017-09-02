@@ -43,7 +43,10 @@
   <!--评论开始-->
   <div class="all-note-discussion">
     <p class="note-discussion-label">评论({{showNote.discussionCount}})</p>
-    <app-art-discussion *ngIf="artArgs" [artArgs]="artArgs"></app-art-discussion>
+    <div *ngIf="artArgs">
+      <app-art-discussion  [artArgs]="artArgs"></app-art-discussion>
+    </div>
+
   </div>
   <!--评论结束-->
 </main>

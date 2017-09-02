@@ -7,5 +7,7 @@ export class Mood {
   content:string;
   date:string;
   imgs:string[];
-  thumbsUpUserIds:string[];
+  original:boolean;
+  originalUserId:string;
+  originalArtId:string;
 }

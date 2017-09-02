@@ -86,23 +86,15 @@ md-input-container{
   margin-top: 0!important;
   height: 60px;
   font-size: 15px;
+  width: 100%!important;
 }
 
-form input{
-  width: 220px;
-}
-md-input-container span{
-  color: rgb(100,100,100);
-  margin-right: 10px;
-  font-size: 14px;
-}
+
 md-checkbox{
   color: rgb(120,120,120);
   font-size: 12px;
 }
-#loginOpreation{
-  margin-top: 5px;
-}
+
 #rememberText{
   font-size: 12px;
   color: rgb(120,120,120);
@@ -112,11 +104,12 @@ md-checkbox{
   color: rgb(120,120,120);
   font-size: 12px;
   cursor: pointer;
+  margin-top: 5px;
 }
 #loginBtn{
   margin-top: 15px;
   width: 100%;
-   background: rgb(253,86,106);
+  background: rgb(253,86,106);
 }
 #justRegister{
   display: block;

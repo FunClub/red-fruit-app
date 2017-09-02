@@ -35,7 +35,6 @@
 /*打开关闭导航面板按钮*/
 #toggleNavBtn{
   float: right;
-
   background: rgb(233,30,99);
   font-weight: bold;
   position: relative;
@@ -64,9 +63,10 @@
 #toggleNavBtn i{
   font-size: 35px;
   color: white;
-  margin-bottom: 15px;
   display: block;
   font-weight: bold;
+  position: relative;
+  bottom: 5px;
 }
 /*导航面板待关闭的箭头动画*/
 @keyframes arrow_back_close {

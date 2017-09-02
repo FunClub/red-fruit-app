@@ -15,8 +15,5 @@ export class ShowMoodDto {
   thumbsUpCount:number;
   thumbsUpAble:boolean;
   discussionCount:number;
-  original:boolean;
-  originalUserId:string;
-  originalArtId:string;
   artArgs:ArtArgs;
 }

@@ -23,12 +23,10 @@ md-select{
   font-size: 13px!important;
 }
 .album-type-select{
-  margin-top: 10px;
 
 }
-
 .album-limit-select{
-  margin-top: 30px;
+  margin-top: 20px;
 }
 /*底部*/
 .add-album-bottom{

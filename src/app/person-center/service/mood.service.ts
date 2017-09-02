@@ -52,10 +52,10 @@ export class MoodService extends BaseService{
         args.artId = mood.moodId;
         args.artUserId=mood.mood.userId;
         args.showPaginator=false;
-        args.original = mood.original;
+        args.original = mood.mood.original;
         if(!args.original){//如果心情不是原创
-          args.originalUserId = mood.originalUserId;
-          args.originalArtId = mood.originalArtId;
+          args.originalUserId = mood.mood.originalUserId;
+          args.originalArtId = mood.mood.originalArtId;
         }
         //评论的查询参数
         args.selectDiscussionCondition = new SelectDiscussionCondition();
@@ -66,10 +66,8 @@ export class MoodService extends BaseService{
         if(mood.mood.imgs.length>0){
           args.firstArtImg = mood.mood.imgs[0];
         }
-
         args.artContent = mood.mood.content;
       }
-
       return pagedMood;
     }).catch(this.handleError);
   }

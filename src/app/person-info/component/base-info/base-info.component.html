@@ -10,7 +10,8 @@
         <md-input-container>
           <span mdPrefix class="input-prefix">出生日期:</span>
           <input id="born" readonly mdInput [mdDatepicker]="picker" formControlName="born">
-          <button mdSuffix [mdDatepickerToggle]="picker"></button>
+          <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+          <md-datepicker #picker></md-datepicker>
         </md-input-container>
         <md-datepicker #picker startView="year"></md-datepicker>
         <!--居住地-->

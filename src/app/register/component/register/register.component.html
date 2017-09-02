@@ -1,6 +1,9 @@
 <main>
-  <button md-dialog-close id="close" #close></button>
-  <h3 id="registerTitle" md-dialog-title>会员注册</h3>
+  <div class="dialog-title">
+    <i class="material-icons">person</i>用户注册
+    <span class="dialog-close"><i class="material-icons">close</i></span>
+  </div>
+
 
   <form id="registerForm" (ngSubmit)="register(close,codeImG)" [formGroup]="registerForm">
     <!--性别-->
@@ -12,7 +15,7 @@
 
     <!--账号-->
     <md-input-container id="accountContainer" color="accent">
-      <span mdPrefix>账号:</span>
+      <span class="input-prefix" mdPrefix>账号:</span>
       <input  mdInput    placeholder="邮箱格式"  formControlName="account"  >
       <md-error *ngIf="account.hasError('required')">
         邮箱不能为空
@@ -26,9 +29,9 @@
     </md-input-container>
 
     <!--密码-->
-    <md-input-container color="accent">
-      <span mdPrefix>密码:</span>
-      <input  formControlName="passwords"  type="password" mdInput placeholder="6-12位">
+    <md-input-container color="accent" class="password">
+      <span class="input-prefix" mdPrefix>密码:</span>
+      <input   formControlName="passwords"  type="password" mdInput placeholder="6-12位">
       <md-error *ngIf="passwords.hasError('required')">
         密码不能为空
       </md-error>
@@ -38,12 +41,12 @@
     </md-input-container>
     <!--出生日期-->
     <md-input-container id="bornContainer">
-      <span mdPrefix>出生日期:</span>
+      <span class="input-prefix" mdPrefix>出生日期:</span>
       <input id="born"  readonly mdInput [mdDatepicker]="picker"  formControlName="born"  >
-      <button  mdSuffix  [mdDatepickerToggle]="picker" ></button>
+      <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+      <md-datepicker #picker></md-datepicker>
     </md-input-container>
     <md-datepicker #picker startView="year" ></md-datepicker>
-
 
     <!--居住地-->
     <md-select id="city" placeholder="居住地"  formControlName="city">
@@ -54,7 +57,7 @@
 
     <!--验证码-->
     <md-input-container id="verificationCodeContainer">
-      <span mdPrefix>验证码:</span>
+      <span class="input-prefix" mdPrefix>验证码:</span>
       <input id="verificationCode"   mdInput formControlName="verificationCode">
       <md-error *ngIf="verificationCode.hasError('required')">
         验证码不能为空
@@ -66,7 +69,7 @@
     <img #codeImG title="点击换一张" (click)="changeVerificationCodeImg(codeImG)" id="verificationCodeImg" [src]="api.VERIFICATION_CODE_IMG">
     <button [disabled]="!registerForm.valid" id="registerBtn" type="submit" md-raised-button color="primary">立即注册</button>
   </form>
-
+  <button md-dialog-close style="display: none" #close></button>
 </main>
 
 

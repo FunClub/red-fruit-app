@@ -146,12 +146,12 @@
 /*上传照片的选项DIV*/
 .add-photo-operation{
   position: absolute;
-  bottom: 8%;
+
   width: 100%
 }
 
 .select-album-wrapper{
-  height: 40px;
+
   padding-left: 10px;
   display: inline-block;
 }
@@ -223,7 +223,7 @@
   float: right;
   right: 0;
   margin-right: 30px;
-
+  margin-top: 1%
 }
 /*保存相片*/
 .save-photo i{

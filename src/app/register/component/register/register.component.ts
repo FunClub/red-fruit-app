@@ -161,7 +161,7 @@ export class RegisterComponent implements OnInit {
         "", [Validators.required, Validators.minLength(6), Validators.maxLength(12)], []
       ],
       "born": [
-        "1995/1/1", [], []
+        new Date("1995/1/1"), [], []
       ],
       "verificationCode": [
         "", [Validators.required, Validators.minLength(4), Validators.maxLength(4)],

@@ -5,13 +5,14 @@ import {PersonInfoService} from "../../person-info.service";
 import {BaseInfo} from "../../model/base-info";
 import {ToastOptions, ToastsManager} from "ng2-toastr";
 import {parseDatepickerDate} from "../../../share/utils/time-util";
-import {NgProgressService} from "_ngx-progressbar@2.0.3@ngx-progressbar";
+
 import {MdDialog} from "@angular/material";
 import {UploadImgComponent} from "../upload-img/upload-img.component";
 import {LoginService} from "../../../login/service/login.service";
 import {HomeService} from "../../../home/service/home.service";
 import {Home} from "../../../home/model/home.model";
 import {RedFruitApi} from "../../../share/model/base/api.model";
+import {NgProgressService} from "ngx-progressbar";
 @Component({
   selector: 'app-base-info',
   templateUrl: './base-info.component.html',
@@ -131,6 +132,7 @@ export class BaseInfoComponent implements OnInit {
    * 更新form
    */
   resetControl(){
+    this.baseInfo.born=new Date(this.baseInfo.born);
     this.nicknameControl.reset(this.baseInfo.nickname);
     this.hobbyControl.reset(this.baseInfo.hobby);
     this.cityControl.reset(this.baseInfo.city);
@@ -140,6 +142,7 @@ export class BaseInfoComponent implements OnInit {
     this.sexControl.reset(this.baseInfo.sex);
   }
   createForm(){
+    this.baseInfo.born=new Date("1995/1/1");
     this.infoGroup = this.formBuilder.group({
       "nickname":[this.baseInfo.nickname,[],[]],
       "born":[this.baseInfo.born,[],[]],
