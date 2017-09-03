@@ -62,7 +62,10 @@
 /*每一个动态操作包裹的div*/
 .circle-catalog-operation-wrapper{
   display: inline-block;
-  width: 55px;
+  width: 60px;
+}
+.circle-catalog-operation-wrapper:last-child{
+  width: 100px;
 }
 .circle-catalog-operation-wrapper i{
   font-size: 18px;

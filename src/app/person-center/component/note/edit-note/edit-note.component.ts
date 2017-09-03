@@ -1,7 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MD_DIALOG_DATA} from "@angular/material";
-import {EditorNoteArgs} from "../../../model/note/editor-note-args";
+
 import {ToastsManager} from "ng2-toastr";
+import {EditNoteArgs} from "../../../model/note/edit-note-args";
 
 @Component({
   selector: 'app-edit-note',
@@ -10,7 +11,7 @@ import {ToastsManager} from "ng2-toastr";
 })
 export class EditNoteComponent implements OnInit {
 
-  constructor(@Inject(MD_DIALOG_DATA) public editorNoteArgs:EditorNoteArgs,private toastsManager:ToastsManager) {
+  constructor(@Inject(MD_DIALOG_DATA) public editorNoteArgs:EditNoteArgs,private toastsManager:ToastsManager) {
 
   }
 

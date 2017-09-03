@@ -6,9 +6,10 @@ import {ArtArgs} from "../../../../share/model/base/art-args.model";
 import {ArtType} from "../../../../foot-mark/model/art-type.model";
 import {noteType} from "../../../../share/model/base/static-data.model";
 import {SelectDiscussionCondition} from "../../../../share/model/discussion/select-discussion-condition";
-import {EditorNoteArgs} from "../../../model/note/editor-note-args";
+
 import {MdDialog} from "@angular/material";
 import {EditNoteComponent} from "../edit-note/edit-note.component";
+import {EditNoteArgs} from "../../../model/note/edit-note-args";
 
 @Component({
   selector: 'app-single-note',
@@ -34,13 +35,13 @@ export class SingleNoteComponent implements OnInit {
   /**
    * 日志编辑器参数,
    */
-  editorNoteArgs:EditorNoteArgs;
+  editorNoteArgs:EditNoteArgs;
   constructor(private activatedRoute:ActivatedRoute,private noteService:NoteService,private artType:ArtType,private dialog:MdDialog) {
     this.showNote = new ShowNote();
     this.showNote.content="";
 
     //初始化日志编辑器参数,
-    this.editorNoteArgs = new EditorNoteArgs();
+    this.editorNoteArgs = new EditNoteArgs();
     this.editorNoteArgs.isAdd=false;
   }
 

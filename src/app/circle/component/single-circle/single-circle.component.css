@@ -1,0 +1,104 @@
+/*主体*/
+.circle-main{
+  width: 800px;
+  margin: auto;
+}
+
+/*圈子顶部*/
+.circle-top{
+  padding: 10px;
+  position: relative;
+}
+.circle-info{
+  padding-left: 10px;
+  display: inline-block;
+  width: 400px;
+  vertical-align: top;
+}
+/*圈子图片*/
+.circle-img{
+  height: 80px;
+  width: 80px;
+  float: left;
+  margin-right: 10px;
+
+}
+/*圈子名称*/
+.circle-name{
+  padding-top: 5px;
+  font-weight: 300;
+}
+/*圈子解释*/
+.circle-description{
+  font-size: 13px;
+  color: rgb(100,100,100);
+  margin-top: 5px;
+}
+
+/*圈子动态计数*/
+.circle-art-count{
+  display: inline-block;
+  margin-left: 30px;
+}
+/*包裹圈子动态计数的div*/
+.circle-art-count-wrapper{
+  display: inline-block;
+  margin-left: 5px;
+}
+.circle-art-count-wrapper i{
+  font-size: 20px;
+}
+.circle-art-count-wrapper span{
+  color: rgb(150,150,150);
+  font-size: 12px;
+}
+/*帖子计数*/
+.post-count{
+  color: #ffb305;
+}
+/*关注计数*/
+.attention-count{
+  color: rgb(119,197,115);
+}
+/*圈子操作div*/
+.circle-operation{
+  width: 300px;
+  display: inline-block;
+  height: 60px;
+  line-height: 60px;
+  text-align: right;
+}
+/*发布帖子按钮*/
+.publish-post-btn{
+  background: rgb(255,129,64);
+  margin-left: 10px;
+}
+/*圈子排行*/
+.circle-rank{
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+}
+/*帖子内容体*/
+.circle-post--content{
+  margin-top: 30px;
+}
+/*帖子标签*/
+.circle-label{
+  border-left: red solid;
+  padding: 10px 10px 10px 10px;
+  font-size: 13px;
+  border-bottom: dashed 1px rgb(223,223,223);
+}
+/*帖子内容排序*/
+.circle-post-sort{
+  float: right;
+}
+.circle-post-sort span{
+  color: rgb(100,100,100);
+  font-size: 12px;
+}
+.circle-post-wrapper{
+  padding: 10px;
+  border-bottom: dashed 1px rgb(223,223,223);
+}

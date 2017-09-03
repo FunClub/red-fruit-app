@@ -1,0 +1,42 @@
+<main class="circle-main">
+  <div class="circle-top white-box">
+    <div class="circle-info">
+      <img class="circle-img" [src]="circle.img"/>
+      <div class="circle-name">
+        {{circle.name}}
+        <div class="circle-art-count">
+          <div class="circle-art-count-wrapper"><i class="material-icons post-count">assignment</i><span>123</span></div>
+          <div class="circle-art-count-wrapper"><i class="material-icons attention-count">person</i><span>123</span></div>
+        </div>
+      </div>
+      <p class="circle-description">
+       {{circle.desc}}
+      </p>
+    </div>
+    <div class="circle-operation">
+      <button md-raised-button color="primary" class="primary-btn">关注</button>
+      <button (click)="openAddPostDialog()" md-raised-button color="primary" class="publish-post-btn">
+        <i class="material-icons">mode_edit</i>发帖
+      </button>
+
+    </div>
+    <img class="circle-rank"  src="../../../../assets/img/rank.png"/>
+  </div>
+  <div class="circle-post--content white-box">
+    <p class="circle-label">帖子列表
+      <md-slide-toggle class="circle-post-sort"> <span>显示热门帖子</span></md-slide-toggle>
+    </p>
+    <div class="circle-post-wrapper">
+      <app-circle-art-catalog></app-circle-art-catalog>
+    </div>
+    <div class="circle-post-wrapper">
+      <app-circle-art-catalog></app-circle-art-catalog>
+    </div>
+    <div class="circle-post-wrapper">
+      <app-circle-art-catalog></app-circle-art-catalog>
+    </div>
+    <div class="circle-post-wrapper">
+      <app-circle-art-catalog></app-circle-art-catalog>
+    </div>
+  </div>
+</main>

@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
       {path:'foot-mark/my-art','label':'点滴足迹','isActive':false,'ico':'grade'},
       {path:'chat','label':'浪漫密聊','isActive':false,'ico':'forum'},
       {path:'person-center/home-page','label':'飞鸽传书','isActive':false,'ico':'email'},
-      {path:'circle/circle-center','label':'红果密圈','isActive':false,'ico':'group_work'},
+      {path:'circle-center','label':'红果密圈','isActive':false,'ico':'group_work'},
       {path:'person-center/home-page','label':'分享圈子','isActive':false,'ico':'shop_two'},
       {path:'person-center/home-page','label':'幸福之墙','isActive':false,'ico':'loyalty'},
       {path:'person-info','label':'资料设置','isActive':false,'ico':'settings_applications'}

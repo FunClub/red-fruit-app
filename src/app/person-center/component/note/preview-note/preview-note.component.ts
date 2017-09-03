@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MD_DIALOG_DATA} from "@angular/material";
 import {Note} from "../../../model/note/note.model";
+import {EditorArgs} from "../../../../share/model/base/editor-args";
 
 @Component({
   selector: 'app-preview-note',
@@ -9,12 +10,12 @@ import {Note} from "../../../model/note/note.model";
 })
 export class PreviewNoteComponent implements OnInit {
 
-  constructor(@Inject(MD_DIALOG_DATA)public note:Note) {
-    if(!note.title){
-      note.title="未命名标题"
+  constructor(@Inject(MD_DIALOG_DATA)public editArgs:EditorArgs) {
+    if(!editArgs.title){
+      editArgs.title="未命名标题"
     }
-    if(!note.content){
-      note.content="暂无内容";
+    if(!editArgs.content){
+      editArgs.content="暂无内容";
     }
 
   }

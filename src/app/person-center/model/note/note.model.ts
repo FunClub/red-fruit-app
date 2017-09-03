@@ -14,7 +14,7 @@ export class Note {
   original:boolean;
   constructor() {
     this.limit=1;
-    this.type="心情";
+    this.type="日志";
     this.original=true;
   }
 }

@@ -5,6 +5,8 @@ import { CircleCenterComponent } from './component/circle-center/circle-center.c
 import {ShareModule} from "../share/share.module";
 import { CircleArtCatalogComponent } from './component/circle-art-catalog/circle-art-catalog.component';
 import {MdSlideToggleModule} from "@angular/material";
+import { SingleCircleComponent } from './component/single-circle/single-circle.component';
+import { AddPostComponent } from './component/add-post/add-post.component';
 
 @NgModule({
   imports: [
@@ -12,6 +14,7 @@ import {MdSlideToggleModule} from "@angular/material";
     ShareModule,
     MdSlideToggleModule
   ],
-  declarations: [CircleComponent, CircleCenterComponent, CircleArtCatalogComponent]
+  entryComponents:[AddPostComponent],
+  declarations: [CircleComponent, CircleCenterComponent, CircleArtCatalogComponent, SingleCircleComponent, AddPostComponent]
 })
 export class CircleModule { }

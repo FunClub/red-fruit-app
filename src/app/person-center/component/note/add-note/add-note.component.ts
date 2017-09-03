@@ -7,28 +7,20 @@ import {limit, noteType} from "../../../../share/model/base/static-data.model";
 import {Router} from "@angular/router";
 import {MdDialog} from "@angular/material";
 import {PreviewNoteComponent} from "../preview-note/preview-note.component";
-import {EditorNoteArgs} from "../../../model/note/editor-note-args";
+import {EditorArgs} from "../../../../share/model/base/editor-args";
+import {EditNoteArgs} from "../../../model/note/edit-note-args";
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
   styleUrls: ['./add-note.component.css']
 })export class AddNoteComponent implements OnInit {
-
-  /**
-   * 日志编辑器参数,
-   */
   @Input()
-  editorNoteArgs:EditorNoteArgs;
-
+  editNoteArgs:EditNoteArgs;
   /**
    * 日志更新事件
    */
   @Output()
   noteUpdate:EventEmitter<boolean>;
-  /**
-   * 编辑器配置
-   */
-  editorOption:RfEditorOptions;
 
   /**
    * 日志类型
@@ -46,37 +38,32 @@ import {EditorNoteArgs} from "../../../model/note/editor-note-args";
 
   ngBusy:any;
 
+  editorArgs:EditorArgs;
 
   constructor(private api:RedFruitApi,private noteService:NoteService,private router:Router,private dialog:MdDialog
 
   ) {
-    this.editorOption = new RfEditorOptions();
+    this.editorArgs = new EditorArgs();
+    this.editorArgs.type="日志";
     this.noteTypes=noteType;
     this.limitTypes = limit;
     this.note = new Note();
-
     this.noteUpdate = new EventEmitter();
   }
-  initEditor(){
-    this.editorOption.heightMin=300;
-    this.editorOption.enter="$.FroalaEditor.ENTER_P";
-    this.editorOption.toolbarButtons=['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'];
-    this.editorOption.imageEditButtons=['imageReplace', 'imageAlign', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', '-', 'imageDisplay', 'imageStyle', 'imageAlt', 'imageSize'];
-  }
+
   ngOnInit() {
-    this.initEditor();
-    if(!this.editorNoteArgs.isAdd){
-      this.initAddNote();
+    if(!this.editNoteArgs.isAdd){
+      this.initEditNote();
     }
   }
 
   /**
-   * 初始化添加日志参数(编辑日志才有)
+   * 初始化日志参数(编辑日志才有)
    */
-  initAddNote(){
-    let note = this.editorNoteArgs.note;
-    this.note.title=note.title;
-    this.note.content = note.content;
+  initEditNote(){
+    let note = this.editNoteArgs.note;
+    this.editorArgs.title=note.title;
+    this.editorArgs.content = note.content;
     this.note.limit=note.limit;
     this.note.type=note.type;
     this.note.noteId =note.noteId;
@@ -85,6 +72,7 @@ import {EditorNoteArgs} from "../../../model/note/editor-note-args";
    * 发布日志
    */
   publishNote(){
+   this.getEditData();
     this.noteService.insertNote(this.note).subscribe(res=>{
       this.router.navigate(["home/person-center/note",res]);
     });
@@ -95,18 +83,26 @@ import {EditorNoteArgs} from "../../../model/note/editor-note-args";
    */
   previewNote(){
     this.dialog.open(PreviewNoteComponent,{
-      data:this.note
+      data:this.editorArgs
     })
   }
 
+  /**
+   * 获取编辑器数据
+   */
+  getEditData(){
+    this.note.title = this.editorArgs.title;
+    this.note.content = this.editorArgs.content;
+  }
   /**
    * 保存修改的日志
    * @param close
    */
   saveNote(close:HTMLButtonElement){
+    this.getEditData();
     this.ngBusy=this.noteService.updateNote(this.note).subscribe(res=>{
       if(res){
-        let note = this.editorNoteArgs.note;
+        let note = this.editNoteArgs.note;
         note.title=this.note.title;
         note.content=this.note.content;
         note.limit=this.note.limit;

@@ -11,7 +11,7 @@ export class CircleComponent implements OnInit {
   navLinks:Array<NavLink>;
   constructor() {
     this.navLinks=[
-      {path:'circle-center',label:'圈子中心'},
+      {path:'/home/circle-center',label:'圈子中心'},
       {path:'circle-center1',label:'我的发帖'},
     ];
   }

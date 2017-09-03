@@ -22,6 +22,7 @@ import {SingleNoteComponent} from "../person-center/component/note/single-note/s
 import {ChatComponent} from "../chat/component/chat/chat.component";
 import {CircleComponent} from "../circle/component/circle/circle.component";
 import {CircleCenterComponent} from "../circle/component/circle-center/circle-center.component";
+import {SingleCircleComponent} from "../circle/component/single-circle/single-circle.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -72,10 +73,12 @@ const  homeRoutes:Routes=[
       },
       /*聊天*/
       {
-        path:'circle',
+        path:'circle-center',
         component:CircleComponent,
         children:[
-          {path:'circle-center',component:CircleCenterComponent}
+          {path:'',component:CircleCenterComponent},
+          {path:'circle/:circleIndex',component:SingleCircleComponent},
+
         ]
       },
       /*个人资料*/

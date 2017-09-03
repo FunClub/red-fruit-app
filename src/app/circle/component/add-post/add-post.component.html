@@ -1,0 +1,14 @@
+<div class="dialog-title">
+  <i class="material-icons">assignment</i>
+  发布帖子
+  <span class="dialog-close" (click)="close.click()"><i class="material-icons">close</i></span>
+</div>
+<div class="rich-edit">
+  <app-rich-editor [editorArgs]="editorArgs"></app-rich-editor>
+</div>
+
+<div class="add-post-bottom">
+  <md-slide-toggle [checked]="post.isAnonymous" (change)="anonymousChanged($event)" class="anonymous">匿名发布</md-slide-toggle>
+  <button (click)="publishPost(close)" md-raised-button class="primary-btn" color="primary"><i class="material-icons">publish</i>发布</button>
+</div>
+<button md-dialog-close #close style="display: none"></button>

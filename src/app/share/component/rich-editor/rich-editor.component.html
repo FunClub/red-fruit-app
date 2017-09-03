@@ -1,0 +1,9 @@
+
+<main class="edit-main">
+  <div class="write-note-title-wrapper">
+    <textarea [(ngModel)]="editorArgs.title" class="note-title-textarea" placeholder="请输入{{editorArgs.type}}标题"></textarea>
+  </div>
+  <div class="note-editor-wrapper show-quick-insert">
+    <div class="rich-editor" [froalaEditor]="editorOption" [(froalaModel)]="editorArgs.content"></div>
+  </div>
+</main>

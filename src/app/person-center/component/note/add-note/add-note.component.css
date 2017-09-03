@@ -8,37 +8,8 @@
 .edit-note{
   margin-top:0;
 }
-/*包裹编辑器的div*/
-.note-editor-wrapper{
-  padding: 1px;
-}
-/*包裹标题的div*/
-.write-note-title-wrapper{
-  border: solid 1px rgb(214,214,214) ;
-  box-shadow:  0 0 3px rgb(210,210,210);
 
-  position: relative;
-  top: 3px;
-  overflow: hidden;
-}
-/*标题area*/
-.note-title-textarea{
-  border: none;
-  height: 15px;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 15px;
-  color: rgb(50,50,50);
-  width: 100%;
-  resize: none;
-}
-.note-title-textarea:focus{
-  outline:none;
-}
-/*编辑器*/
-.note-editor{
-  border-top: solid 1px rgb(238,238,238);
-}
+
 /*添加日志信息*/
 .all-add-note-info{
   background: white;
@@ -63,7 +34,7 @@
 .all-add-note-info md-select{
   width: 20%;
   max-width: 200px;
-  margin-top: 15px;
+
 }
 /*发布日志按钮*/
 .publish-note-btn{

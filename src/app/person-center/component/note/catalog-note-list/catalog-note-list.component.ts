@@ -5,9 +5,10 @@ import {NoteService} from "../../../service/note.service";
 import {MdDialog} from "@angular/material";
 import {SelectCatalogNote} from "../../../../share/model/note/select-catalog-note";
 import {PageRequest} from "../../../../share/model/base/page-request.model";
-import {ShowPagedNote} from "../../../model/note/note.model";
+import {ShowPagedNote, Note} from "../../../model/note/note.model";
 import {NgProgressService} from "ngx-progressbar";
-import {EditorNoteArgs} from "../../../model/note/editor-note-args";
+import {EditNoteArgs} from "../../../model/note/edit-note-args";
+
 declare let $:any;
 @Component({
   selector: 'app-catalog-note-list',
@@ -66,7 +67,7 @@ export class CatalogNoteListComponent implements OnInit {
   /**
    * 日志编辑器参数,
    */
-  editorNoteArgs:EditorNoteArgs;
+  editorNoteArgs:EditNoteArgs;
   constructor(private api:RedFruitApi,private noteService:NoteService,private dialog:MdDialog,private ngProgressService:NgProgressService) {
     //初始化日志查询参数
     this.selectCondition = new SelectCatalogNote();
@@ -79,7 +80,7 @@ export class CatalogNoteListComponent implements OnInit {
     this.pagedNote = new ShowPagedNote();
 
     //初始化日志编辑器参数,
-    this.editorNoteArgs = new EditorNoteArgs();
+    this.editorNoteArgs = new EditNoteArgs();
     this.editorNoteArgs.isAdd=true;
   }
 
@@ -115,9 +116,6 @@ export class CatalogNoteListComponent implements OnInit {
     this.selectCondition.pageRequestDto.pageIndex=e.pageIndex;
     this.selectCatalogNote();
     $(".mat-sidenav-content").scrollTop(120);
-  }
-  ngAfterViewInit(){
-    $('.fr-box a').remove();
   }
 
 }

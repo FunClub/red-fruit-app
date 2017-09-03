@@ -37,6 +37,7 @@ import {RefreshDiscussion} from "./model/discussion/refresh-discussion.model";
 import { MoreDiscussionComponent } from './component/more-discussion/more-discussion.component';
 import { OpenMoreDiscussionComponent } from './component/open-more-discussion/open-more-discussion.component';
 import {NoticeArtType} from "../foot-mark/model/notice-art-type";
+import { RichEditorComponent } from './component/rich-editor/rich-editor.component';
 
 @NgModule({
   imports: [
@@ -70,7 +71,8 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     ReplyDiscussionComponent,
     SafeHtmlPipe,
     BusyModule,
-    MdMenuModule
+    MdMenuModule,
+    RichEditorComponent
   ],
   entryComponents:[MoreDiscussionComponent],
   providers:[
@@ -116,6 +118,6 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
     ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
     FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent,
-    MoreDiscussionComponent, OpenMoreDiscussionComponent]
+    MoreDiscussionComponent, OpenMoreDiscussionComponent, RichEditorComponent]
 })
 export class ShareModule { }

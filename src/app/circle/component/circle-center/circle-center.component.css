@@ -3,9 +3,14 @@
   width: 800px;
   margin: auto;
 }
+.circle-center-left{
+  display: inline-block;
+
+}
 /*选择圈子的div*/
 .select-circle{
   padding: 10px;
+
 }
 /*圈子分类标签*/
 .circle-label{
@@ -25,6 +30,9 @@
   position: relative;
   border-bottom:solid 2px rgba(0,0,0,0);
   cursor: pointer;
+}
+.circle-wrapper:focus{
+  outline:none;
 }
 .circle-wrapper:hover{
   border-bottom: solid 2px orange;
@@ -70,6 +78,7 @@
 /*热门帖子*/
 .hot-art{
   margin-top: 20px;
+
 }
 /*热门帖子标签*/
 .hot-art-label{
