@@ -25,9 +25,11 @@
   font-size: 15px;
   color: rgb(50,50,50);
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.circle-title:focus{
+  outline: none;
 }
 /*动态文本内容*/
 .circle-text-content{
@@ -36,9 +38,8 @@
   margin-top: 5px;
   overflow: hidden;
   padding-right: 5px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  max-height: 53px;
+  text-overflow: ellipsis;
 }
 /*动态图片内容*/
 .circle-img-content{
@@ -63,6 +64,10 @@
 .circle-catalog-operation-wrapper{
   display: inline-block;
   width: 60px;
+}
+/*不能点赞*/
+.dis-thumb-up{
+  color: orange;
 }
 .circle-catalog-operation-wrapper:last-child{
   width: 100px;

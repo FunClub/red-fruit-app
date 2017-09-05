@@ -226,7 +226,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-
+  text-overflow: ellipsis;
 }
 /*相片动态操作*/
 .photo-art-operation{

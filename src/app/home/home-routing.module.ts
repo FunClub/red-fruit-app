@@ -23,6 +23,7 @@ import {ChatComponent} from "../chat/component/chat/chat.component";
 import {CircleComponent} from "../circle/component/circle/circle.component";
 import {CircleCenterComponent} from "../circle/component/circle-center/circle-center.component";
 import {SingleCircleComponent} from "../circle/component/single-circle/single-circle.component";
+import {PostComponent} from "../circle/component/post/post.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -78,6 +79,7 @@ const  homeRoutes:Routes=[
         children:[
           {path:'',component:CircleCenterComponent},
           {path:'circle/:circleIndex',component:SingleCircleComponent},
+          {path:'post/:postId',component:PostComponent},
 
         ]
       },

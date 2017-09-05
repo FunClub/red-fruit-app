@@ -72,7 +72,8 @@ import { RichEditorComponent } from './component/rich-editor/rich-editor.compone
     SafeHtmlPipe,
     BusyModule,
     MdMenuModule,
-    RichEditorComponent
+    RichEditorComponent,
+    MdPaginatorModule
   ],
   entryComponents:[MoreDiscussionComponent],
   providers:[

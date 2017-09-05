@@ -10,11 +10,11 @@ export const limit=[
   {label:'仅情侣间可见',value:0},
 ];
 export const circleData:CircleData[]=[
-  {id:'tq',img:'assets/img/love.png',name:'谈情不说爱',desc:'交流各种恋爱心得，讲爱情进行到底...'},
-  {id:'bb',img:'assets/img/biaobai.png',name:'表白的信箱',desc:'爱，不要掩于口,止于心，爱就要大声说出来！'},
-  {id:'jh',img:'assets/img/jiehun.png',name:'我们结婚吧',desc:'oh my love，这里谈婚论嫁的小天地'},
-  {id:'qs',img:'assets/img/shoushang.png',name:'情伤治愈系',desc:'要记得每一天都是美好的，不要为了悲伤而忽略了晨曦的绚烂。'},
-  {id:'sl',img:'assets/img/gift.png',name:'送礼小助手',desc:'情侣之间，礼尚往来。这里好招多的是！'},
-  {id:'hh',img:'assets/img/hunhou.png',name:'婚后生活圈',desc:'孩子，另一半，爸爸妈妈，酸甜苦辣。'},
-  {id:'la',img:'assets/img/baodian.png',name:'恋爱宝典篇',desc:'不知道怎么约会？谈恋爱？问问圈友就知道啦！'},
+  {img:'assets/img/love.png',name:'谈情不说爱',desc:'交流各种恋爱心得，讲爱情进行到底...'},
+  {img:'assets/img/biaobai.png',name:'表白的信箱',desc:'爱，不要掩于口,止于心，爱就要大声说出来！'},
+  {img:'assets/img/jiehun.png',name:'我们结婚吧',desc:'oh my love，这里谈婚论嫁的小天地'},
+  {img:'assets/img/shoushang.png',name:'情伤治愈系',desc:'要记得每一天都是美好的，不要为了悲伤而忽略了晨曦的绚烂。'},
+  {img:'assets/img/gift.png',name:'送礼小助手',desc:'情侣之间，礼尚往来。这里好招多的是！'},
+  {img:'assets/img/hunhou.png',name:'婚后生活圈',desc:'孩子，另一半，爸爸妈妈，酸甜苦辣。'},
+  {img:'assets/img/baodian.png',name:'恋爱宝典篇',desc:'不知道怎么约会？谈恋爱？问问圈友就知道啦！'},
 ];

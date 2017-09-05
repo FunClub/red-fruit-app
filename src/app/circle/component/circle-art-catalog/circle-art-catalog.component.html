@@ -1,43 +1,34 @@
 <main class="circle-catalog-main">
   <div class="circle-catalog-left">
-    <img class="catalog-profile" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg">
+    <img class="catalog-profile" [src]="api.IMAGE_PREFIX+artInfo.profile">
   </div>
   <div class="circle-catalog-right">
-    <p  class="circle-title">据开发商交付扣篮大赛解放军费电发送的撒</p>
-    <div class="circle-text-content">
-      据开发商交付扣篮大赛解放军费电发送的撒据开发商交付扣篮大赛解放军费电发送的撒据开发商交付扣篮大赛解放军费电发送的撒
-      据开发商交付扣篮大赛解放军费电发送的撒据开发商交付扣篮大赛解放军费电发送的撒据开发商交付扣篮大赛解放军费电发送的撒
-    </div>
-    <div class="circle-img-content">
-      <img class="circle-art-img" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg" alt="">
-      <img class="circle-art-img" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg" alt="">
-      <img class="circle-art-img" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg" alt="">
-      <img class="circle-art-img" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg" alt="">
-      <img class="circle-art-img" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg" alt="">
-      <img class="circle-art-img" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg" alt="">
-      <img class="circle-art-img" src="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170816100859-389213348prfile.jpg" alt="">
+    <p  class="circle-title" routerLink="/home/circle-center/post/{{post.postId}}">{{post.title}}</p>
+    <div class="circle-text-content" [froalaView]="post.content"></div>
+    <div class="circle-img-content" *ngIf="post.imgs">
+      <img *ngFor="let img of post.imgs" class="circle-art-img" [src]="img">
     </div>
   </div>
   <div class="circle-catalog-operation">
-    <div class="circle-catalog-operation-wrapper">
-      <i class="material-icons primary-icon">thumb_up</i>
-      <span>123</span>
+    <div class="circle-catalog-operation-wrapper" md-tooltip="已有{{artInfo.thumbsUpCount}}人点赞">
+      <i class="material-icons primary-icon" [ngClass]="{'dis-thumb-up':!artInfo.thumbsUpAble}" >thumb_up</i>
+      <span>{{artInfo.thumbsUpCount}}</span>
     </div>
     <div class="circle-catalog-operation-wrapper">
       <i class="material-icons primary-icon">sms</i>
-      <span>123</span>
+      <span>{{artInfo.discussionCount}}</span>
     </div>
-    <div class="circle-catalog-operation-wrapper">
+    <div class="circle-catalog-operation-wrapper" md-tooltip="已有{{artInfo.thumbsUpCount}}人浏览">
       <i class="material-icons primary-icon">remove_red_eye</i>
-      <span>123</span>
+      <span>0</span>
     </div>
-    <div class="circle-catalog-operation-wrapper" style="width: 70px">
+    <div class="circle-catalog-operation-wrapper" style="width: 100px">
       <i class="material-icons primary-icon">date_range</i>
-      <span>3分钟钱</span>
+      <span>{{artInfo.howLongAgo}}前</span>
     </div>
     <div class="circle-catalog-operation-wrapper">
       <i class="material-icons primary-icon">bookmark</i>
-      <span>爱情大本因</span>
+      <span>{{post.circleName}}</span>
     </div>
 
   </div>

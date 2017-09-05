@@ -24,19 +24,12 @@
   </div>
   <div class="circle-post--content white-box">
     <p class="circle-label">帖子列表
-      <md-slide-toggle class="circle-post-sort"> <span>显示热门帖子</span></md-slide-toggle>
+      <md-slide-toggle class="circle-post-sort" [checked]="selectCondition.sortBy=='hot'" (change)="toggleSortBy($event)"> <span>显示热门帖子</span></md-slide-toggle>
     </p>
-    <div class="circle-post-wrapper">
-      <app-circle-art-catalog></app-circle-art-catalog>
+    <div class="circle-post-wrapper" *ngFor="let showPost of posts">
+      <app-circle-art-catalog [showPost]="showPost"></app-circle-art-catalog>
     </div>
-    <div class="circle-post-wrapper">
-      <app-circle-art-catalog></app-circle-art-catalog>
-    </div>
-    <div class="circle-post-wrapper">
-      <app-circle-art-catalog></app-circle-art-catalog>
-    </div>
-    <div class="circle-post-wrapper">
-      <app-circle-art-catalog></app-circle-art-catalog>
-    </div>
+    <md-paginator (page)="changePage($event)"  [pageSizeOptions]="pageSizeOptions"
+                  [length]="totalElement" [pageSize]="selectCondition.pageSize"></md-paginator>
   </div>
 </main>

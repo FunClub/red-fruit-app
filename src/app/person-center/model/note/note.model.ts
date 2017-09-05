@@ -1,6 +1,6 @@
 
 
-import {ArtDto} from "../../../share/model/base/art-dto.model";
+import {ArtInfo} from "../../../share/model/base/art-dto.model";
 import {ArtArgs} from "../../../share/model/base/art-args.model";
 /**
  * 插入日志的模型
@@ -29,10 +29,8 @@ export  class ShowPagedNote{
 /**
  * 单一日志目录模型
  */
-export  class  ShowCatalogNote extends ArtDto{
+export  class  ShowCatalogNote extends ArtInfo{
   noteId:string;
-  nickname:string;
-  profile:string;
   date:string;
   title:string;
   type:string;
