@@ -10,6 +10,11 @@ export class Post {
   content:string;
   anonymous:boolean;
   imgs:string[];
+  date:string;
+  userId:string;
+  original:boolean;
+  originalUserId:string;
+  originalArtId:string;
   constructor() {
     this.imgs = [];
   }

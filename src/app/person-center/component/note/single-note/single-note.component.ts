@@ -77,7 +77,6 @@ export class SingleNoteComponent implements OnInit {
     //评论的查询参数
     this.artArgs.selectDiscussionCondition = new SelectDiscussionCondition();
     this.artArgs.selectDiscussionCondition.artId=this.artArgs.artId;
-
     //通知动态参数
     this.artArgs.artContent = this.showNote.title;
   }

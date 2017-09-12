@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.ngProgressService.start();
     this.title.setTitle("红果-主页");
     this.homeService.getHomeInfo().subscribe(res=>{

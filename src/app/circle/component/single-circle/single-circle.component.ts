@@ -64,7 +64,7 @@ export class SingleCircleComponent implements OnInit {
    * 查询帖子
    */
   selectPosts(){
-    this.circleService.selectPost(this.selectCondition).subscribe(res=>{
+    this.circleService.selectPosts(this.selectCondition).subscribe(res=>{
       this.totalElement=res.totalElements;
       this.posts = res.content;
     });
