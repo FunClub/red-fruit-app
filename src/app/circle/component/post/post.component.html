@@ -1,0 +1,50 @@
+<main class="post-main white-box">
+  <span class="back-circle">返回-谈情不说爱</span>
+  <div class="post-top">
+    <p class="post-title">
+      <img *ngIf="post" class="post-profile" [src]="api.IMAGE_PREFIX+artInfo.profile" alt="">我们分的撒的啊
+    </p>
+    <div class="post-info">
+      <div class="post-info-wrapper">
+        <i class="material-icons">person</i>
+        <span>{{artInfo?.nickname}}</span>
+      </div>
+
+      <div class="post-info-wrapper">
+        <i class="material-icons">query_builder</i>
+        <span>{{post?.date}}</span>
+      </div>
+      <div class="post-info-wrapper">
+        <i class="material-icons">bookmark</i>
+        <span>{{post?.circleName}}</span>
+      </div>
+      <div class="post-info-wrapper">
+        <span [mdMenuTriggerFor]="appMenu"><i class="material-icons">more_horiz</i></span>
+        <span>操作</span>
+        <md-menu #appMenu class="custom-md-menu">
+          <button  md-menu-item><i class="material-icons">mode_edit</i>编辑</button>
+          <button md-menu-item><i class="material-icons">delete</i>删除</button>
+        </md-menu>
+      </div>
+      <div class="post-info-wrapper right-post-info-wrapper">
+        <i class="material-icons">thumb_up</i>
+        <span>{{artInfo?.thumbsUpCount}}</span>
+      </div>
+      <div class="post-info-wrapper right-post-info-wrapper">
+        <i class="material-icons">sms</i>
+        <span>{{artInfo?.discussionCount}}</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="post-content" [froalaView]="post?.content"></div>
+
+  <div class="post-discussion">
+    <p class="post-discussion-label">评论({{artArgs?.discussionCount}})</p>
+    <div *ngIf="artArgs">
+      <app-art-discussion  [artArgs]="artArgs" ></app-art-discussion>
+    </div>
+  </div>
+
+
+</main>

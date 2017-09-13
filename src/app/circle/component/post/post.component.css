@@ -1,0 +1,73 @@
+/*帖子主体*/
+.post-main{
+  width: 800px;
+  margin: auto;
+
+  border-top: solid rgb(180,180,180);
+  padding: 20px;
+}
+/*帖子顶部*/
+.post-top{
+  border-bottom: dashed 1px rgb(200,200,200);
+  padding-bottom: 10px;
+}
+
+/*头像*/
+.post-profile{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 10px;
+  vertical-align: middle;
+  float: left;
+  margin-right: 10px;
+}
+/*帖子标题*/
+.post-title{
+  font-size: 25px;
+  /*color: rgb(0,150,136);*/
+  color: rgb(100,100,100);
+
+}
+/*返回圈子*/
+.back-circle{
+  float: right;
+  font-size: 12px;
+  text-decoration: underline;
+  color: rgb(100,100,100);
+
+}
+.post-info{
+  margin-top: 5px;
+}
+.post-info-wrapper{
+  display: inline-block;
+  margin-left: 5px;
+}
+.post-info-wrapper{
+  margin-left: 0;
+}
+.right-post-info-wrapper{
+  float: right;
+  margin-right: 10px;
+}
+
+.post-info-wrapper i{
+  color: rgb(122,149,153);
+  font-size: 20px;
+}
+.post-info-wrapper span{
+  color: rgb(120,120,120);
+  font-size: 13px;
+}
+.post-content{
+  margin-top: 20px;
+}
+/*帖子评论*/
+.post-discussion{
+  margin-top: 20px;
+}
+.post-discussion-label{
+  padding-left: 10px;
+  border-left: green solid;
+}
