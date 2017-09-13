@@ -7,4 +7,6 @@ export class NoticeMessage {
   sendNickname:string;
   sendProfileImg:string;
   content:string;
+  date:string;
+
 }

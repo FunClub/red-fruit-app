@@ -24,3 +24,6 @@
   margin-left: 3px;
   margin-right: 3px;
 }
+/*聊天编辑器*/
+.chat-editor .fr-toolbar.fr-top{box-shadow: 0 1px 3px rgba(0,0,0,.12)}
+.chat-editor.fr-box.fr-basic.fr-top .fr-wrapper{box-shadow: 0 1px 1px 1px rgba(0,0,0,.16)}

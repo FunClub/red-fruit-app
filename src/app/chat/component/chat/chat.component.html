@@ -6,9 +6,43 @@
   </div>
   <div class="chat-content">
     <div class="chat-message">
-      <img class="message-profile" [src]="img" alt="">
-      <i class="top-border-triangle"></i>
-      <div class="message-content white-box">123</div>
+      <div class='leftMessage'>
+        <img  class='message-profile' [src]="img">
+        <div class='leftTriangle'></div>
+        <div class='leftMessageText'>
+
+          12ewewwrwqe</div>
+        <span class="message-date">12:32</span>
+      </div>
+      <div class='leftMessage'>
+        <img  class='message-profile' [src]="img">
+        <div class='leftTriangle'></div>
+        <div class='leftMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
+        <span class="message-date">12:32</span>
+      </div>
+      <div class='rightMessage'>
+          <img  class='message-profile' [src]="img">
+        <div class='rightTriangle'></div>
+        <div class='rightMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
+      </div>
+      <div class='rightMessage'>
+        <img  class='message-profile' [src]="img">
+        <div class='rightTriangle'></div>
+        <div class='rightMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
+      </div>
+      <div class='rightMessage'>
+        <img  class='message-profile' [src]="img">
+        <div class='rightTriangle'></div>
+        <div class='rightMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
+        <span class="message-date">12:32</span>
+      </div>
     </div>
   </div>
+  <div class="write-message">
+    <div class="chat-editor white-box" [froalaEditor]="rfOptions" [(froalaModel)]="chatMessage.content"></div>
+  </div>
 </main>
+<div class="message-operation">
+  <button md-raised-button>重置</button>
+  <button md-raised-button class="primary-btn" color="primary" (click)="sendMessage()">发送</button>
+</div>

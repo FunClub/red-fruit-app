@@ -1,9 +1,10 @@
 .chat-main{
   width: 800px;
-  height: 500px;
+
   margin: auto;
-  margin-top: 20px;
+  margin-top: 5px;
   border-top: solid red;
+
 }
 .chat-top{
   height: 40px;
@@ -39,17 +40,102 @@
 .chat-content{
   height: 360px;
   border-bottom: 1px rgb(223,223,223) solid;
+  overflow: hidden;
+  overflow-y: auto;
 }
 .message-profile{
   height: 34px;
   width: 34px;
   border-radius: 17px;
   vertical-align: middle;
+  float: left;
 }
-.chat-message{
-  padding: 10px;
+.leftMessage { /*左边的消息*/
+  margin-left:10px;
+  margin-top:10px;
+  margin-bottom: 5px;
 }
-.message-content{
+.leftTriangle { float: left;
   display: inline-block;
-  width: 500px;
+  margin-top: 13px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent rgb(223,223,223) transparent transparent;
+}
+.leftMessageText{
+  position: relative;
+
+  background: rgb(223,223,223);
+  font-size:13px;
+  border-radius:4px;
+  display:inline-block;
+  min-width:30px;
+  max-width:350px;
+  margin-top: 5px;
+  text-align:left;
+  padding: 7px;
+  color: rgb(50,50,50);
+}
+.rightMessage{
+  margin-top:10px;
+  margin-bottom: 5px;
+  right:10px;
+  position:relative;
+  float: right;
+  width: 650px;
+
+}
+.rightMessage .message-profile{
+  float: right;
+}
+.rightTriangle {
+  float: right;
+  width: 0px;
+  margin-top: 13px;
+  height: 0px;
+  border-width: 5px;
+
+  border-style: solid;
+  border-color: transparent transparent transparent rgb(178,226,129);
+}
+.rightMessageText{
+  background: rgb(178,226,129);
+  font-size:13px;
+  border-radius:4px;
+  min-width:40px;
+  max-width:350px;
+  margin-top: 5px;
+  float:right;
+  padding: 7px;
+  color: rgb(80,80,80);
+}
+.message-date{
+  text-align: right;
+  color: rgb(100,100,100);
+  font-size: 12px;
+}
+.rightMessage .message-date{
+  float: right;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+.write-message{
+
+}
+.chat-editor{
+  border: none;
+  border-bottom: rgb(243,243,243) solid 1px;
+  box-shadow: 0 0 3px rgb(240,240,240);
+}
+
+.message-operation{
+  text-align: right;
+  padding: 10px;
+  width: 800px;
+  margin: auto;
+}
+.message-operation button{
+  height: 30px;
+  line-height:30px;
+  font-size: 13px;
 }
