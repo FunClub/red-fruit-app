@@ -2,7 +2,7 @@
   width: 800px;
 
   margin: auto;
-  margin-top: 5px;
+  margin-top: 20px;
   border-top: solid red;
 
 }
@@ -38,7 +38,7 @@
   color:rgb(100,100,100)
 }
 .chat-content{
-  height: 360px;
+  height: 340px;
   border-bottom: 1px rgb(223,223,223) solid;
   overflow: hidden;
   overflow-y: auto;

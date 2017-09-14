@@ -32,7 +32,7 @@
 <md-sidenav-container id="navContainer">
 
   <!--导航面板开始-->
-  <md-sidenav mode="side" opened="true" #sidenav   id="sideNavPanel">
+  <md-sidenav mode="side" [opened]="isNavOpen" #sidenav   id="sideNavPanel">
     <div id="navContent">
       <div id="userProfile">
         <img id="profileImg" [src]="api.IMAGE_PREFIX+homeService.homeInfo.profileImg"/>
