@@ -1,42 +1,17 @@
 <main class="chat-main white-box">
   <div class="chat-top">
-    <img class="chat-profile" [src]="img" alt="">
-    <p class="chat-half-name">大脸猫 <span class="chat-online"><i class="material-icons chat-online-icon">radio_button_checked</i>[在线]</span></p>
-    <p class="chat-mood">我的撒打算打算肯德基阿斯利康点解啊克里斯</p>
+    <img class="chat-profile" [src]="api.IMAGE_PREFIX+homeService.homeInfo.halfProfileImg" alt="">
+    <p class="chat-half-name">{{homeService.homeInfo.halfNickname}} <span class="chat-online"><i
+      class="material-icons chat-online-icon">radio_button_checked</i>[在线]</span></p>
+    <p class="chat-mood">我们的一切如此安详，就像大自然的恩泽一般....</p>
   </div>
   <div class="chat-content">
-    <div class="chat-message">
-      <div class='leftMessage'>
-        <img  class='message-profile' [src]="img">
-        <div class='leftTriangle'></div>
-        <div class='leftMessageText'>
-
-          12ewewwrwqe</div>
-        <span class="message-date">12:32</span>
-      </div>
-      <div class='leftMessage'>
-        <img  class='message-profile' [src]="img">
-        <div class='leftTriangle'></div>
-        <div class='leftMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
-        <span class="message-date">12:32</span>
-      </div>
-      <div class='rightMessage'>
-          <img  class='message-profile' [src]="img">
-        <div class='rightTriangle'></div>
-        <div class='rightMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
-      </div>
-      <div class='rightMessage'>
-        <img  class='message-profile' [src]="img">
-        <div class='rightTriangle'></div>
-        <div class='rightMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
-      </div>
-      <div class='rightMessage'>
-        <img  class='message-profile' [src]="img">
-        <div class='rightTriangle'></div>
-        <div class='rightMessageText'>我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯我的撒打算打算肯德基阿斯利康点解啊克里斯</div>
-        <span class="message-date">12:32</span>
-      </div>
-    </div>
+       <div  *ngFor="let chat of chats" [ngClass]="{'leftMessage':!getPotion(chat),'rightMessage':getPotion(chat)}"  >
+         <img  class='message-profile' [src]="api.IMAGE_PREFIX+chat.sendProfileImg">
+         <div [ngClass]="{'leftTriangle':!getPotion(chat),'rightTriangle':getPotion(chat)}"></div>
+         <div [ngClass]="{'leftMessageText':!getPotion(chat),'rightMessageText':getPotion(chat)}" [froalaView]="chat.content"></div>
+         <span class="message-date">{{chat.date}}</span>
+       </div>
   </div>
   <div class="write-message">
     <div class="chat-editor white-box" [froalaEditor]="rfOptions" [(froalaModel)]="chatMessage.content"></div>

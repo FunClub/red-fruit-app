@@ -8,5 +8,5 @@ export class NoticeMessage {
   sendProfileImg:string;
   content:string;
   date:string;
-
+  type:string;
 }

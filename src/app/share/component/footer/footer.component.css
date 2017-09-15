@@ -5,3 +5,13 @@
   display: block;
   margin: auto;
 }
+.footer-center{
+  width: 800px;
+  margin: auto;
+
+}
+.footer-label{
+  font-size: 13px;
+  color: rgb(100,100,100);
+  margin-left: 10px;
+}

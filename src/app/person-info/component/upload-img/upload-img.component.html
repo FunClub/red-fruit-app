@@ -1,10 +1,8 @@
 <main>
-  <!--隐藏按钮用于,关闭dialog-->
-  <button md-dialog-close  #close style="display: none"></button>
-  <i id="close" class="material-icons" (click)="closeDialog(close)">close</i>
-
-  <h3>上传头像</h3>
-
+  <div class="dialog-title">
+    <i class="material-icons">face</i> 头像上传
+    <span class="dialog-close" (click)="close.click()"><i class="material-icons">close</i></span>
+  </div>
   <div id="upload-top">
     <div id="upload-div">
       <img-cropper mdTooltip="拖动剪切框，选取图片" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
@@ -26,6 +24,8 @@
     <button md-raised-button color="primary" (click)="doUpdate(close)"><i class="material-icons"></i>保存</button>
     <button md-raised-button  (click)="closeDialog(close)"><i class="material-icons"></i>取消</button>
   </div>
+  <!--隐藏按钮用于,关闭dialog-->
+  <button md-dialog-close  #close style="display: none"></button>
 </main>
 
 

@@ -1,15 +1,15 @@
 main{
-  width:590px;
-  padding: 20px;
+  width:630px;
+
 }
 #close{
   float: right;
   cursor: pointer;
 }
 #upload-top{
-  margin-top: 30px;
-  overflow: hidden;
 
+  overflow: hidden;
+  padding: 20px;
 }
 #upload-div{
   float: left;
@@ -50,7 +50,7 @@ main{
   display: block;
   *display: inline;
   *zoom: 1;
-
+  margin-left: 10px;
 }
 
 .a-upload  input {
@@ -68,7 +68,8 @@ main{
 #opreation-div{
   text-align: right;
   border-top: 1px solid rgb(222,222,222);
-  padding-top: 10px;
+
+  padding: 10px;
 }
 #opreation-div button:first-child{
   background: rgb(34,170,210);;

@@ -3,8 +3,8 @@ import {Http} from "@angular/http";
 
 import {BaseService} from "../../share/service/base.service";
 import {Observable} from "rxjs/Observable";
-import {ChatApi} from "../component/model/chat-api.model";
-import {ShowChat} from "../component/model/show-chat.model";
+import {ChatApi} from "../model/chat-api.model";
+import {ShowChat} from "../model/show-chat.model";
 
 
 @Injectable()

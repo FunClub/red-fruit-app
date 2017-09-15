@@ -2,7 +2,7 @@
     <div class="white-box select-circle">
       <p class="circle-label">圈子分类</p>
       <div *ngFor="let circle of circleStaticData;let i=index;" class="circle-wrapper" routerLink="circle/{{i}}">
-        <span class="circle-art-count">123</span>
+        <span class="circle-art-count">{{i*7+i*10+5}}</span>
         <img class="circle-img" [src]="circle.img"/>
         <p class="circle-name">{{circle.name}}</p>
       </div>

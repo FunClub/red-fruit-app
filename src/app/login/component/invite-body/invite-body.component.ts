@@ -12,6 +12,7 @@ import {ToastOptions} from "ng2-toastr";
 import {MdDialog} from "@angular/material";
 import {InviteMessageComponent} from "../invite-message/invite-message.component";
 import {Router} from "@angular/router";
+import {RedFruitApi} from "../../../share/model/base/api.model";
 
 @Component({
   selector: 'app-invite-body',
@@ -31,7 +32,7 @@ export class InviteBodyComponent implements OnInit {
   inviteIdControl:FormControl;
   inviteCount=0;
   constructor(private loginService:LoginService,private title:Title,private formBuilder:FormBuilder,
-  private baseSocketService:BaseSocketService,  public inviteUser:InviteUser,
+  private baseSocketService:BaseSocketService,  public inviteUser:InviteUser,private api:RedFruitApi,
               private toastsManager: ToastsManager, private vcr: ViewContainerRef,
               private toastOptions: ToastOptions,
               private inviteMessage:InviteMessage,private  dialog: MdDialog,private router:Router
@@ -99,7 +100,7 @@ export class InviteBodyComponent implements OnInit {
       if(this.inviteUser.invitations.length>0){
        this.openMessageDialog()
       }
-      this.baseSocketService.connection("ws://localhost/invite/"+res.userId).subscribe(
+      this.baseSocketService.connection(this.api.INVITE_SOCKET(res.userId)).subscribe(
         data=>this.receiveMessage(data),
       );
     });

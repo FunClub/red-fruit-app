@@ -45,8 +45,8 @@ export class PostComponent implements OnInit {
     this.artArgs.discussionCount=this.artInfo.discussionCount;
     this.artArgs.thumbsUpCount=this.artInfo.thumbsUpCount;
     this.artArgs.thumbsUpAble=this.artInfo.thumbsUpAble;
-    this.artArgs.artType=this.artType.NOTE;
-    this.artArgs.artId = this.post.userId;
+    this.artArgs.artType=this.artType.POST;
+    this.artArgs.artId = this.post.postId;
     this.artArgs.artUserId=this.post.userId;
     this.artArgs.showPaginator=true;
     this.artArgs.original = this.post.original;
@@ -59,5 +59,6 @@ export class PostComponent implements OnInit {
     this.artArgs.selectDiscussionCondition.artId=this.artArgs.artId;
     //通知动态参数
     this.artArgs.artContent = this.post.title;
+    console.log(this.artArgs);
   }
 }

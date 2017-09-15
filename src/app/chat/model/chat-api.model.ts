@@ -5,7 +5,5 @@ export class ChatApi {
    */
   CHAT:string="/chat/";
 
-  CHAT_SOCKET(userId:string){
-    return `ws://localhost/chat/${userId}`
-  }
+
 }

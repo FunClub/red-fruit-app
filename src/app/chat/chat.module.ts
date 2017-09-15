@@ -5,7 +5,7 @@ import {ShareModule} from "../share/share.module";
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 
 import {ChatService} from "./service/chat.service";
-import {ChatApi} from "./component/model/chat-api.model";
+import {ChatApi} from "./model/chat-api.model";
 
 @NgModule({
   imports: [

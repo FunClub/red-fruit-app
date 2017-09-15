@@ -7,6 +7,16 @@ export  class RedFruitApi {
    * @type {string}
    */
   EDITOR_PHOTO:string="album/editor-photo";
+
+  /**
+   * 聊天socket
+   * @param userId
+   * @return {string}
+   * @constructor
+   */
+  CHAT_SOCKET(userId:string){
+    return `ws://39.108.92.88/chat/${userId}`
+  }
   /**
    * 通知socket
    * @param userId
@@ -14,7 +24,7 @@ export  class RedFruitApi {
    * @constructor
    */
   NOTICE_SOCKET(userId:string){
-    return `ws://localhost/notice/${userId}`
+    return `ws://39.108.92.88/notice/${userId}`
   }
 
   /**
@@ -24,7 +34,7 @@ export  class RedFruitApi {
    * @constructor
    */
   INVITE_SOCKET(userId:string){
-    return `ws://localhost/invite/${userId}`
+    return `ws://39.108.92.88/invite/${userId}`
   }
   /**
    * 动态通知

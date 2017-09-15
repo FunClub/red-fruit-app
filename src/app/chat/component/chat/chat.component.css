@@ -48,12 +48,16 @@
   width: 34px;
   border-radius: 17px;
   vertical-align: middle;
-  float: left;
+
 }
 .leftMessage { /*左边的消息*/
   margin-left:10px;
   margin-top:10px;
   margin-bottom: 5px;
+  width: 100%;
+}
+.leftMessage .message-profile{
+  float: left;
 }
 .leftTriangle { float: left;
   display: inline-block;
@@ -82,7 +86,7 @@
   right:10px;
   position:relative;
   float: right;
-  width: 650px;
+  width: 100%;
 
 }
 .rightMessage .message-profile{

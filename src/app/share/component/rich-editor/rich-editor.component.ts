@@ -19,7 +19,9 @@ export class RichEditorComponent implements OnInit {
   constructor() {
     this.editorOption = new RfEditorOptions();
   }
-
+  ngAfterViewInit(){
+    $('.fr-box a').remove();
+  }
   ngOnInit() {
     this.initEditor();
 

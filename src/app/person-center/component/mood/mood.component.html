@@ -15,8 +15,8 @@
 
     <!--插入图片-->
     <div class="each-operation">
-      <button md-icon-button >
-        <i id="operation-img-ico" class="material-icons" (click)="toggleUploadImg()">wallpaper</i>
+      <button md-icon-button (click)="toggleUploadImg()">
+        <i id="operation-img-ico" class="material-icons" >wallpaper</i>
       </button>
       <span class="operation-text" id="insert-img-text">图片</span>
       <div id="all-insert-img-wrapper" *ngIf="uploadImgOpened" [@flyXInOutFromTop]>

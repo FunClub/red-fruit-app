@@ -55,7 +55,12 @@ export class HomeComponent implements OnInit {
   }
   receiveMessage(data:NoticeMessage){
     this.noticeService.requestPermission();
-    this.noticeService.create("动态通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+data.content}).subscribe();
+    if(data.type=="chat"){
+      this.noticeService.create("聊天通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+'给你发了消息'}).subscribe();
+    }else{
+      this.noticeService.create("动态通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+data.content}).subscribe();
+    }
+
   }
 
   /**

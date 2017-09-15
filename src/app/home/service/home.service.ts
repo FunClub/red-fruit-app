@@ -33,7 +33,7 @@ export class HomeService extends BaseService{
     return this.http.get(this.api.HOME_INFO).map(res=>{
       this.homeInfo=res.json().data as Home;
       //初始化通知消息
-      this.noticeMessage.sendNickname = this.homeInfo.nickname
+      this.noticeMessage.sendNickname = this.homeInfo.nickname;
       this.noticeMessage.sendProfileImg = this.homeInfo.profileImg;
       this.noticeMessage.sendUserId = this.homeInfo.userId;
      return this.homeInfo;

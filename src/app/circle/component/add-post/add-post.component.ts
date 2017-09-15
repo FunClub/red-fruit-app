@@ -38,6 +38,7 @@ export class AddPostComponent implements OnInit {
   publishPost(close){
     this.post.title=this.editorArgs.title;
     this.post.content=this.editorArgs.content;
+    this.post.original=true;
     $(".fr-view img[src^='http://taomei1314.com']").each((index, element)=>{
       this.post.imgs.push($(element).attr("src"));
       if(this.post.imgs.length==7) return false;
