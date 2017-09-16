@@ -24,6 +24,9 @@ import {CircleComponent} from "../circle/component/circle/circle.component";
 import {CircleCenterComponent} from "../circle/component/circle-center/circle-center.component";
 import {SingleCircleComponent} from "../circle/component/single-circle/single-circle.component";
 import {PostComponent} from "../circle/component/post/post.component";
+import {EmailComponent} from "../email/component/email/email.component";
+import {EmailListComponent} from "../email/component/email-list/email-list.component";
+import {WriteEmailComponent} from "../email/component/write-email/write-email.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -72,7 +75,16 @@ const  homeRoutes:Routes=[
         path:'chat',
         component:ChatComponent
       },
-      /*聊天*/
+      /*邮件*/
+      {
+        path:'email',component:EmailComponent,
+        children:[
+          {path:'email-list',component:EmailListComponent},
+          {path:'write-email',component:WriteEmailComponent},
+          {path:'',redirectTo:"email-list",pathMatch:'full'}
+        ]
+      },
+      /*圈子*/
       {
         path:'circle-center',
         component:CircleComponent,

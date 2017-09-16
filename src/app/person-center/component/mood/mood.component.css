@@ -21,11 +21,12 @@ main{
   background: white;
   border-top: none;
   position: relative;
-  z-index: 2;
+  z-index: 10;
   left: -1px;
   box-shadow:  0 0 2px rgb(210,210,210);
   top: -3px;
   margin-bottom: 10px;
+
 }
 /*每一个具体的操作*/
 .each-operation{

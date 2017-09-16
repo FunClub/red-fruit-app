@@ -1,6 +1,9 @@
 <main class="circle-catalog-main">
-  <div class="circle-catalog-left">
-    <img class="catalog-profile" [src]="api.IMAGE_PREFIX+artInfo.profile">
+  <div class="circle-catalog-left" (mouseleave)="showBusinessCard=false" (mouseover)="showBusinessCard=true">
+    <div [@flyXInOutFromTop] *ngIf="showBusinessCard" class="business-card-wrapper white-box">
+      <app-business-card [userId]="post.userId"></app-business-card>
+    </div>
+    <img class="catalog-profile" [src]="api.IMAGE_PREFIX+artInfo.profile" >
   </div>
   <div class="circle-catalog-right">
     <p  class="circle-title" routerLink="/home/circle-center/post/{{post.postId}}">{{post.title}}</p>
@@ -30,6 +33,5 @@
       <i class="material-icons primary-icon">bookmark</i>
       <span>{{post.circleName}}</span>
     </div>
-
   </div>
 </main>

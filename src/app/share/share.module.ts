@@ -38,6 +38,8 @@ import { MoreDiscussionComponent } from './component/more-discussion/more-discus
 import { OpenMoreDiscussionComponent } from './component/open-more-discussion/open-more-discussion.component';
 import {NoticeArtType} from "../foot-mark/model/notice-art-type";
 import { RichEditorComponent } from './component/rich-editor/rich-editor.component';
+import { BusinessCardComponent } from './component/business-card/business-card.component';
+import {ShareService} from "./service/share.service";
 
 @NgModule({
   imports: [
@@ -73,7 +75,8 @@ import { RichEditorComponent } from './component/rich-editor/rich-editor.compone
     BusyModule,
     MdMenuModule,
     RichEditorComponent,
-    MdPaginatorModule
+    MdPaginatorModule,
+    BusinessCardComponent
   ],
   entryComponents:[MoreDiscussionComponent],
   providers:[
@@ -115,10 +118,13 @@ import { RichEditorComponent } from './component/rich-editor/rich-editor.compone
     RefreshDiscussion,
 
     /*通知动态类型*/
-    NoticeArtType
+    NoticeArtType,
+
+    /*共享服务*/
+    ShareService
     ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
     FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent,
-    MoreDiscussionComponent, OpenMoreDiscussionComponent, RichEditorComponent]
+    MoreDiscussionComponent, OpenMoreDiscussionComponent, RichEditorComponent, BusinessCardComponent]
 })
 export class ShareModule { }

@@ -23,13 +23,29 @@ main{
   font-size: 15px;
 
 }
+/*包裹头像的div*/
+.art-profile-wrapper{
+  float: left;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  background: white;
+}
+.business-card-wrapper{
+  top: -200px;
+  left: -25px;
+  height: 200px;
+  width: 330px;
+  position:absolute;
+  box-shadow: 0 5px 5px rgb(200,200,200);
+  z-index: 9999999;
+}
 /*头像*/
 .art-user-profile{
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  float: left;
-  margin-right: 10px;
+
 }
 /*动态目标：回复，留言，评论等*/
 .art-generate-target{

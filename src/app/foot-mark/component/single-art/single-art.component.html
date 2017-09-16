@@ -1,6 +1,12 @@
 <main>
   <div class="art-user-info-wrapper">
-    <img class="art-user-profile" [src]="api.IMAGE_PREFIX+noticeArt.generateProfileImg"/>
+    <div class="art-profile-wrapper"  (mouseleave)="showCard=false" (mouseover)="showCard=true">
+      <div [@flyXInOutFromTop] *ngIf="showCard"  class="business-card-wrapper white-box">
+        <app-business-card [userId]="noticeArt.generateUserId"></app-business-card>
+      </div>
+      <img class="art-user-profile" [src]="api.IMAGE_PREFIX+noticeArt.generateProfileImg"/>
+    </div>
+
     <div class="notice-art-operation" [mdMenuTriggerFor]="menu">
       <button md-icon-button>
         <i class="material-icons">keyboard_arrow_down</i>

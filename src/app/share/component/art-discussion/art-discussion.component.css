@@ -124,12 +124,32 @@
 .parent-discussion{
 
 }
+/*包裹头像的div*/
+.discussion-profile-wrapper{
+  width: 30px;
+  height:30px;
+  float: left;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+  background: red;
+  position: relative;
+  z-index: 99999999;
+}
+.business-card-wrapper{
+  top: -205px;
+  left: -40px;
+  height: 200px;
+  width: 330px;
+  position:absolute;
+  box-shadow: 0 5px 5px rgb(200,200,200);
+  z-index: 99999999;
+}
 /*评论人头像*/
 .discussion-profile{
   width: 30px;
   height: 30px;
-  float: left;
-  margin-right: 10px;
+
 
 }
 /*评论体,评论右边部分*/

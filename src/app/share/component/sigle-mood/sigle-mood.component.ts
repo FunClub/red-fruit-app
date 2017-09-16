@@ -8,17 +8,24 @@ import {RedFruitApi} from "../../model/base/api.model";
   selector: 'app-sigle-mood',
   templateUrl: './sigle-mood.component.html',
   styleUrls: ['./sigle-mood.component.css'],
-  animations: [
-    trigger('flyInFromTop', [
-      transition('void => *', [
-        animate("300ms",keyframes([
-          style({opacity: 0, transform: 'translateY(-5%)'}),
-          style({opacity: 0.5, transform: 'translateY(5px)'}),
-          style({opacity: 1, transform: 'translateY(0)'})
-        ]))
-      ])
+  animations:[
+  trigger('flyXInOutFromTop', [
+    transition('void => *', [
+      animate("300ms",keyframes([
+        style({opacity: 0, transform: 'translateY(-5%)', offset: 0}),
+        style({opacity: 0.5, transform: 'translateY(5px)',  offset: 0.3}),
+        style({opacity: 1, transform: 'translateY(0)',     offset: 1.0})
+      ]))
+    ]),
+    transition('* => void', [
+      animate("300ms",keyframes([
+        style({opacity: 1, transform: 'translateY(0)'}),
+        style({opacity: 0.5, transform: 'translateY(5px)'}),
+        style({opacity: 0, transform: 'translateY(-5%)'})
+      ]))
     ])
-  ]
+  ]),
+]
 })
 export class SigleMoodComponent implements OnInit {
   /**
@@ -68,9 +75,14 @@ export class SigleMoodComponent implements OnInit {
    * 当前图片的光标类型
    */
   currentImgCursorType:number;
+  /**
+   * 显示用户名片
+   */
+  showCard:boolean;
   constructor(public moodOption:ShowMoodImg,public api:RedFruitApi) {
     this.smallMoodImgs=[];
     this.smallDetailImgs=[];
+    this.showCard=false;
   }
 
   ngOnInit() {

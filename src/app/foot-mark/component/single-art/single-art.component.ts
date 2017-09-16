@@ -5,10 +5,29 @@ import {ArtArgs} from "../../../share/model/base/art-args.model";
 import {ShowSubDiscussion} from "../../../share/model/discussion/show-sub-discussion.model";
 import {DeleteNoticeArt} from "../../model/delete-notice-art.model";
 import {NoticeArtService} from "../../service/notice-art.service";
+import {animate, keyframes,style, transition, trigger} from "@angular/animations";
 @Component({
   selector: 'app-single-art',
   templateUrl: './single-art.component.html',
-  styleUrls: ['./single-art.component.css']
+  styleUrls: ['./single-art.component.css'],
+  animations:[
+    trigger('flyXInOutFromTop', [
+      transition('void => *', [
+        animate("300ms",keyframes([
+          style({opacity: 0, transform: 'translateY(-5%)', offset: 0}),
+          style({opacity: 0.5, transform: 'translateY(5px)',  offset: 0.3}),
+          style({opacity: 1, transform: 'translateY(0)',     offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate("300ms",keyframes([
+          style({opacity: 1, transform: 'translateY(0)'}),
+          style({opacity: 0.5, transform: 'translateY(5px)'}),
+          style({opacity: 0, transform: 'translateY(-5%)'})
+        ]))
+      ])
+    ]),
+  ]
 })
 export class SingleArtComponent implements OnInit {
   /**
@@ -39,8 +58,13 @@ export class SingleArtComponent implements OnInit {
    */
   @Input()
   noticeArtIndex:number;
-  constructor(public api:RedFruitApi,private noticeArtService:NoticeArtService) {
 
+  /**
+   * 是否显示用户card
+   */
+  showCard:boolean;
+  constructor(public api:RedFruitApi,private noticeArtService:NoticeArtService) {
+    this.showCard=false;
   }
 
   ngOnInit() {

@@ -3,6 +3,15 @@
  */
 export  class RedFruitApi {
   /**
+   * 名片信息
+   * @param userId 用户id
+   * @return {string}
+   * @constructor
+   */
+  CARD(userId:string){
+    return `share/${userId}/card`;
+  }
+  /**
    * 编辑器相片
    * @type {string}
    */

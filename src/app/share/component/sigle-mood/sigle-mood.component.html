@@ -11,7 +11,13 @@
     </md-menu>
   </div>
     <div class="mood-title">
-      <img class="mood-profile" [src]="showMoodDto.profileImg">
+      <div class="mood-profile-wrapper" (mouseleave)="showCard=false" (mouseover)="showCard=true">
+        <div [@flyXInOutFromTop] *ngIf="showCard"  class="business-card-wrapper white-box">
+          <app-business-card [userId]="showMoodDto.mood.userId"></app-business-card>
+        </div>
+        <img class="mood-profile" [src]="showMoodDto.profileImg">
+      </div>
+
       <p class="mood-nickname">{{showMoodDto.nickname}}</p>
       <p class="mood-howlong"><span class="mood-short-date">{{showMoodDto.shortDate}}</span>{{showMoodDto.howLongAgo}}前</p>
     </div>
@@ -24,7 +30,7 @@
       <div class="mood-img-content" >
         <div class="mood-img-detail-content" *ngIf="showImgDetail">
           <img #detailImg (mousemove)="changeImgCursor($event,detailImg)"
-               class="detail-img"  [@flyInFromTop]
+               class="detail-img"  [@flyXInOutFromTop]
                [src]="currentShowImgPath"
               [ngClass]="{'prevCursor':currentImgCursorType==moodOption.PREV_CURSOR,'zoomOutCursor':currentImgCursorType==moodOption.ZOOM_OUT_CURSOR,'nextCursor':currentImgCursorType==moodOption.NEXT_CURSOR}"
           (click)="changeDetailImg($event)"

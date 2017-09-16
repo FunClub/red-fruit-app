@@ -1,0 +1,136 @@
+/*邮件列表主体*/
+.email-list-main{
+  width: 800px;
+  margin: auto;
+}
+/*邮件列表顶部*/
+.email-top{
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+}
+.email-top div{
+  display: inline-block;
+}
+.email-list-top-right{
+  float: right;
+}
+.email-list-label i{
+  font-size: 20px;
+  margin-right: 5px;
+}
+/*未读邮件标签*/
+.unread-label{
+  font-size: 13px;
+  color: rgb(120,120,120);
+}
+.show-no-half-email{
+  margin-right: 40px;
+}
+/*邮件右部*/
+.fresh-email-btn{
+  float: right;
+  margin-right: 20px;
+  color: rgb(100,100,100);
+}
+
+
+/*邮件列表标签*/
+.email-list-label{
+  font-size: 14px;
+  font-weight: bold;
+  border-left: solid red;
+  padding-left: 5px;
+  position: relative;
+}
+
+/*邮件列表内容*/
+.email-list-content{
+  margin-top: 20px;
+  padding: 10px;
+}
+
+/*包裹整个邮件的div*/
+.email-wrapper{
+  margin-top: 10px;
+  border-bottom: dashed 1px rgb(223,223,223);
+  padding-bottom: 10px;
+  position: relative;
+  height: 45px;
+}
+.email-wrapper div{
+  display: inline-block;
+  vertical-align: top;
+  line-height: 45px;
+  margin-left: 10px;
+}
+.email-wrapper div:last-child{
+
+}
+/*邮件选择div*/
+.select-email-wrapper{
+  width: 30px;
+  position: relative;
+  bottom: 3px;
+}
+/*包裹邮件的div*/
+.email-state-wrapper{
+  width: 30px;
+}
+/*包裹头像的div*/
+.profile-wrapper{
+  display: inline-block;
+}
+.profile{
+  width: 45px;
+  height: 45px;
+
+}
+/*邮件信息*/
+.email-user-info{
+
+  line-height: normal!important;
+}
+/*昵称*/
+.nickname{
+  font-weight: bold;
+}
+/*基本信息*/
+.base-info{
+  font-size: 13px;
+  margin-left: 5px;
+}
+/*邮件信息*/
+.email-info{
+  margin-top: 3px;
+  line-height: normal;
+}
+.email-info span{
+  font-size: 13px;
+  color: rgb(120,120,120);
+  margin-left: 20px;
+}
+.email-info span:first-child{
+  margin-left: 0;
+}
+/*查看邮件btn*/
+.view-email-btn{
+  float: right;
+  margin-right: 40px;
+  width: 60px;
+  min-width: 60px;
+  font-size: 13px;
+  height: 30px;
+  line-height: 30px;
+}
+/*邮件操作*/
+.email-operation{
+  margin-top: 20px;
+}
+.email-operation button{
+  min-width: 40px;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+}
+

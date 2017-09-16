@@ -1,0 +1,26 @@
+<main class="business-card-main">
+  <img src="../../../../assets/img/card-banner.png" height="87" width="330"/>
+  <div class="card-content">
+
+    <div class="card-operation-info">
+      <div class="card-info">
+        <p class="card-nickname">{{card.nickname}} & {{card.halfNickname}}</p>
+        <p class="car-info-label">
+          <span>{{card.city}}</span>
+          <span>{{card.sex}}</span>
+          <span>{{card.profession}} / </span>
+          <span>{{card.character}}</span>
+        </p>
+      </div>
+      <div class="card-operation">
+        <button md-raised-button color="warn">关注</button>
+        <button md-raised-button color="primary" class="primary-btn">私信</button>
+      </div>
+    </div>
+    <div class="card-profile-wrapper">
+      <img class="card-profile" [src]="api.IMAGE_PREFIX+card.profileImg" *ngIf="card">
+    </div>
+  </div>
+
+
+</main>

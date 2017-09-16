@@ -26,7 +26,12 @@
     </div>
     <!--一个评论开始-->
     <div class="discussion" *ngFor="let parentDiscussion of  parentDiscussions;let i=index;">
-      <img class="discussion-profile" [src]="api.IMAGE_PREFIX+parentDiscussion.profileImg"/>
+      <div class="discussion-profile-wrapper"  (mouseleave)="parentDiscussion.showCard=false" (mouseover)="parentDiscussion.showCard=true">
+        <div [@flyXInOutFromTop] *ngIf="parentDiscussion.showCard"  class="business-card-wrapper white-box">
+          <app-business-card [userId]="parentDiscussion.userId"></app-business-card>
+        </div>
+        <img class="discussion-profile" [src]="api.IMAGE_PREFIX+parentDiscussion.profileImg"/>
+      </div>
       <div class="discussion-content">
         <!--父级评论-->
         <div class="parent-discussion">
