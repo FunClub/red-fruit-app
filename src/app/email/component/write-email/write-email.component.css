@@ -1,5 +1,77 @@
 .write-email-main{
   width: 800px;
   margin: auto;
-  height: 450px;
+  height: 470px;
 }
+/*用户信息*/
+.user-info{
+  padding: 10px;
+  position: relative;
+  height: 85px;
+  border-bottom: 1px rgb(223,223,223) solid;
+  box-shadow: 0 0 3px rgb(223,223,223);
+}
+/*包裹头像的div*/
+.profile-wrapper{
+  padding: 3px;
+  border: solid 1px rgb(223,223,223);
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-right: 10px;
+}
+/*头像*/
+.profile{
+  width: 70px;
+  height: 70px;
+}
+/*基本信息*/
+.base-info{
+
+}
+/*昵称*/
+.nickname{
+  font-weight: bold;
+}
+/*详细信息*/
+.detail-info{
+  margin-top: 5px;
+}
+.detail-info span{
+  margin-left: 10px;
+  font-size: 13px;
+  color: rgb(120,120,120);
+}
+.detail-info span:first-child{
+  margin-left: 0;
+}
+.sm-btn{
+  margin-top: 5px;
+}
+/*背景*/
+.write-email-bg{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100px;
+}
+/*写邮件内容*/
+.write-content{
+  box-shadow: none;
+}
+.email-textarea{
+  border:none;
+  resize: none;
+  height: 100%
+}
+.email-textarea:focus{
+outline: none;
+}
+/*dibu*/
+.write-email-bottom{
+  padding-top: 10px;
+  border-top: solid 1px rgb(223,223,223);
+  height: 40px;
+  padding-left: 20px;
+}
+

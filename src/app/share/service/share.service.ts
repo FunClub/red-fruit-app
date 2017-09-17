@@ -13,6 +13,29 @@ export class ShareService extends BaseService{
   }
 
   /**
+   * 查询被关注用户信息
+   * @return {Observable<R|T>}
+   */
+  selectAttentionUser(){
+    return this.http.get(this.api.ATTENTION_INFO).map(res=>res.json().data).catch(this.handleError);
+  }
+  /**
+   * 取消关注用户
+   * @param userId 用户id
+   */
+  cancelAttention(userId:string):Observable<boolean>{
+    return this.http.delete(this.api.ATTENTION_USER(userId)).map(res=>res.json().data).catch(this.handleError);
+  }
+
+  /**
+   * 关注用户
+   * @param userId 用户id
+   * @return {Observable<R|T>}
+   */
+  attentionUser(userId:string):Observable<boolean>{
+    return this.http.post(this.api.ATTENTION_USER(userId),null).map(res=>res.json().data).catch(this.handleError);
+  }
+  /**
    * 查询名片
    * @param userId 用户id
    * @return {Observable<R|T>}

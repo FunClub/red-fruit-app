@@ -1,0 +1,25 @@
+<main class="select-user-main">
+  <div class="dialog-title" >
+    <i class="material-icons">contact_mail</i>
+    选择收件人
+    <span class="dialog-close" (click)="closeDialog(close)"><i class="material-icons">close</i></span>
+  </div>
+  <div class="user-list">
+    <p class="attention-user-label">我的关注</p>
+    <div class="user-wrapper"  *ngFor="let attention of attentionUsers;let i=index;" [ngClass]="{'selected-user':attention.selected}" (click)="selectUser(i)">
+      <div class="profile-wrapper" >
+        <span *ngIf="attention.selected"  class="profile-backdrop"><i class="material-icons">check_box</i></span>
+        <img class="profile" [src]="api.IMAGE_PREFIX+attention.profileImg" alt="">
+      </div>
+
+      <div class="user-info-wrapper">
+        <p class="nickname">{{attention.nickname}}</p>
+        <p class="base-user-info"><span>{{attention.sex}}</span><span>{{attention.city}} |</span><span>{{attention.character}}</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="select-user-bottom">
+    <button class="primary-btn sm-btn" md-raised-button color="primary" (click)="close.click()">确定</button>
+  </div>
+  <button md-dialog-close style="display: none" #close></button>
+</main>

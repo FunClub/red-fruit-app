@@ -27,3 +27,7 @@
 /*聊天编辑器*/
 .chat-editor .fr-toolbar.fr-top{box-shadow: 0 1px 3px rgba(0,0,0,.12)}
 .chat-editor.fr-box.fr-basic.fr-top .fr-wrapper{box-shadow: 0 1px 1px 1px rgba(0,0,0,.16)}
+
+.none-border-editor.fr-box.fr-basic.fr-top .fr-wrapper{box-shadow: none}
+.none-border-editor .fr-top{box-shadow: none;border-bottom: solid 1px rgb(233,233,233)}
+

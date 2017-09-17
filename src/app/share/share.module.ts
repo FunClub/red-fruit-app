@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Regex} from "./model/regex.model";
 import {RedFruitApi} from "./model/base/api.model";
-
 import { FooterComponent } from './component/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './component/header/header.component';
@@ -12,7 +11,6 @@ import {
   MdButtonModule, MdDialogModule, MdInputModule, MdMenuModule, MdPaginatorModule, MdTabsModule,
   MdTooltipModule
 } from "@angular/material";
-
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {RfEditorOptions} from "./model/base/rf-editor-options.model";
 import { SigleMoodComponent } from './component/sigle-mood/sigle-mood.component';
@@ -40,7 +38,7 @@ import {NoticeArtType} from "../foot-mark/model/notice-art-type";
 import { RichEditorComponent } from './component/rich-editor/rich-editor.component';
 import { BusinessCardComponent } from './component/business-card/business-card.component';
 import {ShareService} from "./service/share.service";
-
+import { SelectUserComponent } from './component/select-user/select-user.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -76,9 +74,10 @@ import {ShareService} from "./service/share.service";
     MdMenuModule,
     RichEditorComponent,
     MdPaginatorModule,
-    BusinessCardComponent
+    BusinessCardComponent,
+    SelectUserComponent
   ],
-  entryComponents:[MoreDiscussionComponent],
+  entryComponents:[MoreDiscussionComponent,SelectUserComponent],
   providers:[
     /*注入全局的api*/
     RedFruitApi,
@@ -125,6 +124,6 @@ import {ShareService} from "./service/share.service";
     ],
   declarations: [FooterComponent, HeaderComponent, SigleMoodComponent, ArtOperationComponent,
     FaceComponent, UploadImgComponent, ArtDiscussionComponent, SafeHtmlPipe, ReplyDiscussionComponent,
-    MoreDiscussionComponent, OpenMoreDiscussionComponent, RichEditorComponent, BusinessCardComponent]
+    MoreDiscussionComponent, OpenMoreDiscussionComponent, RichEditorComponent, BusinessCardComponent, SelectUserComponent]
 })
 export class ShareModule { }

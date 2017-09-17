@@ -7,7 +7,7 @@ export class ShowCard {
   character:string;
   city:string;
   profession:string;
-
+  attentionAble:boolean;
   constructor() {
     this.profileImg="static/defaultMeImg.png";
   }

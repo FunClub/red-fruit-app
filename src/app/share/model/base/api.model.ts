@@ -2,6 +2,16 @@
  * 应用api
  */
 export  class RedFruitApi {
+  ATTENTION_INFO:string="share/attention";
+  /**
+   * 关注用户
+   * @param userId 用户id
+   * @return {string}
+   * @constructor
+   */
+  ATTENTION_USER(userId:string){
+    return `share/${userId}/attention`;
+  }
   /**
    * 名片信息
    * @param userId 用户id
@@ -43,7 +53,7 @@ export  class RedFruitApi {
    * @constructor
    */
   INVITE_SOCKET(userId:string){
-    return `ws://39.108.92.88/invite/${userId}`
+    return `ws://localhost/invite/${userId}`
   }
   /**
    * 动态通知

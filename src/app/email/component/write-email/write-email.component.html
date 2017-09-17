@@ -1,3 +1,19 @@
-<main class="write-email-main white-box">
-
+<main class="write-email-main white-box" *ngIf="showMain">
+  <div class="user-info">
+    <div class="profile-wrapper">
+      <img [src]="api.IMAGE_PREFIX+attentionUser.profileImg" class="profile">
+    </div>
+    <div class="base-info">
+      <p class="nickname">{{attentionUser.nickname}}</p>
+      <p class="detail-info"><span>{{attentionUser.city}}</span><span>{{attentionUser.sex}}</span><span>{{attentionUser.profession}}</span> <span>|</span><span>{{attentionUser.character}}</span></p>
+      <button class="sm-btn" md-raised-button (click)="openSelectUser()">更换</button>
+    </div>
+    <img src="../../../../assets/img/write-email-bg.png" class="write-email-bg"/>
+  </div>
+  <div class="write-content none-border-editor" [froalaEditor]="rfOptions">
+  </div>
+  <div class="write-email-bottom">
+    <button class="primary-btn" md-raised-button color="primary">发送</button>
+    <button  md-raised-button>重置</button>
+  </div>
 </main>

@@ -76,7 +76,13 @@
 .mat-button-wrapper{
   min-width: 20px!important;
 }
-
+/*小按钮*/
+.sm-btn{
+   min-width: 60px!important;
+   width: 60px!important;
+   height: 30px;
+   line-height: 30px!important;
+ }
 /*material select*/
 /*下拉选项高度设为自动*/
 .mat-option{
