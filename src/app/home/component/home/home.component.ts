@@ -33,14 +33,14 @@ export class HomeComponent implements OnInit {
     this.toastsManager.setRootViewContainerRef(vcr);
     this.isNavOpen=true;
     this.routerLinks=[
-      {path:'person-center/home-page','label':'我的主页','isActive':true,'ico':'dashboard'},
+      {path:'person-center','label':'我的主页','ico':'dashboard'},
       {path:'foot-mark/my-art','label':'点滴足迹','isActive':false,'ico':'grade'},
-      {path:'chat','label':'浪漫密聊','isActive':false,'ico':'forum'},
-      {path:'email','label':'飞鸽传书','isActive':false,'ico':'email'},
-      {path:'circle-center','label':'红果密圈','isActive':false,'ico':'group_work'},
-      {path:'person-center/home-page','label':'分享圈子','isActive':false,'ico':'shop_two'},
-      {path:'person-center/home-page','label':'幸福之墙','isActive':false,'ico':'loyalty'},
-      {path:'person-info','label':'资料设置','isActive':false,'ico':'settings_applications'}
+      {path:'chat','label':'浪漫密聊','ico':'forum'},
+      {path:'email','label':'飞鸽传书','ico':'email'},
+      {path:'circle-center','label':'红果密圈','ico':'group_work'},
+      {path:'person-center/home-page1','label':'分享圈子','ico':'shop_two'},
+      {path:'person-center/home-page2','label':'幸福之墙','ico':'loyalty'},
+      {path:'person-info','label':'资料设置','ico':'settings_applications'}
     ];
   }
 
@@ -57,6 +57,8 @@ export class HomeComponent implements OnInit {
     this.noticeService.requestPermission();
     if(data.type=="chat"){
       this.noticeService.create("聊天通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+'给你发了消息'}).subscribe();
+    } else if(data.type=="email"){
+      this.noticeService.create("邮件通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+'给你发了邮件'}).subscribe();
     }else{
       this.noticeService.create("动态通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+data.content}).subscribe();
     }

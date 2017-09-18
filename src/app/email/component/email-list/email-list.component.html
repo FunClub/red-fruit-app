@@ -3,70 +3,43 @@
   <!--邮件顶部开始-->
   <div class="email-top white-box">
     <div class="email-list-label">
-      邮件列表 <span class="unread-label">(2条未读)</span>
+      邮件列表 <span class="unread-label">({{emailCatalogPage.unReadCount}}条未读)</span>
     </div>
     <div class="email-list-top-right">
-      <md-slide-toggle class="show-no-half-email">显示非情侣邮件</md-slide-toggle>
-      <button class="fresh-email-btn" md-icon-button> <i class="material-icons">cached</i>刷新</button>
+      <md-slide-toggle color="warn" class="show-no-half-email" (change)="changeShowManager($event)" [checked]="showManager">{{showManager?'关闭邮件管理':'打开邮件管理'}}</md-slide-toggle>
+
     </div>
   </div>
   <!--邮件顶部结束-->
 
   <!--邮件列表开始-->
   <div class="email-list-content white-box">
+    <div [ngBusy]="{busy:ngBusy,message:'列表加载中...'}"></div>
+    <div class="email-wrapper" *ngFor="let catalog of emailCatalogs">
+      <div *ngIf="showManager" class="select-email-wrapper"><md-checkbox color="primary"></md-checkbox></div>
+      <div class="email-state-wrapper">
+        <img *ngIf="catalog.state" src="../../../../assets/img/yidu.png" />
+        <img *ngIf="!catalog.state" src="../../../../assets/img/weidu.png" />
+      </div>
+      <div class="profile-wrapper">
+        <img class="profile" [src]="api.IMAGE_PREFIX+catalog.profileImg">
+      </div>
+      <div class="email-user-info">
+        <p class="user-info"><span class="nickname">{{catalog.nickname}}</span> <span class="base-info">{{catalog.city}}</span> <span class="base-info">{{catalog.sex}}</span></p>
+        <p class="email-info"><span class="date">{{catalog.howLongAgo}}前</span> <span>{{catalog.whoSend}}</span> <span>共有{{catalog.emailContentSize}}条内容</span></p>
+      </div>
+      <button *ngIf="!catalog.state"  md-raised-button class="primary-btn view-email-btn" color="primary" routerLink="single-email/{{catalog.emailId}}">查看</button>
+      <button *ngIf="catalog.state"  md-raised-button class="view-email-btn">已读</button>
+    </div>
 
-    <div class="email-wrapper">
-      <div class="select-email-wrapper"><md-checkbox color="primary"></md-checkbox></div>
-      <div class="email-state-wrapper"><img src="../../../../assets/img/weidu.png" height="13" width="16"/></div>
-      <div class="profile-wrapper">
-        <img class="profile" [src]="img">
-      </div>
-      <div class="email-user-info">
-        <p class="user-info"><span class="nickname">大脸猫</span> <span class="base-info">重庆</span> <span class="base-info">女</span></p>
-        <p class="email-info"><span class="date">2分钟前</span> <span>你发出的邮件</span> <span>共有3条内容</span></p>
-      </div>
-      <button  md-raised-button class="primary-btn view-email-btn" color="primary">查看</button>
-    </div>
-    <div class="email-wrapper">
-      <div class="select-email-wrapper"><md-checkbox color="primary"></md-checkbox></div>
-      <div class="email-state-wrapper"><img src="../../../../assets/img/weidu.png" height="13" width="16"/></div>
-      <div class="profile-wrapper">
-        <img class="profile" [src]="img">
-      </div>
-      <div class="email-user-info">
-        <p class="user-info"><span class="nickname">大脸猫</span> <span class="base-info">重庆</span> <span class="base-info">女</span></p>
-        <p class="email-info"><span class="date">2分钟前</span> <span>你发出的邮件</span> <span>共有3条内容</span></p>
-      </div>
-      <button  md-raised-button class="primary-btn view-email-btn" color="primary">查看</button>
-    </div>
-    <div class="email-wrapper">
-      <div class="select-email-wrapper"><md-checkbox color="primary"></md-checkbox></div>
-      <div class="email-state-wrapper"><img src="../../../../assets/img/weidu.png" height="13" width="16"/></div>
-      <div class="profile-wrapper">
-        <img class="profile" [src]="img">
-      </div>
-      <div class="email-user-info">
-        <p class="user-info"><span class="nickname">大脸猫</span> <span class="base-info">重庆</span> <span class="base-info">女</span></p>
-        <p class="email-info"><span class="date">2分钟前</span> <span>你发出的邮件</span> <span>共有3条内容</span></p>
-      </div>
-      <button  md-raised-button class="primary-btn view-email-btn" color="primary">查看</button>
-    </div>
-    <div class="email-wrapper">
-      <div class="select-email-wrapper"><md-checkbox color="primary"></md-checkbox></div>
-      <div class="email-state-wrapper"><img src="../../../../assets/img/weidu.png" height="13" width="16"/></div>
-      <div class="profile-wrapper">
-        <img class="profile" [src]="img">
-      </div>
-      <div class="email-user-info">
-        <p class="user-info"><span class="nickname">大脸猫</span> <span class="base-info">重庆</span> <span class="base-info">女</span></p>
-        <p class="email-info"><span class="date">2分钟前</span> <span>你发出的邮件</span> <span>共有3条内容</span></p>
-      </div>
-      <button  md-raised-button class="primary-btn view-email-btn" color="primary">查看</button>
-    </div>
-    <div class="email-operation">
+    <div class="email-operation" *ngIf="showManager">
       <button  md-raised-button>全选</button>
-      <button color="accent" md-raised-button>删除</button>
+      <button color="warn" md-raised-button>删除</button>
     </div>
+    <md-paginator (page)="changePage($event)" class="email-paginator"  [pageSizeOptions]="pageSizeOptions"
+                   [length]="emailCatalogPage.totalElements" [pageSize]="select.pageSize"></md-paginator>
   </div>
   <!--邮件列表结束-->
+
+
 </main>

@@ -4,10 +4,15 @@ import {SelectUserComponent} from "../../../share/component/select-user/select-u
 import {AttentionUser} from "../../../share/model/base/attention-user.model";
 import {ShareService} from "../../../share/service/share.service";
 import {SelectUserArgs} from "../../model/select-user-args.model";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {RedFruitApi} from "../../../share/model/base/api.model";
 import {RfEditorOptions} from "../../../share/model/base/rf-editor-options.model";
 import {HomeService} from "../../../home/service/home.service";
+import {InsertEmail, InsertEmailContent} from "../../model/email.model";
+import {EmailService} from "../../service/email.service";
+import {ToastsManager} from "ng2-toastr";
+import {BaseSocketService} from "../../../websocket/socket/base-socket.service";
+import {NoticeMessage} from "../../../websocket/model/notice-message.model";
 
 @Component({
   selector: 'app-write-email',
@@ -15,7 +20,7 @@ import {HomeService} from "../../../home/service/home.service";
   styleUrls: ['./write-email.component.css']
 })
 export class WriteEmailComponent implements OnInit {
-  img="http://red-fruit.oss-cn-shenzhen.aliyuncs.com/profile/20170815194635-44095884520160925141201400409029QQ%E6%88%AA%E5%9B%BE20160925141102.png";
+
   /**
    * 关注用户
    */
@@ -30,20 +35,83 @@ export class WriteEmailComponent implements OnInit {
    * 显示主页面
    */
   showMain:boolean;
+
+  /**
+   * 编辑器参数
+   */
   rfOptions:RfEditorOptions;
-  constructor(public api:RedFruitApi,private dialog:MdDialog,private shareService:ShareService,private homeService:HomeService,private router:Router) {
+
+  /**
+   * 邮件模型
+   */
+  email:InsertEmail;
+  emailContent:InsertEmailContent;
+  emailSubscribe:any;
+  constructor(public api:RedFruitApi,private dialog:MdDialog,private shareService:ShareService,private homeService:HomeService,private router:Router,
+  private emailService:EmailService,private toastsManager:ToastsManager,private activatedRoute:ActivatedRoute,private socketService:BaseSocketService
+  ) {
     this.showMain=false;
     this.selectArgs = new SelectUserArgs();
     this.rfOptions = new RfEditorOptions();
+
+    /*初始化email模型*/
+    this.email = new InsertEmail();
+    this.emailContent = new InsertEmailContent();
+    this.email.emailContents=[this.emailContent];
   }
 
   ngOnInit() {
     this.initEditor();
-    this.shareService.selectAttentionUser().subscribe(res=>{
+    this.emailSubscribe=this.shareService.selectAttentionUser().subscribe(res=>{
       this.selectArgs.attentionUsers=res;
-      this.openSelectUser();
+      let userId=this.activatedRoute.snapshot.params['userId'];
+      /*从外部选择用户进入写邮件*/
+      if(userId){
+        for(let user of res as AttentionUser[]){
+          if(user.userId==userId){
+            this.attentionUser=user;
+            this.showMain=true;
+            break;
+          }
+        }
+        if(!this.showMain){
+          this.emailService.selectReceivedUser(userId).subscribe(res=>{
+            this.attentionUser=res;
+            this.showMain=true;
+          })
+        }
+      }else{
+        this.openSelectUser();
+      }
+
     });
   }
+
+  /**
+   * 发送邮件
+   */
+  sendEmail(){
+    this.emailSubscribe=this.email.receiveUserId=this.attentionUser.userId;
+    this.emailService.insertEmail(this.email).subscribe(res=>{
+      if(res){
+        this.router.navigateByUrl("/home/email/email-list");
+        this.toastsManager.success("邮件发送成功","发送结果");
+        let message = new NoticeMessage();
+        message.type="email";
+        message.sendUserId=this.homeService.homeInfo.userId;
+        message.receivedUserId = this.attentionUser.userId;
+        message.sendProfileImg = this.homeService.homeInfo.profileImg;
+        message.sendNickname = this.homeService.homeInfo.nickname;
+        this.socketService.sendMessage(message);
+      }else{
+        this.toastsManager.error("邮件发送失败,请重试...","发送结果");
+      }
+
+    });
+  }
+  /**
+   * 初始化编辑器参数
+   */
   initEditor(){
     this.rfOptions.placeholderText="亲爱的"+this.homeService.homeInfo.nickname+"，有什么高兴的事吗，写写吧";
     this.rfOptions.toolbarButtons=['emoticons','fontSize','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
@@ -64,7 +132,7 @@ export class WriteEmailComponent implements OnInit {
     }).afterClosed().subscribe(()=>{
       this.attentionUser=this.selectArgs.selectedUser;
       if(!this.attentionUser){
-        this.router.navigateByUrl("/home/email/email-list")
+        this.router.navigateByUrl("/home/email/email-list");
       }else{
         this.showMain=true;
       }

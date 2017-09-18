@@ -1,0 +1,134 @@
+.single-email-main{
+  width: 800px;
+  margin: auto;
+  position: relative;
+}
+/*用户信息*/
+.user-info{
+  padding: 10px;
+  position: relative;
+  height: 80px;
+  border-bottom: 1px rgb(223,223,223) solid;
+  box-shadow: 0 0 3px rgb(223,223,223);
+}
+/*包裹头像的div*/
+.profile-wrapper{
+  padding: 3px;
+  border: solid 1px rgb(223,223,223);
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-right: 10px;
+}
+/*头像*/
+.profile{
+  width: 70px;
+  height: 70px;
+}
+/*基本信息*/
+.base-info{
+
+}
+/*女性昵称*/
+.g-nickname{
+  color:rgb(236,93,167);
+  font-weight: bold;
+  margin-top: 15px;
+}
+.b-nickname{
+  color:rgb(25,160,198);
+  font-weight: bold;
+  margin-top: 15px;
+}
+/*详细信息*/
+.detail-info{
+  margin-top: 5px;
+}
+.detail-info span{
+  margin-left: 10px;
+  font-size: 13px;
+  color: rgb(120,120,120);
+}
+.detail-info span:first-child{
+  margin-left: 0;
+}
+.sm-btn{
+  margin-top: 5px;
+}
+/*背景*/
+.write-email-bg{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100px;
+}
+/*邮件内容*/
+.email-content{
+  padding: 10px;
+  padding-left: 20px;
+}
+.current-emil-content{
+
+}
+/*邮件时间*/
+.email-date{
+  font-size: 13px;
+  color:rgb(150,150,150);
+}
+/*当前邮件男性名字*/
+.email-b-nickname{
+  font-size: 14px;
+  font-weight: 500;
+  color:rgb(25,160,198);
+}
+.email-g-nickname{
+  font-size: 14px;
+  font-weight: 500;
+  color:rgb(236,93,167);
+}
+/*当前邮件文本内容*/
+.current-email-text{
+  font-size: 14px;
+  margin-top: 5px;
+  color:rgb(100,100,100);
+}
+/*之前的邮件内容*/
+.previous-email{
+  border: solid 1px rgb(226,226,226);
+  margin: 10px 0 0 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+/*以前邮件标签*/
+.previous-email-label{
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  color:rgb(100,100,100);
+  margin-top: 20px;
+  border-left: red solid;
+  padding-left:5px;
+}
+/*之前的邮件内容体*/
+.previous-email-content{
+  margin-top: 10px;
+  border-bottom: dashed 1px rgb(223,223,223);
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+/*回复label*/
+.reply-email-label{
+  margin-top: 20px;
+  border-left: red solid;
+  padding-left:5px;
+  font-size: 14px;
+}
+/*回复email的编辑器*/
+.reply-email-editor{
+  margin-top: 10px;
+}
+.reply-btn{
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+}

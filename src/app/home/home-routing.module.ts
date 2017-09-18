@@ -27,6 +27,8 @@ import {PostComponent} from "../circle/component/post/post.component";
 import {EmailComponent} from "../email/component/email/email.component";
 import {EmailListComponent} from "../email/component/email-list/email-list.component";
 import {WriteEmailComponent} from "../email/component/write-email/write-email.component";
+import {SingleEmailComponent} from "../email/component/single-email/single-email.component";
+import {EmailAndCatalogComponent} from "../email/component/email-and-catalog/email-and-catalog.component";
 const  homeRoutes:Routes=[
   {
     path:'',
@@ -79,7 +81,13 @@ const  homeRoutes:Routes=[
       {
         path:'email',component:EmailComponent,
         children:[
-          {path:'email-list',component:EmailListComponent},
+          {
+            path:'email-list',component:EmailAndCatalogComponent,
+            children:[
+              {path:'',component:EmailListComponent},
+              {path:'single-email/:emailId',component:SingleEmailComponent},
+            ]
+          },
           {path:'write-email',component:WriteEmailComponent},
           {path:'',redirectTo:"email-list",pathMatch:'full'}
         ]

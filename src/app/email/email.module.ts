@@ -7,6 +7,9 @@ import {MdCheckboxModule, MdDialogModule, MdInputModule, MdSlideToggleModule} fr
 import { WriteEmailComponent } from './component/write-email/write-email.component';
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {EmailApi} from "./model/email-api.model";
+import {EmailService} from "./service/email.service";
+import { SingleEmailComponent } from './component/single-email/single-email.component';
+import { EmailAndCatalogComponent } from './component/email-and-catalog/email-and-catalog.component';
 
 
 @NgModule({
@@ -24,7 +27,8 @@ import {EmailApi} from "./model/email-api.model";
     /*邮件api*/
     EmailApi,
     /*邮件服务*/
+    EmailService
   ],
-  declarations: [EmailComponent, EmailListComponent, WriteEmailComponent]
+  declarations: [EmailComponent, EmailListComponent, WriteEmailComponent, SingleEmailComponent, EmailAndCatalogComponent]
 })
 export class EmailModule { }

@@ -2,6 +2,11 @@
  * 应用api
  */
 export  class RedFruitApi {
+
+  /**
+   * 被关注人信息
+   * @type {string}
+   */
   ATTENTION_INFO:string="share/attention";
   /**
    * 关注用户
@@ -34,7 +39,7 @@ export  class RedFruitApi {
    * @constructor
    */
   CHAT_SOCKET(userId:string){
-    return `ws://39.108.92.88/chat/${userId}`
+    return `ws://localhost/chat/${userId}`
   }
   /**
    * 通知socket
@@ -43,7 +48,7 @@ export  class RedFruitApi {
    * @constructor
    */
   NOTICE_SOCKET(userId:string){
-    return `ws://39.108.92.88/notice/${userId}`
+    return `ws://localhost/notice/${userId}`
   }
 
   /**

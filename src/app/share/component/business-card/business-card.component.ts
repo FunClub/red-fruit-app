@@ -4,6 +4,7 @@ import {ShowCard} from "../../model/base/show-card.model";
 import {RedFruitApi} from "../../model/base/api.model";
 import {HomeService} from "../../../home/service/home.service";
 import {ToastsManager} from "ng2-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-business-card',
@@ -21,7 +22,9 @@ export class BusinessCardComponent implements OnInit {
    * 名片
    */
   card:ShowCard;
-  constructor(private shareService:ShareService,private toastsManager:ToastsManager,public api:RedFruitApi,private homeService:HomeService) {
+  constructor(private shareService:ShareService,private toastsManager:ToastsManager,public api:RedFruitApi,private homeService:HomeService,
+  private router:Router
+  ) {
     this.card=new ShowCard();
   }
 
@@ -30,6 +33,14 @@ export class BusinessCardComponent implements OnInit {
       this.card=res;
     });
   }
+
+  goToEmail(){
+    this.router.navigate(["/home/email/write-email",{userId:this.userId}]);
+  }
+
+  /**
+   * 关注用户
+   */
   attention(){
     this.shareService.attentionUser(this.userId).subscribe(res=>{
       if(res){

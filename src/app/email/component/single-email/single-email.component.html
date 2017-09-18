@@ -1,0 +1,35 @@
+<main class="single-email-main white-box">
+  <div [ngBusy]="{busy:ngBusy,message:'邮件加载中...'}"></div>
+  <div class="user-info">
+    <div class="profile-wrapper">
+      <img [src]="api.IMAGE_PREFIX+email.profileImg" class="profile">
+    </div>
+    <div class="base-info">
+      <p class="g-nickname" [ngClass]="{'g-nickname':email.sex=='女','b-nickname':email.sex=='男'}">{{email.nickname}}</p>
+      <p class="detail-info"><span>{{email.city}}</span><span>{{email.sex}}</span><span>{{email.profession}}</span> <span>|</span><span>{{email.character}}</span></p>
+    </div>
+    <img src="../../../../assets/img/write-email-bg.png" class="write-email-bg"/>
+  </div>
+  <div class="email-content">
+    <div class="current-emil-content">
+      <span [ngClass]="{'email-g-nickname':email.sex=='女','email-b-nickname':email.sex=='男'}">{{currentContent?.nickname}}</span> <span class="email-date">{{currentContent?.date}}</span>
+      <div class="current-email-text" [froalaView]="currentContent?.content">
+
+      </div>
+    </div>
+    <div class="previous-email-label" *ngIf="emailContent?.length>0">以往私信记录▲</div>
+    <div class="previous-email" *ngIf="emailContent?.length>0">
+      <div class="previous-email-content" *ngFor="let content of emailContent">
+        <span [ngClass]="{'email-g-nickname':content.sex=='女','email-b-nickname':content.sex=='男'}">{{content.nickname}}</span> <span class="email-date">{{content.date}}</span>
+        <div class="current-email-text" [froalaView]="content.content">
+
+        </div>
+      </div>
+
+    </div>
+    <div class="reply-email-label">邮件回复:</div>
+    <div class="none-border-editor white-box reply-email-editor" [froalaEditor]="rfOptions"></div>
+
+    <button  md-raised-button class="primary-btn reply-btn" color="primary">免费回复</button>
+  </div>
+</main>

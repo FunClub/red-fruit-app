@@ -13,7 +13,7 @@
         </p>
       </div>
       <div class="card-operation">
-        <button md-raised-button color="primary" class="primary-btn">私信</button>
+        <button md-raised-button color="primary" class="primary-btn" (click)="goToEmail()">私信</button>
         <button md-raised-button *ngIf="card.attentionAble" color="warn" [disabled]="isMyself()" (click)="attention()">{{getAttentionLabel()}}</button>
         <button md-raised-button *ngIf="!card.attentionAble" (click)="cancelAttention()">{{getAttentionLabel()}}</button>
       </div>

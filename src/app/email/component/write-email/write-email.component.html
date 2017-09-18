@@ -1,4 +1,5 @@
 <main class="write-email-main white-box" *ngIf="showMain">
+  <div [ngBusy]="{busy:emailSubscribe,message:'处理中,请稍候...'}"></div>
   <div class="user-info">
     <div class="profile-wrapper">
       <img [src]="api.IMAGE_PREFIX+attentionUser.profileImg" class="profile">
@@ -10,10 +11,10 @@
     </div>
     <img src="../../../../assets/img/write-email-bg.png" class="write-email-bg"/>
   </div>
-  <div class="write-content none-border-editor" [froalaEditor]="rfOptions">
+  <div class="write-content none-border-editor" [froalaEditor]="rfOptions" [(froalaModel)]="emailContent.content">
   </div>
   <div class="write-email-bottom">
-    <button class="primary-btn" md-raised-button color="primary">发送</button>
+    <button class="primary-btn" md-raised-button color="primary" (click)="sendEmail()">发送</button>
     <button  md-raised-button>重置</button>
   </div>
 </main>

@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import {RedFruitApi} from "../model/base/api.model";
 import {Observable} from "rxjs/Observable";
 import {ShowCard} from "../model/base/show-card.model";
+import {AttentionUser} from "../model/base/attention-user.model";
 
 @Injectable()
 export class ShareService extends BaseService{

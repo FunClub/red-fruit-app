@@ -40,7 +40,7 @@
       </div>
       <!--导航ul-->
       <div id="allNav"><!--(click)="changeActiveLink(0)" [ngClass]="{'navActive':activeLinkFlag[0]}"-->
-        <div class="nav" *ngFor="let route of routerLinks;let i=index;"(click)="changeActiveLink(i)"  [routerLink]="route.path" [ngClass]="{'navActive':route.isActive}">
+        <div class="nav" *ngFor="let route of routerLinks;let i=index;"(click)="changeActiveLink(i)"  [routerLink]="route.path" routerLinkActive="navActive">
           <button md-button><i class="material-icons ">{{route.ico}}</i>{{route.label}}<i class="material-icons arrow_drop">arrow_drop_down</i></button>
         </div>
       </div>

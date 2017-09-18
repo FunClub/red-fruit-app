@@ -1,5 +1,10 @@
 /*修改material2默认样式*/
 
+/*checkbox变小*/
+.mat-checkbox-inner-container{
+  width: 15px!important;
+  height: 15px!important;
+}
 /*tabs的标签页*/
 .mat-tab-link{
   width: 120px;

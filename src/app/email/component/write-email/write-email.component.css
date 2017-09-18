@@ -2,6 +2,7 @@
   width: 800px;
   margin: auto;
   height: 470px;
+  position: relative;
 }
 /*用户信息*/
 .user-info{
