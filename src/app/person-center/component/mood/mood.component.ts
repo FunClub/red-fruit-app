@@ -73,6 +73,7 @@ export class MoodComponent implements OnInit {
   ngOnInit() {
     this.initPaginator();
     this.selectMood();
+
   }
  initPaginator(){
     $("#mood-tab-content").find(".mat-paginator-page-size-label").html("每页心情数量:")
@@ -105,7 +106,7 @@ export class MoodComponent implements OnInit {
     this.selectMoodCondition.pageSize=e.pageSize;
     this.selectMoodCondition.pageIndex=e.pageIndex;
     this.selectMood();
-    $(".mat-sidenav-content").scrollTop(250);
+    $("#all").scrollTop(0);
   }
   selectMood(){
     this.ngProgressService.start();

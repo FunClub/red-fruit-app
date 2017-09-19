@@ -56,7 +56,7 @@ export class MyArtComponent implements OnInit {
       this.ngProgressService.done();
       this.pageNotice = res;
       this.showNoticeDtos = this.pageNotice.content;
-      $(".mat-sidenav-content").scrollTop(60);
+     $(".mat-sidenav-container").scrollTop(60);
     });
   }
   deleteNotice(index:number){

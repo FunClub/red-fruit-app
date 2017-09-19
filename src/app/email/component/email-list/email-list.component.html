@@ -7,7 +7,6 @@
     </div>
     <div class="email-list-top-right">
       <md-slide-toggle color="warn" class="show-no-half-email" (change)="changeShowManager($event)" [checked]="showManager">{{showManager?'关闭邮件管理':'打开邮件管理'}}</md-slide-toggle>
-
     </div>
   </div>
   <!--邮件顶部结束-->
@@ -16,7 +15,7 @@
   <div class="email-list-content white-box">
     <div [ngBusy]="{busy:ngBusy,message:'列表加载中...'}"></div>
     <div class="email-wrapper" *ngFor="let catalog of emailCatalogs">
-      <div *ngIf="showManager" class="select-email-wrapper"><md-checkbox color="primary"></md-checkbox></div>
+      <div *ngIf="showManager" class="select-email-wrapper"><md-checkbox color="primary"(change)="emailSelectedToggle($event,catalog)" [checked]="catalog.selected"></md-checkbox></div>
       <div class="email-state-wrapper">
         <img *ngIf="catalog.state" src="../../../../assets/img/yidu.png" />
         <img *ngIf="!catalog.state" src="../../../../assets/img/weidu.png" />
@@ -24,17 +23,17 @@
       <div class="profile-wrapper">
         <img class="profile" [src]="api.IMAGE_PREFIX+catalog.profileImg">
       </div>
-      <div class="email-user-info">
+      <div class="email-user-info" routerLink="single-email/{{catalog.emailId}}">
         <p class="user-info"><span class="nickname">{{catalog.nickname}}</span> <span class="base-info">{{catalog.city}}</span> <span class="base-info">{{catalog.sex}}</span></p>
         <p class="email-info"><span class="date">{{catalog.howLongAgo}}前</span> <span>{{catalog.whoSend}}</span> <span>共有{{catalog.emailContentSize}}条内容</span></p>
       </div>
       <button *ngIf="!catalog.state"  md-raised-button class="primary-btn view-email-btn" color="primary" routerLink="single-email/{{catalog.emailId}}">查看</button>
-      <button *ngIf="catalog.state"  md-raised-button class="view-email-btn">已读</button>
+      <button *ngIf="catalog.state"  md-raised-button class="view-email-btn"  routerLink="single-email/{{catalog.emailId}}">已读</button>
     </div>
 
     <div class="email-operation" *ngIf="showManager">
-      <button  md-raised-button>全选</button>
-      <button color="warn" md-raised-button>删除</button>
+      <md-button-toggle class="sm-btn" (change)="allSelectToggle($event)">全选</md-button-toggle>
+      <button color="warn" md-raised-button (click)="deleteEmail()">删除</button>
     </div>
     <md-paginator (page)="changePage($event)" class="email-paginator"  [pageSizeOptions]="pageSizeOptions"
                    [length]="emailCatalogPage.totalElements" [pageSize]="select.pageSize"></md-paginator>

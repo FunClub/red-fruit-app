@@ -59,6 +59,8 @@ export class HomeComponent implements OnInit {
       this.noticeService.create("聊天通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+'给你发了消息'}).subscribe();
     } else if(data.type=="email"){
       this.noticeService.create("邮件通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+'给你发了邮件'}).subscribe();
+    }else if(data.type=="reply-email"){
+      this.noticeService.create("邮件通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+'回复了你的邮件'}).subscribe();
     }else{
       this.noticeService.create("动态通知",{icon:this.api.IMAGE_PREFIX+data.sendProfileImg,body:data.sendNickname+data.content}).subscribe();
     }

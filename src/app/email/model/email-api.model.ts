@@ -2,6 +2,12 @@
  * 邮件api
  */
 export class EmailApi {
+  DELETE_EMAIL:string ="email/delete";
+  /**
+   * 添加邮件内容
+   * @type {string}
+   */
+  ADD_EMAIL_CONTENT:string="email/email-content";
   /**
    * 查询邮件
    * @param emailId 邮件id

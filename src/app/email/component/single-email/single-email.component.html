@@ -17,10 +17,10 @@
 
       </div>
     </div>
-    <div class="previous-email-label" *ngIf="emailContent?.length>0">以往私信记录▲</div>
-    <div class="previous-email" *ngIf="emailContent?.length>0">
+    <div class="previous-email-label" *ngIf="emailContent?.length>0" (click)="showMore=!showMore">以往私信记录{{showMore?'▲':'▼'}}</div>
+    <div class="previous-email" *ngIf="emailContent?.length>0&&showMore" [@flyXInOutFromTop]>
       <div class="previous-email-content" *ngFor="let content of emailContent">
-        <span [ngClass]="{'email-g-nickname':content.sex=='女','email-b-nickname':content.sex=='男'}">{{content.nickname}}</span> <span class="email-date">{{content.date}}</span>
+        <span class="email-content-nickname" >{{content.nickname}}</span> <span class="email-date">{{content.date}}</span>
         <div class="current-email-text" [froalaView]="content.content">
 
         </div>
@@ -28,8 +28,8 @@
 
     </div>
     <div class="reply-email-label">邮件回复:</div>
-    <div class="none-border-editor white-box reply-email-editor" [froalaEditor]="rfOptions"></div>
+    <div class="none-border-editor white-box reply-email-editor" [froalaEditor]="rfOptions" [(froalaModel)]="addEmail.emailContent.content"></div>
 
-    <button  md-raised-button class="primary-btn reply-btn" color="primary">免费回复</button>
+    <button  md-raised-button class="primary-btn reply-btn" color="primary" (click)="replyEmail()">免费回复</button>
   </div>
 </main>

@@ -31,3 +31,6 @@
 .none-border-editor.fr-box.fr-basic.fr-top .fr-wrapper{box-shadow: none}
 .none-border-editor .fr-top{box-shadow: none;border-bottom: solid 1px rgb(233,233,233)}
 
+.none-border-editor{
+  font-size: 14px;
+}

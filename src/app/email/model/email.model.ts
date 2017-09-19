@@ -1,6 +1,12 @@
 import {PageRequest} from "../../share/model/base/page-request.model";
 import {PagedData} from "../../share/model/base/paged-data";
-
+/**
+ * 添加邮件内容的模型
+ */
+export class AddEmailContent{
+  emailId:string;
+  emailContent:InsertEmailContent;
+}
 /*显示邮件的模型*/
 export class ShowEmail{
   emailId:string;
@@ -33,6 +39,7 @@ export class ShowEmailCatalog{
   emailContentSize:string;
   whoSend:string;
   state:string;
+  selected:boolean;
 }
 /**
  * 插入邮件模型

@@ -88,6 +88,10 @@
    height: 30px;
    line-height: 30px!important;
  }
+.sm-btn .mat-button-toggle-label-content{
+  line-height: 30px!important;
+  font-size: 14px;
+}
 /*material select*/
 /*下拉选项高度设为自动*/
 .mat-option{

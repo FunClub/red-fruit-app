@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { EmailComponent } from './component/email/email.component';
 import { EmailListComponent } from './component/email-list/email-list.component';
 import {ShareModule} from "../share/share.module";
-import {MdCheckboxModule, MdDialogModule, MdInputModule, MdSlideToggleModule} from "@angular/material";
+import {
+  MdButtonToggleModule, MdCheckboxModule, MdDialogModule, MdInputModule,
+  MdSlideToggleModule
+} from "@angular/material";
 import { WriteEmailComponent } from './component/write-email/write-email.component';
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {EmailApi} from "./model/email-api.model";
@@ -17,6 +20,7 @@ import { EmailAndCatalogComponent } from './component/email-and-catalog/email-an
     CommonModule,
     ShareModule,
     MdSlideToggleModule,
+    MdButtonToggleModule,
     MdCheckboxModule,
     MdDialogModule,
     MdInputModule,

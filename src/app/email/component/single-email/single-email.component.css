@@ -74,8 +74,14 @@
 .email-date{
   font-size: 13px;
   color:rgb(150,150,150);
+  margin-left: 10px;
 }
 /*当前邮件男性名字*/
+.email-content-nickname{
+  font-size: 14px;
+  font-weight: 500;
+  color:rgb(25,160,198);
+}
 .email-b-nickname{
   font-size: 14px;
   font-weight: 500;
@@ -85,6 +91,11 @@
   font-size: 14px;
   font-weight: 500;
   color:rgb(236,93,167);
+}
+.email-content-nickname{
+  font-size: 14px;
+  font-weight: 500;
+  color:rgb(100,100,100);
 }
 /*当前邮件文本内容*/
 .current-email-text{
