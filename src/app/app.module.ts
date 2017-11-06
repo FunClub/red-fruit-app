@@ -25,7 +25,7 @@ import {ChatModule} from "./chat/chat.module";
     AppRoutingModule,
     LoginModule,
     HomeModule,
-    PushNotificationsModule
+    PushNotificationsModule,
   ],
   providers: [
     /*弹出框全局配置*/
